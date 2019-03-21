@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Preface &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Why Spark with Python ?" href="why.html" />
+    <link rel="prev" title="Contents" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#about">1.1. About</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-this-note">1.1.1. About this note</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#about-the-authors">1.1.2. About the authors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation-for-this-tutorial">1.2. Motivation for this tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copyright-notice-and-license-info">1.3. Copyright notice and license info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acknowledgement">1.4. Acknowledgement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feedback-and-suggestions">1.5. Feedback and suggestions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>1. Preface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preface">
+<span id="id1"></span><h1>1. Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about">
+<h2>1.1. About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="about-this-note">
+<h3>1.1.1. About this note<a class="headerlink" href="#about-this-note" title="Permalink to this headline">¶</a></h3>
+<p>This is a shared repository for <a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark">Learning Apache Spark Notes</a>.
+The PDF version can be downloaded from <a class="reference external" href="pyspark.pdf">HERE</a>.
+The first version was posted on Github in <a class="reference external" href="https://mingchen0919.github.io/learning-apache-spark/index.html">ChenFeng</a> (<a class="reference internal" href="reference.html#feng2017" id="id2">[Feng2017]</a>).
+This shared repository mainly contains the self-learning and
+self-teaching notes from Wenqiang during his <a class="reference external" href="https://www.ima.umn.edu/2016-2017/SW1.23-3.10.17#">IMA Data Science
+Fellowship</a>. The reader is referred to the repository <a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark">https://github.com/runawayhorse001/LearningApacheSpark</a> for more
+details about the <code class="docutils literal notranslate"><span class="pre">dataset</span></code> and the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files.</p>
+<p>In this repository, I try to use the detailed demo code and
+examples to show how to use each main functions. If you find
+your work wasn’t cited in this note, please feel free to let
+me know.</p>
+<p>Although I am by no means an data mining programming and Big Data expert,
+I decided that it would be useful for me to share what I learned
+about PySpark programming in the form of easy tutorials with
+detailed example. I hope those tutorials will be a valuable tool
+for your studies.</p>
+<p>The tutorials assume that the reader has a preliminary knowledge
+of programing and Linux. And this document is generated automatically
+by using <a class="reference external" href="http://sphinx.pocoo.org">sphinx</a>.</p>
+</div>
+<div class="section" id="about-the-authors">
+<h3>1.1.2. About the authors<a class="headerlink" href="#about-the-authors" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>Wenqiang Feng</strong></p>
+<ul class="simple">
+<li>Data Scientist and PhD in Mathematics</li>
+<li>University of Tennessee at Knoxville</li>
+<li>Email: <a class="reference external" href="mailto:von198&#37;&#52;&#48;gmail&#46;com">von198<span>&#64;</span>gmail<span>&#46;</span>com</a></li>
+</ul>
+</li>
+<li><p class="first"><strong>Biography</strong></p>
+<p>Wenqiang Feng is Data Scientist within DST’s Applied Analytics Group. Dr. Feng’s responsibilities include providing DST clients with access to cutting-edge skills and technologies, including Big Data analytic solutions, advanced analytic and data enhancement techniques and modeling.</p>
+<p>Dr. Feng has deep analytic expertise in data mining, analytic systems, machine learning algorithms, business intelligence, and applying Big Data tools to strategically solve industry problems in a cross-functional business. Before joining DST, Dr. Feng was an IMA Data Science Fellow at The Institute for Mathematics and its Applications (IMA) at the University of Minnesota. While there, he helped startup companies make marketing decisions based on deep predictive analytics.</p>
+<p>Dr. Feng graduated from University of Tennessee, Knoxville, with Ph.D. in Computational Mathematics and Master’s degree in Statistics. He also holds Master’s degree in Computational Mathematics from Missouri University of Science and Technology (MST) and Master’s degree in Applied Mathematics from the University of Science and Technology of China (USTC).</p>
+</li>
+<li><p class="first"><strong>Declaration</strong></p>
+<p>The work of Wenqiang Feng was supported by the IMA, while working at IMA. However, any opinion, finding, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the IMA, UTK and DST.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="motivation-for-this-tutorial">
+<h2>1.2. Motivation for this tutorial<a class="headerlink" href="#motivation-for-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>I was motivated by the <a class="reference external" href="https://www.ima.umn.edu/2016-2017/SW1.23-3.10.17#">IMA Data Science Fellowship</a>
+project to learn PySpark. After that I was impressed and attracted by the
+PySpark. And I foud that:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>It is no exaggeration to say that Spark is the most powerful
+Bigdata tool.</li>
+<li>However, I still found that learning Spark was a difficult
+process. I have to Google it and identify which one is true.
+And it was hard to find detailed examples which I can easily
+learned the full process in one file.</li>
+<li>Good sources are expensive for a graduate student.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="copyright-notice-and-license-info">
+<h2>1.3. Copyright notice and license info<a class="headerlink" href="#copyright-notice-and-license-info" title="Permalink to this headline">¶</a></h2>
+<p>This <a class="reference external" href="pyspark.pdf">Learning Apache Spark with Python</a> PDF file is supposed to be a free and living document, which is why its source is available online at <a class="reference external" href="https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf">https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf</a>. But this document is licensed according to both <a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/LICENSE">MIT License</a> and  <a class="reference external" href="https://creativecommons.org/licenses/by-nc/2.0/legalcode">Creative Commons Attribution-NonCommercial 2.0 Generic (CC BY-NC 2.0) License</a>.</p>
+<p><strong>When you plan to use, copy, modify, merge, publish, distribute or sublicense, Please see the terms of those licenses for more details and give the corresponding credits to the author</strong>.</p>
+</div>
+<div class="section" id="acknowledgement">
+<h2>1.4. Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this headline">¶</a></h2>
+<p>At here, I would like to thank Ming Chen, Jian Sun and Zhongbo Li at the
+University of Tennessee at Knoxville for the valuable disscussion
+and thank the generous anonymous authors for providing the detailed
+solutions and source code on the internet. Without those help,
+this repository would not have been possible to be made. Wenqiang
+also would like to thank the <a class="reference external" href="https://www.ima.umn.edu/">Institute for Mathematics and Its
+Applications (IMA)</a> at <a class="reference external" href="https://twin-cities.umn.edu/">University of Minnesota, Twin Cities</a>
+for support during his IMA Data Scientist Fellow visit.</p>
+<p>A special thank you goes to <a class="reference external" href="http://staffwww.dcs.shef.ac.uk/people/H.Lu/">Dr. Haiping Lu</a>, Lecturer in Machine Learning
+at Department of Computer Science, University of Sheffield, for recommending
+and heavily using my tutorial in his teaching class and for the valuable
+suggestions.</p>
+</div>
+<div class="section" id="feedback-and-suggestions">
+<h2>1.5. Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">¶</a></h2>
+<p>Your comments and suggestions are highly appreciated. I am more
+than happy to receive corrections, suggestions or feedbacks through
+email (<a class="reference external" href="mailto:von198&#37;&#52;&#48;gmail&#46;com">von198<span>&#64;</span>gmail<span>&#46;</span>com</a>) for improvements.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="why.html" class="btn btn-neutral float-right" title="2. Why Spark with Python ?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

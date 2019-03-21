@@ -1,0 +1,820 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{accuracy}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{addGrid()}\spxextra{pyspark.ml.tuning.ParamGridBuilder method}, \hyperpage{363}
+  \item \spxentry{AFTSurvivalRegression}\spxextra{class in pyspark.ml.regression}, \hyperpage{295}
+  \item \spxentry{AFTSurvivalRegressionModel}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{297}
+  \item \spxentry{aic}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{305}
+  \item \spxentry{ALS}\spxextra{class in pyspark.ml.recommendation}, \hyperpage{355}
+  \item \spxentry{ALSModel}\spxextra{class in pyspark.ml.recommendation}, \hyperpage{359}
+  \item \spxentry{areaUnderROC}\spxextra{pyspark.ml.classification.BinaryLogisticRegressionSummary attribute}, 
+		\hyperpage{324}
+  \item \spxentry{assignClusters()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{353}
+  \item \spxentry{avgMetrics}\spxextra{pyspark.ml.tuning.CrossValidatorModel attribute}, 
+		\hyperpage{365}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{baseOn()}\spxextra{pyspark.ml.tuning.ParamGridBuilder method}, \hyperpage{363}
+  \item \spxentry{bestModel}\spxextra{pyspark.ml.tuning.CrossValidatorModel attribute}, 
+		\hyperpage{365}
+  \item \spxentry{bestModel}\spxextra{pyspark.ml.tuning.TrainValidationSplitModel attribute}, 
+		\hyperpage{367}
+  \item \spxentry{BinaryClassificationEvaluator}\spxextra{class in pyspark.ml.evaluation}, 
+		\hyperpage{368}
+  \item \spxentry{BinaryLogisticRegressionSummary}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{324}
+  \item \spxentry{BinaryLogisticRegressionTrainingSummary}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{325}
+  \item \spxentry{BisectingKMeans}\spxextra{class in pyspark.ml.clustering}, \hyperpage{339}
+  \item \spxentry{BisectingKMeansModel}\spxextra{class in pyspark.ml.clustering}, \hyperpage{341}
+  \item \spxentry{BisectingKMeansSummary}\spxextra{class in pyspark.ml.clustering}, \hyperpage{341}
+  \item \spxentry{boundaries}\spxextra{pyspark.ml.regression.IsotonicRegressionModel attribute}, 
+		\hyperpage{308}
+  \item \spxentry{build()}\spxextra{pyspark.ml.tuning.ParamGridBuilder method}, \hyperpage{363}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{ChiSquareTest}\spxextra{class in pyspark.ml.stat}, \hyperpage{289}
+  \item \spxentry{clusterCenters()}\spxextra{pyspark.ml.clustering.BisectingKMeansModel method}, 
+		\hyperpage{341}
+  \item \spxentry{clusterCenters()}\spxextra{pyspark.ml.clustering.KMeansModel method}, 
+		\hyperpage{343}
+  \item \spxentry{ClusteringEvaluator}\spxextra{class in pyspark.ml.evaluation}, \hyperpage{370}
+  \item \spxentry{coefficientMatrix}\spxextra{pyspark.ml.classification.LogisticRegressionModel attribute}, 
+		\hyperpage{321}
+  \item \spxentry{coefficients}\spxextra{pyspark.ml.classification.LinearSVCModel attribute}, 
+		\hyperpage{317}
+  \item \spxentry{coefficients}\spxextra{pyspark.ml.classification.LogisticRegressionModel attribute}, 
+		\hyperpage{321}
+  \item \spxentry{coefficients}\spxextra{pyspark.ml.regression.AFTSurvivalRegressionModel attribute}, 
+		\hyperpage{297}
+  \item \spxentry{coefficients}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionModel attribute}, 
+		\hyperpage{304}
+  \item \spxentry{coefficients}\spxextra{pyspark.ml.regression.LinearRegressionModel attribute}, 
+		\hyperpage{310}
+  \item \spxentry{coefficientStandardErrors}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{coefficientStandardErrors}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{311}
+  \item \spxentry{computeCost()}\spxextra{pyspark.ml.clustering.BisectingKMeansModel method}, 
+		\hyperpage{341}
+  \item \spxentry{computeCost()}\spxextra{pyspark.ml.clustering.KMeansModel method}, 
+		\hyperpage{343}
+  \item \spxentry{Configure Spark on Mac and Ubuntu}, \hyperpage{16}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.classification.OneVsRest method}, \hyperpage{338}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.classification.OneVsRestModel method}, 
+		\hyperpage{339}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.pipeline.Pipeline method}, \hyperpage{360}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.pipeline.PipelineModel method}, \hyperpage{361}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.tuning.CrossValidator method}, \hyperpage{364}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.tuning.CrossValidatorModel method}, \hyperpage{365}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.tuning.TrainValidationSplit method}, \hyperpage{366}
+  \item \spxentry{copy()}\spxextra{pyspark.ml.tuning.TrainValidationSplitModel method}, 
+		\hyperpage{367}
+  \item \spxentry{corr()}\spxextra{pyspark.ml.stat.Correlation static method}, \hyperpage{290}
+  \item \spxentry{Correlation}\spxextra{class in pyspark.ml.stat}, \hyperpage{290}
+  \item \spxentry{count()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{293}
+  \item \spxentry{CrossValidator}\spxextra{class in pyspark.ml.tuning}, \hyperpage{363}
+  \item \spxentry{CrossValidatorModel}\spxextra{class in pyspark.ml.tuning}, \hyperpage{364}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{DecisionTreeClassificationModel}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{327}
+  \item \spxentry{DecisionTreeClassifier}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{325}
+  \item \spxentry{DecisionTreeRegressionModel}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{298}
+  \item \spxentry{DecisionTreeRegressor}\spxextra{class in pyspark.ml.regression}, \hyperpage{297}
+  \item \spxentry{degreesOfFreedom}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{305}
+  \item \spxentry{degreesOfFreedom}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{311}
+  \item \spxentry{describeTopics()}\spxextra{pyspark.ml.clustering.LDAModel method}, 
+		\hyperpage{350}
+  \item \spxentry{deviance}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{305}
+  \item \spxentry{devianceResiduals}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{311}
+  \item \spxentry{dispersion}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{305}
+  \item \spxentry{DistributedLDAModel}\spxextra{class in pyspark.ml.clustering}, \hyperpage{351}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{estimatedDocConcentration()}\spxextra{pyspark.ml.clustering.LDAModel method}, 
+		\hyperpage{350}
+  \item \spxentry{evaluate()}\spxextra{pyspark.ml.classification.LogisticRegressionModel method}, 
+		\hyperpage{321}
+  \item \spxentry{evaluate()}\spxextra{pyspark.ml.evaluation.Evaluator method}, \hyperpage{367}
+  \item \spxentry{evaluate()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionModel method}, 
+		\hyperpage{304}
+  \item \spxentry{evaluate()}\spxextra{pyspark.ml.regression.LinearRegressionModel method}, 
+		\hyperpage{310}
+  \item \spxentry{evaluateEachIteration()}\spxextra{pyspark.ml.classification.GBTClassificationModel method}, 
+		\hyperpage{330}
+  \item \spxentry{evaluateEachIteration()}\spxextra{pyspark.ml.regression.GBTRegressionModel method}, 
+		\hyperpage{300}
+  \item \spxentry{Evaluator}\spxextra{class in pyspark.ml.evaluation}, \hyperpage{367}
+  \item \spxentry{explainedVariance}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{311}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{falsePositiveRateByLabel}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{featureImportances}\spxextra{pyspark.ml.classification.DecisionTreeClassificationModel attribute}, 
+		\hyperpage{327}
+  \item \spxentry{featureImportances}\spxextra{pyspark.ml.classification.GBTClassificationModel attribute}, 
+		\hyperpage{330}
+  \item \spxentry{featureImportances}\spxextra{pyspark.ml.classification.RandomForestClassificationModel attribute}, 
+		\hyperpage{332}
+  \item \spxentry{featureImportances}\spxextra{pyspark.ml.regression.DecisionTreeRegressionModel attribute}, 
+		\hyperpage{298}
+  \item \spxentry{featureImportances}\spxextra{pyspark.ml.regression.GBTRegressionModel attribute}, 
+		\hyperpage{301}
+  \item \spxentry{featureImportances}\spxextra{pyspark.ml.regression.RandomForestRegressionModel attribute}, 
+		\hyperpage{315}
+  \item \spxentry{featuresCol}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{featuresCol}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{311}
+  \item \spxentry{fMeasureByLabel()}\spxextra{pyspark.ml.classification.LogisticRegressionSummary method}, 
+		\hyperpage{322}
+  \item \spxentry{fMeasureByThreshold}\spxextra{pyspark.ml.classification.BinaryLogisticRegressionSummary attribute}, 
+		\hyperpage{324}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{GaussianMixture}\spxextra{class in pyspark.ml.clustering}, \hyperpage{344}
+  \item \spxentry{GaussianMixtureModel}\spxextra{class in pyspark.ml.clustering}, \hyperpage{345}
+  \item \spxentry{GaussianMixtureSummary}\spxextra{class in pyspark.ml.clustering}, \hyperpage{346}
+  \item \spxentry{gaussiansDF}\spxextra{pyspark.ml.clustering.GaussianMixtureModel attribute}, 
+		\hyperpage{345}
+  \item \spxentry{GBTClassificationModel}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{330}
+  \item \spxentry{GBTClassifier}\spxextra{class in pyspark.ml.classification}, \hyperpage{328}
+  \item \spxentry{GBTRegressionModel}\spxextra{class in pyspark.ml.regression}, \hyperpage{300}
+  \item \spxentry{GBTRegressor}\spxextra{class in pyspark.ml.regression}, \hyperpage{299}
+  \item \spxentry{GeneralizedLinearRegression}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{301}
+  \item \spxentry{GeneralizedLinearRegressionModel}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{304}
+  \item \spxentry{GeneralizedLinearRegressionSummary}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{305}
+  \item \spxentry{GeneralizedLinearRegressionTrainingSummary}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{306}
+  \item \spxentry{getAlpha()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{356}
+  \item \spxentry{getBlockSize()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{336}
+  \item \spxentry{getCensorCol()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{getCheckpointFiles()}\spxextra{pyspark.ml.clustering.DistributedLDAModel method}, 
+		\hyperpage{351}
+  \item \spxentry{getColdStartStrategy()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{356}
+  \item \spxentry{getDistanceMeasure()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, 
+		\hyperpage{340}
+  \item \spxentry{getDistanceMeasure()}\spxextra{pyspark.ml.clustering.KMeans method}, 
+		\hyperpage{342}
+  \item \spxentry{getDistanceMeasure()}\spxextra{pyspark.ml.evaluation.ClusteringEvaluator method}, 
+		\hyperpage{371}
+  \item \spxentry{getDocConcentration()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{347}
+  \item \spxentry{getDstCol()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{getEpsilon()}\spxextra{pyspark.ml.regression.LinearRegression method}, 
+		\hyperpage{310}
+  \item \spxentry{getFamily()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{319}
+  \item \spxentry{getFamily()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{303}
+  \item \spxentry{getFeatureIndex()}\spxextra{pyspark.ml.regression.IsotonicRegression method}, 
+		\hyperpage{308}
+  \item \spxentry{getFinalStorageLevel()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{356}
+  \item \spxentry{getImplicitPrefs()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{357}
+  \item \spxentry{getInitialWeights()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{336}
+  \item \spxentry{getInitMode()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{342}
+  \item \spxentry{getInitMode()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{getInitSteps()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{342}
+  \item \spxentry{getIntermediateStorageLevel()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{357}
+  \item \spxentry{getIsotonic()}\spxextra{pyspark.ml.regression.IsotonicRegression method}, 
+		\hyperpage{308}
+  \item \spxentry{getItemCol()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{357}
+  \item \spxentry{getK()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, \hyperpage{340}
+  \item \spxentry{getK()}\spxextra{pyspark.ml.clustering.GaussianMixture method}, \hyperpage{345}
+  \item \spxentry{getK()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{343}
+  \item \spxentry{getK()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{347}
+  \item \spxentry{getK()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{getKeepLastCheckpoint()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{348}
+  \item \spxentry{getLayers()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{336}
+  \item \spxentry{getLearningDecay()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{348}
+  \item \spxentry{getLearningOffset()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{348}
+  \item \spxentry{getLink()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{303}
+  \item \spxentry{getLinkPower()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{303}
+  \item \spxentry{getLinkPredictionCol()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{303}
+  \item \spxentry{getLossType()}\spxextra{pyspark.ml.classification.GBTClassifier method}, 
+		\hyperpage{329}
+  \item \spxentry{getLossType()}\spxextra{pyspark.ml.regression.GBTRegressor method}, 
+		\hyperpage{300}
+  \item \spxentry{getLowerBoundsOnCoefficients()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{319}
+  \item \spxentry{getLowerBoundsOnIntercepts()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{319}
+  \item \spxentry{getMetricName()}\spxextra{pyspark.ml.evaluation.BinaryClassificationEvaluator method}, 
+		\hyperpage{368}
+  \item \spxentry{getMetricName()}\spxextra{pyspark.ml.evaluation.ClusteringEvaluator method}, 
+		\hyperpage{371}
+  \item \spxentry{getMetricName()}\spxextra{pyspark.ml.evaluation.MulticlassClassificationEvaluator method}, 
+		\hyperpage{370}
+  \item \spxentry{getMetricName()}\spxextra{pyspark.ml.evaluation.RegressionEvaluator method}, 
+		\hyperpage{369}
+  \item \spxentry{getMinDivisibleClusterSize()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, 
+		\hyperpage{340}
+  \item \spxentry{getModelType()}\spxextra{pyspark.ml.classification.NaiveBayes method}, 
+		\hyperpage{334}
+  \item \spxentry{getNonnegative()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{357}
+  \item \spxentry{getNumFolds()}\spxextra{pyspark.ml.tuning.CrossValidator method}, \hyperpage{364}
+  \item \spxentry{getNumItemBlocks()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{357}
+  \item \spxentry{getNumUserBlocks()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{357}
+  \item \spxentry{getOffsetCol()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{303}
+  \item \spxentry{getOptimizeDocConcentration()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{348}
+  \item \spxentry{getOptimizer()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{348}
+  \item \spxentry{getQuantileProbabilities()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{getQuantilesCol()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{getRank()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{357}
+  \item \spxentry{getRatingCol()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{357}
+  \item \spxentry{getSmoothing()}\spxextra{pyspark.ml.classification.NaiveBayes method}, 
+		\hyperpage{334}
+  \item \spxentry{getSrcCol()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{getStagePath()}\spxextra{pyspark.ml.pipeline.PipelineSharedReadWrite static method}, 
+		\hyperpage{362}
+  \item \spxentry{getStages()}\spxextra{pyspark.ml.pipeline.Pipeline method}, \hyperpage{360}
+  \item \spxentry{getStepSize()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{336}
+  \item \spxentry{getSubsamplingRate()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{348}
+  \item \spxentry{getThreshold()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{319}
+  \item \spxentry{getThresholds()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{getTopicConcentration()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{348}
+  \item \spxentry{getTopicDistributionCol()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{348}
+  \item \spxentry{getTrainRatio()}\spxextra{pyspark.ml.tuning.TrainValidationSplit method}, 
+		\hyperpage{366}
+  \item \spxentry{getUpperBoundsOnCoefficients()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{getUpperBoundsOnIntercepts()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{getUserCol()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{357}
+  \item \spxentry{getVariancePower()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{303}
+
+  \indexspace
+  \bigletter H
+  \item \spxentry{hasSummary}\spxextra{pyspark.ml.classification.LogisticRegressionModel attribute}, 
+		\hyperpage{321}
+  \item \spxentry{hasSummary}\spxextra{pyspark.ml.clustering.BisectingKMeansModel attribute}, 
+		\hyperpage{341}
+  \item \spxentry{hasSummary}\spxextra{pyspark.ml.clustering.GaussianMixtureModel attribute}, 
+		\hyperpage{345}
+  \item \spxentry{hasSummary}\spxextra{pyspark.ml.clustering.KMeansModel attribute}, 
+		\hyperpage{343}
+  \item \spxentry{hasSummary}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionModel attribute}, 
+		\hyperpage{305}
+  \item \spxentry{hasSummary}\spxextra{pyspark.ml.regression.LinearRegressionModel attribute}, 
+		\hyperpage{310}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{intercept}\spxextra{pyspark.ml.classification.LinearSVCModel attribute}, 
+		\hyperpage{317}
+  \item \spxentry{intercept}\spxextra{pyspark.ml.classification.LogisticRegressionModel attribute}, 
+		\hyperpage{321}
+  \item \spxentry{intercept}\spxextra{pyspark.ml.regression.AFTSurvivalRegressionModel attribute}, 
+		\hyperpage{297}
+  \item \spxentry{intercept}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionModel attribute}, 
+		\hyperpage{305}
+  \item \spxentry{intercept}\spxextra{pyspark.ml.regression.LinearRegressionModel attribute}, 
+		\hyperpage{310}
+  \item \spxentry{interceptVector}\spxextra{pyspark.ml.classification.LogisticRegressionModel attribute}, 
+		\hyperpage{321}
+  \item \spxentry{isDistributed()}\spxextra{pyspark.ml.clustering.LDAModel method}, \hyperpage{350}
+  \item \spxentry{isLargerBetter()}\spxextra{pyspark.ml.evaluation.Evaluator method}, 
+		\hyperpage{368}
+  \item \spxentry{IsotonicRegression}\spxextra{class in pyspark.ml.regression}, \hyperpage{307}
+  \item \spxentry{IsotonicRegressionModel}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{308}
+  \item \spxentry{itemFactors}\spxextra{pyspark.ml.recommendation.ALSModel attribute}, 
+		\hyperpage{359}
+
+  \indexspace
+  \bigletter K
+  \item \spxentry{KMeans}\spxextra{class in pyspark.ml.clustering}, \hyperpage{341}
+  \item \spxentry{KMeansModel}\spxextra{class in pyspark.ml.clustering}, \hyperpage{343}
+  \item \spxentry{KolmogorovSmirnovTest}\spxextra{class in pyspark.ml.stat}, \hyperpage{291}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{labelCol}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{labelCol}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{311}
+  \item \spxentry{labels}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{layers}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassificationModel attribute}, 
+		\hyperpage{337}
+  \item \spxentry{LDA}\spxextra{class in pyspark.ml.clustering}, \hyperpage{346}
+  \item \spxentry{LDAModel}\spxextra{class in pyspark.ml.clustering}, \hyperpage{350}
+  \item \spxentry{LinearRegression}\spxextra{class in pyspark.ml.regression}, \hyperpage{308}
+  \item \spxentry{LinearRegressionModel}\spxextra{class in pyspark.ml.regression}, \hyperpage{310}
+  \item \spxentry{LinearRegressionSummary}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{311}
+  \item \spxentry{LinearRegressionTrainingSummary}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{313}
+  \item \spxentry{LinearSVC}\spxextra{class in pyspark.ml.classification}, \hyperpage{316}
+  \item \spxentry{LinearSVCModel}\spxextra{class in pyspark.ml.classification}, \hyperpage{317}
+  \item \spxentry{load()}\spxextra{pyspark.ml.pipeline.PipelineModelReader method}, \hyperpage{361}
+  \item \spxentry{load()}\spxextra{pyspark.ml.pipeline.PipelineReader method}, \hyperpage{362}
+  \item \spxentry{load()}\spxextra{pyspark.ml.pipeline.PipelineSharedReadWrite static method}, 
+		\hyperpage{362}
+  \item \spxentry{LocalLDAModel}\spxextra{class in pyspark.ml.clustering}, \hyperpage{351}
+  \item \spxentry{LogisticRegression}\spxextra{class in pyspark.ml.classification}, \hyperpage{317}
+  \item \spxentry{LogisticRegressionModel}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{321}
+  \item \spxentry{LogisticRegressionSummary}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{322}
+  \item \spxentry{LogisticRegressionTrainingSummary}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{323}
+  \item \spxentry{logLikelihood}\spxextra{pyspark.ml.clustering.GaussianMixtureSummary attribute}, 
+		\hyperpage{346}
+  \item \spxentry{logLikelihood()}\spxextra{pyspark.ml.clustering.LDAModel method}, \hyperpage{351}
+  \item \spxentry{logPerplexity()}\spxextra{pyspark.ml.clustering.LDAModel method}, \hyperpage{351}
+  \item \spxentry{logPrior()}\spxextra{pyspark.ml.clustering.DistributedLDAModel method}, 
+		\hyperpage{352}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{max()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{293}
+  \item \spxentry{mean()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{293}
+  \item \spxentry{meanAbsoluteError}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{meanSquaredError}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{metrics()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{293}
+  \item \spxentry{min()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{294}
+  \item \spxentry{MulticlassClassificationEvaluator}\spxextra{class in pyspark.ml.evaluation}, 
+		\hyperpage{369}
+  \item \spxentry{MultilayerPerceptronClassificationModel}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{337}
+  \item \spxentry{MultilayerPerceptronClassifier}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{335}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{NaiveBayes}\spxextra{class in pyspark.ml.classification}, \hyperpage{333}
+  \item \spxentry{NaiveBayesModel}\spxextra{class in pyspark.ml.classification}, \hyperpage{334}
+  \item \spxentry{normL1()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{294}
+  \item \spxentry{normL2()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{294}
+  \item \spxentry{nullDeviance}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{305}
+  \item \spxentry{numInstances}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{numInstances}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{numIterations}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute}, 
+		\hyperpage{307}
+  \item \spxentry{numNonZeros()}\spxextra{pyspark.ml.stat.Summarizer static method}, 
+		\hyperpage{294}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{objectiveHistory}\spxextra{pyspark.ml.classification.LogisticRegressionTrainingSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{objectiveHistory}\spxextra{pyspark.ml.regression.LinearRegressionTrainingSummary attribute}, 
+		\hyperpage{314}
+  \item \spxentry{OneVsRest}\spxextra{class in pyspark.ml.classification}, \hyperpage{337}
+  \item \spxentry{OneVsRestModel}\spxextra{class in pyspark.ml.classification}, \hyperpage{339}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{ParamGridBuilder}\spxextra{class in pyspark.ml.tuning}, \hyperpage{362}
+  \item \spxentry{pi}\spxextra{pyspark.ml.classification.NaiveBayesModel attribute}, 
+		\hyperpage{334}
+  \item \spxentry{Pipeline}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{360}
+  \item \spxentry{PipelineModel}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{361}
+  \item \spxentry{PipelineModelReader}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{361}
+  \item \spxentry{PipelineModelWriter}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{361}
+  \item \spxentry{PipelineReader}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{361}
+  \item \spxentry{PipelineSharedReadWrite}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{362}
+  \item \spxentry{PipelineWriter}\spxextra{class in pyspark.ml.pipeline}, \hyperpage{362}
+  \item \spxentry{PowerIterationClustering}\spxextra{class in pyspark.ml.clustering}, 
+		\hyperpage{352}
+  \item \spxentry{pr}\spxextra{pyspark.ml.classification.BinaryLogisticRegressionSummary attribute}, 
+		\hyperpage{324}
+  \item \spxentry{precisionByLabel}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{precisionByThreshold}\spxextra{pyspark.ml.classification.BinaryLogisticRegressionSummary attribute}, 
+		\hyperpage{324}
+  \item \spxentry{predict()}\spxextra{pyspark.ml.regression.AFTSurvivalRegressionModel method}, 
+		\hyperpage{297}
+  \item \spxentry{predictionCol}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{predictionCol}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{predictionCol}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{predictions}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{322}
+  \item \spxentry{predictions}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{predictions}\spxextra{pyspark.ml.regression.IsotonicRegressionModel attribute}, 
+		\hyperpage{308}
+  \item \spxentry{predictions}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{predictQuantiles()}\spxextra{pyspark.ml.regression.AFTSurvivalRegressionModel method}, 
+		\hyperpage{297}
+  \item \spxentry{probability}\spxextra{pyspark.ml.clustering.GaussianMixtureSummary attribute}, 
+		\hyperpage{346}
+  \item \spxentry{probabilityCol}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{probabilityCol}\spxextra{pyspark.ml.clustering.GaussianMixtureSummary attribute}, 
+		\hyperpage{346}
+  \item \spxentry{pValues}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute}, 
+		\hyperpage{307}
+  \item \spxentry{pValues}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{pyspark.ml.classification}\spxextra{module}, \hyperpage{316}
+  \item \spxentry{pyspark.ml.clustering}\spxextra{module}, \hyperpage{339}
+  \item \spxentry{pyspark.ml.evaluation}\spxextra{module}, \hyperpage{367}
+  \item \spxentry{pyspark.ml.pipeline}\spxextra{module}, \hyperpage{360}
+  \item \spxentry{pyspark.ml.recommendation}\spxextra{module}, \hyperpage{355}
+  \item \spxentry{pyspark.ml.regression}\spxextra{module}, \hyperpage{295}
+  \item \spxentry{pyspark.ml.stat}\spxextra{module}, \hyperpage{289}
+  \item \spxentry{pyspark.ml.tuning}\spxextra{module}, \hyperpage{362}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{r2}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{312}
+  \item \spxentry{r2adj}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{313}
+  \item \spxentry{RandomForestClassificationModel}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{332}
+  \item \spxentry{RandomForestClassifier}\spxextra{class in pyspark.ml.classification}, 
+		\hyperpage{330}
+  \item \spxentry{RandomForestRegressionModel}\spxextra{class in pyspark.ml.regression}, 
+		\hyperpage{315}
+  \item \spxentry{RandomForestRegressor}\spxextra{class in pyspark.ml.regression}, \hyperpage{314}
+  \item \spxentry{rank}\spxextra{pyspark.ml.recommendation.ALSModel attribute}, \hyperpage{359}
+  \item \spxentry{rank}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{read()}\spxextra{pyspark.ml.pipeline.Pipeline class method}, \hyperpage{360}
+  \item \spxentry{read()}\spxextra{pyspark.ml.pipeline.PipelineModel class method}, \hyperpage{361}
+  \item \spxentry{read()}\spxextra{pyspark.ml.tuning.CrossValidator class method}, \hyperpage{364}
+  \item \spxentry{read()}\spxextra{pyspark.ml.tuning.CrossValidatorModel class method}, 
+		\hyperpage{365}
+  \item \spxentry{read()}\spxextra{pyspark.ml.tuning.TrainValidationSplit class method}, 
+		\hyperpage{366}
+  \item \spxentry{read()}\spxextra{pyspark.ml.tuning.TrainValidationSplitModel class method}, 
+		\hyperpage{367}
+  \item \spxentry{recallByLabel}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{recallByThreshold}\spxextra{pyspark.ml.classification.BinaryLogisticRegressionSummary attribute}, 
+		\hyperpage{325}
+  \item \spxentry{recommendForAllItems()}\spxextra{pyspark.ml.recommendation.ALSModel method}, 
+		\hyperpage{359}
+  \item \spxentry{recommendForAllUsers()}\spxextra{pyspark.ml.recommendation.ALSModel method}, 
+		\hyperpage{359}
+  \item \spxentry{recommendForItemSubset()}\spxextra{pyspark.ml.recommendation.ALSModel method}, 
+		\hyperpage{359}
+  \item \spxentry{recommendForUserSubset()}\spxextra{pyspark.ml.recommendation.ALSModel method}, 
+		\hyperpage{359}
+  \item \spxentry{RegressionEvaluator}\spxextra{class in pyspark.ml.evaluation}, \hyperpage{369}
+  \item \spxentry{residualDegreeOfFreedom}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{residualDegreeOfFreedomNull}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute}, 
+		\hyperpage{306}
+  \item \spxentry{residuals}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{313}
+  \item \spxentry{residuals()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionSummary method}, 
+		\hyperpage{306}
+  \item \spxentry{roc}\spxextra{pyspark.ml.classification.BinaryLogisticRegressionSummary attribute}, 
+		\hyperpage{325}
+  \item \spxentry{rootMeanSquaredError}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{313}
+  \item \spxentry{Run on Databricks Community Cloud}, \hyperpage{11}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{saveImpl()}\spxextra{pyspark.ml.pipeline.PipelineModelWriter method}, 
+		\hyperpage{361}
+  \item \spxentry{saveImpl()}\spxextra{pyspark.ml.pipeline.PipelineSharedReadWrite static method}, 
+		\hyperpage{362}
+  \item \spxentry{saveImpl()}\spxextra{pyspark.ml.pipeline.PipelineWriter method}, \hyperpage{362}
+  \item \spxentry{scale}\spxextra{pyspark.ml.regression.AFTSurvivalRegressionModel attribute}, 
+		\hyperpage{297}
+  \item \spxentry{scale}\spxextra{pyspark.ml.regression.LinearRegressionModel attribute}, 
+		\hyperpage{310}
+  \item \spxentry{Set up Spark on Cloud}, \hyperpage{20}
+  \item \spxentry{setAlpha()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{357}
+  \item \spxentry{setBlockSize()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{336}
+  \item \spxentry{setCensorCol()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{setColdStartStrategy()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{357}
+  \item \spxentry{setDistanceMeasure()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, 
+		\hyperpage{340}
+  \item \spxentry{setDistanceMeasure()}\spxextra{pyspark.ml.clustering.KMeans method}, 
+		\hyperpage{343}
+  \item \spxentry{setDistanceMeasure()}\spxextra{pyspark.ml.evaluation.ClusteringEvaluator method}, 
+		\hyperpage{371}
+  \item \spxentry{setDocConcentration()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{348}
+  \item \spxentry{setDstCol()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{setEpsilon()}\spxextra{pyspark.ml.regression.LinearRegression method}, 
+		\hyperpage{310}
+  \item \spxentry{setFamily()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{setFamily()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{setFeatureIndex()}\spxextra{pyspark.ml.regression.IsotonicRegression method}, 
+		\hyperpage{308}
+  \item \spxentry{setFeatureSubsetStrategy()}\spxextra{pyspark.ml.classification.GBTClassifier method}, 
+		\hyperpage{329}
+  \item \spxentry{setFeatureSubsetStrategy()}\spxextra{pyspark.ml.classification.RandomForestClassifier method}, 
+		\hyperpage{332}
+  \item \spxentry{setFeatureSubsetStrategy()}\spxextra{pyspark.ml.regression.GBTRegressor method}, 
+		\hyperpage{300}
+  \item \spxentry{setFeatureSubsetStrategy()}\spxextra{pyspark.ml.regression.RandomForestRegressor method}, 
+		\hyperpage{315}
+  \item \spxentry{setFinalStorageLevel()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{357}
+  \item \spxentry{setImplicitPrefs()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{358}
+  \item \spxentry{setInitialWeights()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{337}
+  \item \spxentry{setInitMode()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{343}
+  \item \spxentry{setInitMode()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{setInitSteps()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{343}
+  \item \spxentry{setIntermediateStorageLevel()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{358}
+  \item \spxentry{setIsotonic()}\spxextra{pyspark.ml.regression.IsotonicRegression method}, 
+		\hyperpage{308}
+  \item \spxentry{setItemCol()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setK()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, \hyperpage{340}
+  \item \spxentry{setK()}\spxextra{pyspark.ml.clustering.GaussianMixture method}, \hyperpage{345}
+  \item \spxentry{setK()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{343}
+  \item \spxentry{setK()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{348}
+  \item \spxentry{setK()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{setKeepLastCheckpoint()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{349}
+  \item \spxentry{setLayers()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{337}
+  \item \spxentry{setLearningDecay()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{349}
+  \item \spxentry{setLearningOffset()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{349}
+  \item \spxentry{setLink()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{setLinkPower()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{setLinkPredictionCol()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{setLossType()}\spxextra{pyspark.ml.classification.GBTClassifier method}, 
+		\hyperpage{329}
+  \item \spxentry{setLossType()}\spxextra{pyspark.ml.regression.GBTRegressor method}, 
+		\hyperpage{300}
+  \item \spxentry{setLowerBoundsOnCoefficients()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{setLowerBoundsOnIntercepts()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{setMetricName()}\spxextra{pyspark.ml.evaluation.BinaryClassificationEvaluator method}, 
+		\hyperpage{368}
+  \item \spxentry{setMetricName()}\spxextra{pyspark.ml.evaluation.ClusteringEvaluator method}, 
+		\hyperpage{371}
+  \item \spxentry{setMetricName()}\spxextra{pyspark.ml.evaluation.MulticlassClassificationEvaluator method}, 
+		\hyperpage{370}
+  \item \spxentry{setMetricName()}\spxextra{pyspark.ml.evaluation.RegressionEvaluator method}, 
+		\hyperpage{369}
+  \item \spxentry{setMinDivisibleClusterSize()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, 
+		\hyperpage{341}
+  \item \spxentry{setModelType()}\spxextra{pyspark.ml.classification.NaiveBayes method}, 
+		\hyperpage{334}
+  \item \spxentry{setNonnegative()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setNumBlocks()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setNumFolds()}\spxextra{pyspark.ml.tuning.CrossValidator method}, \hyperpage{364}
+  \item \spxentry{setNumItemBlocks()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{358}
+  \item \spxentry{setNumUserBlocks()}\spxextra{pyspark.ml.recommendation.ALS method}, 
+		\hyperpage{358}
+  \item \spxentry{setOffsetCol()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{setOptimizeDocConcentration()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{349}
+  \item \spxentry{setOptimizer()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{349}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.DecisionTreeClassifier method}, 
+		\hyperpage{327}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.GBTClassifier method}, 
+		\hyperpage{329}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.LinearSVC method}, 
+		\hyperpage{317}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{337}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.NaiveBayes method}, 
+		\hyperpage{334}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.OneVsRest method}, 
+		\hyperpage{338}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.classification.RandomForestClassifier method}, 
+		\hyperpage{332}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.clustering.BisectingKMeans method}, 
+		\hyperpage{341}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.clustering.GaussianMixture method}, 
+		\hyperpage{345}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.clustering.KMeans method}, \hyperpage{343}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{349}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.evaluation.BinaryClassificationEvaluator method}, 
+		\hyperpage{369}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.evaluation.ClusteringEvaluator method}, 
+		\hyperpage{371}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.evaluation.MulticlassClassificationEvaluator method}, 
+		\hyperpage{370}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.evaluation.RegressionEvaluator method}, 
+		\hyperpage{369}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.pipeline.Pipeline method}, \hyperpage{361}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.DecisionTreeRegressor method}, 
+		\hyperpage{298}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.GBTRegressor method}, \hyperpage{300}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.IsotonicRegression method}, 
+		\hyperpage{308}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.LinearRegression method}, 
+		\hyperpage{310}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.regression.RandomForestRegressor method}, 
+		\hyperpage{315}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.tuning.CrossValidator method}, \hyperpage{364}
+  \item \spxentry{setParams()}\spxextra{pyspark.ml.tuning.TrainValidationSplit method}, 
+		\hyperpage{366}
+  \item \spxentry{setQuantileProbabilities()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{setQuantilesCol()}\spxextra{pyspark.ml.regression.AFTSurvivalRegression method}, 
+		\hyperpage{296}
+  \item \spxentry{setRank()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setRatingCol()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setSmoothing()}\spxextra{pyspark.ml.classification.NaiveBayes method}, 
+		\hyperpage{334}
+  \item \spxentry{setSrcCol()}\spxextra{pyspark.ml.clustering.PowerIterationClustering method}, 
+		\hyperpage{354}
+  \item \spxentry{setStages()}\spxextra{pyspark.ml.pipeline.Pipeline method}, \hyperpage{361}
+  \item \spxentry{setStepSize()}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassifier method}, 
+		\hyperpage{337}
+  \item \spxentry{setSubsamplingRate()}\spxextra{pyspark.ml.clustering.LDA method}, \hyperpage{350}
+  \item \spxentry{setThreshold()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{setThresholds()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{320}
+  \item \spxentry{setTopicConcentration()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{350}
+  \item \spxentry{setTopicDistributionCol()}\spxextra{pyspark.ml.clustering.LDA method}, 
+		\hyperpage{350}
+  \item \spxentry{setTrainRatio()}\spxextra{pyspark.ml.tuning.TrainValidationSplit method}, 
+		\hyperpage{366}
+  \item \spxentry{setUpperBoundsOnCoefficients()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{321}
+  \item \spxentry{setUpperBoundsOnIntercepts()}\spxextra{pyspark.ml.classification.LogisticRegression method}, 
+		\hyperpage{321}
+  \item \spxentry{setUserCol()}\spxextra{pyspark.ml.recommendation.ALS method}, \hyperpage{358}
+  \item \spxentry{setVariancePower()}\spxextra{pyspark.ml.regression.GeneralizedLinearRegression method}, 
+		\hyperpage{304}
+  \item \spxentry{solver}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute}, 
+		\hyperpage{307}
+  \item \spxentry{subModels}\spxextra{pyspark.ml.tuning.CrossValidatorModel attribute}, 
+		\hyperpage{365}
+  \item \spxentry{subModels}\spxextra{pyspark.ml.tuning.TrainValidationSplitModel attribute}, 
+		\hyperpage{367}
+  \item \spxentry{Summarizer}\spxextra{class in pyspark.ml.stat}, \hyperpage{292}
+  \item \spxentry{summary}\spxextra{pyspark.ml.classification.LogisticRegressionModel attribute}, 
+		\hyperpage{321}
+  \item \spxentry{summary}\spxextra{pyspark.ml.clustering.BisectingKMeansModel attribute}, 
+		\hyperpage{341}
+  \item \spxentry{summary}\spxextra{pyspark.ml.clustering.GaussianMixtureModel attribute}, 
+		\hyperpage{346}
+  \item \spxentry{summary}\spxextra{pyspark.ml.clustering.KMeansModel attribute}, \hyperpage{344}
+  \item \spxentry{summary}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionModel attribute}, 
+		\hyperpage{305}
+  \item \spxentry{summary}\spxextra{pyspark.ml.regression.LinearRegressionModel attribute}, 
+		\hyperpage{310}
+  \item \spxentry{summary()}\spxextra{pyspark.ml.stat.SummaryBuilder method}, \hyperpage{294}
+  \item \spxentry{SummaryBuilder}\spxextra{class in pyspark.ml.stat}, \hyperpage{294}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{test()}\spxextra{pyspark.ml.stat.ChiSquareTest static method}, \hyperpage{289}
+  \item \spxentry{test()}\spxextra{pyspark.ml.stat.KolmogorovSmirnovTest static method}, 
+		\hyperpage{291}
+  \item \spxentry{theta}\spxextra{pyspark.ml.classification.NaiveBayesModel attribute}, 
+		\hyperpage{334}
+  \item \spxentry{toLocal()}\spxextra{pyspark.ml.clustering.DistributedLDAModel method}, 
+		\hyperpage{352}
+  \item \spxentry{topicsMatrix()}\spxextra{pyspark.ml.clustering.LDAModel method}, \hyperpage{351}
+  \item \spxentry{totalIterations}\spxextra{pyspark.ml.classification.LogisticRegressionTrainingSummary attribute}, 
+		\hyperpage{324}
+  \item \spxentry{totalIterations}\spxextra{pyspark.ml.regression.LinearRegressionTrainingSummary attribute}, 
+		\hyperpage{314}
+  \item \spxentry{trainingLogLikelihood()}\spxextra{pyspark.ml.clustering.DistributedLDAModel method}, 
+		\hyperpage{352}
+  \item \spxentry{TrainValidationSplit}\spxextra{class in pyspark.ml.tuning}, \hyperpage{365}
+  \item \spxentry{TrainValidationSplitModel}\spxextra{class in pyspark.ml.tuning}, \hyperpage{366}
+  \item \spxentry{trees}\spxextra{pyspark.ml.classification.GBTClassificationModel attribute}, 
+		\hyperpage{330}
+  \item \spxentry{trees}\spxextra{pyspark.ml.classification.RandomForestClassificationModel attribute}, 
+		\hyperpage{333}
+  \item \spxentry{trees}\spxextra{pyspark.ml.regression.GBTRegressionModel attribute}, 
+		\hyperpage{301}
+  \item \spxentry{trees}\spxextra{pyspark.ml.regression.RandomForestRegressionModel attribute}, 
+		\hyperpage{316}
+  \item \spxentry{truePositiveRateByLabel}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{tValues}\spxextra{pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute}, 
+		\hyperpage{307}
+  \item \spxentry{tValues}\spxextra{pyspark.ml.regression.LinearRegressionSummary attribute}, 
+		\hyperpage{313}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{userFactors}\spxextra{pyspark.ml.recommendation.ALSModel attribute}, 
+		\hyperpage{360}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{validateStages()}\spxextra{pyspark.ml.pipeline.PipelineSharedReadWrite static method}, 
+		\hyperpage{362}
+  \item \spxentry{validationMetrics}\spxextra{pyspark.ml.tuning.TrainValidationSplitModel attribute}, 
+		\hyperpage{367}
+  \item \spxentry{variance()}\spxextra{pyspark.ml.stat.Summarizer static method}, \hyperpage{294}
+  \item \spxentry{vocabSize()}\spxextra{pyspark.ml.clustering.LDAModel method}, \hyperpage{351}
+
+  \indexspace
+  \bigletter W
+  \item \spxentry{weightedFalsePositiveRate}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{weightedFMeasure()}\spxextra{pyspark.ml.classification.LogisticRegressionSummary method}, 
+		\hyperpage{323}
+  \item \spxentry{weightedPrecision}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{weightedRecall}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{weightedTruePositiveRate}\spxextra{pyspark.ml.classification.LogisticRegressionSummary attribute}, 
+		\hyperpage{323}
+  \item \spxentry{weights}\spxextra{pyspark.ml.classification.MultilayerPerceptronClassificationModel attribute}, 
+		\hyperpage{337}
+  \item \spxentry{weights}\spxextra{pyspark.ml.clustering.GaussianMixtureModel attribute}, 
+		\hyperpage{346}
+  \item \spxentry{write()}\spxextra{pyspark.ml.pipeline.Pipeline method}, \hyperpage{361}
+  \item \spxentry{write()}\spxextra{pyspark.ml.pipeline.PipelineModel method}, \hyperpage{361}
+  \item \spxentry{write()}\spxextra{pyspark.ml.tuning.CrossValidator method}, \hyperpage{364}
+  \item \spxentry{write()}\spxextra{pyspark.ml.tuning.CrossValidatorModel method}, \hyperpage{365}
+  \item \spxentry{write()}\spxextra{pyspark.ml.tuning.TrainValidationSplit method}, \hyperpage{366}
+  \item \spxentry{write()}\spxextra{pyspark.ml.tuning.TrainValidationSplitModel method}, 
+		\hyperpage{367}
+
+\end{sphinxtheindex}

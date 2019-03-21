@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Contents &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Preface" href="preface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Contents</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <blockquote id="index">
+<div><div class="figure align-center" id="fig-logo">
+<img alt="_images/logo.jpg" src="_images/logo.jpg" />
+</div>
+</div></blockquote>
+<p>Welcome to my <strong>Learning Apache Spark with Python</strong> note!
+In this note, you will learn a wide array of concepts about
+<strong>PySpark</strong> in Data Mining, Text Mining, Machine Learning
+and Deep Learning. The PDF version can be downloaded from <a class="reference external" href="pyspark.pdf">HERE</a>.</p>
+<div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#about">1.1. About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#motivation-for-this-tutorial">1.2. Motivation for this tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#copyright-notice-and-license-info">1.3. Copyright notice and license info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgement">1.4. Acknowledgement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#feedback-and-suggestions">1.5. Feedback and suggestions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="why.html#why-spark">2.1. Why Spark?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why.html#why-spark-with-python-pyspark">2.2. Why Spark with Python (PySpark)?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#run-on-databricks-community-cloud">3.1. Run on Databricks Community Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#configure-spark-on-mac-and-ubuntu">3.2. Configure Spark on Mac and Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#configure-spark-on-windows">3.3. Configure Spark on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#pyspark-with-text-editor-or-ide">3.4. PySpark With Text Editor or IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#pysparkling-water-spark-h2o">3.5. PySparkling Water: Spark + H2O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#set-up-spark-on-cloud">3.6. Set up Spark on Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#demo-code-in-this-section">3.7. Demo Code in this Section</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#core-concepts">4.1. Core Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark-components">4.2. Spark Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#architecture">4.3. Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#how-spark-works">4.4. How Spark Works?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rdd.html#create-rdd">5.1. Create RDD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rdd.html#spark-operations">5.2. Spark Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rdd.html#rdd-dataframe-vs-pd-dataframe">5.3. <code class="docutils literal notranslate"><span class="pre">rdd.DataFrame</span></code>  vs <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#notations">6.1. Notations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#measurement-formula">6.2. Measurement Formula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#statistical-tests">6.3. Statistical Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exploration.html#univariate-analysis">7.1. Univariate Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploration.html#multivariate-analysis">7.2. Multivariate Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#linear-regression">8.1. Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#generalized-linear-regression">8.2. Generalized linear regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#decision-tree-regression">8.3. Decision tree Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#random-forest-regression">8.4. Random Forest Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#gradient-boosted-tree-regression">8.5. Gradient-boosted tree regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reg.html#ordinary-least-squares-regression">9.1. Ordinary least squares regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reg.html#ridge-regression">9.2. Ridge regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reg.html#least-absolute-shrinkage-and-selection-operator-lasso">9.3. Least Absolute Shrinkage and Selection Operator (LASSO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reg.html#elastic-net">9.4. Elastic net</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#binomial-logistic-regression">10.1. Binomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#multinomial-logistic-regression">10.2. Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#decision-tree-classification">10.3. Decision tree Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#random-forest-classification">10.4. Random forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#gradient-boosted-tree-classification">10.5. Gradient-boosted tree Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#xgboost-gradient-boosted-tree-classification">10.6. XGBoost: Gradient-boosted tree Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#naive-bayes-classification">10.7. Naive Bayes Classification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#k-means-model">11.1. K-Means Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rfm.html#rfm-analysis-methodology">12.1. RFM Analysis Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rfm.html#demo">12.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rfm.html#extension">12.3. Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="textmining.html#text-collection">13.1. Text Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="textmining.html#text-preprocessing">13.2. Text Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="textmining.html#text-classification">13.3. Text Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="textmining.html#sentiment-analysis">13.4. Sentiment analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="textmining.html#n-grams-and-correlations">13.5. N-grams and Correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="textmining.html#topic-model-latent-dirichlet-allocation">13.6. Topic Model: Latent Dirichlet Allocation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="socialnetwork.html#introduction">14.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socialnetwork.html#co-occurrence-network">14.2. Co-occurrence Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socialnetwork.html#appendix-matrix-multiplication-in-pyspark">14.3. Appendix: matrix multiplication in PySpark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socialnetwork.html#correlation-network">14.4. Correlation Network</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="als.html#recommender-systems">15.1. Recommender systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="als.html#alternating-least-squares">15.2. Alternating Least Squares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="als.html#demo">15.3. Demo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mc.html#simulating-casino-win">16.1. Simulating Casino Win</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mc.html#simulating-a-random-walk">16.2. Simulating a Random Walk</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcmc.html#metropolis-algorithm">17.1. Metropolis algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcmc.html#a-toy-example-of-metropolis">17.2. A Toy Example of Metropolis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcmc.html#demos">17.3. Demos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fnn.html#feedforward-neural-network">18.1. Feedforward Neural Network</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pack.html#hierarchical-structure">19.1. Hierarchical Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pack.html#set-up">19.2. Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pack.html#readme">19.3. ReadMe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.stat">21.1. Stat API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.regression">21.2. Regression API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.classification">21.3. Classification API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.clustering">21.4. Clustering API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.recommendation">21.5. Recommendation API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.pipeline">21.6. Pipeline API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.tuning">21.7. Tuning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.evaluation">21.8. Evaluation API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="preface.html" class="btn btn-neutral float-right" title="1. Preface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

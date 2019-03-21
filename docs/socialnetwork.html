@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>14. Social Network Analysis &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15. ALS: Stock Portfolio Recommendations" href="als.html" />
+    <link rel="prev" title="13. Text Mining" href="textmining.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">14. Social Network Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">14.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#co-occurrence-network">14.2. Co-occurrence Network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#methodology">14.2.1. Methodology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coding-puzzle-from-my-interview">14.2.2. Coding Puzzle from my interview</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix-matrix-multiplication-in-pyspark">14.3. Appendix: matrix multiplication in PySpark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#correlation-network">14.4. Correlation Network</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>14. Social Network Analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="social-network-analysis">
+<span id="socialnetwork"></span><h1>14. Social Network Analysis<a class="headerlink" href="#social-network-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-chinese-proverb admonition">
+<p class="first admonition-title">Chinese proverb</p>
+<p class="last"><strong>A Touch of Cloth,linked in countless ways.</strong> – old Chinese proverb</p>
+</div>
+<div class="figure align-center">
+<img alt="_images/net_work.png" src="_images/net_work.png" />
+</div>
+<div class="section" id="introduction">
+<h2>14.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xT3EpF2EsbQ" frameborder="0" allowfullscreen></iframe></div>
+<div class="section" id="co-occurrence-network">
+<h2>14.2. Co-occurrence Network<a class="headerlink" href="#co-occurrence-network" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Co-occurrence_networks">Co-occurrence networks</a> are generally used to provide a graphic visualization of potential relationships between people, organizations, concepts or other entities represented within written material. The generation and visualization of co-occurrence networks has become practical with the advent of electronically stored text amenable to text mining.</p>
+<div class="section" id="methodology">
+<h3>14.2.1. Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Build Corpus C</li>
+<li>Build Document-Term matrix D based on Corpus C</li>
+<li>Compute Term-Document matrix <img class="math" src="_images/math/9ef40450d36b00caa3c668b378a75cc25d859383.png" alt="D^T"/></li>
+<li>Adjacency Matrix <img class="math" src="_images/math/8783eb6c7a2417ae525cc51078d1d91f158b91e6.png" alt="A =D^T\cdot D"/></li>
+</ul>
+<p>There are four main components in this algorithm in the algorithm: Corpus C, Document-Term
+matrix D, Term-Document matrix <img class="math" src="_images/math/9ef40450d36b00caa3c668b378a75cc25d859383.png" alt="D^T"/> and Adjacency Matrix A. In this demo part, I will show how
+to build those four main components.</p>
+<p>Given that we have three groups of friends, they are</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-------------------------------------+</span>
+<span class="o">|</span><span class="n">words</span>                                <span class="o">|</span>
+<span class="o">+-------------------------------------+</span>
+<span class="o">|</span><span class="p">[[</span><span class="n">george</span><span class="p">]</span> <span class="p">[</span><span class="n">jimmy</span><span class="p">]</span> <span class="p">[</span><span class="n">john</span><span class="p">]</span> <span class="p">[</span><span class="n">peter</span><span class="p">]]</span>    <span class="o">|</span>
+<span class="o">|</span><span class="p">[[</span><span class="n">vincent</span><span class="p">]</span> <span class="p">[</span><span class="n">george</span><span class="p">]</span> <span class="p">[</span><span class="n">stefan</span><span class="p">]</span> <span class="p">[</span><span class="n">james</span><span class="p">]]</span><span class="o">|</span>
+<span class="o">|</span><span class="p">[[</span><span class="n">emma</span><span class="p">]</span> <span class="p">[</span><span class="n">james</span><span class="p">]</span> <span class="p">[</span><span class="n">olivia</span><span class="p">]</span> <span class="p">[</span><span class="n">george</span><span class="p">]]</span>   <span class="o">|</span>
+<span class="o">+-------------------------------------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Corpus C</li>
+</ol>
+<p>Then we can build the following corpus based on the unique elements in the given group data:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="sa">u</span><span class="s1">&#39;george&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;james&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;jimmy&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;peter&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;stefan&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;vincent&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;olivia&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;john&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;emma&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The corresponding elements frequency:</p>
+<blockquote>
+<div><div class="figure align-center" id="fig-namefreq">
+<img alt="_images/demo_freq.png" src="_images/demo_freq.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Document-Term matrix D based on Corpus C (CountVectorizer)</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="n">count_vectorizer_wo</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+<span class="c1"># with total unique vocabulary</span>
+<span class="n">countVectorizer_mod_wo</span> <span class="o">=</span> <span class="n">count_vectorizer_wo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">countVectorizer_twitter_wo</span> <span class="o">=</span> <span class="n">countVectorizer_mod_wo</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># with truncated unique vocabulary (99%)</span>
+<span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">vocabSize</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span><span class="n">inputCol</span><span class="o">=</span><span class="s1">&#39;term&#39;</span><span class="p">,</span><span class="n">outputCol</span><span class="o">=</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+<span class="n">countVectorizer_mod</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">countVectorizer_twitter</span> <span class="o">=</span> <span class="n">countVectorizer_mod</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-------------------------------+</span>
+<span class="o">|</span><span class="n">features</span>                       <span class="o">|</span>
+<span class="o">+-------------------------------+</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">9</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">9</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">9</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">+-------------------------------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>Term-Document matrix <img class="math" src="_images/math/9ef40450d36b00caa3c668b378a75cc25d859383.png" alt="D^T"/></li>
+</ul>
+<blockquote>
+<div><p>RDD:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">])]</span>
+</pre></div>
+</div>
+<p>Matrix:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Adjacency Matrix <img class="math" src="_images/math/8783eb6c7a2417ae525cc51078d1d91f158b91e6.png" alt="A =D^T\cdot D"/></li>
+</ol>
+<blockquote>
+<div><p>RDD:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span>
+ <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]),</span> <span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">])]</span>
+</pre></div>
+</div>
+<p>Matrix:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">3.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="coding-puzzle-from-my-interview">
+<h3>14.2.2. Coding Puzzle from my interview<a class="headerlink" href="#coding-puzzle-from-my-interview" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Problem</li>
+</ul>
+<p>The attached utf-8 encoded text file contains the tags associated with an online biomedical scientific
+article formatted as follows (size: 100000). Each Scientific article is represented by a line in the
+file delimited by carriage return.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+</span>
+<span class="o">|</span>               <span class="n">words</span><span class="o">|</span>
+<span class="o">+--------------------+</span>
+<span class="o">|</span><span class="p">[</span><span class="n">ACTH</span> <span class="n">Syndrome</span><span class="p">,</span> <span class="n">E</span><span class="o">...|</span>
+<span class="o">|</span><span class="p">[</span><span class="n">Antibody</span> <span class="n">Formati</span><span class="o">...|</span>
+<span class="o">|</span><span class="p">[</span><span class="n">Adaptation</span><span class="p">,</span> <span class="n">Phys</span><span class="o">...|</span>
+<span class="o">|</span><span class="p">[</span><span class="n">Aerosol</span> <span class="n">Propella</span><span class="o">...|</span>
+<span class="o">+--------------------+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">4</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Write a program that, using this file as input, produces a list of pairs of
+tags which appear TOGETHER in any order and position in at least fifty different Scientific articles. For
+example, in the above sample, [Female] and [Humans] appear together
+twice, but every other pair appears only once. Your program should output
+the pair list to stdout in the same form as the input (eg tag 1,
+tag 2n).</p>
+<ul class="simple">
+<li>My solution</li>
+</ul>
+<blockquote>
+<div><p>The corresponding words frequency:</p>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<span id="fig-wordfreq-ze"></span><img alt="_images/freq_word_ze.png" src="_images/freq_word_ze.png" />
+<p class="caption"><span class="caption-text">Word frequency</span></p>
+</div>
+</div></blockquote>
+<p>Output:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+------+-------+</span>
+<span class="o">|</span>    <span class="n">term</span><span class="o">.</span><span class="n">x</span><span class="o">|</span><span class="n">term</span><span class="o">.</span><span class="n">y</span><span class="o">|</span>   <span class="n">freq</span><span class="o">|</span>
+<span class="o">+----------+------+-------+</span>
+<span class="o">|</span>    <span class="n">Female</span><span class="o">|</span><span class="n">Humans</span><span class="o">|</span><span class="mf">16741.0</span><span class="o">|</span>
+<span class="o">|</span>      <span class="n">Male</span><span class="o">|</span><span class="n">Humans</span><span class="o">|</span><span class="mf">13883.0</span><span class="o">|</span>
+<span class="o">|</span>     <span class="n">Adult</span><span class="o">|</span><span class="n">Humans</span><span class="o">|</span><span class="mf">10391.0</span><span class="o">|</span>
+<span class="o">|</span>      <span class="n">Male</span><span class="o">|</span><span class="n">Female</span><span class="o">|</span> <span class="mf">9806.0</span><span class="o">|</span>
+<span class="o">|</span><span class="n">MiddleAged</span><span class="o">|</span><span class="n">Humans</span><span class="o">|</span> <span class="mf">8181.0</span><span class="o">|</span>
+<span class="o">|</span>     <span class="n">Adult</span><span class="o">|</span><span class="n">Female</span><span class="o">|</span> <span class="mf">7411.0</span><span class="o">|</span>
+<span class="o">|</span>     <span class="n">Adult</span><span class="o">|</span>  <span class="n">Male</span><span class="o">|</span> <span class="mf">7240.0</span><span class="o">|</span>
+<span class="o">|</span><span class="n">MiddleAged</span><span class="o">|</span>  <span class="n">Male</span><span class="o">|</span> <span class="mf">6328.0</span><span class="o">|</span>
+<span class="o">|</span><span class="n">MiddleAged</span><span class="o">|</span><span class="n">Female</span><span class="o">|</span> <span class="mf">6002.0</span><span class="o">|</span>
+<span class="o">|</span><span class="n">MiddleAged</span><span class="o">|</span> <span class="n">Adult</span><span class="o">|</span> <span class="mf">5944.0</span><span class="o">|</span>
+<span class="o">+----------+------+-------+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">10</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The corresponding Co-occurrence network:</p>
+<blockquote>
+<div><div class="figure align-center" id="id2">
+<span id="fig-netfreq"></span><img alt="_images/netfreq.png" src="_images/netfreq.png" />
+<p class="caption"><span class="caption-text">Co-occurrence network</span></p>
+</div>
+</div></blockquote>
+<p>Then you will get Figure <a class="reference internal" href="#fig-netfreq"><span class="std std-ref">Co-occurrence network</span></a></p>
+</div>
+</div>
+<div class="section" id="appendix-matrix-multiplication-in-pyspark">
+<h2>14.3. Appendix: matrix multiplication in PySpark<a class="headerlink" href="#appendix-matrix-multiplication-in-pyspark" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>load test matrix</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;matrix1.txt&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+---+---+---+---+</span>
+<span class="o">|</span><span class="n">_c0</span><span class="o">|</span><span class="n">_c1</span><span class="o">|</span><span class="n">_c2</span><span class="o">|</span><span class="n">_c3</span><span class="o">|</span>
+<span class="o">+---+---+---+---+</span>
+<span class="o">|</span><span class="mf">1.2</span><span class="o">|</span><span class="mf">3.4</span><span class="o">|</span><span class="mf">2.3</span><span class="o">|</span><span class="mf">1.1</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">2.3</span><span class="o">|</span><span class="mf">1.1</span><span class="o">|</span><span class="mf">1.5</span><span class="o">|</span><span class="mf">2.2</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">3.3</span><span class="o">|</span><span class="mf">1.8</span><span class="o">|</span><span class="mf">4.5</span><span class="o">|</span><span class="mf">3.3</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">5.3</span><span class="o">|</span><span class="mf">2.2</span><span class="o">|</span><span class="mf">4.5</span><span class="o">|</span><span class="mf">4.4</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">9.3</span><span class="o">|</span><span class="mf">8.1</span><span class="o">|</span><span class="mf">0.3</span><span class="o">|</span><span class="mf">5.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">4.5</span><span class="o">|</span><span class="mf">4.3</span><span class="o">|</span><span class="mf">2.1</span><span class="o">|</span><span class="mf">6.6</span><span class="o">|</span>
+<span class="o">+---+---+---+---+</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>main function for matrix multiplication in PySpark</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="c1"># reference: https://stackoverflow.com/questions/44348527/matrix-multiplication-at-a-in-pyspark</span>
+<span class="c1"># do the sum of the multiplication that we want, and get</span>
+<span class="c1"># one data frame for each column</span>
+<span class="n">colDFs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">colDFs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span> <span class="p">[</span> <span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c1</span><span class="p">]</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="n">c2</span><span class="p">])</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;op_{0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+<span class="c1"># now union those separate data frames to build the &quot;matrix&quot;</span>
+<span class="n">mtxDF</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">colDFs</span> <span class="p">)</span>
+<span class="n">mtxDF</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------+------------------+------------------+------------------+</span>
+<span class="o">|</span>              <span class="n">op_0</span><span class="o">|</span>              <span class="n">op_1</span><span class="o">|</span>              <span class="n">op_2</span><span class="o">|</span>              <span class="n">op_3</span><span class="o">|</span>
+<span class="o">+------------------+------------------+------------------+------------------+</span>
+<span class="o">|</span>            <span class="mf">152.45</span><span class="o">|</span><span class="mf">118.88999999999999</span><span class="o">|</span>             <span class="mf">57.15</span><span class="o">|</span><span class="mf">121.44000000000001</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">118.88999999999999</span><span class="o">|</span><span class="mf">104.94999999999999</span><span class="o">|</span>             <span class="mf">38.93</span><span class="o">|</span>             <span class="mf">94.71</span><span class="o">|</span>
+<span class="o">|</span>             <span class="mf">57.15</span><span class="o">|</span>             <span class="mf">38.93</span><span class="o">|</span><span class="mf">52.540000000000006</span><span class="o">|</span>             <span class="mf">55.99</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">121.44000000000001</span><span class="o">|</span>             <span class="mf">94.71</span><span class="o">|</span>             <span class="mf">55.99</span><span class="o">|</span><span class="mf">110.10999999999999</span><span class="o">|</span>
+<span class="o">+------------------+------------------+------------------+------------------+</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Validation with python version</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;matrix1.txt&quot;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">152.45</span><span class="p">,</span> <span class="mf">118.89</span><span class="p">,</span>  <span class="mf">57.15</span><span class="p">,</span> <span class="mf">121.44</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">118.89</span><span class="p">,</span> <span class="mf">104.95</span><span class="p">,</span>  <span class="mf">38.93</span><span class="p">,</span>  <span class="mf">94.71</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">57.15</span><span class="p">,</span>  <span class="mf">38.93</span><span class="p">,</span>  <span class="mf">52.54</span><span class="p">,</span>  <span class="mf">55.99</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">121.44</span><span class="p">,</span>  <span class="mf">94.71</span><span class="p">,</span>  <span class="mf">55.99</span><span class="p">,</span> <span class="mf">110.11</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="correlation-network">
+<h2>14.4. Correlation Network<a class="headerlink" href="#correlation-network" title="Permalink to this headline">¶</a></h2>
+<p>TODO ..</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="als.html" class="btn btn-neutral float-right" title="15. ALS: Stock Portfolio Recommendations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="textmining.html" class="btn btn-neutral float-left" title="13. Text Mining" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

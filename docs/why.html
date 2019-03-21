@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Why Spark with Python ? &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Configure Running Platform" href="setup.html" />
+    <link rel="prev" title="1. Preface" href="preface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Why Spark with Python ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-spark">2.1. Why Spark?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-spark-with-python-pyspark">2.2. Why Spark with Python (PySpark)?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Why Spark with Python ?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="why-spark-with-python">
+<span id="why"></span><h1>2. Why Spark with Python ?<a class="headerlink" href="#why-spark-with-python" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-chinese-proverb admonition">
+<p class="first admonition-title">Chinese proverb</p>
+<p class="last"><strong>Sharpening the knife longer can make it easier to hack the firewood</strong> – old Chinese proverb</p>
+</div>
+<p>I want to answer this question from the following two parts:</p>
+<div class="section" id="why-spark">
+<h2>2.1. Why Spark?<a class="headerlink" href="#why-spark" title="Permalink to this headline">¶</a></h2>
+<p>I think the following four main reasons from <a class="reference external" href="http://spark.apache.org/">Apache Spark™</a> official website are good enough
+to convince you to use Spark.</p>
+<ol class="arabic">
+<li><p class="first">Speed</p>
+<p>Run programs up to 100x faster than Hadoop MapReduce in memory, or 10x faster on disk.</p>
+<p>Apache Spark has an advanced DAG execution engine that supports acyclic data flow and in-memory computing.</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<span id="fig-lr"></span><img alt="_images/logistic-regression.png" src="_images/logistic-regression.png" />
+<p class="caption"><span class="caption-text">Logistic regression in Hadoop and Spark</span></p>
+</div>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">Ease of Use</p>
+<p>Write applications quickly in Java, Scala, Python, R.</p>
+<p>Spark offers over 80 high-level operators that make it easy to build parallel apps. And you can use it interactively from the Scala, Python and R shells.</p>
+</li>
+<li><p class="first">Generality</p>
+<p>Combine SQL, streaming, and complex analytics.</p>
+<p>Spark powers a stack of libraries including SQL and DataFrames, MLlib for machine learning, GraphX, and Spark Streaming. You can combine these libraries seamlessly in the same application.</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center" id="id2">
+<span id="fig-stack"></span><a class="reference internal image-reference" href="_images/stack.png"><img alt="_images/stack.png" src="_images/stack.png" style="width: 1059.8px; height: 595.0px;" /></a>
+<p class="caption"><span class="caption-text">The Spark stack</span></p>
+</div>
+</div></blockquote>
+<ol class="arabic" start="4">
+<li><p class="first">Runs Everywhere</p>
+<p>Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse data sources including HDFS, Cassandra, HBase, and S3.</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center" id="id3">
+<span id="fig-runs"></span><a class="reference internal image-reference" href="_images/spark-runs-everywhere.png"><img alt="_images/spark-runs-everywhere.png" src="_images/spark-runs-everywhere.png" style="width: 327.0px; height: 255.0px;" /></a>
+<p class="caption"><span class="caption-text">The Spark platform</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="why-spark-with-python-pyspark">
+<h2>2.2. Why Spark with Python (PySpark)?<a class="headerlink" href="#why-spark-with-python-pyspark" title="Permalink to this headline">¶</a></h2>
+<p>No matter you like it or not, Python has been one of the most popular programming languages.</p>
+<blockquote>
+<div><div class="figure align-center" id="id4">
+<span id="fig-languages"></span><img alt="_images/languages.jpg" src="_images/languages.jpg" />
+<p class="caption"><span class="caption-text">KDnuggets Analytics/Data Science 2017 Software Poll from <a class="reference external" href="http://www.kdnuggets.com/2017/05/poll-analytics-data-science-machine-learning-software-leaders.html">kdnuggets</a>.</span></p>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="setup.html" class="btn btn-neutral float-right" title="3. Configure Running Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preface.html" class="btn btn-neutral float-left" title="1. Preface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

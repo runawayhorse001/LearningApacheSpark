@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. An Introduction to Apache Spark &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Programming with RDDs" href="rdd.html" />
+    <link rel="prev" title="3. Configure Running Platform" href="setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. An Introduction to Apache Spark</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-concepts">4.1. Core Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spark-components">4.2. Spark Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">4.3. Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-spark-works">4.4. How Spark Works?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>4. An Introduction to Apache Spark</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="an-introduction-to-apache-spark">
+<span id="introduction"></span><h1>4. An Introduction to Apache Spark<a class="headerlink" href="#an-introduction-to-apache-spark" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-chinese-proverb admonition">
+<p class="first admonition-title">Chinese proverb</p>
+<p class="last"><strong>Know yourself and know your enemy, and you will never be defeated</strong> – idiom, from Sunzi’s Art of War</p>
+</div>
+<div class="section" id="core-concepts">
+<h2>4.1. Core Concepts<a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
+<p>Most of the following content comes from <a class="reference internal" href="reference.html#kirillov2016" id="id1">[Kirillov2016]</a>. So the copyright belongs to <strong>Anton Kirillov</strong>.
+I will refer you to get more details from <a class="reference external" href="http://datastrophic.io/core-concepts-architecture-and-internals-of-apache-spark/">Apache Spark core concepts, architecture and internals</a>.</p>
+<p>Before diving deep into how Apache Spark works, lets understand the jargon of Apache Spark</p>
+<blockquote>
+<div><ul class="simple">
+<li>Job: A piece of code which reads some input from HDFS or local, performs some computation on the data and writes some output data.</li>
+<li>Stages: Jobs are divided into stages. Stages are classified as a Map or reduce stages (Its easier to understand if you have worked on Hadoop and want to correlate). Stages are divided based on computational boundaries, all computations (operators) cannot be Updated in a single Stage. It happens over many stages.</li>
+<li>Tasks: Each stage has some tasks, one task per partition. One task is executed on one partition of data on one executor (machine).</li>
+<li>DAG: DAG stands for Directed Acyclic Graph, in the present context its a DAG of operators.</li>
+<li>Executor: The process responsible for executing a task.</li>
+<li>Master: The machine on which the Driver program runs</li>
+<li>Slave: The machine on which the Executor program runs</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="spark-components">
+<h2>4.2. Spark Components<a class="headerlink" href="#spark-components" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><div class="figure align-center" id="fig-spark-components">
+<img alt="_images/spark-components.png" src="_images/spark-components.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Spark Driver</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>separate process to execute user applications</li>
+<li>creates SparkContext to schedule jobs execution
+and negotiate with cluster manager</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Executors</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>run tasks scheduled by driver</li>
+<li>store computation results in memory, on disk or off-heap</li>
+<li>interact with storage systems</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Cluster Manager</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Mesos</li>
+<li>YARN</li>
+<li>Spark Standalone</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Spark Driver contains more components responsible for translation
+of user code into actual jobs executed on cluster:</p>
+<blockquote>
+<div><blockquote>
+<div><div class="figure align-center" id="fig-spark-components1">
+<img alt="_images/spark-components1.png" src="_images/spark-components1.png" />
+</div>
+</div></blockquote>
+<ul>
+<li><p class="first">SparkContext</p>
+<blockquote>
+<div><ul class="simple">
+<li>represents the connection to a Spark cluster, and can be used to create RDDs,
+accumulators and broadcast variables  on that cluster</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">DAGScheduler</p>
+<ul class="simple">
+<li>computes a DAG of stages for each job and submits them to TaskScheduler
+determines preferred locations for tasks (based on cache status or
+shuffle files locations) and finds minimum schedule to run the jobs</li>
+</ul>
+</li>
+<li><p class="first">TaskScheduler</p>
+<blockquote>
+<div><ul class="simple">
+<li>responsible for sending tasks to the cluster, running them,
+retrying if there are failures, and mitigating stragglers</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">SchedulerBackend</p>
+<blockquote>
+<div><ul class="simple">
+<li>backend interface for scheduling systems that allows plugging
+in different implementations(Mesos, YARN, Standalone, local)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">BlockManager</p>
+<blockquote>
+<div><ul class="simple">
+<li>provides interfaces for putting and retrieving blocks both locally
+and remotely into various stores (memory,  disk, and off-heap)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="architecture">
+<h2>4.3. Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="how-spark-works">
+<h2>4.4. How Spark Works?<a class="headerlink" href="#how-spark-works" title="Permalink to this headline">¶</a></h2>
+<p>Spark has a small code base and the system is divided in various layers. Each layer has some responsibilities. The layers are independent of each other.</p>
+<p>The first layer is the interpreter, Spark uses a Scala interpreter, with some modifications.
+As you enter your code in spark console (creating RDD’s and applying operators), Spark creates a operator graph.
+When the user runs an action (like collect), the Graph is submitted to a DAG Scheduler. The DAG scheduler divides operator graph into (map and reduce) stages.
+A stage is comprised of tasks based on partitions of the input data. The DAG scheduler pipelines operators together to optimize the graph. For e.g. Many map operators can be scheduled in a single stage. This optimization is key to Sparks performance. The final result of a DAG scheduler is a set of stages.
+The stages are passed on to the Task Scheduler. The task scheduler launches tasks via cluster manager. (Spark Standalone/Yarn/Mesos). The task scheduler doesn’t know about dependencies among stages.</p>
+<blockquote>
+<div><div class="figure align-center" id="fig-workflow">
+<img alt="_images/work_flow.png" src="_images/work_flow.png" />
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rdd.html" class="btn btn-neutral float-right" title="5. Programming with RDDs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="setup.html" class="btn btn-neutral float-left" title="3. Configure Running Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

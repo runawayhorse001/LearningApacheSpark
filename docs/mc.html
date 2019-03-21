@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>16. Monte Carlo Simulation &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="17. Markov Chain Monte Carlo" href="mcmc.html" />
+    <link rel="prev" title="15. ALS: Stock Portfolio Recommendations" href="als.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. Monte Carlo Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulating-casino-win">16.1. Simulating Casino Win</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulating-a-random-walk">16.2. Simulating a Random Walk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fetch-the-histrical-stock-price">16.2.1. Fetch the histrical stock price</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calulate-the-compound-annual-growth-rate">16.2.2. Calulate the Compound Annual Growth Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calulate-the-annual-volatility">16.2.3. Calulate the annual volatility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-matrix-of-daily-returns">16.2.4. Create matrix of daily returns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">16.2.5. Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">16.2.6. Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#one-year-stock-price-simulation">16.2.7. One-year Stock price simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>16. Monte Carlo Simulation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="monte-carlo-simulation">
+<span id="mc"></span><h1>16. Monte Carlo Simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">¶</a></h1>
+<div class="figure align-center">
+<img alt="_images/baba_sim_price.png" src="_images/baba_sim_price.png" />
+</div>
+<p>Monte Carlo simulations are just a way of estimating a fixed parameter by repeatedly generating random numbers. More details can be found at <a class="reference external" href="https://towardsdatascience.com/a-zero-math-introduction-to-markov-chain-monte-carlo-methods-dcba889e0c50">A Zero Math Introduction to Markov Chain Monte Carlo Methods</a>.</p>
+<p>Monte Carlo simulation is a technique used to understand the impact of risk and uncertainty in financial, project management, cost, and other forecasting models. A Monte Carlo simulator helps one visualize most or all of the potential outcomes to have a better idea regarding the risk of a decision. More details can be found at <a class="reference external" href="https://towardsdatascience.com/the-house-always-wins-monte-carlo-simulation-eb82787da2a3">The house always wins</a>.</p>
+<div class="section" id="simulating-casino-win">
+<h2>16.1. Simulating Casino Win<a class="headerlink" href="#simulating-casino-win" title="Permalink to this headline">¶</a></h2>
+<p>We assume that the player John has the 49% chance to win the game and the wager will be $5 per game.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">start_m</span> <span class="o">=</span><span class="mi">100</span>
+<span class="n">wager</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">bets</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="o">-</span><span class="n">wager</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span><span class="mf">0.51</span> <span class="k">else</span> <span class="n">wager</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">end_m</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
+    <span class="n">money</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">],</span> <span class="n">trans</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">bets</span><span class="p">)),</span> <span class="p">[</span><span class="n">start_m</span><span class="p">])</span>
+    <span class="n">end_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">money</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">money</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Player Money in $&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of bets&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">((</span><span class="s2">&quot;John starts the game with $ </span><span class="si">%.2f</span><span class="s2"> and ends with $ </span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">%</span><span class="p">(</span><span class="n">start_m</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">end_m</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">end_m</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="fig-mc-casino-5-100">
+<img alt="_images/casino_5_100.png" src="_images/casino_5_100.png" />
+</div>
+<div class="figure align-center" id="fig-mc-casino-100-1000">
+<img alt="_images/casino_100_1000.png" src="_images/casino_100_1000.png" />
+</div>
+</div>
+<div class="section" id="simulating-a-random-walk">
+<h2>16.2. Simulating a Random Walk<a class="headerlink" href="#simulating-a-random-walk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fetch-the-histrical-stock-price">
+<h3>16.2.1. Fetch the histrical stock price<a class="headerlink" href="#fetch-the-histrical-stock-price" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Fecth the data. If you need the code for this piece, you can contact with me.</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stock</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="o">+----------+----------+----------+----------+----------+----------+--------+</span>
+<span class="o">|</span>      <span class="n">Date</span><span class="o">|</span>      <span class="n">Open</span><span class="o">|</span>      <span class="n">High</span><span class="o">|</span>       <span class="n">Low</span><span class="o">|</span>     <span class="n">Close</span><span class="o">|</span> <span class="n">Adj</span> <span class="n">Close</span><span class="o">|</span>  <span class="n">Volume</span><span class="o">|</span>
+<span class="o">+----------+----------+----------+----------+----------+----------+--------+</span>
+<span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">07</span><span class="o">|</span><span class="mf">155.399994</span><span class="o">|</span><span class="mf">158.050003</span><span class="o">|</span><span class="mf">151.729996</span><span class="o">|</span><span class="mf">153.059998</span><span class="o">|</span><span class="mf">153.059998</span><span class="o">|</span><span class="mi">17447900</span><span class="o">|</span>
+<span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">10</span><span class="o">|</span><span class="mf">150.389999</span><span class="o">|</span><span class="mf">152.809998</span><span class="o">|</span><span class="mf">147.479996</span><span class="o">|</span><span class="mf">151.429993</span><span class="o">|</span><span class="mf">151.429993</span><span class="o">|</span><span class="mi">15525500</span><span class="o">|</span>
+<span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">11</span><span class="o">|</span><span class="mf">155.259995</span><span class="o">|</span><span class="mf">156.240005</span><span class="o">|</span><span class="mf">150.899994</span><span class="o">|</span><span class="mf">151.830002</span><span class="o">|</span><span class="mf">151.830002</span><span class="o">|</span><span class="mi">13651900</span><span class="o">|</span>
+<span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">12</span><span class="o">|</span><span class="mf">155.240005</span><span class="o">|</span><span class="mf">156.169998</span><span class="o">|</span><span class="mf">151.429993</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mi">16597900</span><span class="o">|</span>
+<span class="o">+----------+----------+----------+----------+----------+----------+--------+</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Convert the <code class="docutils literal notranslate"><span class="pre">str</span></code> type date to date type</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Data visualization</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot everything by leveraging the very powerful matplotlib package</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">stock</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">Close</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">High</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High&#39;</span><span class="p">)</span>
+<span class="c1"># ax.plot(data.Date, data.Low, label=&#39;Low&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;price ($)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stock price: &#39;</span> <span class="o">+</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
+<span class="c1">#plt.xticks(rotation=70)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Plot everything by leveraging the very powerful matplotlib package</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">Volume</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Volume&#39;</span><span class="p">)</span>
+<span class="c1">#ax.plot(data.Date, data.High, label=&#39;High&#39;)</span>
+<span class="c1"># ax.plot(data.Date, data.Low, label=&#39;Low&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Volume&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stock volume: &#39;</span> <span class="o">+</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
+<span class="c1">#plt.xticks(rotation=70)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id2">
+<span id="fig-mc-stock-his-price"></span><img alt="_images/baba_history.png" src="_images/baba_history.png" />
+<p class="caption"><span class="caption-text">Historical Stock Price</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<span id="fig-mc-stock-his-vol"></span><img alt="_images/baba_history_vol.png" src="_images/baba_history_vol.png" />
+<p class="caption"><span class="caption-text">Historical Stock Volume</span></p>
+</div>
+</div>
+<div class="section" id="calulate-the-compound-annual-growth-rate">
+<h3>16.2.2. Calulate the Compound Annual Growth Rate<a class="headerlink" href="#calulate-the-compound-annual-growth-rate" title="Permalink to this headline">¶</a></h3>
+<p>The formula for Compound Annual Growth Rate (CAGR) is very useful for investment analysis. It may also be referred to as the annualized rate of return or annual percent yield or effective annual rate, depending on the algebraic form of the equation. Many investments such as stocks have returns that can vary wildly. The CAGR formula allows you to calculate a “smoothed” rate of return that you can use to compare to other investments. The formula is defined as (more details can be found at <a class="reference external" href="https://www.vertex42.com/Calculators/cagr-calculator.html">CAGR Calculator and Formula</a>)</p>
+<div class="math">
+<p><img src="_images/math/ace9d0a05c6ceb3e52efb9dc711f12497c0cc9d0.png" alt="\text{CAGR}=\left(\frac{\text{End Value}}{\text{Start Value}}\right)^{\frac{365}{\text{Days}}} -1"/></p>
+</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">days</span> <span class="o">=</span>  <span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">days</span>
+<span class="n">cagr</span> <span class="o">=</span> <span class="p">((((</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">**</span> <span class="p">(</span><span class="mf">365.0</span><span class="o">/</span><span class="n">days</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;CAGR =&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cagr</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">cagr</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calulate-the-annual-volatility">
+<h3>16.2.3. Calulate the annual volatility<a class="headerlink" href="#calulate-the-annual-volatility" title="Permalink to this headline">¶</a></h3>
+<p>A stock’s volatility is the variation in its price over a period of time. For example, one stock may have a tendency to swing wildly higher and lower, while another stock may move in much steadier, less turbulent way. Both stocks may end up at the same price at the end of day, but their path to that point can vary wildly. First, we create a series of percentage returns and calculate the annual volatility of returns Annualizing volatility. To present this volatility in annualized terms,
+we simply need to multiply our daily standard deviation
+by the square root of 252. This assumes there are 252
+trading days in a given year.  More details can be found at <a class="reference external" href="https://www.fool.com/knowledge-center/how-to-calculate-annualized-volatility.aspx">How to Calculate Annualized Volatility</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-matrix-of-daily-returns">
+<h3>16.2.4. Create matrix of daily returns<a class="headerlink" href="#create-matrix-of-daily-returns" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Create matrix of daily returns using random normal distribution Generates an RDD matrix comprised of i.i.d. samples from the uniform distribution U(0.0, 1.0).</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#starting stock price (i.e. last available real stock price)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#Number of trading days</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">cagr</span> <span class="c1">#Return</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">vol</span> <span class="c1">#Volatility</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">mat</span> <span class="o">=</span> <span class="n">RandomRDDs</span><span class="o">.</span><span class="n">normalVectorRDD</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Transform the distribution in the generated RDD from U(0.0, 1.0) to U(a, b), use RandomRDDs.uniformRDD(sc, n, p, seed) .map(lambda v: a + (b - a) * v)</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">mu</span><span class="o">/</span><span class="n">T</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">vol</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span>  <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Convert Rdd mstrix to dataframe</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">toDF</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+--------+--------+--------+--------+--------+</span>
+<span class="o">|</span>      <span class="n">_1</span><span class="o">|</span>      <span class="n">_2</span><span class="o">|</span>      <span class="n">_3</span><span class="o">|</span>      <span class="n">_4</span><span class="o">|</span>      <span class="n">_5</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+</span>
+<span class="o">|</span><span class="mf">0.935234</span><span class="o">|</span><span class="mf">1.162894</span><span class="o">|</span> <span class="mf">1.07972</span><span class="o">|</span><span class="mf">1.238257</span><span class="o">|</span><span class="mf">1.066136</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.878456</span><span class="o">|</span><span class="mf">1.045922</span><span class="o">|</span><span class="mf">0.990071</span><span class="o">|</span><span class="mf">1.045552</span><span class="o">|</span><span class="mf">0.854516</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">1.186472</span><span class="o">|</span><span class="mf">0.944777</span><span class="o">|</span><span class="mf">0.742247</span><span class="o">|</span><span class="mf">0.940023</span><span class="o">|</span><span class="mf">1.220934</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.872928</span><span class="o">|</span><span class="mf">1.030882</span><span class="o">|</span><span class="mf">1.248644</span><span class="o">|</span><span class="mf">1.114262</span><span class="o">|</span><span class="mf">1.063762</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.09742</span><span class="o">|</span><span class="mf">1.188537</span><span class="o">|</span><span class="mf">1.137283</span><span class="o">|</span><span class="mf">1.162548</span><span class="o">|</span><span class="mf">1.024612</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">lit</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;init_price&#39;</span> <span class="p">,</span><span class="n">lit</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="o">+--------+--------+--------+--------+--------+----------+</span>
+<span class="o">|</span>      <span class="n">_1</span><span class="o">|</span>      <span class="n">_2</span><span class="o">|</span>      <span class="n">_3</span><span class="o">|</span>      <span class="n">_4</span><span class="o">|</span>      <span class="n">_5</span><span class="o">|</span><span class="n">init_price</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+----------+</span>
+<span class="o">|</span><span class="mf">0.935234</span><span class="o">|</span><span class="mf">1.162894</span><span class="o">|</span> <span class="mf">1.07972</span><span class="o">|</span><span class="mf">1.238257</span><span class="o">|</span><span class="mf">1.066136</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.878456</span><span class="o">|</span><span class="mf">1.045922</span><span class="o">|</span><span class="mf">0.990071</span><span class="o">|</span><span class="mf">1.045552</span><span class="o">|</span><span class="mf">0.854516</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">1.186472</span><span class="o">|</span><span class="mf">0.944777</span><span class="o">|</span><span class="mf">0.742247</span><span class="o">|</span><span class="mf">0.940023</span><span class="o">|</span><span class="mf">1.220934</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.872928</span><span class="o">|</span><span class="mf">1.030882</span><span class="o">|</span><span class="mf">1.248644</span><span class="o">|</span><span class="mf">1.114262</span><span class="o">|</span><span class="mf">1.063762</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.09742</span><span class="o">|</span><span class="mf">1.188537</span><span class="o">|</span><span class="mf">1.137283</span><span class="o">|</span><span class="mf">1.162548</span><span class="o">|</span><span class="mf">1.024612</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+----------+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;day_0&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;init_price&#39;</span><span class="p">))</span>
+<span class="n">price</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+--------+--------+--------+--------+--------+----------+-----+</span>
+<span class="o">|</span>      <span class="n">_1</span><span class="o">|</span>      <span class="n">_2</span><span class="o">|</span>      <span class="n">_3</span><span class="o">|</span>      <span class="n">_4</span><span class="o">|</span>      <span class="n">_5</span><span class="o">|</span><span class="n">init_price</span><span class="o">|</span><span class="n">day_0</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+----------+-----+</span>
+<span class="o">|</span><span class="mf">0.935234</span><span class="o">|</span><span class="mf">1.162894</span><span class="o">|</span> <span class="mf">1.07972</span><span class="o">|</span><span class="mf">1.238257</span><span class="o">|</span><span class="mf">1.066136</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.878456</span><span class="o">|</span><span class="mf">1.045922</span><span class="o">|</span><span class="mf">0.990071</span><span class="o">|</span><span class="mf">1.045552</span><span class="o">|</span><span class="mf">0.854516</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">1.186472</span><span class="o">|</span><span class="mf">0.944777</span><span class="o">|</span><span class="mf">0.742247</span><span class="o">|</span><span class="mf">0.940023</span><span class="o">|</span><span class="mf">1.220934</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.872928</span><span class="o">|</span><span class="mf">1.030882</span><span class="o">|</span><span class="mf">1.248644</span><span class="o">|</span><span class="mf">1.114262</span><span class="o">|</span><span class="mf">1.063762</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.09742</span><span class="o">|</span><span class="mf">1.188537</span><span class="o">|</span><span class="mf">1.137283</span><span class="o">|</span><span class="mf">1.162548</span><span class="o">|</span><span class="mf">1.024612</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+----------+-----+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>16.2.5. Monte Carlo Simulation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">round</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">price</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">*</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;init_price&#39;</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;init_price&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">price</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="o">+--------+--------+--------+--------+--------+----------+-----+------+------+------+------+------+</span>
+<span class="o">|</span>      <span class="n">_1</span><span class="o">|</span>      <span class="n">_2</span><span class="o">|</span>      <span class="n">_3</span><span class="o">|</span>      <span class="n">_4</span><span class="o">|</span>      <span class="n">_5</span><span class="o">|</span><span class="n">init_price</span><span class="o">|</span><span class="n">day_0</span><span class="o">|</span> <span class="n">day_1</span><span class="o">|</span> <span class="n">day_2</span><span class="o">|</span> <span class="n">day_3</span><span class="o">|</span> <span class="n">day_4</span><span class="o">|</span> <span class="n">day_5</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+----------+-----+------+------+------+------+------+</span>
+<span class="o">|</span><span class="mf">0.935234</span><span class="o">|</span><span class="mf">1.162894</span><span class="o">|</span> <span class="mf">1.07972</span><span class="o">|</span><span class="mf">1.238257</span><span class="o">|</span><span class="mf">1.066136</span><span class="o">|</span>    <span class="mf">234.87</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span><span class="mf">141.69</span><span class="o">|</span><span class="mf">164.77</span><span class="o">|</span><span class="mf">177.91</span><span class="o">|</span> <span class="mf">220.3</span><span class="o">|</span><span class="mf">234.87</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.878456</span><span class="o">|</span><span class="mf">1.045922</span><span class="o">|</span><span class="mf">0.990071</span><span class="o">|</span><span class="mf">1.045552</span><span class="o">|</span><span class="mf">0.854516</span><span class="o">|</span>    <span class="mf">123.14</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span><span class="mf">133.09</span><span class="o">|</span> <span class="mf">139.2</span><span class="o">|</span><span class="mf">137.82</span><span class="o">|</span> <span class="mf">144.1</span><span class="o">|</span><span class="mf">123.14</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">1.186472</span><span class="o">|</span><span class="mf">0.944777</span><span class="o">|</span><span class="mf">0.742247</span><span class="o">|</span><span class="mf">0.940023</span><span class="o">|</span><span class="mf">1.220934</span><span class="o">|</span>    <span class="mf">144.67</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span><span class="mf">179.75</span><span class="o">|</span><span class="mf">169.82</span><span class="o">|</span><span class="mf">126.05</span><span class="o">|</span><span class="mf">118.49</span><span class="o">|</span><span class="mf">144.67</span><span class="o">|</span>
+<span class="o">|</span><span class="mf">0.872928</span><span class="o">|</span><span class="mf">1.030882</span><span class="o">|</span><span class="mf">1.248644</span><span class="o">|</span><span class="mf">1.114262</span><span class="o">|</span><span class="mf">1.063762</span><span class="o">|</span>    <span class="mf">201.77</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span><span class="mf">132.25</span><span class="o">|</span><span class="mf">136.33</span><span class="o">|</span><span class="mf">170.23</span><span class="o">|</span><span class="mf">189.68</span><span class="o">|</span><span class="mf">201.77</span><span class="o">|</span>
+<span class="o">|</span> <span class="mf">1.09742</span><span class="o">|</span><span class="mf">1.188537</span><span class="o">|</span><span class="mf">1.137283</span><span class="o">|</span><span class="mf">1.162548</span><span class="o">|</span><span class="mf">1.024612</span><span class="o">|</span>     <span class="mf">267.7</span><span class="o">|</span><span class="mf">151.5</span><span class="o">|</span><span class="mf">166.26</span><span class="o">|</span><span class="mf">197.61</span><span class="o">|</span><span class="mf">224.74</span><span class="o">|</span><span class="mf">261.27</span><span class="o">|</span> <span class="mf">267.7</span><span class="o">|</span>
+<span class="o">+--------+--------+--------+--------+--------+----------+-----+------+------+------+------+------+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h3>16.2.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">selected_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;day_&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+
+<span class="n">simulated</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">selected_col</span><span class="p">)</span>
+<span class="n">simulated</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-------+----------+------------------+------------------+------------------+------------------+------------------+</span>
+<span class="o">|</span><span class="n">summary</span><span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">12</span><span class="o">|</span>        <span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">13</span><span class="o">|</span>        <span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">14</span><span class="o">|</span>        <span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">17</span><span class="o">|</span>        <span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">18</span><span class="o">|</span>        <span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">19</span><span class="o">|</span>
+<span class="o">+-------+----------+------------------+------------------+------------------+------------------+------------------+</span>
+<span class="o">|</span>  <span class="n">count</span><span class="o">|</span>   <span class="mf">10000.0</span><span class="o">|</span>           <span class="mf">10000.0</span><span class="o">|</span>           <span class="mf">10000.0</span><span class="o">|</span>           <span class="mf">10000.0</span><span class="o">|</span>           <span class="mf">10000.0</span><span class="o">|</span>           <span class="mf">10000.0</span><span class="o">|</span>
+<span class="o">|</span>   <span class="n">mean</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mf">155.11643700000002</span><span class="o">|</span>        <span class="mf">158.489058</span><span class="o">|</span><span class="mf">162.23713200000003</span><span class="o">|</span>        <span class="mf">166.049375</span><span class="o">|</span>        <span class="mf">170.006525</span><span class="o">|</span>
+<span class="o">|</span>    <span class="n">std</span><span class="o">|</span>       <span class="mf">0.0</span><span class="o">|</span><span class="mf">18.313783237787845</span><span class="o">|</span><span class="mf">26.460919262517276</span><span class="o">|</span> <span class="mf">33.37780495150803</span><span class="o">|</span><span class="mf">39.369101074463416</span><span class="o">|</span><span class="mf">45.148120695490846</span><span class="o">|</span>
+<span class="o">|</span>    <span class="nb">min</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>              <span class="mf">88.2</span><span class="o">|</span>             <span class="mf">74.54</span><span class="o">|</span>             <span class="mf">65.87</span><span class="o">|</span>             <span class="mf">68.21</span><span class="o">|</span>             <span class="mf">58.25</span><span class="o">|</span>
+<span class="o">|</span>    <span class="mi">25</span><span class="o">%|</span>     <span class="mf">151.5</span><span class="o">|</span>           <span class="mf">142.485</span><span class="o">|</span>            <span class="mf">140.15</span><span class="o">|</span>            <span class="mf">138.72</span><span class="o">|</span>           <span class="mf">138.365</span><span class="o">|</span>            <span class="mf">137.33</span><span class="o">|</span>
+<span class="o">|</span>    <span class="mi">50</span><span class="o">%|</span>     <span class="mf">151.5</span><span class="o">|</span>            <span class="mf">154.97</span><span class="o">|</span>           <span class="mf">157.175</span><span class="o">|</span>            <span class="mf">159.82</span><span class="o">|</span>            <span class="mf">162.59</span><span class="o">|</span><span class="mf">165.04500000000002</span><span class="o">|</span>
+<span class="o">|</span>    <span class="mi">75</span><span class="o">%|</span>     <span class="mf">151.5</span><span class="o">|</span>           <span class="mf">167.445</span><span class="o">|</span><span class="mf">175.48499999999999</span><span class="o">|</span>          <span class="mf">182.8625</span><span class="o">|</span>           <span class="mf">189.725</span><span class="o">|</span>           <span class="mf">196.975</span><span class="o">|</span>
+<span class="o">|</span>    <span class="nb">max</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>            <span class="mf">227.48</span><span class="o">|</span>            <span class="mf">275.94</span><span class="o">|</span>            <span class="mf">319.17</span><span class="o">|</span>            <span class="mf">353.59</span><span class="o">|</span>            <span class="mf">403.68</span><span class="o">|</span>
+<span class="o">+-------+----------+------------------+------------------+------------------+------------------+------------------+</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_plt</span> <span class="o">=</span> <span class="n">simulated</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">periods</span><span class="o">=</span> <span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">periods</span><span class="o">=</span> <span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">data_plt</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;price ($)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Simulated Stock price: &#39;</span> <span class="o">+</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="fig-mc-stock-price-demo">
+<img alt="_images/baba_sim_price_demo.png" src="_images/baba_sim_price_demo.png" />
+</div>
+</div>
+<div class="section" id="one-year-stock-price-simulation">
+<h3>16.2.7. One-year Stock price simulation<a class="headerlink" href="#one-year-stock-price-simulation" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id4">
+<span id="fig-mc-stock-price"></span><img alt="_images/baba_sim_price.png" src="_images/baba_sim_price.png" />
+<p class="caption"><span class="caption-text">Simulated Stock Price</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<span id="fig-mc-stock-dis"></span><img alt="_images/baba_sim_dis1.png" src="_images/baba_sim_dis1.png" />
+<p class="caption"><span class="caption-text">Simulated Stock Price distribution</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mcmc.html" class="btn btn-neutral float-right" title="17. Markov Chain Monte Carlo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="als.html" class="btn btn-neutral float-left" title="15. ALS: Stock Portfolio Recommendations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

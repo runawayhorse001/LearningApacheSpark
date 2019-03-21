@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. Statistics Preliminary &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Data Exploration" href="exploration.html" />
+    <link rel="prev" title="5. Programming with RDDs" href="rdd.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Statistics Preliminary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notations">6.1. Notations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measurement-formula">6.2. Measurement Formula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#statistical-tests">6.3. Statistical Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#correlational-test">6.3.1. Correlational Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-of-means-test">6.3.2. Comparison of Means test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-parametric-test">6.3.3. Non-parametric Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>6. Statistics Preliminary</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="statistics-preliminary">
+<span id="stats"></span><h1>6. Statistics Preliminary<a class="headerlink" href="#statistics-preliminary" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-chinese-proverb admonition">
+<p class="first admonition-title">Chinese proverb</p>
+<p class="last"><strong>If you only know yourself, but not your opponent, you may win or may lose.
+If you know neither yourself nor your enemy, you will always endanger yourself</strong>
+– idiom, from Sunzi’s Art of War</p>
+</div>
+<div class="section" id="notations">
+<h2>6.1. Notations<a class="headerlink" href="#notations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>m : the number of the samples</li>
+<li>n : the number of the features</li>
+<li><img class="math" src="_images/math/64f7a4ec1615752531eb68f81816042f1d6b4463.png" alt="y_i"/> : i-th label</li>
+<li><img class="math" src="_images/math/71abbaeba0b71c04159430e2d9ff08d6856ca84a.png" alt="{\displaystyle {\bar {y}}} = {\frac {1}{m}}\sum _{i=1}^{n}y_{i}"/>:  the mean of <img class="math" src="_images/math/c27618e51594d9f696674bec59e463847932f77b.png" alt="y"/>.</li>
+</ul>
+</div>
+<div class="section" id="measurement-formula">
+<h2>6.2. Measurement Formula<a class="headerlink" href="#measurement-formula" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Mean squared error</li>
+</ul>
+<p>In statistics, the <strong>MSE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_squared_error">Mean Squared Error</a>) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations—that is, the difference between the estimator and what is estimated.</p>
+<div class="math">
+<p><img src="_images/math/acd4fa1a35fa00fb6a281497da912b4c6ca97003.png" alt="\text{MSE}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+</div><ul class="simple">
+<li>Root Mean squared error</li>
+</ul>
+<div class="math">
+<p><img src="_images/math/1bfbf3d1df16defce44013ba1288345e5e743372.png" alt="\text{RMSE} = \sqrt{\text{MSE}}=\sqrt{\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2}"/></p>
+</div><ul class="simple">
+<li>Total sum of squares</li>
+</ul>
+<p>In statistical data analysis the <strong>TSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_sum_of_squares">Total Sum of Squares</a>) is a quantity that appears as part of a standard way of presenting results of such analyses. It is defined as being the sum, over all observations, of the squared differences of each observation from the overall mean.</p>
+<div class="math">
+<p><img src="_images/math/3ca84d32c3170a80ea36d80b3ce3dd9b3caaccce.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{y}\right)^2"/></p>
+</div><ul class="simple">
+<li>Residual Sum of Squares</li>
+</ul>
+<div class="math">
+<p><img src="_images/math/e70e438bda2f384b1d22d29ffb765d8c16ff6666.png" alt="\text{RSS}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+</div><ul class="simple">
+<li>Coefficient of determination <img class="math" src="_images/math/d5c12ca1fb7f04c314ad64b45a5b7634a5c266f7.png" alt="R^2"/></li>
+</ul>
+<div class="math">
+<p><img src="_images/math/c3eb672805f752c8049cca932d0d4a49b201ff6c.png" alt="R^{2} := 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
+</div></div>
+<div class="section" id="statistical-tests">
+<h2>6.3. Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="correlational-test">
+<h3>6.3.1. Correlational Test<a class="headerlink" href="#correlational-test" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Pearson correlation: Tests for the strength of the association between two continuous variables.</li>
+<li>Spearman correlation: Tests for the strength of the association between two ordinal variables (does not rely on the assumption of normal distributed data).</li>
+<li>Chi-square: Tests for the strength of the association between two categorical variables.</li>
+</ul>
+</div>
+<div class="section" id="comparison-of-means-test">
+<h3>6.3.2. Comparison of Means test<a class="headerlink" href="#comparison-of-means-test" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Paired T-test: Tests for difference between two related variables.</li>
+<li>Independent T-test: Tests for difference between two independent variables.</li>
+<li>ANOVA: Tests the difference between group means after any other variance in the outcome variable is accounted for.</li>
+</ul>
+</div>
+<div class="section" id="non-parametric-test">
+<h3>6.3.3. Non-parametric Test<a class="headerlink" href="#non-parametric-test" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Wilcoxon rank-sum test: Tests for difference between two independent variables - takes into account magnitude and direction of difference.</li>
+<li>Wilcoxon sign-rank test: Tests for difference between two related variables - takes into account magnitude and direction of difference.</li>
+<li>Sign test: Tests if two related variables are different – ignores magnitude of change, only takes into account direction.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="exploration.html" class="btn btn-neutral float-right" title="7. Data Exploration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rdd.html" class="btn btn-neutral float-left" title="5. Programming with RDDs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

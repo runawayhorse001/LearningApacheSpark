@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>19. My PySpark Package &mdash; Learning Apache Spark with Python 1.00 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="20. My Cheat Sheet" href="cheat.html" />
+    <link rel="prev" title="18. Neural Network" href="fnn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics Preliminary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">19. My PySpark Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hierarchical-structure">19.1. Hierarchical Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up">19.2. Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readme">19.3. ReadMe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">22. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>19. My PySpark Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="my-pyspark-package">
+<span id="pack"></span><h1>19. My PySpark Package<a class="headerlink" href="#my-pyspark-package" title="Permalink to this headline">¶</a></h1>
+<p>It’s super easy to wrap your own package in Python. I packed some functions which I frequently
+used in my daily work. You can download and install it from <a class="reference external" href="https://github.com/runawayhorse001/PySparkTools">My PySpark Package</a>. The hierarchical
+structure and the directory structure of this package are as follows.</p>
+<div class="section" id="hierarchical-structure">
+<h2>19.1. Hierarchical Structure<a class="headerlink" href="#hierarchical-structure" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="p">|</span>-- build
+<span class="p">|</span>   <span class="p">|</span>-- bdist.linux-x86_64
+<span class="p">|</span>   <span class="p">|</span>-- lib.linux-x86_64-2.7
+<span class="p">|</span>       <span class="p">|</span>-- PySparkTools
+<span class="p">|</span>           <span class="p">|</span>-- __init__.py
+<span class="p">|</span>           <span class="p">|</span>-- Manipulation
+<span class="p">|</span>           <span class="p">|</span>   <span class="p">|</span>-- DataManipulation.py
+<span class="p">|</span>           <span class="p">|</span>   <span class="p">|</span>-- __init__.py
+<span class="p">|</span>           <span class="p">|</span>── Visualization
+<span class="p">|</span>               <span class="p">|</span>-- __init__.py
+│               <span class="p">|</span>-- PyPlots.py
+<span class="p">|</span>-- dist
+│   <span class="p">|</span>-- PySParkTools-1.0-py2.7.egg
+<span class="p">|</span>-- __init__.py
+<span class="p">|</span>-- PySparkTools
+<span class="p">|</span>   <span class="p">|</span>-- __init__.py
+<span class="p">|</span>   <span class="p">|</span>-- Manipulation
+<span class="p">|</span>   <span class="p">|</span>   <span class="p">|</span>-- DataManipulation.py
+<span class="p">|</span>   <span class="p">|</span>   <span class="p">|</span>-- __init__.py
+<span class="p">|</span>   <span class="p">|</span>-- Visualization
+<span class="p">|</span>       <span class="p">|</span>-- __init__.py
+<span class="p">|</span>       <span class="p">|</span>-- PyPlots.py
+│       <span class="p">|</span>-- PyPlots.pyc
+<span class="p">|</span>-- PySParkTools.egg-info
+<span class="p">|</span>   <span class="p">|</span>-- dependency_links.txt
+<span class="p">|</span>   <span class="p">|</span>-- PKG-INFO
+<span class="p">|</span>   <span class="p">|</span>-- requires.txt
+<span class="p">|</span>   <span class="p">|</span>-- SOURCES.txt
+<span class="p">|</span>   <span class="p">|</span>-- top_level.txt
+<span class="p">|</span>-- README.md
+<span class="p">|</span>-- requirements.txt
+<span class="p">|</span>-- setup.py
+<span class="p">|</span>-- <span class="nb">test</span>
+    <span class="p">|</span>-- spark-warehouse
+    <span class="p">|</span>-- test1.py
+    <span class="p">|</span>-- test2.py
+</pre></div>
+</div>
+<p>From the above hierarchical structure, you will find that you have to have <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in each directory. I will explain the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file with the example below:</p>
+</div>
+<div class="section" id="set-up">
+<h2>19.2. Set Up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;README.md&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">long_description</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="n">long_description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">requirements</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+    <span class="n">requirements</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;PySParkTools&#39;</span><span class="p">,</span>
+          <span class="n">install_requires</span><span class="o">=</span><span class="n">requirements</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Python Spark Tools&#39;</span><span class="p">,</span>
+      <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Wenqiang Feng&#39;</span><span class="p">,</span>
+      <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;von198@gmail.com&#39;</span><span class="p">,</span>
+      <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/runawayhorse001/PySparkTools&#39;</span><span class="p">,</span>
+      <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+      <span class="n">long_description</span><span class="o">=</span><span class="n">long_description</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="readme">
+<h2>19.3. ReadMe<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># PySparkTools</span>
+
+This is my PySpark Tools. If you want to colne and install it, you can use
+
+- clone
+
+<span class="sb">```</span><span class="o">{</span>bash<span class="o">}</span>
+git clone git@github.com:runawayhorse001/PySparkTools.git
+<span class="sb">```</span>
+- install
+
+<span class="sb">```</span><span class="o">{</span>bash<span class="o">}</span>
+<span class="nb">cd</span> PySparkTools
+pip install -r requirements.txt
+python setup.py install
+<span class="sb">```</span>
+
+- <span class="nb">test</span>
+
+<span class="sb">```</span><span class="o">{</span>bash<span class="o">}</span>
+<span class="nb">cd</span> PySparkTools/test
+python test1.py
+<span class="sb">```</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cheat.html" class="btn btn-neutral float-right" title="20. My Cheat Sheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fnn.html" class="btn btn-neutral float-left" title="18. Neural Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Mar 20, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
