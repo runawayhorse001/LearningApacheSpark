@@ -60,7 +60,7 @@ if __name__ == '__main__':
         files = [os.path.abspath(f) for f in args]
     currentdir = os.getcwd()
     mkdir(outdir)
-    mkdir(latexdir)
+    #mkdir(latexdir)
     os.chdir(outdir)
 
     # add .gitignore file to your github repository
@@ -114,8 +114,8 @@ if __name__ == '__main__':
         if not options['--nopdf']:
             # Generate latex file in a temp directory
             import tempfile
-            #workdir = tempfile.mkdtemp()
-            workdir = latexdir
+            workdir = tempfile.mkdtemp()
+            #workdir = latexdir
             call_sphinx('latex', workdir)
             # Compile to PDF
             os.chdir(workdir)
@@ -124,7 +124,7 @@ if __name__ == '__main__':
                 shutil.copy(os.path.join(workdir, 'pyspark.pdf'), outdir)
                 os.chdir(outdir)
                 # remove the workdir folder
-                #shutil.rmtree(workdir)
+                shutil.rmtree(workdir)
             except OSError as e:
                 print('OSError:', e)
             except IOError as e:
