@@ -222,23 +222,23 @@
 </div>
 <p>You may find out that the default function in PySpark does not include the quartiles. The following function will help you to get the same
 results in Pandas</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_pd</span><span class="p">(</span><span class="n">df_in</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">style</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_pd</span><span class="p">(</span><span class="n">df_in</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">deciles</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function to union the basic stats results and deciles</span>
 <span class="sd">    :param df_in: the input dataframe</span>
 <span class="sd">    :param columns: the cloumn name list of the numerical variable</span>
-<span class="sd">    :param style: the display style</span>
+<span class="sd">    :param deciles: the deciles output</span>
 
 <span class="sd">    :return : the numerical describe info. of the input dataframe</span>
 
-<span class="sd">    :author: MIng Chen and Wenqiang Feng</span>
+<span class="sd">    :author: Ming Chen and Wenqiang Feng</span>
 <span class="sd">    :email:  von198@gmail.com</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">percentiles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">deciles</span><span class="p">:</span>
         <span class="n">percentiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">percentiles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
 
     <span class="n">percs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df_in</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(),</span> <span class="n">percentiles</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">])</span>
     <span class="n">percs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">percs</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
@@ -250,7 +250,7 @@ results in Pandas</p>
     <span class="k">return</span> <span class="n">new_df</span><span class="p">[[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_pd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">num_cols</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_pd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">num_cols</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-------+------------------+-----------------+</span>
@@ -268,7 +268,7 @@ results in Pandas</p>
 </pre></div>
 </div>
 <p>Sometimes, because of the confidential data issues, you can not deliver the real data and your clients may ask more statistical results, such as <code class="docutils literal notranslate"><span class="pre">deciles</span></code>. You can apply the follwing function to achieve it.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_pd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">num_cols</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_pd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">num_cols</span><span class="p">,</span><span class="n">deciles</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-------+------------------+-----------------+</span>
@@ -706,7 +706,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Mar 27, 2019.
+        Last updated on Mar 28, 2019.
       </span>
 
     </p>

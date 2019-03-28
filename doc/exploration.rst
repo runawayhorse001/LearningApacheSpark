@@ -56,23 +56,23 @@ results in Pandas
 
 .. code-block:: python
 
-	def describe_pd(df_in, columns, style):
+	def describe_pd(df_in, columns, deciles=False):
 	    '''
 	    Function to union the basic stats results and deciles
 	    :param df_in: the input dataframe 
 	    :param columns: the cloumn name list of the numerical variable     
-	    :param style: the display style  
+	    :param deciles: the deciles output  
 
 	    :return : the numerical describe info. of the input dataframe   
 
-	    :author: MIng Chen and Wenqiang Feng
+	    :author: Ming Chen and Wenqiang Feng
 	    :email:  von198@gmail.com  
 	    '''       
 
-	    if style == 1:
-	        percentiles = [25, 50, 75]
-	    else:
+	    if deciles:
 	        percentiles = np.array(range(0, 110, 10))
+	    else:
+	        percentiles = [25, 50, 75]
 	    
 	    percs = np.transpose([np.percentile(df_in.select(x).collect(), percentiles) for x in columns])
 	    percs = pd.DataFrame(percs, columns=columns)
@@ -85,7 +85,7 @@ results in Pandas
 
 .. code-block:: python
 
-   describe_pd(df,num_cols,1)
+   describe_pd(df,num_cols)
 
 .. code-block:: python
 
@@ -106,7 +106,7 @@ Sometimes, because of the confidential data issues, you can not deliver the real
 
 .. code-block:: python
 
-   describe_pd(df,num_cols,2)
+   describe_pd(df,num_cols,deciles=True)
 
 .. code-block:: python
 
