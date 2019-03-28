@@ -85,9 +85,9 @@ copyright = '2017, Wenqiang Feng'
 # We need this hokey-pokey because versioneer needs the current
 # directory to be the root of the project to work.
 # The short X.Y version.
-version = '1.00'
+# version = '1.00'
 # The full version, including alpha/beta/rc tags.
-release = '1.00'
+# release = '1.00'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -241,7 +241,7 @@ def linkcode_resolve(domain, info):
         import inspect
         import os
         fn = inspect.getsourcefile(obj)
-        fn = os.path.relpath(fn, start=sys.path.insert(0, os.path.abspath('..')))
+        fn = os.path.relpath(fn, start=os.path.abspath('..'))
         source, lineno = inspect.getsourcelines(obj)
         return fn, lineno, lineno + len(source) - 1
 
@@ -251,7 +251,7 @@ def linkcode_resolve(domain, info):
         filename = '%s#L%d-L%d' % find_source()
     except Exception:
         filename = info['module'].replace('.', '/') + '.py'
-    import subprocess
+    #https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py
     return "https://github.com/runawayhorse001/LearningApacheSpark/blob/master/%s" % (filename)
 
 # Options for LaTeX output
