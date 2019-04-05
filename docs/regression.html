@@ -95,7 +95,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#linear-regression">8.1. Linear Regression</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">8.1.1. Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-solve-it">8.1.2. How to solve it?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#demo">8.1.3. Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinary-least-squares">8.1.3. Ordinary Least Squares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demo">8.1.4. Demo</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#generalized-linear-regression">8.2. Generalized linear regression</a><ul>
@@ -286,7 +287,9 @@ Then the matrix format equation is written as</p>
 </div></blockquote>
 </li>
 </ol>
-<p><em>. **Ordinary Least Squares*</em></p>
+</div>
+<div class="section" id="ordinary-least-squares">
+<h3>8.1.3. Ordinary Least Squares<a class="headerlink" href="#ordinary-least-squares" title="Permalink to this headline">¶</a></h3>
 <p>In mathematics, <a class="reference internal" href="#equation-eq-ax">(1)</a> is a overdetermined system.  The method of ordinary least squares can be used to find an approximate solution to overdetermined systems. For the system overdetermined system <a class="reference internal" href="#equation-eq-ax">(1)</a>, the least squares formula is obtained from the problem</p>
 <div class="math" id="equation-eq-minax">
 <p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-minax" title="Permalink to this equation">¶</a></span><img src="_images/math/de88ef5674c69702e3744fe65dd8f34d4eee65a6.png" alt="{\displaystyle \min _{x}  ||\X \Bbeta-\y||} ,"/></p>
@@ -300,7 +303,7 @@ Then the matrix format equation is written as</p>
 </div>
 </div>
 <div class="section" id="demo">
-<h3>8.1.3. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.4. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegression.ipynb">Linear Regression</a> which was implemented without using Pipeline.</li>
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegressionWpipeline.ipynb">Linear Regression with Pipeline</a> which was implemented with using Pipeline.</li>

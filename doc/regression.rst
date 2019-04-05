@@ -85,8 +85,8 @@ How to solve it?
 		- Steepest Descent Method
 		- Conjugate Gradients Method
 
-*. **Ordinary Least Squares**
-
+Ordinary Least Squares
+----------------------
 
 In mathematics, :eq:`eq_Ax` is a overdetermined system.  The method of ordinary least squares can be used to find an approximate solution to overdetermined systems. For the system overdetermined system :eq:`eq_Ax`, the least squares formula is obtained from the problem
 
