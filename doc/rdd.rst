@@ -1151,6 +1151,59 @@ Window
 	3  d  n  6   1.0	|  c|  n|  3|   2|
 	                	+---+---+---+----+
 
+``rank`` vs ``dense_rank``
+--------------------------
+
+.. code-block:: python
+
+	d ={'Id':[1,2,3,4,5,6],
+	    'Score': [4.00, 4.00, 3.85, 3.65, 3.65, 3.50]}
+	#
+	data = pd.DataFrame(d)
+	dp = data.copy()
+	ds = spark.createDataFrame(data)    
+
+.. code-block:: python
+
+	   Id  Score
+	0   1   4.00
+	1   2   4.00
+	2   3   3.85
+	3   4   3.65
+	4   5   3.65
+	5   6   3.50
+
+|pyc|
+
+.. code-block:: python
+
+	dp['Rank_dense'] = dp['Score'].rank(method='dense',ascending =False)
+	dp['Rank'] = dp['Score'].rank(method='min',ascending =False)
+	dp
+	#
+	import pyspark.sql.functions as F
+	from pyspark.sql.window import Window
+	w = Window.orderBy(ds.Score.desc())
+	ds = ds.withColumn('Rank_spark_dense',F.dense_rank().over(w))
+	ds = ds.withColumn('Rank_spark',F.rank().over(w))
+	ds.show()
+
+|comp|
+
+.. code-block:: python
+
+	                               	+---+-----+----------------+----------+
+	                               	| Id|Score|Rank_spark_dense|Rank_spark|
+	   Id  Score  Rank_dense  Rank 	+---+-----+----------------+----------+
+	0   1   4.00         1.0   1.0 	|  1|  4.0|               1|         1|
+	1   2   4.00         1.0   1.0 	|  2|  4.0|               1|         1|
+	2   3   3.85         2.0   3.0 	|  3| 3.85|               2|         3|
+	3   4   3.65         3.0   4.0 	|  4| 3.65|               3|         4|
+	4   5   3.65         3.0   4.0 	|  5| 3.65|               3|         4|
+	5   6   3.50         4.0   6.0 	|  6|  3.5|               4|         6|
+	                               	+---+-----+----------------+----------+
+
+
 
 .. _Spark vs. Hadoop MapReduce: https://www.xplenty.com/blog/2014/11/apache-spark-vs-hadoop-mapreduce/
 

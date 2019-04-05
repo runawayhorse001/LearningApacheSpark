@@ -112,6 +112,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#groupby">5.3.14. GroupBy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pivot">5.3.15. Pivot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#window">5.3.16. Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rank-vs-dense-rank">5.3.17. <code class="docutils literal notranslate"><span class="pre">rank</span></code> vs <code class="docutils literal notranslate"><span class="pre">dense_rank</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1169,6 +1170,52 @@ PythonTips
 <span class="mi">2</span>  <span class="n">c</span>  <span class="n">n</span>  <span class="mi">3</span>   <span class="mf">2.0</span>        <span class="o">|</span>  <span class="n">d</span><span class="o">|</span>  <span class="n">n</span><span class="o">|</span>  <span class="mi">6</span><span class="o">|</span>   <span class="mi">1</span><span class="o">|</span>
 <span class="mi">3</span>  <span class="n">d</span>  <span class="n">n</span>  <span class="mi">6</span>   <span class="mf">1.0</span>        <span class="o">|</span>  <span class="n">c</span><span class="o">|</span>  <span class="n">n</span><span class="o">|</span>  <span class="mi">3</span><span class="o">|</span>   <span class="mi">2</span><span class="o">|</span>
                         <span class="o">+---+---+---+----+</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rank-vs-dense-rank">
+<h3>5.3.17. <code class="docutils literal notranslate"><span class="pre">rank</span></code> vs <code class="docutils literal notranslate"><span class="pre">dense_rank</span></code><a class="headerlink" href="#rank-vs-dense-rank" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span><span class="p">{</span><span class="s1">&#39;Id&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+    <span class="s1">&#39;Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.00</span><span class="p">,</span> <span class="mf">4.00</span><span class="p">,</span> <span class="mf">3.85</span><span class="p">,</span> <span class="mf">3.65</span><span class="p">,</span> <span class="mf">3.65</span><span class="p">,</span> <span class="mf">3.50</span><span class="p">]}</span>
+<span class="c1">#</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="n">Id</span>  <span class="n">Score</span>
+<span class="mi">0</span>   <span class="mi">1</span>   <span class="mf">4.00</span>
+<span class="mi">1</span>   <span class="mi">2</span>   <span class="mf">4.00</span>
+<span class="mi">2</span>   <span class="mi">3</span>   <span class="mf">3.85</span>
+<span class="mi">3</span>   <span class="mi">4</span>   <span class="mf">3.65</span>
+<span class="mi">4</span>   <span class="mi">5</span>   <span class="mf">3.65</span>
+<span class="mi">5</span>   <span class="mi">6</span>   <span class="mf">3.50</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">::</span> <span class="pre">Python</span> <span class="pre">Code:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="s1">&#39;Rank_dense&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">dp</span><span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">dp</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">Score</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;Rank_spark_dense&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">dense_rank</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;Rank_spark&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">::</span> <span class="pre">Comparison:</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>                                <span class="o">+---+-----+----------------+----------+</span>
+                                <span class="o">|</span> <span class="n">Id</span><span class="o">|</span><span class="n">Score</span><span class="o">|</span><span class="n">Rank_spark_dense</span><span class="o">|</span><span class="n">Rank_spark</span><span class="o">|</span>
+   <span class="n">Id</span>  <span class="n">Score</span>  <span class="n">Rank_dense</span>  <span class="n">Rank</span>  <span class="o">+---+-----+----------------+----------+</span>
+<span class="mi">0</span>   <span class="mi">1</span>   <span class="mf">4.00</span>         <span class="mf">1.0</span>   <span class="mf">1.0</span>  <span class="o">|</span>  <span class="mi">1</span><span class="o">|</span>  <span class="mf">4.0</span><span class="o">|</span>               <span class="mi">1</span><span class="o">|</span>         <span class="mi">1</span><span class="o">|</span>
+<span class="mi">1</span>   <span class="mi">2</span>   <span class="mf">4.00</span>         <span class="mf">1.0</span>   <span class="mf">1.0</span>  <span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>  <span class="mf">4.0</span><span class="o">|</span>               <span class="mi">1</span><span class="o">|</span>         <span class="mi">1</span><span class="o">|</span>
+<span class="mi">2</span>   <span class="mi">3</span>   <span class="mf">3.85</span>         <span class="mf">2.0</span>   <span class="mf">3.0</span>  <span class="o">|</span>  <span class="mi">3</span><span class="o">|</span> <span class="mf">3.85</span><span class="o">|</span>               <span class="mi">2</span><span class="o">|</span>         <span class="mi">3</span><span class="o">|</span>
+<span class="mi">3</span>   <span class="mi">4</span>   <span class="mf">3.65</span>         <span class="mf">3.0</span>   <span class="mf">4.0</span>  <span class="o">|</span>  <span class="mi">4</span><span class="o">|</span> <span class="mf">3.65</span><span class="o">|</span>               <span class="mi">3</span><span class="o">|</span>         <span class="mi">4</span><span class="o">|</span>
+<span class="mi">4</span>   <span class="mi">5</span>   <span class="mf">3.65</span>         <span class="mf">3.0</span>   <span class="mf">4.0</span>  <span class="o">|</span>  <span class="mi">5</span><span class="o">|</span> <span class="mf">3.65</span><span class="o">|</span>               <span class="mi">3</span><span class="o">|</span>         <span class="mi">4</span><span class="o">|</span>
+<span class="mi">5</span>   <span class="mi">6</span>   <span class="mf">3.50</span>         <span class="mf">4.0</span>   <span class="mf">6.0</span>  <span class="o">|</span>  <span class="mi">6</span><span class="o">|</span>  <span class="mf">3.5</span><span class="o">|</span>               <span class="mi">4</span><span class="o">|</span>         <span class="mi">6</span><span class="o">|</span>
+                                <span class="o">+---+-----+----------------+----------+</span>
 </pre></div>
 </div>
 </div>
