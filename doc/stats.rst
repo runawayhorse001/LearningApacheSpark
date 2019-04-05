@@ -17,11 +17,22 @@ Notations
 * m : the number of the samples 
 * n : the number of the features
 * :math:`y_i` : i-th label 
+* :math:`\hat{y}_i` : i-th predicted label
 * :math:`{\displaystyle {\bar {y}}} = {\frac {1}{m}}\sum _{i=1}^{n}y_{i}`:  the mean of :math:`y`.
 
 
 Measurement Formula
 +++++++++++++++++++
+
+* Mean absolute error
+
+In statistics, **MAE** (`Mean absolute error`_) is a measure of difference between two continuous variables. The Mean Absolute Error is given by:
+
+.. math::
+
+	{\displaystyle \mathrm {MAE} ={\frac{1}{m} {\sum _{i=1}^{m}\left|\hat{y}_i-y_i\right|}}.}
+
+
 
 * Mean squared error
 
@@ -90,6 +101,6 @@ Non-parametric Test
 
 * Sign test: Tests if two related variables are different – ignores magnitude of change, only takes into account direction.
 
-
+.. _Mean absolute error: https://en.wikipedia.org/wiki/Mean_absolute_error
 .. _Mean Squared Error: https://en.wikipedia.org/wiki/Mean_squared_error
 .. _Total Sum of Squares: https://en.wikipedia.org/wiki/Total_sum_of_squares
