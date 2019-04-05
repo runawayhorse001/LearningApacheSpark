@@ -1119,16 +1119,37 @@ Pivot
 	                    		+----+----+----+----+
 
 
+Window
+------
 
+.. code-block:: python
 
+	d = {'A':['a','b','c','d'],'B':['m','m','n','n'],'C':[1,2,3,6]}
+	dp = pd.DataFrame(d)
+	ds = spark.createDataFrame(dp)
 
+|pyc|
 
+.. code-block:: python
 
+	dp['rank'] = dp.groupby('B')['C'].rank('dense',ascending=False)
+	#
+	from pyspark.sql.window import Window
+	w = Window.partitionBy('B').orderBy(ds.C.desc())
+	ds = ds.withColumn('rank',F.rank().over(w))
 
+|comp|
 
+.. code-block:: python
 
-
-
+	                	+---+---+---+----+
+	                	|  A|  B|  C|rank|
+	   A  B  C  rank	+---+---+---+----+
+	0  a  m  1   2.0	|  b|  m|  2|   1|
+	1  b  m  2   1.0	|  a|  m|  1|   2|
+	2  c  n  3   2.0	|  d|  n|  6|   1|
+	3  d  n  6   1.0	|  c|  n|  3|   2|
+	                	+---+---+---+----+
 
 
 .. _Spark vs. Hadoop MapReduce: https://www.xplenty.com/blog/2014/11/apache-spark-vs-hadoop-mapreduce/
