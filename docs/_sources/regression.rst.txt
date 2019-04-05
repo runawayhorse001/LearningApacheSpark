@@ -22,23 +22,30 @@ Linear Regression
 Introduction
 ------------
 
-Given that a data set :math:`{\displaystyle \{\,x_{i1},\ldots ,x_{in},y_{i}\}_{i=1}^{m}}` which contains n features
-(variables) and m samples (data points), in simple linear regression model for modeling :math:`{\displaystyle m}` data points with one independent variable: :math:`{\displaystyle x_{i1}}`, the formula is given by:
+Given that a data set :math:`{\displaystyle \{\,x_{i1},\ldots ,x_{in},y_{i}\}_{i=1}^{m}}` which contains n features (variables) and m samples (data points), in simple linear regression model for modeling :math:`{\displaystyle m}` data points with :math:`j` independent variables: :math:`{\displaystyle x_{ij}}`, the formula is given by:
 
       .. math::
 
-         y_i = \beta_0 + \beta_1 x_{i1}, \text{where}, i= 1, \cdots m. 
+         y_i = \beta_0 + \beta_j x_{ij}, \text{where}, i= 1, \cdots m, j= 1, \cdots n. 
        
 
-In matrix notation, the data set is written as :math:`\X = [\X_1,\cdots, \X_n]` with
-:math:`\X_i = {\displaystyle \{x_{\cdot i}\}_{i=1}^{n}}`, 
-:math:`\By = {\displaystyle \{y_{i}\}_{i=1}^{m}}`
-and :math:`\Bbeta^\top = {\displaystyle \{\beta_{i}\}_{i=1}^{m}}`. 
-Then the normal equations are written as
+In matrix notation, the data set is written as :math:`\X = [\x_1,\cdots, \x_n]` with
+:math:`\x_j = {\displaystyle \{x_{ij}\}_{i=1}^{m}}`, 
+:math:`\y = {\displaystyle \{y_{i}\}_{i=1}^{m}}` (see Fig. :ref:`fig_fm`)
+and :math:`\Bbeta^\top = {\displaystyle \{\beta_{j}\}_{j=1}^{n}}`. 
+Then the matrix format equation is written as
 
       .. math::
+      	 :label: eq_Ax
 
-         \By = \X \Bbeta.
+         \y = \X \Bbeta.
+         
+
+.. _fig_fm:
+.. figure:: images/fm.png
+   :align: center
+
+   Feature matrix and label
          
 How to solve it?
 ----------------
@@ -77,6 +84,29 @@ How to solve it?
 		- Minimal correction iterative method 
 		- Steepest Descent Method
 		- Conjugate Gradients Method
+
+*. **Ordinary Least Squares**
+
+
+In mathematics, :eq:`eq_Ax` is a overdetermined system.  The method of ordinary least squares can be used to find an approximate solution to overdetermined systems. For the system overdetermined system :eq:`eq_Ax`, the least squares formula is obtained from the problem
+
+.. math::
+	:label: eq_minAx
+
+	{\displaystyle \min _{x}  ||\X \Bbeta-\y||} ,
+
+the solution of which can be written with the normal equations:
+
+.. math::
+	:label: eq_solAx
+
+	\Bbeta  = (\X^T\X)^{-1}\X^T\y
+
+where :math:`{\displaystyle {\mathrm {T} }}` indicates a matrix transpose, provided :math:`{\displaystyle (\X^{\mathrm {T} }\X)^{-1}}` exists (that is, provided :math:`\X` has full column rank).
+
+.. note::
+
+   Actually, :eq:`eq_solAx` is derivated by the following way: multiply :math:`\X^T` on side of :eq:`eq_Ax` and then multiply :math:`(\X^T\X)^{-1}` on both side of the former result.
 
 
 Demo

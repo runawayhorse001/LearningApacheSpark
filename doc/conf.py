@@ -294,7 +294,7 @@ latex_logo = 'images/logo.jpg'
 #latex_use_modindex = True
 
 
- #latex_elements['preamble'] = '\usepackage{xcolor}'
+#latex_elements['preamble'] = '\usepackage{xcolor}'
 # Additional stuff for the LaTeX preamble.
 #latex_preamble 
 latex_elements['preamble'] =  '\\usepackage{amsmath}\n'+\
@@ -316,7 +316,8 @@ latex_elements['preamble'] =  '\\usepackage{amsmath}\n'+\
                           '\\def\\hV{\\mathbf{\hat{V}}}\n'+\
                           '\\def\\E{\\mathbf{E}}\n'+\
                           '\\def\\F{\\mathbf{F}}\n'+\
-                          '\\def\\x{\\mathbf{x}}\n'+\
+                          '\\def\\x{\\boldsymbol{x}}\n'+\
+                          '\\def\\y{\\boldsymbol{y}}\n'+\
                           '\\def\\h{\\mathbf{h}}\n'+\
                           '\\def\\v{\\mathbf{v}}\n'+\
                           '\\def\\nv{\\mathbf{v^{{\bf -}}}}\n'+\
@@ -328,8 +329,7 @@ latex_elements['preamble'] =  '\\usepackage{amsmath}\n'+\
                           '\\def\\C{\\mathbf{C}}\n'+\
                           '\\def\\P{\\mathbf{P}}\n'+\
                           '\\def\\T{{\\bf \\mathcal T}}\n'+\
-                          '\\def\\B{{\\bf \\mathcal B}}\n'+\
-                          '\\def\\euler{\ e^{i\pi} + 1 = 0}\n'
+                          '\\def\\B{{\\bf \\mathcal B}}\n'
 
 # Documents to append as an appendix to all manuals.
 #latex_appendices = []
@@ -338,7 +338,7 @@ latex_elements['preamble'] =  '\\usepackage{amsmath}\n'+\
 #latex_use_modindex = True
 
 default_role = 'math'
-ingmath_divpng_args = ['-gamma 1.5','-D 110']
+pngmath_divpng_args = ['-gamma 1.5','-D 110']
 #pngmath_divpng_args = ['-gamma', '1.5', '-D', '110', '-bg', 'Transparent'] 
 imgmath_latex_preamble =  '\\usepackage{amsmath}\n'+\
                           '\\usepackage{mathtools}\n'+\
@@ -359,7 +359,8 @@ imgmath_latex_preamble =  '\\usepackage{amsmath}\n'+\
                           '\\def\\hV{\\mathbf{\hat{V}}}\n'+\
                           '\\def\\E{\\mathbf{E}}\n'+\
                           '\\def\\F{\\mathbf{F}}\n'+\
-                          '\\def\\x{\\mathbf{x}}\n'+\
+                          '\\def\\x{\\boldsymbol{x}}\n'+\
+                          '\\def\\y{\\boldsymbol{y}}\n'+\
                           '\\def\\h{\\mathbf{h}}\n'+\
                           '\\def\\v{\\mathbf{v}}\n'+\
                           '\\def\\nv{\\mathbf{v^{{\bf -}}}}\n'+\
@@ -371,8 +372,5 @@ imgmath_latex_preamble =  '\\usepackage{amsmath}\n'+\
                           '\\def\\C{\\mathbf{C}}\n'+\
                           '\\def\\P{\\mathbf{P}}\n'+\
                           '\\def\\T{{\\bf \\mathcal T}}\n'+\
-                          '\\def\\B{{\\bf \\mathcal B}}\n'+\
-                          '\\def\\euler{\ e^{i\pi} + 1 = 0}\n'
-
-
+                          '\\def\\B{{\\bf \\mathcal B}}\n'
 

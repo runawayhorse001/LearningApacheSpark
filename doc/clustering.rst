@@ -307,7 +307,7 @@ In my opinion, sometimes it's hard to choose the optimal number of the clusters 
 	    :return r_table: the running results table  
 
 	    :author: Wenqiang Feng
-	    :email:  WFeng@dstsystems.com    
+	    :email:  von198@gmail.com    
 	    '''
 
 	    start = time.time()

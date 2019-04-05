@@ -212,21 +212,24 @@
 <h2>8.1. Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
 <h3>8.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
-<p>Given that a data set <img class="math" src="_images/math/a35ad42a9791a1c9cad67ae91f7770d063478207.png" alt="{\displaystyle \{\,x_{i1},\ldots ,x_{in},y_{i}\}_{i=1}^{m}}"/> which contains n features
-(variables) and m samples (data points), in simple linear regression model for modeling <img class="math" src="_images/math/98236570a8be044d2ed6c364d359bc04e977bd45.png" alt="{\displaystyle m}"/> data points with one independent variable: <img class="math" src="_images/math/33171d9a3b980cd5a510b3cbba031135857b4369.png" alt="{\displaystyle x_{i1}}"/>, the formula is given by:</p>
+<p>Given that a data set <img class="math" src="_images/math/88b3cfb73dea75c8b7c0639db3a2dc0123be56c6.png" alt="{\displaystyle \{\,x_{i1},\ldots ,x_{in},y_{i}\}_{i=1}^{m}}"/> which contains n features (variables) and m samples (data points), in simple linear regression model for modeling <img class="math" src="_images/math/cdf9a182e5d25224e34469d6ffbf367c6b1786e9.png" alt="{\displaystyle m}"/> data points with <img class="math" src="_images/math/c7827eada10f61eeef7e2b44293de9c6e29d6c73.png" alt="j"/> independent variables: <img class="math" src="_images/math/92495c9c156c3dec997248f4e186ad1cbff2123d.png" alt="{\displaystyle x_{ij}}"/>, the formula is given by:</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/b0ffddab9b323dc7351dda3c01ff97efd19fea35.png" alt="y_i = \beta_0 + \beta_1 x_{i1}, \text{where}, i= 1, \cdots m."/></p>
+<p><img src="_images/math/36bb233f388c4e2ad463279805e343e096eee38f.png" alt="y_i = \beta_0 + \beta_j x_{ij}, \text{where}, i= 1, \cdots m, j= 1, \cdots n."/></p>
 </div></div></blockquote>
-<p>In matrix notation, the data set is written as <img class="math" src="_images/math/250e2bcff865d435f3fdae89c7f06a30bfee0718.png" alt="\X = [\X_1,\cdots, \X_n]"/> with
-<img class="math" src="_images/math/d9a4bd50fe69e7be885142c4187b749b4eec741a.png" alt="\X_i = {\displaystyle \{x_{\cdot i}\}_{i=1}^{n}}"/>,
-<img class="math" src="_images/math/48c2261ca21d5cea5f72e37ebf808e3baa5a438e.png" alt="\By = {\displaystyle \{y_{i}\}_{i=1}^{m}}"/>
-and <img class="math" src="_images/math/62d92403537fec8ea8abd5290ac7780d02b1d0ca.png" alt="\Bbeta^\top = {\displaystyle \{\beta_{i}\}_{i=1}^{m}}"/>.
-Then the normal equations are written as</p>
+<p>In matrix notation, the data set is written as <img class="math" src="_images/math/a5d03d268bc1ce4982a508f5ca4713472be7ac92.png" alt="\X = [\x_1,\cdots, \x_n]"/> with
+<img class="math" src="_images/math/0767f75d317b99fa1abf2ac02405b3962c6df57e.png" alt="\x_j = {\displaystyle \{x_{ij}\}_{i=1}^{m}}"/>,
+<img class="math" src="_images/math/0fc9a6ee90c961208c213228ce0d3960e7513507.png" alt="\y = {\displaystyle \{y_{i}\}_{i=1}^{m}}"/> (see Fig. <a class="reference internal" href="#fig-fm"><span class="std std-ref">Feature matrix and label</span></a>)
+and <img class="math" src="_images/math/117180e0118a62e65bd0c2c7a6a1c719fe46224b.png" alt="\Bbeta^\top = {\displaystyle \{\beta_{j}\}_{j=1}^{n}}"/>.
+Then the matrix format equation is written as</p>
 <blockquote>
-<div><div class="math">
-<p><img src="_images/math/d721b82a8037be98216e74f515f2b92c1ec74c40.png" alt="\By = \X \Bbeta."/></p>
+<div><div class="math" id="equation-eq-ax">
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-ax" title="Permalink to this equation">¶</a></span><img src="_images/math/fbbbca44d84095b923a12b65e279ad8fa22e242e.png" alt="\y = \X \Bbeta."/></p>
 </div></div></blockquote>
+<div class="figure align-center" id="id19">
+<span id="fig-fm"></span><img alt="_images/fm.png" src="_images/fm.png" />
+<p class="caption"><span class="caption-text">Feature matrix and label</span></p>
+</div>
 </div>
 <div class="section" id="how-to-solve-it">
 <h3>8.1.2. How to solve it?<a class="headerlink" href="#how-to-solve-it" title="Permalink to this headline">¶</a></h3>
@@ -283,6 +286,18 @@ Then the normal equations are written as</p>
 </div></blockquote>
 </li>
 </ol>
+<p><em>. **Ordinary Least Squares*</em></p>
+<p>In mathematics, <a class="reference internal" href="#equation-eq-ax">(1)</a> is a overdetermined system.  The method of ordinary least squares can be used to find an approximate solution to overdetermined systems. For the system overdetermined system <a class="reference internal" href="#equation-eq-ax">(1)</a>, the least squares formula is obtained from the problem</p>
+<div class="math" id="equation-eq-minax">
+<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-minax" title="Permalink to this equation">¶</a></span><img src="_images/math/de88ef5674c69702e3744fe65dd8f34d4eee65a6.png" alt="{\displaystyle \min _{x}  ||\X \Bbeta-\y||} ,"/></p>
+</div><p>the solution of which can be written with the normal equations:</p>
+<div class="math" id="equation-eq-solax">
+<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-solax" title="Permalink to this equation">¶</a></span><img src="_images/math/a00d7096b2f0c66219f6377f586e5ad96e90ec50.png" alt="\Bbeta  = (\X^T\X)^{-1}\X^T\y"/></p>
+</div><p>where <img class="math" src="_images/math/bc362a3b36dbfc5074d148d21a0bf92fd6791e89.png" alt="{\displaystyle {\mathrm {T} }}"/> indicates a matrix transpose, provided <img class="math" src="_images/math/6ad486913f405fb6b816cf3e78f59522f1f729ea.png" alt="{\displaystyle (\X^{\mathrm {T} }\X)^{-1}}"/> exists (that is, provided <img class="math" src="_images/math/5740a647adc220581f16c07ef400fcaed66850fa.png" alt="\X"/> has full column rank).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Actually, <a class="reference internal" href="#equation-eq-solax">(3)</a> is derivated by the following way: multiply <img class="math" src="_images/math/13a89db85547bd8fd6049eb079abdd813668698d.png" alt="\X^T"/> on side of <a class="reference internal" href="#equation-eq-ax">(1)</a> and then multiply <img class="math" src="_images/math/73fc5989cb44f8dfd0734f299f363850a6eb4199.png" alt="(\X^T\X)^{-1}"/> on both side of the former result.</p>
+</div>
 </div>
 <div class="section" id="demo">
 <h3>8.1.3. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
@@ -354,7 +369,7 @@ Then the normal equations are written as</p>
 <span class="o">+-------+-----------------+------------------+------------------+------------------+</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id19">
+<div class="figure align-center" id="id20">
 <span id="fig-adfreq"></span><img alt="_images/ad.png" src="_images/ad.png" />
 <p class="caption"><span class="caption-text">Sales distribution</span></p>
 </div>
@@ -648,7 +663,7 @@ function which has similar format as <strong>R</strong> output for the linear re
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Root</span> <span class="n">Mean</span> <span class="n">Squared</span> <span class="n">Error</span> <span class="p">(</span><span class="n">RMSE</span><span class="p">)</span> <span class="n">on</span> <span class="n">test</span> <span class="n">data</span> <span class="o">=</span> <span class="mf">1.63114</span>
 </pre></div>
 </div>
-<p>You can also check the <img class="math" src="_images/math/d5c12ca1fb7f04c314ad64b45a5b7634a5c266f7.png" alt="R^2"/> value for the test data:</p>
+<p>You can also check the <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/> value for the test data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_true</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 
@@ -664,7 +679,7 @@ function which has similar format as <strong>R</strong> output for the linear re
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">You should know most softwares are using different formula to calculate the
-<img class="math" src="_images/math/d5c12ca1fb7f04c314ad64b45a5b7634a5c266f7.png" alt="R^2"/> value when no intercept is included in the model. You can get more
+<img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/> value when no intercept is included in the model. You can get more
 information from the <a class="reference external" href="https://stats.stackexchange.com/questions/26176/removal-of-statistically-significant-intercept-term-increases-r2-in-linear-mo">disscussion at StackExchange</a>.</p>
 </div>
 </div>
@@ -1050,7 +1065,7 @@ function which has similar format as <strong>R</strong> output for the linear re
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Then you will get the <img class="math" src="_images/math/d5c12ca1fb7f04c314ad64b45a5b7634a5c266f7.png" alt="R^2"/> value:</p>
+<p>Then you will get the <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/> value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">:</span> <span class="mf">0.87707391843</span>
 </pre></div>
 </div>
@@ -1391,7 +1406,7 @@ to good to keep tracking your data during prototype pahse):</p>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Then you will get the <img class="math" src="_images/math/d5c12ca1fb7f04c314ad64b45a5b7634a5c266f7.png" alt="R^2"/> value:</p>
+<p>Then you will get the <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/> value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">:</span> <span class="mf">0.911024318967</span>
 </pre></div>
 </div>
@@ -2095,7 +2110,7 @@ to good to keep tracking your data during prototype pahse):</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Mar 28, 2019.
+        Last updated on Apr 04, 2019.
       </span>
 
     </p>

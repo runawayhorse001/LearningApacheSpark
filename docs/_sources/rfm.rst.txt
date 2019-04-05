@@ -573,7 +573,7 @@ In my opinion, sometimes it's hard to choose the number of the clusters. As show
 	    :return r_table: the running results table  
 
 	    :author: Wenqiang Feng
-	    :email:  WFeng@dstsystems.com    
+	    :email:  von198@gmail.com.com    
 	    '''
 
 	    start = time.time()

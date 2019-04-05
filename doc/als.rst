@@ -236,7 +236,7 @@ Since the count results are not the same, we have some null value in the ``Custo
 	only showing top 5 rows
 
 Build feature matrix 
--------------------+
+--------------------
 
 * Fetch the top ``n`` cusip list 
 
