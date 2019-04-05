@@ -93,7 +93,7 @@ In mathematics, :eq:`eq_Ax` is a overdetermined system.  The method of ordinary 
 .. math::
 	:label: eq_minAx
 
-	{\displaystyle \min _{x}  ||\X \Bbeta-\y||} ,
+	{\displaystyle \min _{\Bbeta}  ||\X \Bbeta-\y||} ,
 
 the solution of which can be written with the normal equations:
 
