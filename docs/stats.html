@@ -91,11 +91,21 @@
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Statistics Preliminary</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#notations">6.1. Notations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#measurement-formula">6.2. Measurement Formula</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#statistical-tests">6.3. Statistical Tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#correlational-test">6.3.1. Correlational Test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comparison-of-means-test">6.3.2. Comparison of Means test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#non-parametric-test">6.3.3. Non-parametric Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measurement-formula">6.2. Measurement Formula</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mean-absolute-error">6.2.1. Mean absolute error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mean-squared-error">6.2.2. Mean squared error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#root-mean-squared-error">6.2.3. Root Mean squared error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#total-sum-of-squares">6.2.4. Total sum of squares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explained-sum-of-squares">6.2.5. Explained Sum of Squares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#residual-sum-of-squares">6.2.6. Residual Sum of Squares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coefficient-of-determination-r-2">6.2.7. Coefficient of determination <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#confusion-matrix">6.3. Confusion Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#statistical-tests">6.4. Statistical Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#correlational-test">6.4.1. Correlational Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-of-means-test">6.4.2. Comparison of Means test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-parametric-test">6.4.3. Non-parametric Test</a></li>
 </ul>
 </li>
 </ul>
@@ -193,49 +203,74 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 <li>n : the number of the features</li>
 <li><img class="math" src="_images/math/1d9aa0f41ea352df18fe662f9bb3792c3c9f32c9.png" alt="y_i"/> : i-th label</li>
 <li><img class="math" src="_images/math/82f4d333f52aa9ac01820c28c4a75b5d4be98ad8.png" alt="\hat{y}_i"/> : i-th predicted label</li>
-<li><img class="math" src="_images/math/a33bb2ca31600e8b69cedff0063adec2f5f8c55c.png" alt="{\displaystyle {\bar {y}}} = {\frac {1}{m}}\sum _{i=1}^{n}y_{i}"/>:  the mean of <img class="math" src="_images/math/75dc787d328a22a24f33032ea9e005d8ca1bf4ff.png" alt="y"/>.</li>
+<li><img class="math" src="_images/math/4cf2329e899fc9e499916c5e81846fcc084f8555.png" alt="{\displaystyle {\bar {\y}}} = {\frac {1}{m}}\sum _{i=1}^{m}y_{i}"/> :  the mean of <img class="math" src="_images/math/6d07a8af48547e086f8ef35149e37b38bc869f3f.png" alt="\y"/>.</li>
+<li><img class="math" src="_images/math/6d07a8af48547e086f8ef35149e37b38bc869f3f.png" alt="\y"/> : the label vector.</li>
+<li><img class="math" src="_images/math/06c6b2771ccea92d7263b62fbf2073843ea61a4a.png" alt="\hat{\y}"/> : the predicted label vector.</li>
 </ul>
 </div>
 <div class="section" id="measurement-formula">
 <h2>6.2. Measurement Formula<a class="headerlink" href="#measurement-formula" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Mean absolute error</li>
-</ul>
+<div class="section" id="mean-absolute-error">
+<h3>6.2.1. Mean absolute error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, <strong>MAE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_absolute_error">Mean absolute error</a>) is a measure of difference between two continuous variables. The Mean Absolute Error is given by:</p>
 <div class="math">
 <p><img src="_images/math/2a952a38cbfebe5dc02ca63540a3b37a5b5d3dc2.png" alt="{\displaystyle \mathrm {MAE} ={\frac{1}{m} {\sum _{i=1}^{m}\left|\hat{y}_i-y_i\right|}}.}"/></p>
-</div><ul class="simple">
-<li>Mean squared error</li>
-</ul>
+</div></div>
+<div class="section" id="mean-squared-error">
+<h3>6.2.2. Mean squared error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, the <strong>MSE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_squared_error">Mean Squared Error</a>) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations—that is, the difference between the estimator and what is estimated.</p>
 <div class="math">
 <p><img src="_images/math/eee7034dc52b74ca381e32c49f99b19009386794.png" alt="\text{MSE}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
-</div><ul class="simple">
-<li>Root Mean squared error</li>
-</ul>
+</div></div>
+<div class="section" id="root-mean-squared-error">
+<h3>6.2.3. Root Mean squared error<a class="headerlink" href="#root-mean-squared-error" title="Permalink to this headline">¶</a></h3>
 <div class="math">
 <p><img src="_images/math/03eb7d60324c205e99213a2ed2749dd1d0e01ebd.png" alt="\text{RMSE} = \sqrt{\text{MSE}}=\sqrt{\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2}"/></p>
-</div><ul class="simple">
-<li>Total sum of squares</li>
-</ul>
+</div></div>
+<div class="section" id="total-sum-of-squares">
+<h3>6.2.4. Total sum of squares<a class="headerlink" href="#total-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistical data analysis the <strong>TSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_sum_of_squares">Total Sum of Squares</a>) is a quantity that appears as part of a standard way of presenting results of such analyses. It is defined as being the sum, over all observations, of the squared differences of each observation from the overall mean.</p>
 <div class="math">
-<p><img src="_images/math/0caafbb7a496b2cb16754d2581d14e4507c2a5ee.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{y}\right)^2"/></p>
-</div><ul class="simple">
-<li>Residual Sum of Squares</li>
-</ul>
-<div class="math">
-<p><img src="_images/math/fa1dc98459fac615517313986a3d439b804e3898.png" alt="\text{RSS}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
-</div><ul class="simple">
-<li>Coefficient of determination <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/></li>
-</ul>
-<div class="math">
-<p><img src="_images/math/0daf9ef61b092d08eafe2c6d84e28584f9812f5c.png" alt="R^{2} := 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
+<p><img src="_images/math/2b9f245ce97f2721ef1ebec5f54499d55f31c05b.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{\y}\right)^2"/></p>
 </div></div>
+<div class="section" id="explained-sum-of-squares">
+<h3>6.2.5. Explained Sum of Squares<a class="headerlink" href="#explained-sum-of-squares" title="Permalink to this headline">¶</a></h3>
+<p>In statistics, the <strong>ESS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Explained sum of squares</a>), alternatively known as the model sum of squares or sum of squares due to regression.</p>
+<p>The ESS is the sum of the squares of the differences of the predicted values and the mean value of the response variable which is given by:</p>
+<div class="math">
+<p><img src="_images/math/e36d76cc41c691361b59c40774f9e37b66c7d81f.png" alt="\text{ESS}= \sum_{i=1}^m\left( \hat{y}_i-\bar{\y}\right)^2"/></p>
+</div></div>
+<div class="section" id="residual-sum-of-squares">
+<h3>6.2.6. Residual Sum of Squares<a class="headerlink" href="#residual-sum-of-squares" title="Permalink to this headline">¶</a></h3>
+<p>In statistics, <strong>RSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Residual_sum_of_squares">Residual sum of squares</a>), also known as the sum of squared residuals (SSR) or the sum of squared errors of prediction (SSE), is the sum of the squares of residuals which is given by:</p>
+<div class="math">
+<p><img src="_images/math/65a6edee1c605c1deb15b0399eb42c86c7a04dcb.png" alt="\text{RSS}= \sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+</div></div>
+<div class="section" id="coefficient-of-determination-r-2">
+<h3>6.2.7. Coefficient of determination <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/><a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><img src="_images/math/c7e00d1a346f31ada23fa00a97ef9e8b07119c7a.png" alt="R^{2} := \frac{ESS}{TSS} = 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
+</div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In general (<img class="math" src="_images/math/859431c7e13226337646d0f9e217ef916fd94f5d.png" alt="\y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}"/>), total sum of squares = explained sum of squares + residual sum of squares, i.e.:</p>
+<div class="math">
+<p><img src="_images/math/71700bb5b84b42e8d0aa192dbcfc8e441d9ba1bf.png" alt="\text{TSS} = \text{ESS} + \text{RSS} \text{ if and only if } {\displaystyle \y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}}."/></p>
+</div><p class="last">More details can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Partitioning in the general ordinary least squares model</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="confusion-matrix">
+<h2>6.3. Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id6">
+<span id="fig-con"></span><img alt="_images/confusion_matrix.png" src="_images/confusion_matrix.png" />
+<p class="caption"><span class="caption-text">Confusion Matrix</span></p>
+</div>
+<p>TODO …..</p>
+</div>
 <div class="section" id="statistical-tests">
-<h2>6.3. Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
+<h2>6.4. Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="correlational-test">
-<h3>6.3.1. Correlational Test<a class="headerlink" href="#correlational-test" title="Permalink to this headline">¶</a></h3>
+<h3>6.4.1. Correlational Test<a class="headerlink" href="#correlational-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Pearson correlation: Tests for the strength of the association between two continuous variables.</li>
 <li>Spearman correlation: Tests for the strength of the association between two ordinal variables (does not rely on the assumption of normal distributed data).</li>
@@ -243,7 +278,7 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 </ul>
 </div>
 <div class="section" id="comparison-of-means-test">
-<h3>6.3.2. Comparison of Means test<a class="headerlink" href="#comparison-of-means-test" title="Permalink to this headline">¶</a></h3>
+<h3>6.4.2. Comparison of Means test<a class="headerlink" href="#comparison-of-means-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Paired T-test: Tests for difference between two related variables.</li>
 <li>Independent T-test: Tests for difference between two independent variables.</li>
@@ -251,7 +286,7 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 </ul>
 </div>
 <div class="section" id="non-parametric-test">
-<h3>6.3.3. Non-parametric Test<a class="headerlink" href="#non-parametric-test" title="Permalink to this headline">¶</a></h3>
+<h3>6.4.3. Non-parametric Test<a class="headerlink" href="#non-parametric-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Wilcoxon rank-sum test: Tests for difference between two independent variables - takes into account magnitude and direction of difference.</li>
 <li>Wilcoxon sign-rank test: Tests for difference between two related variables - takes into account magnitude and direction of difference.</li>
