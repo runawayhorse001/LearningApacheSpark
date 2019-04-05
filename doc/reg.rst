@@ -19,7 +19,7 @@ Ordinary least squares regression
 
 .. math::
 
-	\min _{\beta\in \mathbb {R} ^{p}}{\frac {1}{n}}\|{\hat {X}}\beta-{\hat {Y}}\|^{2}
+	\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta -{\y}\|^{2}
 
 When :math:`\lambda=0` (i.e. ``regParam`` :math:`=0`), then there is no penalty.
 
@@ -35,7 +35,7 @@ Ridge regression
 
 .. math::
 
-	\min _{\beta\in \mathbb {R} ^{p}}{\frac {1}{n}}\|{\hat {X}}\beta-{\hat {Y}}\|^{2}+\lambda \|\beta\|_{2}^{2}
+	\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda \|\Bbeta\|_{2}^{2}
 
 When :math:`\lambda>0` (i.e. ``regParam`` :math:`>0`) and :math:`\alpha=0` (i.e. ``elasticNetParam`` :math:`=0`)  , then the penalty is an L2 penalty.
 
@@ -50,7 +50,7 @@ Least Absolute Shrinkage and Selection Operator (LASSO)
 
 .. math::
 
-	\min _{\beta\in \mathbb {R} ^{p}}{\frac {1}{n}}\|{\hat {X}}\beta-{\hat {Y}}\|^{2}+\lambda\|\beta\|_{1}
+	\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda\|\Bbeta\|_{1}
 
 When :math:`\lambda>0` (i.e. ``regParam`` :math:`>0`) and :math:`\alpha=1` (i.e. ``elasticNetParam`` :math:`=1`), then the penalty is an L1 penalty.
 
@@ -65,7 +65,7 @@ Elastic net
 
 .. math::
 
-	\min _{\beta\in \mathbb {R} ^{p}}{\frac {1}{n}}\|{\hat {X}}\beta-{\hat {Y}}\|^{2}+\lambda (\alpha \|\beta\|_{1}+(1-\alpha )\|\beta\|_{2}^{2}),\alpha \in (0,1)
+	\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda (\alpha \|\Bbeta\|_{1}+(1-\alpha )\|\Bbeta\|_{2}^{2}),\alpha \in (0,1)
 
 When :math:`\lambda>0` (i.e. ``regParam`` :math:`>0`) and ``elasticNetParam`` :math:`\in (0,1)` (i.e. :math:`\alpha\in (0,1)`) , then the penalty is an L1 + L2 penalty.
 
