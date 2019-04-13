@@ -27,7 +27,7 @@ Notations
 Linear Algebra Preliminaries
 ++++++++++++++++++++++++++++
 
-Since I have documented the Linear Algebra Preliminaries in my Prelim Exam note for Numberical Analysis, the interested reader is referred to [Feng2014]_ for more details (Figure. :ref:`fig_linear_algebra`).
+Since I have documented the Linear Algebra Preliminaries in my Prelim Exam note for Numerical Analysis, the interested reader is referred to [Feng2014]_ for more details (Figure. :ref:`fig_linear_algebra`).
 
 .. _fig_linear_algebra:
 .. figure:: images/linear_algebra.png

@@ -96,7 +96,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction">8.1.1. Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-solve-it">8.1.2. How to solve it?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ordinary-least-squares">8.1.3. Ordinary Least Squares</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#demo">8.1.4. Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gradient-descent">8.1.4. Gradient Descent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demo">8.1.5. Demo</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#generalized-linear-regression">8.2. Generalized linear regression</a><ul>
@@ -302,8 +303,19 @@ Then the matrix format equation is written as</p>
 <p class="last">Actually, <a class="reference internal" href="#equation-eq-solax">(3)</a> can be derivated by the following way: multiply <img class="math" src="_images/math/13a89db85547bd8fd6049eb079abdd813668698d.png" alt="\X^T"/> on side of <a class="reference internal" href="#equation-eq-ax">(1)</a> and then multiply <img class="math" src="_images/math/73fc5989cb44f8dfd0734f299f363850a6eb4199.png" alt="(\X^T\X)^{-1}"/> on both side of the former result. You may also apply the <code class="docutils literal notranslate"><span class="pre">Extreme</span> <span class="pre">Value</span> <span class="pre">Theorem</span></code> to <a class="reference internal" href="#equation-eq-minax">(2)</a> and find the solution <a class="reference internal" href="#equation-eq-solax">(3)</a>.</p>
 </div>
 </div>
+<div class="section" id="gradient-descent">
+<h3>8.1.4. Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id20">
+<span id="fig-gd1d"></span><img alt="_images/gradient1d.png" src="_images/gradient1d.png" />
+<p class="caption"><span class="caption-text">Gradient Descent in 1D</span></p>
+</div>
+<div class="figure align-center" id="id21">
+<span id="fig-gd2d"></span><img alt="_images/gradient2d.png" src="_images/gradient2d.png" />
+<p class="caption"><span class="caption-text">Gradient Descent in 2D</span></p>
+</div>
+</div>
 <div class="section" id="demo">
-<h3>8.1.4. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
+<h3>8.1.5. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegression.ipynb">Linear Regression</a> which was implemented without using Pipeline.</li>
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegressionWpipeline.ipynb">Linear Regression with Pipeline</a> which was implemented with using Pipeline.</li>
@@ -372,7 +384,7 @@ Then the matrix format equation is written as</p>
 <span class="o">+-------+-----------------+------------------+------------------+------------------+</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id20">
+<div class="figure align-center" id="id22">
 <span id="fig-adfreq"></span><img alt="_images/ad.png" src="_images/ad.png" />
 <p class="caption"><span class="caption-text">Sales distribution</span></p>
 </div>

@@ -108,6 +108,23 @@ where :math:`{\displaystyle {\mathrm {T} }}` indicates a matrix transpose, provi
 
    Actually, :eq:`eq_solAx` can be derivated by the following way: multiply :math:`\X^T` on side of :eq:`eq_Ax` and then multiply :math:`(\X^T\X)^{-1}` on both side of the former result. You may also apply the ``Extreme Value Theorem`` to :eq:`eq_minAx` and find the solution :eq:`eq_solAx`.
 
+Gradient Descent 
+----------------
+
+
+.. _fig_gd1d:
+.. figure:: images/gradient1d.png
+   :align: center
+
+   Gradient Descent in 1D
+
+.. _fig_gd2d:
+.. figure:: images/gradient2d.png
+   :align: center
+
+   Gradient Descent in 2D 
+
+
 
 Demo
 ----
