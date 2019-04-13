@@ -101,7 +101,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#coefficient-of-determination-r-2">6.2.7. Coefficient of determination <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#confusion-matrix">6.3. Confusion Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#confusion-matrix">6.3. Confusion Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recall">6.3.1. Recall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#precision">6.3.2. Precision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accuracy">6.3.3. Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f-1-score">6.3.4. <img class="math" src="_images/math/e09f42ad9b2f6f913f7e6e1417064599920b3755.png" alt="F_1"/>-score</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#statistical-tests">6.4. Statistical Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#correlational-test">6.4.1. Correlational Test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#comparison-of-means-test">6.4.2. Comparison of Means test</a></li>
@@ -265,7 +271,26 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 <span id="fig-con"></span><img alt="_images/confusion_matrix.png" src="_images/confusion_matrix.png" />
 <p class="caption"><span class="caption-text">Confusion Matrix</span></p>
 </div>
-<p>TODO …..</p>
+<div class="section" id="recall">
+<h3>6.3.1. Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><img src="_images/math/e198277c3f68d23e81e39b2b8859c864f43fa1ef.png" alt="\text{Recall}=\frac{\text{TP}}{\text{TP+FN}}"/></p>
+</div></div>
+<div class="section" id="precision">
+<h3>6.3.2. Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><img src="_images/math/7e18875f7c8c24ad656e9d7c4dc4efdb3c621f35.png" alt="\text{Precision}=\frac{\text{TP}}{\text{TP+FP}}"/></p>
+</div></div>
+<div class="section" id="accuracy">
+<h3>6.3.3. Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><img src="_images/math/aa8dc8aa566b6da48f2a48bc7619cee5dcbc64fb.png" alt="\text{Accuracy }=\frac{\text{TP+TN}}{\text{Total}}"/></p>
+</div></div>
+<div class="section" id="f-1-score">
+<h3>6.3.4. <img class="math" src="_images/math/e09f42ad9b2f6f913f7e6e1417064599920b3755.png" alt="F_1"/>-score<a class="headerlink" href="#f-1-score" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+<p><img src="_images/math/166420e5b66688d5fd306935872c69be5eaa6c93.png" alt="\text{F}_1=\frac{2*\text{Recall}*\text{Precision}}{\text{Recall}+ \text{Precision}}"/></p>
+</div></div>
 </div>
 <div class="section" id="statistical-tests">
 <h2>6.4. Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
@@ -318,7 +343,7 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Apr 05, 2019.
+        Last updated on Apr 12, 2019.
       </span>
 
     </p>

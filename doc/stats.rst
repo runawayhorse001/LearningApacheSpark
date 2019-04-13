@@ -109,10 +109,34 @@ Confusion Matrix
 
    Confusion Matrix
 
+Recall
+------
 
-TODO .....
+.. math::
+
+   \text{Recall}=\frac{\text{TP}}{\text{TP+FN}}
 
 
+Precision
+---------
+
+.. math::
+
+   \text{Precision}=\frac{\text{TP}}{\text{TP+FP}}
+
+Accuracy
+--------
+
+.. math::
+
+   \text{Accuracy }=\frac{\text{TP+TN}}{\text{Total}}
+
+:math:`F_1`-score
+-----------------
+
+.. math::
+
+   \text{F}_1=\frac{2*\text{Recall}*\text{Precision}}{\text{Recall}+ \text{Precision}}
 
 
 Statistical Tests
