@@ -1,15 +1,16 @@
 
 .. _stats:
 
-======================
-Statistics Preliminary
-======================
+===========================================
+Statistics and Linear Algebra Preliminaries
+===========================================
 
 .. admonition:: Chinese proverb
 
    **If you only know yourself, but not your opponent, you may win or may lose.
    If you know neither yourself nor your enemy, you will always endanger yourself** 
    – idiom, from Sunzi’s Art of War  
+
 
 Notations 
 +++++++++
@@ -21,6 +22,19 @@ Notations
 * :math:`{\displaystyle {\bar {\y}}} = {\frac {1}{m}}\sum _{i=1}^{m}y_{i}` :  the mean of :math:`\y`.
 * :math:`\y` : the label vector.
 * :math:`\hat{\y}` : the predicted label vector.
+
+
+Linear Algebra Preliminaries
+++++++++++++++++++++++++++++
+
+Since I have documented the Linear Algebra Preliminaries in my Prelim Exam note for Numberical Analysis, the interested reader is referred to [Feng2014]_ for more details (Figure. :ref:`fig_linear_algebra`).
+
+.. _fig_linear_algebra:
+.. figure:: images/linear_algebra.png
+   :align: center
+
+   Linear Algebra Preliminaries
+
 
 Measurement Formula
 +++++++++++++++++++
