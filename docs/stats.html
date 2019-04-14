@@ -99,14 +99,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#total-sum-of-squares">6.3.4. Total sum of squares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#explained-sum-of-squares">6.3.5. Explained Sum of Squares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#residual-sum-of-squares">6.3.6. Residual Sum of Squares</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#coefficient-of-determination-r-2">6.3.7. Coefficient of determination <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coefficient-of-determination-r-2">6.3.7. Coefficient of determination <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#confusion-matrix">6.4. Confusion Matrix</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#recall">6.4.1. Recall</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#precision">6.4.2. Precision</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accuracy">6.4.3. Accuracy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#f-1-score">6.4.4. <img class="math" src="_images/math/e09f42ad9b2f6f913f7e6e1417064599920b3755.png" alt="F_1"/>-score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f-1-score">6.4.4. <img class="math" src="_images/math/7792c1f9c595f7dd6fc3cc810d9ab12bef97da1f.png" alt="F_1"/>-score</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#statistical-tests">6.5. Statistical Tests</a><ul>
@@ -208,11 +208,11 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 <ul class="simple">
 <li>m : the number of the samples</li>
 <li>n : the number of the features</li>
-<li><img class="math" src="_images/math/1d9aa0f41ea352df18fe662f9bb3792c3c9f32c9.png" alt="y_i"/> : i-th label</li>
-<li><img class="math" src="_images/math/82f4d333f52aa9ac01820c28c4a75b5d4be98ad8.png" alt="\hat{y}_i"/> : i-th predicted label</li>
-<li><img class="math" src="_images/math/4cf2329e899fc9e499916c5e81846fcc084f8555.png" alt="{\displaystyle {\bar {\y}}} = {\frac {1}{m}}\sum _{i=1}^{m}y_{i}"/> :  the mean of <img class="math" src="_images/math/6d07a8af48547e086f8ef35149e37b38bc869f3f.png" alt="\y"/>.</li>
-<li><img class="math" src="_images/math/6d07a8af48547e086f8ef35149e37b38bc869f3f.png" alt="\y"/> : the label vector.</li>
-<li><img class="math" src="_images/math/06c6b2771ccea92d7263b62fbf2073843ea61a4a.png" alt="\hat{\y}"/> : the predicted label vector.</li>
+<li><img class="math" src="_images/math/f25742cd5cf28cf855e7a6089d183c1d2a8f9c5b.png" alt="y_i"/> : i-th label</li>
+<li><img class="math" src="_images/math/ba191a86252f460cffbe98ce0825d19d7dd18bf1.png" alt="\hat{y}_i"/> : i-th predicted label</li>
+<li><img class="math" src="_images/math/15cfea19223d0df87409504dc45b86d0fd05e8e8.png" alt="{\displaystyle {\bar {\y}}} = {\frac {1}{m}}\sum _{i=1}^{m}y_{i}"/> :  the mean of <img class="math" src="_images/math/305bd617f1a5fac75829041961d4d1e4335fd170.png" alt="\y"/>.</li>
+<li><img class="math" src="_images/math/305bd617f1a5fac75829041961d4d1e4335fd170.png" alt="\y"/> : the label vector.</li>
+<li><img class="math" src="_images/math/c28ad8b5f9b1f4c1f951a8a78c1a825a0fb19efc.png" alt="\hat{\y}"/> : the predicted label vector.</li>
 </ul>
 </div>
 <div class="section" id="linear-algebra-preliminaries">
@@ -229,47 +229,47 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 <h3>6.3.1. Mean absolute error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, <strong>MAE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_absolute_error">Mean absolute error</a>) is a measure of difference between two continuous variables. The Mean Absolute Error is given by:</p>
 <div class="math">
-<p><img src="_images/math/2a952a38cbfebe5dc02ca63540a3b37a5b5d3dc2.png" alt="{\displaystyle \mathrm {MAE} ={\frac{1}{m} {\sum _{i=1}^{m}\left|\hat{y}_i-y_i\right|}}.}"/></p>
+<p><img src="_images/math/7cb3025235e8671f7874478d2917ba68e0e2dae3.png" alt="{\displaystyle \mathrm {MAE} ={\frac{1}{m} {\sum _{i=1}^{m}\left|\hat{y}_i-y_i\right|}}.}"/></p>
 </div></div>
 <div class="section" id="mean-squared-error">
 <h3>6.3.2. Mean squared error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, the <strong>MSE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_squared_error">Mean Squared Error</a>) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations—that is, the difference between the estimator and what is estimated.</p>
 <div class="math">
-<p><img src="_images/math/eee7034dc52b74ca381e32c49f99b19009386794.png" alt="\text{MSE}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+<p><img src="_images/math/d4c4422bf81c8f27e4631fb0226536ecec324235.png" alt="\text{MSE}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
 </div></div>
 <div class="section" id="root-mean-squared-error">
 <h3>6.3.3. Root Mean squared error<a class="headerlink" href="#root-mean-squared-error" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/03eb7d60324c205e99213a2ed2749dd1d0e01ebd.png" alt="\text{RMSE} = \sqrt{\text{MSE}}=\sqrt{\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2}"/></p>
+<p><img src="_images/math/ec86b05be556df96e0e9b31ed22f9ebbfb00eb15.png" alt="\text{RMSE} = \sqrt{\text{MSE}}=\sqrt{\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2}"/></p>
 </div></div>
 <div class="section" id="total-sum-of-squares">
 <h3>6.3.4. Total sum of squares<a class="headerlink" href="#total-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistical data analysis the <strong>TSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_sum_of_squares">Total Sum of Squares</a>) is a quantity that appears as part of a standard way of presenting results of such analyses. It is defined as being the sum, over all observations, of the squared differences of each observation from the overall mean.</p>
 <div class="math">
-<p><img src="_images/math/2b9f245ce97f2721ef1ebec5f54499d55f31c05b.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{\y}\right)^2"/></p>
+<p><img src="_images/math/994ba752d39e40092feed7d0a628a887bdeb1521.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{\y}\right)^2"/></p>
 </div></div>
 <div class="section" id="explained-sum-of-squares">
 <h3>6.3.5. Explained Sum of Squares<a class="headerlink" href="#explained-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, the <strong>ESS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Explained sum of squares</a>), alternatively known as the model sum of squares or sum of squares due to regression.</p>
 <p>The ESS is the sum of the squares of the differences of the predicted values and the mean value of the response variable which is given by:</p>
 <div class="math">
-<p><img src="_images/math/e36d76cc41c691361b59c40774f9e37b66c7d81f.png" alt="\text{ESS}= \sum_{i=1}^m\left( \hat{y}_i-\bar{\y}\right)^2"/></p>
+<p><img src="_images/math/e9afd2f3e693e5f1e45b85d373cd2147a771131b.png" alt="\text{ESS}= \sum_{i=1}^m\left( \hat{y}_i-\bar{\y}\right)^2"/></p>
 </div></div>
 <div class="section" id="residual-sum-of-squares">
 <h3>6.3.6. Residual Sum of Squares<a class="headerlink" href="#residual-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, <strong>RSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Residual_sum_of_squares">Residual sum of squares</a>), also known as the sum of squared residuals (SSR) or the sum of squared errors of prediction (SSE), is the sum of the squares of residuals which is given by:</p>
 <div class="math">
-<p><img src="_images/math/65a6edee1c605c1deb15b0399eb42c86c7a04dcb.png" alt="\text{RSS}= \sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+<p><img src="_images/math/31fb3a7e9ea49da5a5d8ed221b291291fb506550.png" alt="\text{RSS}= \sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
 </div></div>
 <div class="section" id="coefficient-of-determination-r-2">
-<h3>6.3.7. Coefficient of determination <img class="math" src="_images/math/966d0665c242ccf061dcc387722a5325b77b0ab9.png" alt="R^2"/><a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">¶</a></h3>
+<h3>6.3.7. Coefficient of determination <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/><a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/c7e00d1a346f31ada23fa00a97ef9e8b07119c7a.png" alt="R^{2} := \frac{ESS}{TSS} = 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
+<p><img src="_images/math/26a773e409cc86cf2289cc8e061a57c0d9c4e655.png" alt="R^{2} := \frac{ESS}{TSS} = 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
 </div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>In general (<img class="math" src="_images/math/859431c7e13226337646d0f9e217ef916fd94f5d.png" alt="\y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}"/>), total sum of squares = explained sum of squares + residual sum of squares, i.e.:</p>
+<p>In general (<img class="math" src="_images/math/705c248bc17e51790314845f2839d2edfec72a9d.png" alt="\y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}"/>), total sum of squares = explained sum of squares + residual sum of squares, i.e.:</p>
 <div class="math">
-<p><img src="_images/math/71700bb5b84b42e8d0aa192dbcfc8e441d9ba1bf.png" alt="\text{TSS} = \text{ESS} + \text{RSS} \text{ if and only if } {\displaystyle \y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}}."/></p>
+<p><img src="_images/math/e70a7a43f3b6ab603a5558e9fd02579be0967ae0.png" alt="\text{TSS} = \text{ESS} + \text{RSS} \text{ if and only if } {\displaystyle \y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}}."/></p>
 </div><p class="last">More details can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Partitioning in the general ordinary least squares model</a>.</p>
 </div>
 </div>
@@ -283,22 +283,22 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
 <div class="section" id="recall">
 <h3>6.4.1. Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/e198277c3f68d23e81e39b2b8859c864f43fa1ef.png" alt="\text{Recall}=\frac{\text{TP}}{\text{TP+FN}}"/></p>
+<p><img src="_images/math/695efcb46b2085cbcb9d540b3d8bd77bf404af6d.png" alt="\text{Recall}=\frac{\text{TP}}{\text{TP+FN}}"/></p>
 </div></div>
 <div class="section" id="precision">
 <h3>6.4.2. Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/7e18875f7c8c24ad656e9d7c4dc4efdb3c621f35.png" alt="\text{Precision}=\frac{\text{TP}}{\text{TP+FP}}"/></p>
+<p><img src="_images/math/2e06514ae3b12b4cc9d3bf2fbe892b60ed2cbc05.png" alt="\text{Precision}=\frac{\text{TP}}{\text{TP+FP}}"/></p>
 </div></div>
 <div class="section" id="accuracy">
 <h3>6.4.3. Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/aa8dc8aa566b6da48f2a48bc7619cee5dcbc64fb.png" alt="\text{Accuracy }=\frac{\text{TP+TN}}{\text{Total}}"/></p>
+<p><img src="_images/math/ac86bb5d763cd4fdffeca21b253284a88400e163.png" alt="\text{Accuracy }=\frac{\text{TP+TN}}{\text{Total}}"/></p>
 </div></div>
 <div class="section" id="f-1-score">
-<h3>6.4.4. <img class="math" src="_images/math/e09f42ad9b2f6f913f7e6e1417064599920b3755.png" alt="F_1"/>-score<a class="headerlink" href="#f-1-score" title="Permalink to this headline">¶</a></h3>
+<h3>6.4.4. <img class="math" src="_images/math/7792c1f9c595f7dd6fc3cc810d9ab12bef97da1f.png" alt="F_1"/>-score<a class="headerlink" href="#f-1-score" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/166420e5b66688d5fd306935872c69be5eaa6c93.png" alt="\text{F}_1=\frac{2*\text{Recall}*\text{Precision}}{\text{Recall}+ \text{Precision}}"/></p>
+<p><img src="_images/math/45bcecd31b9a7bff075319dec1db51f46c019877.png" alt="\text{F}_1=\frac{2*\text{Recall}*\text{Precision}}{\text{Recall}+ \text{Precision}}"/></p>
 </div></div>
 </div>
 <div class="section" id="statistical-tests">
@@ -352,7 +352,7 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Apr 13, 2019.
+        Last updated on Apr 14, 2019.
       </span>
 
     </p>

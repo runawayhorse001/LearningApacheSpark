@@ -295,7 +295,7 @@
 <h3>16.2.2. Calulate the Compound Annual Growth Rate<a class="headerlink" href="#calulate-the-compound-annual-growth-rate" title="Permalink to this headline">¶</a></h3>
 <p>The formula for Compound Annual Growth Rate (CAGR) is very useful for investment analysis. It may also be referred to as the annualized rate of return or annual percent yield or effective annual rate, depending on the algebraic form of the equation. Many investments such as stocks have returns that can vary wildly. The CAGR formula allows you to calculate a “smoothed” rate of return that you can use to compare to other investments. The formula is defined as (more details can be found at <a class="reference external" href="https://www.vertex42.com/Calculators/cagr-calculator.html">CAGR Calculator and Formula</a>)</p>
 <div class="math">
-<p><img src="_images/math/504f4dfd39503512b6f3daaeb4c436ee630f0594.png" alt="\text{CAGR}=\left(\frac{\text{End Value}}{\text{Start Value}}\right)^{\frac{365}{\text{Days}}} -1"/></p>
+<p><img src="_images/math/76e4f9fb0f9c842a0c4d84777d0274f7c231f99d.png" alt="\text{CAGR}=\left(\frac{\text{End Value}}{\text{Start Value}}\right)^{\frac{365}{\text{Days}}} -1"/></p>
 </div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">days</span> <span class="o">=</span>  <span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">days</span>
 <span class="n">cagr</span> <span class="o">=</span> <span class="p">((((</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">**</span> <span class="p">(</span><span class="mf">365.0</span><span class="o">/</span><span class="n">days</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="k">print</span> <span class="p">(</span><span class="s1">&#39;CAGR =&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cagr</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
@@ -494,7 +494,7 @@ trading days in a given year.  More details can be found at <a class="reference 
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Apr 13, 2019.
+        Last updated on Apr 14, 2019.
       </span>
 
     </p>

@@ -208,16 +208,16 @@ statistic is computed. All label and feature values must be categorical.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>dataset</strong> – DataFrame of categorical labels and categorical features.
 Real-valued features will be treated as categorical for each distinct value.</li>
-<li><strong>featuresCol</strong> – Name of features column in dataset, of type <img class="math" src="_images/math/ecdff87971ec62fa5738ff8e26d1e1fd8795d94f.png" alt="Vector"/> (<img class="math" src="_images/math/87baaadeb923a24c019b5c0b2ced3df658ed0e79.png" alt="VectorUDT"/>).</li>
+<li><strong>featuresCol</strong> – Name of features column in dataset, of type <img class="math" src="_images/math/3d474a1a93d28e526bcde5e5be38d9152d0d72a8.png" alt="Vector"/> (<img class="math" src="_images/math/9b09bef38ca021dea5ddc3bcf41fdeeca981a353.png" alt="VectorUDT"/>).</li>
 <li><strong>labelCol</strong> – Name of label column in dataset, of any numerical type.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame containing the test result for every feature against the label.
 This DataFrame will contain a single Row with the following fields:
-- <img class="math" src="_images/math/3fa36c639cf3e125785407d92f6a1cd4f72fb230.png" alt="pValues: Vector"/>
-- <img class="math" src="_images/math/0c22ad0019b284e3bbf9e769b4904843ca14cacd.png" alt="degreesOfFreedom: Array[Int]"/>
-- <img class="math" src="_images/math/45cb0d75489b005f61ca616a0ac3633649757c9f.png" alt="statistics: Vector"/>
+- <img class="math" src="_images/math/5bf8065a36978a8ec535f147db636087d4a288cd.png" alt="pValues: Vector"/>
+- <img class="math" src="_images/math/d7a5beec45e7bc388ec9f3f3f441ca6343a1b36d.png" alt="degreesOfFreedom: Array[Int]"/>
+- <img class="math" src="_images/math/ced87d99d2dcc50ba9c1cfd5f8453547a0ddf909.png" alt="statistics: Vector"/>
 Each of these fields has one value per feature.</p>
 </td>
 </tr>
@@ -250,12 +250,12 @@ Each of these fields has one value per feature.</p>
 <p class="last">Experimental</p>
 </div>
 <p>Compute the correlation matrix for the input dataset of Vectors using the specified method.
-Methods currently supported: <img class="math" src="_images/math/4db224eddbfcc5b0cd6d65c921ab3c789615f02e.png" alt="pearson"/> (default), <img class="math" src="_images/math/73f82682c7761f5ada5e6c5ac798e65723073b0f.png" alt="spearman"/>.</p>
+Methods currently supported: <img class="math" src="_images/math/475a1d91eddf2a467c760a74fa8de3fedd24b50a.png" alt="pearson"/> (default), <img class="math" src="_images/math/13caa56d973eb66113ba48ddd304567c9c29a98a.png" alt="spearman"/>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For Spearman, a rank correlation, we need to create an RDD[Double] for each column
 and sort it in order to retrieve the ranks and then join the columns back into an RDD[Vector],
-which is fairly costly. Cache the input Dataset before calling corr with <img class="math" src="_images/math/8741b306bea4a33f96947ef91f06afc5c6795c7d.png" alt="method = 'spearman'"/>
+which is fairly costly. Cache the input Dataset before calling corr with <img class="math" src="_images/math/cc86c45ef9530d8742228dda25c8d20c85244d7e.png" alt="method = 'spearman'"/>
 to avoid recomputing the common lineage.</p>
 </div>
 <div class="versionadded">
@@ -275,7 +275,7 @@ to avoid recomputing the common lineage.</p>
 to be computed. This must be a column of the dataset, and it must contain
 Vector objects.</li>
 <li><strong>method</strong> – String specifying the method to use for computing correlation.
-Supported: <img class="math" src="_images/math/4db224eddbfcc5b0cd6d65c921ab3c789615f02e.png" alt="pearson"/> (default), <img class="math" src="_images/math/73f82682c7761f5ada5e6c5ac798e65723073b0f.png" alt="spearman"/>.</li>
+Supported: <img class="math" src="_images/math/475a1d91eddf2a467c760a74fa8de3fedd24b50a.png" alt="pearson"/> (default), <img class="math" src="_images/math/13caa56d973eb66113ba48ddd304567c9c29a98a.png" alt="spearman"/>.</li>
 </ul>
 </td>
 </tr>
@@ -342,16 +342,16 @@ standard deviation.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>dataset</strong> – a Dataset or a DataFrame containing the sample of data to test.</li>
 <li><strong>sampleCol</strong> – Name of sample column in dataset, of any numerical type.</li>
-<li><strong>distName</strong> – a <img class="math" src="_images/math/177e9e796368116f6b63a2fd462012900d7a583d.png" alt="string"/> name for a theoretical distribution, currently only support “norm”.</li>
-<li><strong>params</strong> – a list of <img class="math" src="_images/math/4748160650de5e924a6a1abcef6f4ee5db828286.png" alt="Double"/> values specifying the parameters to be used for the theoretical
+<li><strong>distName</strong> – a <img class="math" src="_images/math/7825816ed0fadb5e9ac72cdc30ec1e00dc45a340.png" alt="string"/> name for a theoretical distribution, currently only support “norm”.</li>
+<li><strong>params</strong> – a list of <img class="math" src="_images/math/2e68cf7db593076665fde37049e612c1c94ffc5e.png" alt="Double"/> values specifying the parameters to be used for the theoretical
 distribution. For “norm” distribution, the parameters includes mean and variance.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A DataFrame that contains the Kolmogorov-Smirnov test result for the input sampled data.
 This DataFrame will contain a single Row with the following fields:
-- <img class="math" src="_images/math/0c6a1ef7062955ab9677c199438ca504c477db12.png" alt="pValue: Double"/>
-- <img class="math" src="_images/math/82e5fcaf74911328592de90c540309920d36ea42.png" alt="statistic: Double"/></p>
+- <img class="math" src="_images/math/f41422834f1816a2d35677a6d6bb5045a1c33560.png" alt="pValue: Double"/>
+- <img class="math" src="_images/math/500c891d300ea7785d55df8fea294d87a963ba8f.png" alt="statistic: Double"/></p>
 </td>
 </tr>
 </tbody>
@@ -1245,7 +1245,7 @@ instance.</p>
 <code class="descname">summary</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.GeneralizedLinearRegressionModel.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets summary (e.g. residuals, deviance, pValues) of model on
 training set. An exception is thrown if
-<img class="math" src="_images/math/1d0934a8384b333cb33d42a79a160f8a4d54c337.png" alt="trainingSummary is None"/>.</p>
+<img class="math" src="_images/math/1e771ec38d7bcdce852f43d7f1359f793fe4474e.png" alt="trainingSummary is None"/>.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -1325,7 +1325,7 @@ sum of the squares of the Pearson residuals) divided by the residual degrees of 
 <dt id="pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictionCol">
 <code class="descname">predictionCol</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictionCol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Field in <a class="reference internal" href="#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictions" title="pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">predictions</span></code></a> which gives the predicted value of each instance.
-This is set to a new column name if the original model’s <img class="math" src="_images/math/53630e8541161f78bd9106d91ac475ec384c88d0.png" alt="predictionCol"/> is not set.</p>
+This is set to a new column name if the original model’s <img class="math" src="_images/math/d36abf18f36d4b3714053f1fd9709840750e6f3c.png" alt="predictionCol"/> is not set.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -1334,7 +1334,7 @@ This is set to a new column name if the original model’s <img class="math" src
 <dl class="attribute">
 <dt id="pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictions">
 <code class="descname">predictions</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predictions output by the model’s <img class="math" src="_images/math/4f2b08d64c22f11b6408d0a8143e258256969aa8.png" alt="transform"/> method.</p>
+<dd><p>Predictions output by the model’s <img class="math" src="_images/math/78620e68ccd7840a7ddc242fd279a2d8890eee5f.png" alt="transform"/> method.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -1688,7 +1688,7 @@ instance.</p>
 <dl class="attribute">
 <dt id="pyspark.ml.regression.LinearRegressionModel.scale">
 <code class="descname">scale</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.LinearRegressionModel.scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>The value by which <img class="math" src="_images/math/fc0be97c2b1b6f9842cae794df1e2d20b9ef5536.png" alt="\|y - X'w\|"/> is scaled down when loss is “huber”, otherwise 1.0.</p>
+<dd><p>The value by which <img class="math" src="_images/math/cdce10ccae974d1f7a2eb65d8b75f12d951ba394.png" alt="\|y - X'w\|"/> is scaled down when loss is “huber”, otherwise 1.0.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.3.0.</span></p>
 </div>
@@ -1699,7 +1699,7 @@ instance.</p>
 <code class="descname">summary</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.LinearRegressionModel.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets summary (e.g. residuals, mse, r-squared ) of model on
 training set. An exception is thrown if
-<img class="math" src="_images/math/1d0934a8384b333cb33d42a79a160f8a4d54c337.png" alt="trainingSummary is None"/>.</p>
+<img class="math" src="_images/math/1e771ec38d7bcdce852f43d7f1359f793fe4474e.png" alt="trainingSummary is None"/>.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -1757,7 +1757,7 @@ square root of the instance weights.</p>
 <dt id="pyspark.ml.regression.LinearRegressionSummary.explainedVariance">
 <code class="descname">explainedVariance</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.LinearRegressionSummary.explainedVariance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the explained variance regression score.
-explainedVariance = <img class="math" src="_images/math/43d011ca7fba076ce6229cd3684ce56f43593ff1.png" alt="1 - \frac{variance(y - \hat{y})}{variance(y)}"/></p>
+explainedVariance = <img class="math" src="_images/math/222430213e4046e811e37580837a92518d26a3a6.png" alt="1 - \frac{variance(y - \hat{y})}{variance(y)}"/></p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference external" href="http://en.wikipedia.org/wiki/Explained_variation">Wikipedia explain variation</a></p>
@@ -1765,7 +1765,7 @@ explainedVariance = <img class="math" src="_images/math/43d011ca7fba076ce6229cd3
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/37d431a3b49b158be8f34cf27a892169ddeccfc2.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/f93e97c969eea27cab31baab4c06368a7152c012.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -1802,7 +1802,7 @@ loss or l1-norm loss.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/37d431a3b49b158be8f34cf27a892169ddeccfc2.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/f93e97c969eea27cab31baab4c06368a7152c012.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -1819,7 +1819,7 @@ loss or quadratic loss.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/37d431a3b49b158be8f34cf27a892169ddeccfc2.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/f93e97c969eea27cab31baab4c06368a7152c012.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -1865,7 +1865,7 @@ the label at each instance.</p>
 <dl class="attribute">
 <dt id="pyspark.ml.regression.LinearRegressionSummary.predictions">
 <code class="descname">predictions</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.LinearRegressionSummary.predictions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dataframe outputted by the model’s <img class="math" src="_images/math/4f2b08d64c22f11b6408d0a8143e258256969aa8.png" alt="transform"/> method.</p>
+<dd><p>Dataframe outputted by the model’s <img class="math" src="_images/math/78620e68ccd7840a7ddc242fd279a2d8890eee5f.png" alt="transform"/> method.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -1882,7 +1882,7 @@ the label at each instance.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/37d431a3b49b158be8f34cf27a892169ddeccfc2.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/f93e97c969eea27cab31baab4c06368a7152c012.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -1901,7 +1901,7 @@ versions.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/37d431a3b49b158be8f34cf27a892169ddeccfc2.png" alt="LinearRegression.weightCol"/>. This will change in later Spark versions.</p>
+<img class="math" src="_images/math/f93e97c969eea27cab31baab4c06368a7152c012.png" alt="LinearRegression.weightCol"/>. This will change in later Spark versions.</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.4.0.</span></p>
@@ -1925,7 +1925,7 @@ square root of the mean squared error.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/37d431a3b49b158be8f34cf27a892169ddeccfc2.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/f93e97c969eea27cab31baab4c06368a7152c012.png" alt="LinearRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -2288,7 +2288,7 @@ This class supports multinomial logistic (softmax) and binomial logistic regress
 <dd><p>Get threshold for binary classification.</p>
 <p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">thresholds</span></code> is set with length 2 (i.e., binary classification),
 this returns the equivalent threshold:
-<img class="math" src="_images/math/88b0c9b7e44e90c69c96023843caec015da826ed.png" alt="\frac{1}{1 + \frac{thresholds(0)}{thresholds(1)}}"/>.
+<img class="math" src="_images/math/5b961342ec78970c245546c0856f9061b805b8b5.png" alt="\frac{1}{1 + \frac{thresholds(0)}{thresholds(1)}}"/>.
 Otherwise, returns <code class="xref py py-attr docutils literal notranslate"><span class="pre">threshold</span></code> if set or its default value if unset.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.4.0.</span></p>
@@ -2480,7 +2480,7 @@ An exception is thrown in the case of multinomial logistic regression.</p>
 <dt id="pyspark.ml.classification.LogisticRegressionModel.summary">
 <code class="descname">summary</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/classification.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.classification.LogisticRegressionModel.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets summary (e.g. accuracy/precision/recall, objective history, total iterations) of model
-trained on the training set. An exception is thrown if <img class="math" src="_images/math/1d0934a8384b333cb33d42a79a160f8a4d54c337.png" alt="trainingSummary is None"/>.</p>
+trained on the training set. An exception is thrown if <img class="math" src="_images/math/1e771ec38d7bcdce852f43d7f1359f793fe4474e.png" alt="trainingSummary is None"/>.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -2583,7 +2583,7 @@ expected numClasses.</p>
 <dl class="attribute">
 <dt id="pyspark.ml.classification.LogisticRegressionSummary.predictions">
 <code class="descname">predictions</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/classification.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.classification.LogisticRegressionSummary.predictions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dataframe outputted by the model’s <img class="math" src="_images/math/4f2b08d64c22f11b6408d0a8143e258256969aa8.png" alt="transform"/> method.</p>
+<dd><p>Dataframe outputted by the model’s <img class="math" src="_images/math/78620e68ccd7840a7ddc242fd279a2d8890eee5f.png" alt="transform"/> method.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -2719,7 +2719,7 @@ iteration.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/34e4fc95d31d5882af1073aa4f073d9ebdd370bf.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/09c7ad4de27146a6e50a4e9deb946b62b4bdffb1.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -2735,7 +2735,7 @@ with beta = 1.0.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/34e4fc95d31d5882af1073aa4f073d9ebdd370bf.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/09c7ad4de27146a6e50a4e9deb946b62b4bdffb1.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -2752,7 +2752,7 @@ to it.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/34e4fc95d31d5882af1073aa4f073d9ebdd370bf.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/09c7ad4de27146a6e50a4e9deb946b62b4bdffb1.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -2769,7 +2769,7 @@ are used as thresholds used in calculating the precision.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/34e4fc95d31d5882af1073aa4f073d9ebdd370bf.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/09c7ad4de27146a6e50a4e9deb946b62b4bdffb1.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -2786,7 +2786,7 @@ are used as thresholds used in calculating the recall.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/34e4fc95d31d5882af1073aa4f073d9ebdd370bf.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/09c7ad4de27146a6e50a4e9deb946b62b4bdffb1.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -2807,7 +2807,7 @@ which is a Dataframe having two fields (FPR, TPR) with
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This ignores instance weights (setting all to 1.0) from
-<img class="math" src="_images/math/34e4fc95d31d5882af1073aa4f073d9ebdd370bf.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
+<img class="math" src="_images/math/09c7ad4de27146a6e50a4e9deb946b62b4bdffb1.png" alt="LogisticRegression.weightCol"/>. This will change in later Spark
 versions.</p>
 </div>
 <div class="versionadded">
@@ -3635,9 +3635,9 @@ and copies the embedded and extra parameters over.</p>
 techniques” by Steinbach, Karypis, and Kumar, with modification to fit Spark.
 The algorithm starts from a single cluster that contains all points.
 Iteratively it finds divisible clusters on the bottom level and bisects each of them using
-k-means, until there are <img class="math" src="_images/math/3f7909aed4d8d76ca60676d5cc769bf4a10e7df3.png" alt="k"/> leaf clusters in total or no leaf clusters are divisible.
+k-means, until there are <img class="math" src="_images/math/a91ad511ba9089cc3a50d5055263e62b4c0473b3.png" alt="k"/> leaf clusters in total or no leaf clusters are divisible.
 The bisecting steps of clusters on the same level are grouped together to increase parallelism.
-If bisecting all divisible clusters on the bottom level would result more than <img class="math" src="_images/math/3f7909aed4d8d76ca60676d5cc769bf4a10e7df3.png" alt="k"/> leaf
+If bisecting all divisible clusters on the bottom level would result more than <img class="math" src="_images/math/a91ad511ba9089cc3a50d5055263e62b4c0473b3.png" alt="k"/> leaf
 clusters, larger clusters get higher priority.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="k">import</span> <span class="n">Vectors</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),),</span> <span class="p">(</span><span class="n">Vectors</span><span class="o">.</span><span class="n">dense</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),),</span>
@@ -3687,7 +3687,7 @@ clusters, larger clusters get higher priority.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.BisectingKMeans.getDistanceMeasure">
 <code class="descname">getDistanceMeasure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L693-L698"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.BisectingKMeans.getDistanceMeasure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/004e795b0a5f8ba645ebe8910cf4fd87f33df1ba.png" alt="distanceMeasure"/> or its default value.</p>
+<dd><p>Gets the value of <img class="math" src="_images/math/f11a9ea3aaa52e0e4a05fba94f114d4dae7b4036.png" alt="distanceMeasure"/> or its default value.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.4.0.</span></p>
 </div>
@@ -3696,7 +3696,7 @@ clusters, larger clusters get higher priority.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.BisectingKMeans.getK">
 <code class="descname">getK</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L665-L670"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.BisectingKMeans.getK" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/3f7909aed4d8d76ca60676d5cc769bf4a10e7df3.png" alt="k"/> or its default value.</p>
+<dd><p>Gets the value of <img class="math" src="_images/math/a91ad511ba9089cc3a50d5055263e62b4c0473b3.png" alt="k"/> or its default value.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -3705,7 +3705,7 @@ clusters, larger clusters get higher priority.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.BisectingKMeans.getMinDivisibleClusterSize">
 <code class="descname">getMinDivisibleClusterSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L679-L684"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.BisectingKMeans.getMinDivisibleClusterSize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/06d794bea1892077868802c4301254fb2142e8d0.png" alt="minDivisibleClusterSize"/> or its default value.</p>
+<dd><p>Gets the value of <img class="math" src="_images/math/8c70affcf32e2b9f13b1432b1671b65fd453d040.png" alt="minDivisibleClusterSize"/> or its default value.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -3862,7 +3862,7 @@ training set. An exception is thrown if no summary exists.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.KMeans.getDistanceMeasure">
 <code class="descname">getDistanceMeasure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L518-L523"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.KMeans.getDistanceMeasure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/004e795b0a5f8ba645ebe8910cf4fd87f33df1ba.png" alt="distanceMeasure"/></p>
+<dd><p>Gets the value of <img class="math" src="_images/math/f11a9ea3aaa52e0e4a05fba94f114d4dae7b4036.png" alt="distanceMeasure"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.4.0.</span></p>
 </div>
@@ -3871,7 +3871,7 @@ training set. An exception is thrown if no summary exists.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.KMeans.getInitMode">
 <code class="descname">getInitMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L490-L495"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.KMeans.getInitMode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/691f386efbe189029c0017adaca594dd022ed8d2.png" alt="initMode"/></p>
+<dd><p>Gets the value of <img class="math" src="_images/math/6e905dd7d7e82d116df860c46f6d6320c24491d3.png" alt="initMode"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.5.0.</span></p>
 </div>
@@ -3880,7 +3880,7 @@ training set. An exception is thrown if no summary exists.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.KMeans.getInitSteps">
 <code class="descname">getInitSteps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L504-L509"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.KMeans.getInitSteps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/48735a586ce578f94dfa2759a740a60fd70e6049.png" alt="initSteps"/></p>
+<dd><p>Gets the value of <img class="math" src="_images/math/d9fff31c5c3deeebe7564fa85cd0904d01279a82.png" alt="initSteps"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.5.0.</span></p>
 </div>
@@ -3889,7 +3889,7 @@ training set. An exception is thrown if no summary exists.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.KMeans.getK">
 <code class="descname">getK</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L476-L481"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.KMeans.getK" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/3f7909aed4d8d76ca60676d5cc769bf4a10e7df3.png" alt="k"/></p>
+<dd><p>Gets the value of <img class="math" src="_images/math/a91ad511ba9089cc3a50d5055263e62b4c0473b3.png" alt="k"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.5.0.</span></p>
 </div>
@@ -4072,7 +4072,7 @@ Gaussian distributions.</p>
 <dl class="method">
 <dt id="pyspark.ml.clustering.GaussianMixture.getK">
 <code class="descname">getK</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L265-L270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.GaussianMixture.getK" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/3f7909aed4d8d76ca60676d5cc769bf4a10e7df3.png" alt="k"/></p>
+<dd><p>Gets the value of <img class="math" src="_images/math/a91ad511ba9089cc3a50d5055263e62b4c0473b3.png" alt="k"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
 </div>
@@ -4181,7 +4181,7 @@ where weights[i] is the weight for Gaussian i, and weights sum to 1.</p>
 <dl class="attribute">
 <dt id="pyspark.ml.clustering.GaussianMixtureSummary.probabilityCol">
 <code class="descname">probabilityCol</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.GaussianMixtureSummary.probabilityCol" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name for column of predicted probability of each cluster in <img class="math" src="_images/math/be7a76902b850bcefa9bf2baab24e32accfbfda1.png" alt="predictions"/>.</p>
+<dd><p>Name for column of predicted probability of each cluster in <img class="math" src="_images/math/3bea0b0b7c8b7d7c9103c61f39181c35037f244e.png" alt="predictions"/>.</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.1.0.</span></p>
 </div>
@@ -4562,7 +4562,7 @@ See Equation (16) in the Online LDA paper (Hoffman et al., 2010).</p>
 This is a matrix of size vocabSize x k, where each column is a topic.
 No guarantees are given about the ordering of the topics.</p>
 <p>WARNING: If this model is actually a <a class="reference internal" href="#pyspark.ml.clustering.DistributedLDAModel" title="pyspark.ml.clustering.DistributedLDAModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistributedLDAModel</span></code></a> instance produced by
-the Expectation-Maximization (“em”) <img class="math" src="_images/math/f25891e203a7700eead8d8f5a44286cee9d50bf5.png" alt="optimizer"/>, then this method could involve
+the Expectation-Maximization (“em”) <img class="math" src="_images/math/7c7f7a5d68e09a4fc1f0752472b1df9bffe5b00a.png" alt="optimizer"/>, then this method could involve
 collecting a large amount of data to the driver (on the order of vocabSize x k).</p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.0.0.</span></p>
@@ -4833,8 +4833,8 @@ the id. The schema of it will be:
 <dt id="pyspark.ml.recommendation.ALS">
 <em class="property">class </em><code class="descclassname">pyspark.ml.recommendation.</code><code class="descname">ALS</code><span class="sig-paren">(</span><em>rank=10</em>, <em>maxIter=10</em>, <em>regParam=0.1</em>, <em>numUserBlocks=10</em>, <em>numItemBlocks=10</em>, <em>implicitPrefs=False</em>, <em>alpha=1.0</em>, <em>userCol='user'</em>, <em>itemCol='item'</em>, <em>seed=None</em>, <em>ratingCol='rating'</em>, <em>nonnegative=False</em>, <em>checkpointInterval=10</em>, <em>intermediateStorageLevel='MEMORY_AND_DISK'</em>, <em>finalStorageLevel='MEMORY_AND_DISK'</em>, <em>coldStartStrategy='nan'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py#L31-L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alternating Least Squares (ALS) matrix factorization.</p>
-<p>ALS attempts to estimate the ratings matrix <img class="math" src="_images/math/550beb666628e657c977f56b6cb1c7c9f741d76b.png" alt="R"/> as the product of
-two lower-rank matrices, <img class="math" src="_images/math/f0e7d7953d754710e93f0b38c25651bea821e6f1.png" alt="X"/> and <img class="math" src="_images/math/29d4e59d55ff51a4e557de2df230a3dc8a54fddc.png" alt="Y"/>, i.e. <img class="math" src="_images/math/2f66914c8039ba845b1554969ce615f7eebc595a.png" alt="X * Yt = R"/>. Typically
+<p>ALS attempts to estimate the ratings matrix <img class="math" src="_images/math/a4faec08e01a7e9a0dd01507f73059b753dacbc1.png" alt="R"/> as the product of
+two lower-rank matrices, <img class="math" src="_images/math/4f7f86678ed0212744d9f23cf85172233e0f6685.png" alt="X"/> and <img class="math" src="_images/math/e0d050770265d83b30955adb4b2e856fcd2958e0.png" alt="Y"/>, i.e. <img class="math" src="_images/math/2675df71caa9ab4dc5b584faf9421f71b499ffc0.png" alt="X * Yt = R"/>. Typically
 these approximations are called ‘factor’ matrices. The general
 approach is iterative. During each iteration, one of the factor
 matrices is held constant, while the other is solved for using least
@@ -4857,8 +4857,8 @@ and update the products based on these messages.</p>
 <a class="reference external" href="http://dx.doi.org/10.1109/ICDM.2008.22">“Collaborative Filtering for Implicit Feedback Datasets”,</a>, adapted for the blocked
 approach used here.</p>
 <p>Essentially instead of finding the low-rank approximations to the
-rating matrix <img class="math" src="_images/math/550beb666628e657c977f56b6cb1c7c9f741d76b.png" alt="R"/>, this finds the approximations for a preference
-matrix <img class="math" src="_images/math/023366c8674c3b2ae79668091e9ae67b728e74ce.png" alt="P"/> where the elements of <img class="math" src="_images/math/023366c8674c3b2ae79668091e9ae67b728e74ce.png" alt="P"/> are 1 if r &gt; 0 and 0 if r &lt;= 0.
+rating matrix <img class="math" src="_images/math/a4faec08e01a7e9a0dd01507f73059b753dacbc1.png" alt="R"/>, this finds the approximations for a preference
+matrix <img class="math" src="_images/math/d0fa03637e768a19b238428646133938dd8dbefd.png" alt="P"/> where the elements of <img class="math" src="_images/math/d0fa03637e768a19b238428646133938dd8dbefd.png" alt="P"/> are 1 if r &gt; 0 and 0 if r &lt;= 0.
 The ratings then act as ‘confidence’ values related to strength of
 indicated user preferences rather than explicit ratings given to
 items.</p>
@@ -5158,8 +5158,8 @@ items.</p>
 <dl class="attribute">
 <dt id="pyspark.ml.recommendation.ALSModel.itemFactors">
 <code class="descname">itemFactors</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALSModel.itemFactors" title="Permalink to this definition">¶</a></dt>
-<dd><p><img class="math" src="_images/math/f9fce53c7de143a8375392af4d0c271e0af96d25.png" alt="id"/> and
-<img class="math" src="_images/math/f9cab3b4f41cb11e828c6ef3287e346cd93859f1.png" alt="features"/></p>
+<dd><p><img class="math" src="_images/math/c50e104501abfca380adaecdf69be00ca0a34172.png" alt="id"/> and
+<img class="math" src="_images/math/a4597ecb9ebb57553d062eb28bbd5f46b72ecaa0.png" alt="features"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.4.0.</span></p>
 </div>
@@ -5185,7 +5185,7 @@ items.</p>
 <dl class="method">
 <dt id="pyspark.ml.recommendation.ALSModel.recommendForAllItems">
 <code class="descname">recommendForAllItems</code><span class="sig-paren">(</span><em>numUsers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py#L416-L425"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALSModel.recommendForAllItems" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns top <img class="math" src="_images/math/a0f75b11f3610bbb4ef4a1e1ca3124dc2d0f707b.png" alt="numUsers"/> users recommended for each item, for all items.</p>
+<dd><p>Returns top <img class="math" src="_images/math/36ac21065eddaab9b365f8a0b34e15612ad2cbf4.png" alt="numUsers"/> users recommended for each item, for all items.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -5205,7 +5205,7 @@ stored as an array of (userCol, rating) Rows.</td>
 <dl class="method">
 <dt id="pyspark.ml.recommendation.ALSModel.recommendForAllUsers">
 <code class="descname">recommendForAllUsers</code><span class="sig-paren">(</span><em>numItems</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py#L405-L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALSModel.recommendForAllUsers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns top <img class="math" src="_images/math/7ec6ca02000840e3ed3fc850b4444a5b80b9ceba.png" alt="numItems"/> items recommended for each user, for all users.</p>
+<dd><p>Returns top <img class="math" src="_images/math/2c27003affe8e4b21a7275bfa177740b76b23902.png" alt="numItems"/> items recommended for each user, for all users.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -5225,7 +5225,7 @@ stored as an array of (itemCol, rating) Rows.</td>
 <dl class="method">
 <dt id="pyspark.ml.recommendation.ALSModel.recommendForItemSubset">
 <code class="descname">recommendForItemSubset</code><span class="sig-paren">(</span><em>dataset</em>, <em>numUsers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py#L442-L455"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALSModel.recommendForItemSubset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns top <img class="math" src="_images/math/a0f75b11f3610bbb4ef4a1e1ca3124dc2d0f707b.png" alt="numUsers"/> users recommended for each item id in the input data set. Note that
+<dd><p>Returns top <img class="math" src="_images/math/36ac21065eddaab9b365f8a0b34e15612ad2cbf4.png" alt="numUsers"/> users recommended for each item id in the input data set. Note that
 if there are duplicate ids in the input dataset, only one set of recommendations per unique
 id will be returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -5234,7 +5234,7 @@ id will be returned.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>dataset</strong> – a Dataset containing a column of item ids. The column name must match
-<img class="math" src="_images/math/0d50e9e614100636a967be47897fa4c0d4f6a7e4.png" alt="itemCol"/>.</li>
+<img class="math" src="_images/math/8249369cffed830d93fababc673947b2725dcc76.png" alt="itemCol"/>.</li>
 <li><strong>numUsers</strong> – max number of recommendations for each item</li>
 </ul>
 </td>
@@ -5253,7 +5253,7 @@ stored as an array of (userCol, rating) Rows.</p>
 <dl class="method">
 <dt id="pyspark.ml.recommendation.ALSModel.recommendForUserSubset">
 <code class="descname">recommendForUserSubset</code><span class="sig-paren">(</span><em>dataset</em>, <em>numItems</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py#L427-L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALSModel.recommendForUserSubset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns top <img class="math" src="_images/math/7ec6ca02000840e3ed3fc850b4444a5b80b9ceba.png" alt="numItems"/> items recommended for each user id in the input data set. Note that
+<dd><p>Returns top <img class="math" src="_images/math/2c27003affe8e4b21a7275bfa177740b76b23902.png" alt="numItems"/> items recommended for each user id in the input data set. Note that
 if there are duplicate ids in the input dataset, only one set of recommendations per unique
 id will be returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -5262,7 +5262,7 @@ id will be returned.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>dataset</strong> – a Dataset containing a column of user ids. The column name must match
-<img class="math" src="_images/math/818d457e816f2647818cc649b60609d6ed8718c8.png" alt="userCol"/>.</li>
+<img class="math" src="_images/math/13873ce98438089366da56330b7613f395318a3a.png" alt="userCol"/>.</li>
 <li><strong>numItems</strong> – max number of recommendations for each user</li>
 </ul>
 </td>
@@ -5281,8 +5281,8 @@ stored as an array of (itemCol, rating) Rows.</p>
 <dl class="attribute">
 <dt id="pyspark.ml.recommendation.ALSModel.userFactors">
 <code class="descname">userFactors</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALSModel.userFactors" title="Permalink to this definition">¶</a></dt>
-<dd><p><img class="math" src="_images/math/f9fce53c7de143a8375392af4d0c271e0af96d25.png" alt="id"/> and
-<img class="math" src="_images/math/f9cab3b4f41cb11e828c6ef3287e346cd93859f1.png" alt="features"/></p>
+<dd><p><img class="math" src="_images/math/c50e104501abfca380adaecdf69be00ca0a34172.png" alt="id"/> and
+<img class="math" src="_images/math/a4597ecb9ebb57553d062eb28bbd5f46b72ecaa0.png" alt="features"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 1.4.0.</span></p>
 </div>
@@ -6210,7 +6210,7 @@ in the same cluster and far from the points of the other clusters.</p>
 <dl class="method">
 <dt id="pyspark.ml.evaluation.ClusteringEvaluator.getDistanceMeasure">
 <code class="descname">getDistanceMeasure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/evaluation.py#L417-L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.evaluation.ClusteringEvaluator.getDistanceMeasure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the value of <img class="math" src="_images/math/004e795b0a5f8ba645ebe8910cf4fd87f33df1ba.png" alt="distanceMeasure"/></p>
+<dd><p>Gets the value of <img class="math" src="_images/math/f11a9ea3aaa52e0e4a05fba94f114d4dae7b4036.png" alt="distanceMeasure"/></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.4.0.</span></p>
 </div>
@@ -6279,7 +6279,7 @@ in the same cluster and far from the points of the other clusters.</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Apr 13, 2019.
+        Last updated on Apr 14, 2019.
       </span>
 
     </p>

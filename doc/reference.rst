@@ -7,6 +7,8 @@ Main Reference
 
 .. [Feng2017] W. Feng and M. Chen. `Learning Apache Spark <https://mingchen0919.github.io/learning-apache-spark/index.html>`_, Github 2017.
 
+.. [Feng2016PSD] W. Feng, A. J. Salgado, C. Wang, S. M. Wise. Preconditioned Steepest Descent Methods for some Nonlinear Elliptic Equations Involving p-Laplacian Terms. J. Comput. Phys., 334:45–67, 2016.
+
 .. [Feng2014] W. Feng. `Prelim Notes for Numerical Analysis <http://web.utk.edu/~wfeng1/doc/PrelimNum.pdf>`_, The University of Tennessee, Knoxville.
 
 .. [Karau2015] H. Karau, A. Konwinski, P. Wendell and M. Zaharia. Learning Spark: Lightning-Fast Big Data Analysis. O’Reilly Media, Inc., 2015

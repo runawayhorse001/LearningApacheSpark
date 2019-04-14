@@ -199,18 +199,18 @@
 <span id="metroalg"></span><h2>17.1. Metropolis algorithm<a class="headerlink" href="#metropolis-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>The Metropolis algorithm takes three main steps:</p>
 <ol class="arabic">
-<li><p class="first">Sample  <img class="math" src="_images/math/e80e40a1983319bf52f200192845ff1836af5ac6.png" alt="\theta^* \sim J(\theta | \theta ^{(s)})"/></p>
+<li><p class="first">Sample  <img class="math" src="_images/math/7d0d93d79b878ae26589d7d45fc55dec8e1723ed.png" alt="\theta^* \sim J(\theta | \theta ^{(s)})"/></p>
 </li>
-<li><p class="first">Compute the acceptance ratio <img class="math" src="_images/math/7b2a2212ec82c3b3724dc967149ab4d1cd8e489d.png" alt="(r)"/></p>
+<li><p class="first">Compute the acceptance ratio <img class="math" src="_images/math/1a198735d31179902240ab95aba38f0669b5f60e.png" alt="(r)"/></p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/ce10c148a01c1323587fd33ae86d563d7d669bd9.png" alt="r = \frac{p(\theta^*|y)}{p(\theta^{(s)}|y)} = \frac{p(y|\theta^*)p(\theta^*)}{p(y|\theta^{(s)})p(\theta^{(s)})}"/></p>
+<p><img src="_images/math/a2b09b7254bc445ae3ae2a1ca0922964ee66ed09.png" alt="r = \frac{p(\theta^*|y)}{p(\theta^{(s)}|y)} = \frac{p(y|\theta^*)p(\theta^*)}{p(y|\theta^{(s)})p(\theta^{(s)})}"/></p>
 </div></div></blockquote>
 </li>
 <li><p class="first">Let</p>
 <blockquote>
 <div><div class="math" id="equation-eq-step3">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-step3" title="Permalink to this equation">¶</a></span><img src="_images/math/011df417add693b8f704d00edc28fce0139f861c.png" alt="\theta^{(s+1)}
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-step3" title="Permalink to this equation">¶</a></span><img src="_images/math/042aacf32fabf25f6fb2a497e294b269b6b7b213.png" alt="\theta^{(s+1)}
              =
              \left\{
      \begin{array}{ll}
@@ -223,7 +223,7 @@
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Actually, the <a class="reference internal" href="#equation-eq-step3">(1)</a> in Step 3 can be replaced by sampling <img class="math" src="_images/math/468e0886e604d2f5b8b5836d3d46b9813e9f2702.png" alt="u \sim \text{Uniform}(0,1)"/> and setting <img class="math" src="_images/math/4d6bffefda53fa15ac6f91af448cb968da6e6818.png" alt="\theta^{(s+1)}=\theta^*"/> if <img class="math" src="_images/math/ee78354a855b3cb2e9199b9a29b12b45bf414b47.png" alt="u&lt;r"/> and setting <img class="math" src="_images/math/b37f810a90c87d694d76f9d78542481180ace274.png" alt="\theta^{(s+1)}=\theta^{(s)}"/> otherwise.</p>
+<p class="last">Actually, the <a class="reference internal" href="#equation-eq-step3">(1)</a> in Step 3 can be replaced by sampling <img class="math" src="_images/math/4fbd02fcc1b40b40ea52f136c4613e0238576c95.png" alt="u \sim \text{Uniform}(0,1)"/> and setting <img class="math" src="_images/math/31dfe51eb636dddb1cc12bcc42e631a4f99329da.png" alt="\theta^{(s+1)}=\theta^*"/> if <img class="math" src="_images/math/e713aca4083ad505e02ed34909553ff898a1c863.png" alt="u&lt;r"/> and setting <img class="math" src="_images/math/1f4347acce132d724f51c8dd6a0b8670c43d7424.png" alt="\theta^{(s+1)}=\theta^{(s)}"/> otherwise.</p>
 </div>
 </div>
 <div class="section" id="a-toy-example-of-metropolis">
@@ -233,56 +233,56 @@
 <h3>17.2.1. Conjugate Normal-Normal model<a class="headerlink" href="#conjugate-normal-normal-model" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/713b810f1a6969774dcdd1ae49a351ceabd8359f.png" alt="\begin{array}{ll}
+<p><img src="_images/math/bc19b41be6b98ee7dc229e31614f750b04003fd5.png" alt="\begin{array}{ll}
     X_1, \cdots, X_n &amp; \theta \stackrel{iid}{\sim}\text{Normal}(\theta,\sigma^2)\\
                       &amp; \theta \sim\text{Normal}(\mu,\tau^2)
 \end{array}"/></p>
 </div></div></blockquote>
-<p>Recall that the posterior of <img class="math" src="_images/math/946b50959facfb0b8e480a086b63737389a5868d.png" alt="\theta"/> is <img class="math" src="_images/math/ea7244486feb28dc504f5f381854ebb28946c04e.png" alt="\text{Normal}(\mu_n,\tau^2_n)"/>, where</p>
+<p>Recall that the posterior of <img class="math" src="_images/math/3ba10dc6f996465d8acb878fc8f9d2edf4af53c0.png" alt="\theta"/> is <img class="math" src="_images/math/40bc440c8c32fc48ad07574b1d353ab9027ec294.png" alt="\text{Normal}(\mu_n,\tau^2_n)"/>, where</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/69bb6a2ba345db590fa956420e732a72ed94bb1d.png" alt="\mu_n = \bar{x}\frac{n/\sigma^2}{n/\sigma^2+1/\tau^2} + \mu\frac{1/\tau^2}{n/\sigma^2+1/\tau^2}"/></p>
+<p><img src="_images/math/375f6cf3ea59de0a16e18bf243df8376fc32c3ce.png" alt="\mu_n = \bar{x}\frac{n/\sigma^2}{n/\sigma^2+1/\tau^2} + \mu\frac{1/\tau^2}{n/\sigma^2+1/\tau^2}"/></p>
 </div></div></blockquote>
 <p>and</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/8f11bf6321911246e9e2c66ca4b5adfabeb24a88.png" alt="\tau_n^2 = \frac{1}{n/\sigma^2+1/\tau^2}"/></p>
+<p><img src="_images/math/70450b34379aa46575ece1c6ab6494dcce1acfe4.png" alt="\tau_n^2 = \frac{1}{n/\sigma^2+1/\tau^2}"/></p>
 </div></div></blockquote>
 </div>
 <div class="section" id="example-setup">
 <h3>17.2.2. Example setup<a class="headerlink" href="#example-setup" title="Permalink to this headline">¶</a></h3>
-<p>The rest of the parameters are <img class="math" src="_images/math/930c1c049ed2ec9607d002e9651a3bcf53616759.png" alt="\sigma^2=1"/>, <img class="math" src="_images/math/9709fd22cd9941bccd0e42e319087184073f75ca.png" alt="\tau^2=10"/>, <img class="math" src="_images/math/52bcc97c980400dcddbecf2e43cf75e7ccc6688e.png" alt="\mu=5"/>, <img class="math" src="_images/math/ae1a1889191f24aee533caed76fc26494c043be0.png" alt="n=5"/> and</p>
+<p>The rest of the parameters are <img class="math" src="_images/math/15dbeccc5f0148fc54abf1121da7cae460871c94.png" alt="\sigma^2=1"/>, <img class="math" src="_images/math/bca968bbd4f1478300e96501e23c5c1b4c7f3902.png" alt="\tau^2=10"/>, <img class="math" src="_images/math/d440748302343a480c5aec3bc47e2589fc449a06.png" alt="\mu=5"/>, <img class="math" src="_images/math/ff31105a4838e5bdcebab81bcede58286eaaecc7.png" alt="n=5"/> and</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/c64d6475f80c88946a68b7528f247fbc0efa937c.png" alt="y = [9.37, 10.18, 9.16, 11.60, 10.33]"/></p>
+<p><img src="_images/math/a9888551ea77353c611d7c787a4be10507ad8ed9.png" alt="y = [9.37, 10.18, 9.16, 11.60, 10.33]"/></p>
 </div></div></blockquote>
-<p>For this setup, we get that <img class="math" src="_images/math/ed8a16ad641ab2605dfb80ddfb90f957e396de7d.png" alt="\mu_n=10.02745"/> and <img class="math" src="_images/math/46277862f926fa3fb3a6f497086b5cf29e8079b4.png" alt="\tau_n^2=0.1960784"/>.</p>
+<p>For this setup, we get that <img class="math" src="_images/math/4f6345da82306437efbe1676a6f74343bf03e252.png" alt="\mu_n=10.02745"/> and <img class="math" src="_images/math/89c4295ff75abbb47bde7df27631762cb780935e.png" alt="\tau_n^2=0.1960784"/>.</p>
 </div>
 <div class="section" id="essential-mathematical-derivation">
 <h3>17.2.3. Essential mathematical derivation<a class="headerlink" href="#essential-mathematical-derivation" title="Permalink to this headline">¶</a></h3>
-<p>In the <a class="reference internal" href="#metroalg"><span class="std std-ref">Metropolis algorithm</span></a>, we need to compute the acceptance ratio <img class="math" src="_images/math/a7fcbc1c868ebe6ddc45d0bc89be74019d67fddc.png" alt="r"/>, i.e.</p>
+<p>In the <a class="reference internal" href="#metroalg"><span class="std std-ref">Metropolis algorithm</span></a>, we need to compute the acceptance ratio <img class="math" src="_images/math/c836518ae10699a394d5775093257eb52b017fdd.png" alt="r"/>, i.e.</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/08aff8a440206398547e12ca7df6a48726c48205.png" alt="r  &amp;=  \frac{p(\theta^*|x)}{p(\theta^{(s)}|x)} \\
+<p><img src="_images/math/6bbe2ff46f1d1f1a666242cb83e2f22b7447603d.png" alt="r  &amp;=  \frac{p(\theta^*|x)}{p(\theta^{(s)}|x)} \\
    &amp;=  \frac{p(x|\theta^*)p(\theta^*)}{p(x|\theta^{(s)})p(\theta^{(s)})}\\
    &amp;=  \left(\frac{\prod_i\text{dnorm}(x_i,\theta^*,\sigma)}{\prod_i\text{dnorm}(x_i,\theta^{(s)},\sigma)}\right)
         \left(\frac{\text{dnorm}(\theta^*,\mu,\tau)}{\text{dnorm}(\theta^{(s)},\mu,\tau)}\right)"/></p>
 </div></div></blockquote>
-<p>In many cases, computing the ratio <img class="math" src="_images/math/a7fcbc1c868ebe6ddc45d0bc89be74019d67fddc.png" alt="r"/> directly can be numerically unstable, however, this can be modified by taking <img class="math" src="_images/math/0b0708aeb29315e79f9192a11ebdbfff30a6e593.png" alt="log r"/>. i.e.</p>
+<p>In many cases, computing the ratio <img class="math" src="_images/math/c836518ae10699a394d5775093257eb52b017fdd.png" alt="r"/> directly can be numerically unstable, however, this can be modified by taking <img class="math" src="_images/math/916e57802b1c57f68dd97ff8439673326e6acf70.png" alt="log r"/>. i.e.</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/22ac06bdd17a7714b037671d4760af39b0b9a969.png" alt="logr  &amp;=  \sum_i \left(log[\text{dnorm}(x_i,\theta^*,\sigma)] - log[\text{dnorm}(x_i, \theta^{(s)}, \sigma)]\right)\\
+<p><img src="_images/math/36d70bcb1b73a66e4c833e1de4cc7570afc954d9.png" alt="logr  &amp;=  \sum_i \left(log[\text{dnorm}(x_i,\theta^*,\sigma)] - log[\text{dnorm}(x_i, \theta^{(s)}, \sigma)]\right)\\
       &amp;+  \sum_i \left(log[\text{dnorm}(\theta^*,\mu,\tau)] - log[\text{dnorm}(\theta^{(s)}, \mu,\tau)]\right)"/></p>
 </div></div></blockquote>
-<p>Then the criteria of the acceptance becomes: if <img class="math" src="_images/math/071949e8cf4635c2c061d248e40fa6797bd3790f.png" alt="log u&lt; log r"/>, where <img class="math" src="_images/math/b5f28cb98d6f64a3ad2a1030a9ee4c52ecc404aa.png" alt="u"/> is sample form the <img class="math" src="_images/math/d03d276e90a048c494a8aff552e0d961be9a7365.png" alt="\text{Uniform}(0,1)"/>.</p>
+<p>Then the criteria of the acceptance becomes: if <img class="math" src="_images/math/77722c77003df4db121454b701352197b336c76f.png" alt="log u&lt; log r"/>, where <img class="math" src="_images/math/de89e65e294879d34c846fdd9fcbfc0d1729d4fd.png" alt="u"/> is sample form the <img class="math" src="_images/math/86a4efff573c2275e90a5ac82726a5ee66790bcf.png" alt="\text{Uniform}(0,1)"/>.</p>
 </div>
 </div>
 <div class="section" id="demos">
 <h2>17.3. Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
-<p>Now, We generate <img class="math" src="_images/math/404bb3faa257806cd29cac0af5e92d4e64c14cab.png" alt="S"/> iterations of the Metropolis algorithm starting at <img class="math" src="_images/math/e0c5b905c856d4fd40c27c5c0a100974829a7776.png" alt="\theta^{(0)}=0"/> and using a normal proposal distribution, where</p>
+<p>Now, We generate <img class="math" src="_images/math/1a2dc13f5e56a34848a2b8b5a35b2484cc01ed7d.png" alt="S"/> iterations of the Metropolis algorithm starting at <img class="math" src="_images/math/7e4c36ae87c0c9b4d69b8a279464dbe585c7f8a3.png" alt="\theta^{(0)}=0"/> and using a normal proposal distribution, where</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/da576d735ee3fd36cfd22501510b67a1860328d1.png" alt="\theta^{(s+1)} \sim \text{Normal}(\theta^{(s)},2)."/></p>
+<p><img src="_images/math/fcc01d9c18795d54730217b34f422244c115e315.png" alt="\theta^{(s+1)} \sim \text{Normal}(\theta^{(s)},2)."/></p>
 </div></div></blockquote>
 <div class="section" id="r-results">
 <h3>17.3.1. R results<a class="headerlink" href="#r-results" title="Permalink to this headline">¶</a></h3>
@@ -529,7 +529,7 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Apr 13, 2019.
+        Last updated on Apr 14, 2019.
       </span>
 
     </p>

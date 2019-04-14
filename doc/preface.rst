@@ -31,7 +31,7 @@ detailed example. I hope those tutorials will be a valuable tool
 for your studies.
 
 The tutorials assume that the reader has a preliminary knowledge 
-of programing and Linux. And this document is generated automatically
+of programming and Linux. And this document is generated automatically
 by using `sphinx`_.
 
 

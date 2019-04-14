@@ -111,6 +111,26 @@ where :math:`{\displaystyle {\mathrm {T} }}` indicates a matrix transpose, provi
 Gradient Descent 
 ----------------
 
+Let's use the following hypothesis: 
+
+.. math::
+ 
+ 	h_\Bbeta = \beta_0 + \beta_j \x_{j}, \text{where}, j= 1, \cdots n.
+
+Then, solving :eq:`eq_minAx` is equivalent to minimize the following ``cost fucntion`` : 
+
+Cost Function
+-------------
+
+.. math::
+	:label: eq_Lreg_cost
+
+	J(\Bbeta) = \frac{1}{2m}\sum_{i=1}^m \left( h_\Bbeta(x^{(i)})-y^{(i)}) \right)^2
+
+
+.. note::
+
+	The reason why we prefer to solve :eq:`eq_Lreg_cost` rather than :eq:`eq_minAx` is because :eq:`eq_Lreg_cost` is convex and it has some nice properties, such as it's uniquely solvable and energy stable for small enough learning rate. the interested reader who has great interest in non-convex cost function (energy) case. is referred to [Feng2016PSD]_ for more details. 
 
 .. _fig_gd1d:
 .. figure:: images/gradient1d.png
@@ -124,6 +144,24 @@ Gradient Descent
 
    Gradient Descent in 2D 
 
+
+Batch Gradient Descent
+----------------------
+
+Gradient descent is a first-order iterative optimization algorithm for finding the minimum of a function. It searchs with the direction of the steepest desscent which is defined by the ``negative of the gradient`` (see Fig. :ref:`fig_gd1d` and :ref:`fig_gd2d` for 1D and 2D, respectively) and with learning rate (search step) :math:`\alpha`.
+
+
+
+
+
+Stochastic Dradient Descent
+---------------------------
+
+
+Mini-batch Gradient Descent
+---------------------------
+
+ 
 
 
 Demo
