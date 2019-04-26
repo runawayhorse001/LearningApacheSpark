@@ -189,7 +189,38 @@
 <h2>11.1. K-Means Model<a class="headerlink" href="#k-means-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
 <h3>11.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
-</div>
+<p>k-means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. The approach kmeans follows to solve the problem is called <strong>Expectation-Maximization</strong>. It can be described as follows:</p>
+<ol class="arabic">
+<li><p class="first">Assign some cluter centers</p>
+</li>
+<li><p class="first">Repeated until converged</p>
+<blockquote>
+<div><ul class="simple">
+<li>E-Step: assign points to the nearest center</li>
+<li>M-step: set the cluster center to the mean</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>Given a set of observations <img class="math" src="_images/math/12a108019e711558794cac22ce5aaf88fc818b12.png" alt="(x_1, x_2, \cdots, x_m)"/>. The objective function is</p>
+<div class="math">
+<p><img src="_images/math/c92cb4c9320dbf45a2457c664c2176ccfc36477e.png" alt="J = \sum_{i=1}^{m}\sum_{k=1}^{K}w_{ik} ||x_i-c_k||^2"/></p>
+</div><p>where <img class="math" src="_images/math/26083bece2efe8278fbc596350e29b1ae98901db.png" alt="w_{ik}=1"/> if <img class="math" src="_images/math/61c4d427bab40a7c74ac7e66f9608deef573ed80.png" alt="x_i"/> is in cluster <img class="math" src="_images/math/a91ad511ba9089cc3a50d5055263e62b4c0473b3.png" alt="k"/>; otherwise  <img class="math" src="_images/math/3a9a8785e0e84e9bede3993ccac080e8c2dc2d0b.png" alt="w_{ik}=0"/> and <img class="math" src="_images/math/cad881ce461d8d7ab006a8457e46f758beb1d27c.png" alt="c_k"/> is the centroid of <img class="math" src="_images/math/61c4d427bab40a7c74ac7e66f9608deef573ed80.png" alt="x_i"/> ‘s cluster.</p>
+<p>Mathematically, k-means is a minimization problem with two parts: First, we minimize <img class="math" src="_images/math/6a1ac4a14ed46886b893a7bcb2ba73b4d8322ae9.png" alt="J"/> w.r.t <img class="math" src="_images/math/ed36b8ebf50366846a1375e50106e291811c7d78.png" alt="w_{ik}"/> with <img class="math" src="_images/math/cad881ce461d8d7ab006a8457e46f758beb1d27c.png" alt="c_k"/> fixed; Then minimize <img class="math" src="_images/math/6a1ac4a14ed46886b893a7bcb2ba73b4d8322ae9.png" alt="J"/> w.r.t <img class="math" src="_images/math/cad881ce461d8d7ab006a8457e46f758beb1d27c.png" alt="c_k"/> with <img class="math" src="_images/math/ed36b8ebf50366846a1375e50106e291811c7d78.png" alt="w_{ik}"/> fixed. i.e.</p>
+<p><strong>E-step</strong>:</p>
+<div class="math">
+<p><img src="_images/math/7cfddf077d2239e15306456d76a6c3c04564de8d.png" alt="\frac{\partial J}{\partial w_{ik}} = \sum_{i=1}^{m}\sum_{k=1}^{K} ||x_i-c_k||^2\\
+\Rightarrow w_{ik} =\left\{
+        \begin{array}{ll}
+          1, &amp; \text{ if }{ k = argmin_{j} ||x_i-c_j||^2} \\
+          0, &amp; \text{ otherwise }
+        \end{array}
+      \right."/></p>
+</div><p><strong>M-step</strong>:</p>
+<div class="math">
+<p><img src="_images/math/b3a61e3c55a414b3b199671b6c3fafd5e6e9d531.png" alt="\frac{\partial J}{\partial c_k} = 2\sum_{i=1}{m} w_{ik}(x_i-c_k) =0  \Rightarrow
+c_k = \frac{\sum_{i=1}^{m}w_{ik}x_i}{\sum_{i=1}^{m}w_{ik}}"/></p>
+</div></div>
 <div class="section" id="demo">
 <h3>11.1.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
@@ -384,6 +415,10 @@
 <span class="o">+-----------------+-----------------+</span>
 <span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since clustering algorithms including k-means use distance-based measurements to determine the similarity between data points, It’s strongly recommended to standardize the data to have a mean of zero and a standard deviation of one.</p>
 </div>
 <ol class="arabic simple" start="6">
 <li>Elbow method to determine the optimal number of clusters for k-means clustering</li>
@@ -602,7 +637,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Apr 14, 2019.
+        Last updated on Apr 26, 2019.
       </span>
 
     </p>

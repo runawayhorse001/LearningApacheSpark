@@ -20,7 +20,43 @@ K-Means Model
 Introduction
 ------------
 
+k-means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. The approach kmeans follows to solve the problem is called **Expectation-Maximization**. It can be described as follows:
 
+1. Assign some cluter centers
+2. Repeated until converged
+
+	* E-Step: assign points to the nearest center
+	* M-step: set the cluster center to the mean 
+
+
+Given a set of observations :math:`(x_1, x_2, \cdots, x_m)`. The objective function is 
+
+.. math::
+
+	J = \sum_{i=1}^{m}\sum_{k=1}^{K}w_{ik} ||x_i-c_k||^2
+
+where :math:`w_{ik}=1` if :math:`x_i` is in cluster :math:`k`; otherwise  :math:`w_{ik}=0` and :math:`c_k` is the centroid of :math:`x_i` 's cluster. 
+
+Mathematically, k-means is a minimization problem with two parts: First, we minimize :math:`J` w.r.t :math:`w_{ik}` with :math:`c_k` fixed; Then minimize :math:`J` w.r.t :math:`c_k` with :math:`w_{ik}` fixed. i.e.
+
+**E-step**: 
+
+.. math::
+
+	\frac{\partial J}{\partial w_{ik}} = \sum_{i=1}^{m}\sum_{k=1}^{K} ||x_i-c_k||^2\\
+        \Rightarrow w_{ik} =\left\{
+                \begin{array}{ll}
+                  1, & \text{ if }{ k = argmin_{j} ||x_i-c_j||^2} \\
+                  0, & \text{ otherwise }
+                \end{array}
+              \right.
+
+**M-step**: 
+
+.. math::
+	
+	\frac{\partial J}{\partial c_k} = 2\sum_{i=1}{m} w_{ik}(x_i-c_k) =0  \Rightarrow  
+	c_k = \frac{\sum_{i=1}^{m}w_{ik}x_i}{\sum_{i=1}^{m}w_{ik}} 
 
 Demo
 ----
@@ -233,6 +269,11 @@ you will get
 	|[5.0,3.6,1.4,0.2]|[5.0,3.6,1.4,0.2]|
 	+-----------------+-----------------+
 	only showing top 5 rows
+
+.. note::
+
+	Since clustering algorithms including k-means use distance-based measurements to determine the similarity between data points, It's strongly recommended to standardize the data to have a mean of zero and a standard deviation of one.
+
 
 6. Elbow method to determine the optimal number of clusters for k-means clustering
 
