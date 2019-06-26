@@ -39,5 +39,6 @@ Contents
    pack
    cheat
    api
+   ze2nb
    reference
 

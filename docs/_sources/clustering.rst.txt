@@ -20,7 +20,7 @@ K-Means Model
 Introduction
 ------------
 
-k-means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. The approach kmeans follows to solve the problem is called **Expectation-Maximization**. It can be described as follows:
+k-means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. The approach k-means follows to solve the problem is called **Expectation-Maximization**. It can be described as follows:
 
 1. Assign some cluter centers
 2. Repeated until converged

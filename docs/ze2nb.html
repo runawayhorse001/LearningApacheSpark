@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>22. Zeppelin to jupyter notebook &mdash; Learning Apache Spark with Python  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="23. Main Reference" href="reference.html" />
+    <link rel="prev" title="21. PySpark API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">22. Zeppelin to jupyter notebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install">22.1. How to Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-pip">22.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-from-repo">22.1.2. Install from Repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uninstall">22.1.3. Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-demos">22.2. Converting Demos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#converting-in-one-function">22.2.1. Converting in one function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converted-results">22.2.2. Converted results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">23. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>22. Zeppelin to jupyter notebook</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="zeppelin-to-jupyter-notebook">
+<span id="ze2nb"></span><h1>22. Zeppelin to jupyter notebook<a class="headerlink" href="#zeppelin-to-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<p>The Zeppelin users may have same problem with me that the Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook is hard to open and read. <strong>ze2nb</strong>: A piece of code to convert Zeppelin .json notebook to .ipynb Jupyter notebook, .py and .html file. This library is based on Ryan Blue’s Jupyter/Zeppelin conversion: <a class="reference internal" href="reference.html#jupyter-zeppelin" id="id1">[jupyter-zeppelin]</a>. The API book can be found at <a class="reference internal" href="reference.html#zeppelin2nb" id="id2">[zeppelin2nb]</a>.  <strong>You may download and distribute it. Please be aware, however, that the note contains typos as well as inaccurate or incorrect description.</strong></p>
+<div class="section" id="how-to-install">
+<h2>22.1. How to Install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-with-pip">
+<h3>22.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h3>
+<p>You can install the <code class="docutils literal notranslate"><span class="pre">ze2nb</span></code> from [PyPI](<a class="reference external" href="https://pypi.org/project/ze2nb">https://pypi.org/project/ze2nb</a>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install ze2nb
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-from-repo">
+<h3>22.1.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Clone the Repository</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/runawayhorse001/ze2nb.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Install</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> zeppelin2nb
+pip install -r requirements.txt
+python setup.py install
+</pre></div>
+</div>
+</div>
+<div class="section" id="uninstall">
+<h3>22.1.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall ze2nb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="converting-demos">
+<h2>22.2. Converting Demos<a class="headerlink" href="#converting-demos" title="Permalink to this headline">¶</a></h2>
+<p>The following demos are designed to show how to use <code class="docutils literal notranslate"><span class="pre">zepplin2nb</span></code> to convert the <code class="docutils literal notranslate"><span class="pre">.json</span></code> to  <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> , <code class="docutils literal notranslate"><span class="pre">.py</span></code> and <code class="docutils literal notranslate"><span class="pre">.html</span></code>.</p>
+<div class="section" id="converting-in-one-function">
+<h3>22.2.1. Converting in one function<a class="headerlink" href="#converting-in-one-function" title="Permalink to this headline">¶</a></h3>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import python library</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="c1"># import zeppelin2nb module</span>
+<span class="kn">from</span> <span class="nn">ze2nb</span> <span class="kn">import</span> <span class="n">ze2nb</span>
+
+
+<span class="c1"># scenario 1</span>
+<span class="c1"># file and output at the current directory</span>
+<span class="c1"># output path, the default output path will be the current directory</span>
+<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_Sparking.json&#39;</span><span class="p">)</span>
+
+<span class="c1"># scenario 2</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span><span class="s1">&#39;/output&#39;</span>
+<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_Sparking.json&#39;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">to_html</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">to_py</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># scenario 3</span>
+<span class="c1"># with load and output path</span>
+<span class="n">load_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/dt216661/Documents/MyJson/&#39;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span><span class="s1">&#39;/output1&#39;</span>
+<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_GBM.json&#39;</span><span class="p">,</span> <span class="n">load_path</span><span class="o">=</span><span class="n">load_path</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">to_html</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">to_py</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="converted-results">
+<h3>22.2.2. Converted results<a class="headerlink" href="#converted-results" title="Permalink to this headline">¶</a></h3>
+<p>Result:</p>
+<div class="figure align-center">
+<img alt="_images/test.png" src="_images/test.png" />
+</div>
+<p>Results in output:</p>
+<div class="figure align-center">
+<img alt="_images/output.png" src="_images/output.png" />
+</div>
+<p>Results in output1:</p>
+<div class="figure align-center">
+<img alt="_images/output1.png" src="_images/output1.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference.html" class="btn btn-neutral float-right" title="23. Main Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral float-left" title="21. PySpark API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Jun 26, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

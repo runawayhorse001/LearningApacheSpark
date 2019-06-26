@@ -411,7 +411,7 @@ Set up Spark on Cloud
 Following the setup steps in :ref:`set-up-Ubuntu`, you can set 
 up your own cluster on the cloud, for example AWS, Google Cloud.
 Actually, for those clouds, they have their own Big Data tool.
-Yon can run them directly whitout any setting just like 
+You can run them directly whitout any setting just like 
 Databricks Community Cloud. If you want more details, please feel 
 free to contact with me.
 

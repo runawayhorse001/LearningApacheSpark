@@ -19,7 +19,7 @@ with smaller sets), which may be computed on different nodes of the cluster.
 Create RDD
 ++++++++++
 
-Usually, there are two popular way to create the RDDs: loading an external dataset, or distributing 
+Usually, there are two popular ways to create the RDDs: loading an external dataset, or distributing 
 a set of collection of objects. The following examples show some simplest ways to create RDDs by using 
 ``parallelize()`` fucntion which takes an already existing collection in your program and pass the same 
 to the Spark Context.
