@@ -37,6 +37,7 @@ Contents
    mcmc
    fnn
    pack
+   audit
    cheat
    api
    ze2nb

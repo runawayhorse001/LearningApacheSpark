@@ -26,7 +26,6 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -102,10 +101,11 @@
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">23. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">21. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">22. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
 </ul>
 
             
@@ -308,24 +308,25 @@ and Deep Learning. The PDF version can be downloaded from <a class="reference ex
 <li class="toctree-l2"><a class="reference internal" href="pack.html#readme">19.3. ReadMe</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.stat">21.1. Stat API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.regression">21.2. Regression API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.classification">21.3. Classification API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.clustering">21.4. Clustering API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.recommendation">21.5. Recommendation API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.pipeline">21.6. Pipeline API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.tuning">21.7. Tuning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.evaluation">21.8. Evaluation API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">21. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">22. PySpark API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.stat">22.1. Stat API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.regression">22.2. Regression API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.classification">22.3. Classification API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.clustering">22.4. Clustering API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.recommendation">22.5. Recommendation API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.pipeline">22.6. Pipeline API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.tuning">22.7. Tuning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-pyspark.ml.evaluation">22.8. Evaluation API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ze2nb.html#how-to-install">22.1. How to Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ze2nb.html#converting-demos">22.2. Converting Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ze2nb.html#how-to-install">23.1. How to Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ze2nb.html#converting-demos">23.2. Converting Demos</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">23. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
 </ul>
 </div>
 </div>
@@ -350,7 +351,7 @@ and Deep Learning. The PDF version can be downloaded from <a class="reference ex
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jun 26, 2019.
+        Last updated on Jul 01, 2019.
       </span>
 
     </p>

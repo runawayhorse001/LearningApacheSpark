@@ -26,7 +26,6 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -99,9 +98,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#configure-spark-on-windows">3.3. Configure Spark on Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pyspark-with-text-editor-or-ide">3.4. PySpark With Text Editor or IDE</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pyspark-with-jupyter-notebook">3.4.1. PySpark With Jupyter Notebook</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-apache-zeppelin">3.4.2. PySpark With Apache Zeppelin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-sublime-text">3.4.3. PySpark With Sublime Text</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-eclipse">3.4.4. PySpark With Eclipse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-pycharm">3.4.2. PySpark With PyCharm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-apache-zeppelin">3.4.3. PySpark With Apache Zeppelin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-sublime-text">3.4.4. PySpark With Sublime Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyspark-with-eclipse">3.4.5. PySpark With Eclipse</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pysparkling-water-spark-h2o">3.5. PySparkling Water: Spark + H2O</a></li>
@@ -125,10 +125,11 @@
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">21. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">23. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">21. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">22. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
 </ul>
 
             
@@ -454,8 +455,51 @@ in Jupyter notebook.</p>
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="pyspark-with-pycharm">
+<h3>3.4.2. PySpark With PyCharm<a class="headerlink" href="#pyspark-with-pycharm" title="Permalink to this headline">¶</a></h3>
+<p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
+then you should be good to add the PySpark to your PyCharm project.</p>
+<ol class="arabic simple">
+<li>Create a new PyCharm project</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/new_project.png" src="_images/new_project.png" />
+</div>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">Go to Project Structure</p>
+<p>Option 1: File -&gt; Settings -&gt; Project: -&gt; Project Structure</p>
+<p>Option 2: PyCharm -&gt; Preferences -&gt; Project: -&gt; Project Structure</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/projectStructure.png" src="_images/projectStructure.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Add Content Root: all <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> files from $SPARK_HOME/python/lib</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/add_root.png" src="_images/add_root.png" />
+</div>
+<div class="figure align-center">
+<img alt="_images/added_root.png" src="_images/added_root.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Run your script</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/run_test.png" src="_images/run_test.png" />
+</div>
+</div></blockquote>
+</div>
 <div class="section" id="pyspark-with-apache-zeppelin">
-<h3>3.4.2. PySpark With Apache Zeppelin<a class="headerlink" href="#pyspark-with-apache-zeppelin" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.3. PySpark With Apache Zeppelin<a class="headerlink" href="#pyspark-with-apache-zeppelin" title="Permalink to this headline">¶</a></h3>
 <p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
 then you should be good to write and run your PySpark Code
 in Apache Zeppelin.</p>
@@ -466,7 +510,7 @@ in Apache Zeppelin.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark-with-sublime-text">
-<h3>3.4.3. PySpark With Sublime Text<a class="headerlink" href="#pyspark-with-sublime-text" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.4. PySpark With Sublime Text<a class="headerlink" href="#pyspark-with-sublime-text" title="Permalink to this headline">¶</a></h3>
 <p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
 then you should be good to use Sublime Text to write your PySpark
 Code and run your code as a normal python code in Terminal.</p>
@@ -483,7 +527,7 @@ Code and run your code as a normal python code in Terminal.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark-with-eclipse">
-<h3>3.4.4. PySpark With Eclipse<a class="headerlink" href="#pyspark-with-eclipse" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.5. PySpark With Eclipse<a class="headerlink" href="#pyspark-with-eclipse" title="Permalink to this headline">¶</a></h3>
 <p>If you want to run PySpark code on Eclipse, you need to add the
 paths for the <strong>External Libraries</strong> for your <strong>Current Project</strong>
 as follows:</p>
@@ -627,7 +671,7 @@ and the Jupyter notebook can be download from <a class="reference external" href
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jun 26, 2019.
+        Last updated on Jul 01, 2019.
       </span>
 
     </p>

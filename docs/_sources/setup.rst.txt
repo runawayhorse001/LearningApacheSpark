@@ -288,6 +288,39 @@ in Jupyter notebook.
   .. figure:: images/jupyterWithPySpark.png
     :align: center   
 
+PySpark With PyCharm
+--------------------
+
+After you finishing the above setup steps in :ref:`set-up-Ubuntu`, 
+then you should be good to add the PySpark to your PyCharm project.
+
+1. Create a new PyCharm project
+
+  .. figure:: images/new_project.png
+    :align: center   
+
+2. Go to Project Structure
+   
+   Option 1: File -> Settings -> Project: -> Project Structure
+   
+   Option 2: PyCharm -> Preferences -> Project: -> Project Structure
+
+  .. figure:: images/projectStructure.png
+    :align: center   
+
+3. Add Content Root: all ``ZIP`` files from $SPARK_HOME/python/lib
+
+  .. figure:: images/add_root.png
+    :align: center   
+
+  .. figure:: images/added_root.png
+    :align: center   
+
+4. Run your script 
+
+  .. figure:: images/run_test.png
+    :align: center   
+
 
 PySpark With Apache Zeppelin
 ----------------------------

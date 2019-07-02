@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>21. PySpark API &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>22. PySpark API &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -26,7 +26,6 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -38,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="22. Zeppelin to jupyter notebook" href="ze2nb.html" />
-    <link rel="prev" title="20. My Cheat Sheet" href="cheat.html" /> 
+    <link rel="next" title="23. Zeppelin to jupyter notebook" href="ze2nb.html" />
+    <link rel="prev" title="21. My Cheat Sheet" href="cheat.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,20 +102,21 @@
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">20. My Cheat Sheet</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">21. PySpark API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.stat">21.1. Stat API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.regression">21.2. Regression API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.classification">21.3. Classification API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.clustering">21.4. Clustering API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.recommendation">21.5. Recommendation API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.pipeline">21.6. Pipeline API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.tuning">21.7. Tuning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.evaluation">21.8. Evaluation API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">21. My Cheat Sheet</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">22. PySpark API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.stat">22.1. Stat API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.regression">22.2. Regression API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.classification">22.3. Classification API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.clustering">22.4. Clustering API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.recommendation">22.5. Recommendation API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.pipeline">22.6. Pipeline API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.tuning">22.7. Tuning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyspark.ml.evaluation">22.8. Evaluation API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">23. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
 </ul>
 
             
@@ -162,7 +162,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>21. PySpark API</li>
+      <li>22. PySpark API</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,10 +180,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pyspark-api">
-<span id="api"></span><h1>21. PySpark API<a class="headerlink" href="#pyspark-api" title="Permalink to this headline">¶</a></h1>
+<span id="api"></span><h1>22. PySpark API<a class="headerlink" href="#pyspark-api" title="Permalink to this headline">¶</a></h1>
 <p>Those APIs are automatically generated from <code class="docutils literal notranslate"><span class="pre">PySpark</span></code> package, so all the CopyRights belong to Spark.</p>
 <div class="section" id="module-pyspark.ml.stat">
-<span id="stat-api"></span><h2>21.1. Stat API<a class="headerlink" href="#module-pyspark.ml.stat" title="Permalink to this headline">¶</a></h2>
+<span id="stat-api"></span><h2>22.1. Stat API<a class="headerlink" href="#module-pyspark.ml.stat" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.stat.ChiSquareTest">
 <em class="property">class </em><code class="descclassname">pyspark.ml.stat.</code><code class="descname">ChiSquareTest</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/stat.py#L27-L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.stat.ChiSquareTest" title="Permalink to this definition">¶</a></dt>
@@ -583,7 +583,7 @@ structure is determined during the creation of the builder.</p>
 
 </div>
 <div class="section" id="module-pyspark.ml.regression">
-<span id="regression-api"></span><h2>21.2. Regression API<a class="headerlink" href="#module-pyspark.ml.regression" title="Permalink to this headline">¶</a></h2>
+<span id="regression-api"></span><h2>22.2. Regression API<a class="headerlink" href="#module-pyspark.ml.regression" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.regression.AFTSurvivalRegression">
 <em class="property">class </em><code class="descclassname">pyspark.ml.regression.</code><code class="descname">AFTSurvivalRegression</code><span class="sig-paren">(</span><em>featuresCol='features', labelCol='label', predictionCol='prediction', fitIntercept=True, maxIter=100, tol=1e-06, censorCol='censor', quantileProbabilities=[0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99], quantilesCol=None, aggregationDepth=2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/regression.py#L1205-L1346"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.regression.AFTSurvivalRegression" title="Permalink to this definition">¶</a></dt>
@@ -2104,7 +2104,7 @@ and follows the implementation from scikit-learn.</p>
 
 </div>
 <div class="section" id="module-pyspark.ml.classification">
-<span id="classification-api"></span><h2>21.3. Classification API<a class="headerlink" href="#module-pyspark.ml.classification" title="Permalink to this headline">¶</a></h2>
+<span id="classification-api"></span><h2>22.3. Classification API<a class="headerlink" href="#module-pyspark.ml.classification" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.classification.LinearSVC">
 <em class="property">class </em><code class="descclassname">pyspark.ml.classification.</code><code class="descname">LinearSVC</code><span class="sig-paren">(</span><em>featuresCol='features'</em>, <em>labelCol='label'</em>, <em>predictionCol='prediction'</em>, <em>maxIter=100</em>, <em>regParam=0.0</em>, <em>tol=1e-06</em>, <em>rawPredictionCol='rawPrediction'</em>, <em>fitIntercept=True</em>, <em>standardization=True</em>, <em>threshold=0.0</em>, <em>weightCol=None</em>, <em>aggregationDepth=2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/classification.py#L66-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.classification.LinearSVC" title="Permalink to this definition">¶</a></dt>
@@ -3628,7 +3628,7 @@ and copies the embedded and extra parameters over.</p>
 
 </div>
 <div class="section" id="module-pyspark.ml.clustering">
-<span id="clustering-api"></span><h2>21.4. Clustering API<a class="headerlink" href="#module-pyspark.ml.clustering" title="Permalink to this headline">¶</a></h2>
+<span id="clustering-api"></span><h2>22.4. Clustering API<a class="headerlink" href="#module-pyspark.ml.clustering" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.clustering.BisectingKMeans">
 <em class="property">class </em><code class="descclassname">pyspark.ml.clustering.</code><code class="descname">BisectingKMeans</code><span class="sig-paren">(</span><em>featuresCol='features'</em>, <em>predictionCol='prediction'</em>, <em>maxIter=20</em>, <em>seed=None</em>, <em>k=4</em>, <em>minDivisibleClusterSize=1.0</em>, <em>distanceMeasure='euclidean'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/clustering.py#L569-L701"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.clustering.BisectingKMeans" title="Permalink to this definition">¶</a></dt>
@@ -4829,7 +4829,7 @@ the id. The schema of it will be:
 
 </div>
 <div class="section" id="module-pyspark.ml.recommendation">
-<span id="recommendation-api"></span><h2>21.5. Recommendation API<a class="headerlink" href="#module-pyspark.ml.recommendation" title="Permalink to this headline">¶</a></h2>
+<span id="recommendation-api"></span><h2>22.5. Recommendation API<a class="headerlink" href="#module-pyspark.ml.recommendation" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.recommendation.ALS">
 <em class="property">class </em><code class="descclassname">pyspark.ml.recommendation.</code><code class="descname">ALS</code><span class="sig-paren">(</span><em>rank=10</em>, <em>maxIter=10</em>, <em>regParam=0.1</em>, <em>numUserBlocks=10</em>, <em>numItemBlocks=10</em>, <em>implicitPrefs=False</em>, <em>alpha=1.0</em>, <em>userCol='user'</em>, <em>itemCol='item'</em>, <em>seed=None</em>, <em>ratingCol='rating'</em>, <em>nonnegative=False</em>, <em>checkpointInterval=10</em>, <em>intermediateStorageLevel='MEMORY_AND_DISK'</em>, <em>finalStorageLevel='MEMORY_AND_DISK'</em>, <em>coldStartStrategy='nan'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/recommendation.py#L31-L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.recommendation.ALS" title="Permalink to this definition">¶</a></dt>
@@ -5301,7 +5301,7 @@ stored as an array of (itemCol, rating) Rows.</p>
 
 </div>
 <div class="section" id="module-pyspark.ml.pipeline">
-<span id="pipeline-api"></span><h2>21.6. Pipeline API<a class="headerlink" href="#module-pyspark.ml.pipeline" title="Permalink to this headline">¶</a></h2>
+<span id="pipeline-api"></span><h2>22.6. Pipeline API<a class="headerlink" href="#module-pyspark.ml.pipeline" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.pipeline.Pipeline">
 <em class="property">class </em><code class="descclassname">pyspark.ml.pipeline.</code><code class="descname">Pipeline</code><span class="sig-paren">(</span><em>stages=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/pipeline.py#L33-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
@@ -5545,7 +5545,7 @@ method to implement the actual saving of the instance.</p>
 
 </div>
 <div class="section" id="module-pyspark.ml.tuning">
-<span id="tuning-api"></span><h2>21.7. Tuning API<a class="headerlink" href="#module-pyspark.ml.tuning" title="Permalink to this headline">¶</a></h2>
+<span id="tuning-api"></span><h2>22.7. Tuning API<a class="headerlink" href="#module-pyspark.ml.tuning" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.tuning.ParamGridBuilder">
 <em class="property">class </em><code class="descclassname">pyspark.ml.tuning.</code><code class="descname">ParamGridBuilder</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/tuning.py#L59-L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.tuning.ParamGridBuilder" title="Permalink to this definition">¶</a></dt>
@@ -5953,7 +5953,7 @@ It does not copy the extra Params into the subModels.</p>
 
 </div>
 <div class="section" id="module-pyspark.ml.evaluation">
-<span id="evaluation-api"></span><h2>21.8. Evaluation API<a class="headerlink" href="#module-pyspark.ml.evaluation" title="Permalink to this headline">¶</a></h2>
+<span id="evaluation-api"></span><h2>22.8. Evaluation API<a class="headerlink" href="#module-pyspark.ml.evaluation" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pyspark.ml.evaluation.Evaluator">
 <em class="property">class </em><code class="descclassname">pyspark.ml.evaluation.</code><code class="descname">Evaluator</code><a class="reference external" href="https://github.com/runawayhorse001/LearningApacheSpark/blob/master/pyspark/ml/evaluation.py#L34-L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyspark.ml.evaluation.Evaluator" title="Permalink to this definition">¶</a></dt>
@@ -6266,10 +6266,10 @@ in the same cluster and far from the points of the other clusters.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ze2nb.html" class="btn btn-neutral float-right" title="22. Zeppelin to jupyter notebook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ze2nb.html" class="btn btn-neutral float-right" title="23. Zeppelin to jupyter notebook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cheat.html" class="btn btn-neutral float-left" title="20. My Cheat Sheet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cheat.html" class="btn btn-neutral float-left" title="21. My Cheat Sheet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -6280,7 +6280,7 @@ in the same cluster and far from the points of the other clusters.</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jun 26, 2019.
+        Last updated on Jul 01, 2019.
       </span>
 
     </p>
