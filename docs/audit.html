@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="21. My Cheat Sheet" href="cheat.html" />
-    <link rel="prev" title="19. My PySpark Package" href="pack.html" /> 
+    <link rel="next" title="21. Zeppelin to jupyter notebook" href="ze2nb.html" />
+    <link rel="prev" title="19. Wrap PySpark Package" href="pack.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,11 +101,30 @@
 <li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">19. My PySpark Package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">20. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">21. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">22. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">19. Wrap PySpark Package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">20. PySpark Data Audit Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-with-pip">20.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-from-repo">20.2. Install from Repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">20.2.1. Clone the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install">20.2.2. Install</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#uninstall">20.3. Uninstall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test">20.4. Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-test-code">20.4.1. Run test code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audited-results">20.4.2. Audited Results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#auditing-on-big-dataset">20.5. Auditing on Big Dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#print-in-bash">20.5.1. print in bash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audited-results-folder">20.5.2. Audited results folder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">21. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">22. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">23. PySpark API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
 </ul>
 
@@ -171,6 +190,263 @@
             
   <div class="section" id="pyspark-data-audit-library">
 <span id="audit"></span><h1>20. PySpark Data Audit Library<a class="headerlink" href="#pyspark-data-audit-library" title="Permalink to this headline">¶</a></h1>
+<p><strong>PySparkAudit</strong>: PySpark Data Audit Library. The PDF version can be downloaded from <a class="reference external" href="https://runawayhorse001.github.io/PySparkAudit/PySparkAudit.pdf">HERE</a>.
+The python version <strong>PyAudit</strong>: Python Data Audit Library API can be found at <a class="reference external" href="https://runawayhorse001.github.io/PyAudit/">PyAudit</a>.</p>
+<div class="section" id="install-with-pip">
+<h2>20.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h2>
+<p>You can install the <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> from [PyPI](<a class="reference external" href="https://pypi.org/project/PySparkAudit">https://pypi.org/project/PySparkAudit</a>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install PySparkAudit
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-from-repo">
+<h2>20.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clone-the-repository">
+<h3>20.2.1. Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/runawayhorse001/PySparkAudit.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="install">
+<h3>20.2.2. Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> PySparkAudit
+pip install -r requirements.txt
+python setup.py install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="uninstall">
+<h2>20.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall statspy
+</pre></div>
+</div>
+</div>
+<div class="section" id="test">
+<h2>20.4. Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="run-test-code">
+<h3>20.4.1. Run test code<a class="headerlink" href="#run-test-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> PySparkAudit/test
+python test.py
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">test.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
+    <span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Python Spark regression example&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.some.config.option&quot;</span><span class="p">,</span> <span class="s2">&quot;some-value&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+
+<span class="c1"># from PySparkAudit import dtypes_class, hist_plot, bar_plot, freq_items,feature_len</span>
+<span class="c1"># from PySparkAudit import dataset_summary, rates, trend_plot</span>
+
+<span class="c1"># path = &#39;/home/feng/Desktop&#39;</span>
+
+<span class="c1"># import PySpark Audit function</span>
+<span class="kn">from</span> <span class="nn">PySparkAudit</span> <span class="kn">import</span> <span class="n">auditing</span>
+
+<span class="c1"># load dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;Heart.csv&#39;</span><span class="p">,</span>
+                      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># auditing in one function </span>
+<span class="k">print</span><span class="p">(</span><span class="n">auditing</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="audited-results">
+<h3>20.4.2. Audited Results<a class="headerlink" href="#audited-results" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/t_folder.png" src="_images/t_folder.png" />
+</div>
+</div></blockquote>
+<p>The files in <code class="docutils literal notranslate"><span class="pre">00-audited_results.xlsx</span></code>:</p>
+<ol class="arabic simple">
+<li>Dataset_summary</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/t_excel1.png" src="_images/t_excel1.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Numeric_summary</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/t_excel2.png" src="_images/t_excel2.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Category_summary</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/t_excel3.png" src="_images/t_excel3.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Correlation_matrix</li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/t_excel4.png" src="_images/t_excel4.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Histograms in <code class="docutils literal notranslate"><span class="pre">Histograms.pdf</span></code></li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/hists.png" src="_images/hists.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Barplots in <code class="docutils literal notranslate"><span class="pre">Bar_plots.pdf</span></code></li>
+</ol>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/bars.png" src="_images/bars.png" />
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="auditing-on-big-dataset">
+<h2>20.5. Auditing on Big Dataset<a class="headerlink" href="#auditing-on-big-dataset" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will demonstrate the auditing performance and audited results on the big data set.
+The data set is <code class="docutils literal notranslate"><span class="pre">Spanish</span> <span class="pre">High</span> <span class="pre">Speed</span> <span class="pre">Rail</span> <span class="pre">tickets</span> <span class="pre">pricing</span></code>.  It is available at :
+<a class="reference external" href="https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing">https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing</a>. This data set has 2579771
+samples and 10 features.</p>
+<p>From the following CPU time, you will see most
+of the time was spent on plotting the histograms. If your time and memory are limited, we will suggest
+you to use <code class="docutils literal notranslate"><span class="pre">sample_size</span></code> to generate the subset of the the dataset to plot histograms.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
+    <span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Python Spark regression example&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.some.config.option&quot;</span><span class="p">,</span> <span class="s2">&quot;some-value&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+
+<span class="c1"># from PySparkAudit import dtypes_class, hist_plot, bar_plot, freq_items,feature_len</span>
+<span class="c1"># from PySparkAudit import dataset_summary, rates, trend_plot</span>
+
+<span class="c1"># Audited results output path</span>
+<span class="n">out_path</span> <span class="o">=</span> <span class="s1">&#39;/home/feng/Desktop&#39;</span>
+
+<span class="c1"># import PySpark Audit function</span>
+<span class="kn">from</span> <span class="nn">PySparkAudit</span> <span class="kn">import</span> <span class="n">auditing</span>
+
+<span class="c1"># load dataset</span>
+<span class="c1"># Spanish High Speed Rail tickets pricing - Renfe (~2.58M)</span>
+<span class="c1"># https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/home/feng/Downloads/renfe.csv&#39;</span><span class="p">,</span>
+                      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># auditing in one function</span>
+<span class="n">auditing</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">out_path</span><span class="p">,</span> <span class="n">tracking</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="section" id="print-in-bash">
+<h3>20.5.1. print in bash<a class="headerlink" href="#print-in-bash" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">================================================================</span>
+The audited results summary audited_results.xlsx was located at:
+/home/feng/Desktop/Audited
+Generate data <span class="nb">set</span> summary <span class="nv">took</span> <span class="o">=</span> <span class="m">60</span>.535009145736694 <span class="nv">s</span>
+<span class="o">================================================================</span>
+Collecting data types.... Please be patient!
+Generate counts <span class="nv">took</span> <span class="o">=</span> <span class="m">0</span>.0016515254974365234 <span class="nv">s</span>
+<span class="o">================================================================</span>
+Collecting features<span class="s1">&#39; counts.... Please be patient!</span>
+<span class="s1">Generate counts took = 6.502962350845337 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Collecting data frame description.... Please be patient!</span>
+<span class="s1">Generate data frame description took = 1.5562639236450195 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Calculating percentiles.... Please be patient!</span>
+<span class="s1">Generate percentiles took = 19.76785445213318 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Calculating features&#39;</span> length.... Please be patient!
+Generate features<span class="s1">&#39; length took = 4.953453540802002 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Calculating top 5 frequent items.... Please be patient!</span>
+<span class="s1">Generate rates took: 4.761325359344482 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Calculating rates.... Please be patient!</span>
+<span class="s1">Generate rates took: 17.201056718826294 s</span>
+<span class="s1">Auditing numerical data took = 54.77840781211853 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Collecting data types.... Please be patient!</span>
+<span class="s1">Generate counts took = 0.001623392105102539 s</span>
+<span class="s1">================================================================</span>
+<span class="s1">Collecting features&#39;</span> counts.... Please be patient!
+Generate counts <span class="nv">took</span> <span class="o">=</span> <span class="m">12</span>.59226107597351 <span class="nv">s</span>
+<span class="o">================================================================</span>
+Calculating features<span class="s1">&#39; length.... Please be patient!</span>
+<span class="s1">Generate features&#39;</span> length <span class="nv">took</span> <span class="o">=</span> <span class="m">5</span>.332952976226807 <span class="nv">s</span>
+<span class="o">================================================================</span>
+Calculating top <span class="m">5</span> frequent items.... Please be patient!
+Generate rates took: <span class="m">6</span>.832213878631592 <span class="nv">s</span>
+<span class="o">================================================================</span>
+Calculating rates.... Please be patient!
+Generate rates took: <span class="m">23</span>.704302072525024 s
+Auditing categorical data <span class="nv">took</span> <span class="o">=</span> <span class="m">48</span>.484763622283936 <span class="nv">s</span>
+<span class="o">================================================================</span>
+The correlation matrix plot Corr.png was located at:
+/home/feng/Desktop/Audited
+Calculating correlation matrix... Please be patient!
+Generate correlation matrix <span class="nv">took</span> <span class="o">=</span> <span class="m">19</span>.61273431777954 <span class="nv">s</span>
+<span class="o">================================================================</span>
+The Histograms plots *.png were located at:
+/home/feng/Desktop/Audited/02-hist
+Plotting histograms of _c0.... Please be patient!
+Plotting histograms of price.... Please be patient!
+Histograms plots are DONE!!!
+Generate histograms plots <span class="nv">took</span> <span class="o">=</span> <span class="m">160</span>.3421311378479 <span class="nv">s</span>
+<span class="o">================================================================</span>
+The Bar plot Bar_plots.pdf was located at:
+/home/feng/Desktop/Audited
+Plotting barplot of origin.... Please be patient!
+Plotting barplot of destination.... Please be patient!
+Plotting barplot of train_type.... Please be patient!
+Plotting barplot of train_class.... Please be patient!
+Plotting barplot of fare.... Please be patient!
+Plotting barplot of insert_date.... Please be patient!
+Plotting barplot of start_date.... Please be patient!
+Plotting barplot of end_date.... Please be patient!
+Bar plots are DONE!!!
+Generate bar plots <span class="nv">took</span> <span class="o">=</span> <span class="m">24</span>.17994236946106 <span class="nv">s</span>
+<span class="o">================================================================</span>
+The Trend plot Trend_plots.pdf was located at:
+/home/feng/Desktop/Audited
+Plotting trend plot of _c0.... Please be patient!
+Plotting trend plot of price.... Please be patient!
+Trend plots are DONE!!!
+Generate trend plots <span class="nv">took</span> <span class="o">=</span> <span class="m">11</span>.697550296783447 s
+Generate all the figures <span class="nv">took</span> <span class="o">=</span> <span class="m">196</span>.25823402404785 s
+Generate all audited results <span class="nv">took</span> <span class="o">=</span> <span class="m">379</span>.73954820632935 <span class="nv">s</span>
+<span class="o">================================================================</span>
+The auditing processes are DONE!!!
+</pre></div>
+</div>
+</div>
+<div class="section" id="audited-results-folder">
+<h3>20.5.2. Audited results folder<a class="headerlink" href="#audited-results-folder" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="figure align-center">
+<img alt="_images/demo3_folder.png" src="_images/demo3_folder.png" />
+</div>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 
@@ -181,10 +457,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cheat.html" class="btn btn-neutral float-right" title="21. My Cheat Sheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ze2nb.html" class="btn btn-neutral float-right" title="21. Zeppelin to jupyter notebook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pack.html" class="btn btn-neutral float-left" title="19. My PySpark Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pack.html" class="btn btn-neutral float-left" title="19. Wrap PySpark Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -195,7 +471,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jul 01, 2019.
+        Last updated on Jul 10, 2019.
       </span>
 
     </p>

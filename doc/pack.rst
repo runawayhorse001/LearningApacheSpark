@@ -1,18 +1,20 @@
 
 .. _pack:
 
-==================
-My PySpark Package
-==================
+====================
+Wrap PySpark Package
+====================
 
 It's super easy to wrap your own package in Python. I packed some functions which I frequently 
 used in my daily work. You can download and install it from `My PySpark Package`_. The hierarchical 
 structure and the directory structure of this package are as follows. 
  
- 
+
+Package Wrapper 
++++++++++++++++
 
 Hierarchical Structure
-++++++++++++++++++++++
+----------------------
 
 
 .. code-block:: bash
@@ -59,7 +61,7 @@ Hierarchical Structure
 From the above hierarchical structure, you will find that you have to have ``__init__.py`` in each directory. I will explain the ``__init__.py`` file with the example below:
 
 Set Up
-++++++
+------
 
 .. code-block:: python
 
@@ -89,7 +91,7 @@ Set Up
 	     )
 
 ReadMe
-++++++
+------
 
 .. code-block:: bash
 
@@ -117,8 +119,55 @@ ReadMe
 	python test1.py
 	```
 
+Pacakge Publishing on PyPI
+++++++++++++++++++++++++++
+
+Install ``twine``
+-----------------
+
+.. code-block:: bash
+
+	pip install twine
+
+Build Your Package
+------------------
+
+.. code-block:: python
+
+	python setup.py sdist bdist_wheel
+
+Then you will get a new folder ``dist``:
+
+.. code-block:: bash
+
+	.
+	├── PySparkAudit-1.0.0-py2.7.egg
+	├── PySparkAudit-1.0.0-py2-none-any.whl
+	└── PySparkAudit-1.0.0.tar.gz
 
 
+Upload Your Package
+-------------------
+
+.. code-block:: bash
+
+	twine upload dist/*
+
+During the uploading processing, you need to provide your PyPI account ``username`` and ``password``:
+
+.. code-block:: bash
+
+	Enter your username: runawayhorse001
+	Enter your password: ***************
+
+Package at PyPI
+---------------
+
+Here is my ``PySparkAudit`` package at [PyPI](https://pypi.org/project/PySparkAudit). You can install ``PySparkAudit`` using:
+
+.. code-block:: bash
+
+    pip install PySparkAudit
 
 
-.. _My PySpark Package: https://github.com/runawayhorse001/PySparkTools
+.. _My PySpark Package: https://github.com/runawayhorse001/PySparkAudit

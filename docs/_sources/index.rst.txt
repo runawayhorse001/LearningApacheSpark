@@ -38,8 +38,8 @@ Contents
    fnn
    pack
    audit
+   ze2nb
    cheat
    api
-   ze2nb
    reference
 

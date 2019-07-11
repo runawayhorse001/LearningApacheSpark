@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>19. My PySpark Package &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>19. Wrap PySpark Package &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -101,16 +101,26 @@
 <li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">19. My PySpark Package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#hierarchical-structure">19.1. Hierarchical Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-up">19.2. Set Up</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#readme">19.3. ReadMe</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">19. Wrap PySpark Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package-wrapper">19.1. Package Wrapper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical-structure">19.1.1. Hierarchical Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up">19.1.2. Set Up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readme">19.1.3. ReadMe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pacakge-publishing-on-pypi">19.2. Pacakge Publishing on PyPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-twine">19.2.1. Install <code class="docutils literal notranslate"><span class="pre">twine</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-your-package">19.2.2. Build Your Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upload-your-package">19.2.3. Upload Your Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-at-pypi">19.2.4. Package at PyPI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">21. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">22. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">21. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">22. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">23. PySpark API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
 </ul>
 
@@ -157,7 +167,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>19. My PySpark Package</li>
+      <li>19. Wrap PySpark Package</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -174,13 +184,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="my-pyspark-package">
-<span id="pack"></span><h1>19. My PySpark Package<a class="headerlink" href="#my-pyspark-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="wrap-pyspark-package">
+<span id="pack"></span><h1>19. Wrap PySpark Package<a class="headerlink" href="#wrap-pyspark-package" title="Permalink to this headline">¶</a></h1>
 <p>It’s super easy to wrap your own package in Python. I packed some functions which I frequently
-used in my daily work. You can download and install it from <a class="reference external" href="https://github.com/runawayhorse001/PySparkTools">My PySpark Package</a>. The hierarchical
+used in my daily work. You can download and install it from <a class="reference external" href="https://github.com/runawayhorse001/PySparkAudit">My PySpark Package</a>. The hierarchical
 structure and the directory structure of this package are as follows.</p>
+<div class="section" id="package-wrapper">
+<h2>19.1. Package Wrapper<a class="headerlink" href="#package-wrapper" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="hierarchical-structure">
-<h2>19.1. Hierarchical Structure<a class="headerlink" href="#hierarchical-structure" title="Permalink to this headline">¶</a></h2>
+<h3>19.1.1. Hierarchical Structure<a class="headerlink" href="#hierarchical-structure" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="p">|</span>-- build
 <span class="p">|</span>   <span class="p">|</span>-- bdist.linux-x86_64
 <span class="p">|</span>   <span class="p">|</span>-- lib.linux-x86_64-2.7
@@ -222,7 +234,7 @@ structure and the directory structure of this package are as follows.</p>
 <p>From the above hierarchical structure, you will find that you have to have <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in each directory. I will explain the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file with the example below:</p>
 </div>
 <div class="section" id="set-up">
-<h2>19.2. Set Up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
+<h3>19.1.2. Set Up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -251,7 +263,7 @@ structure and the directory structure of this package are as follows.</p>
 </div>
 </div>
 <div class="section" id="readme">
-<h2>19.3. ReadMe<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h2>
+<h3>19.1.3. ReadMe<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># PySparkTools</span>
 
 This is my PySpark Tools. If you want to colne and install it, you can use
@@ -279,6 +291,47 @@ python test1.py
 </div>
 </div>
 </div>
+<div class="section" id="pacakge-publishing-on-pypi">
+<h2>19.2. Pacakge Publishing on PyPI<a class="headerlink" href="#pacakge-publishing-on-pypi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-twine">
+<h3>19.2.1. Install <code class="docutils literal notranslate"><span class="pre">twine</span></code><a class="headerlink" href="#install-twine" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install twine
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-your-package">
+<h3>19.2.2. Build Your Package<a class="headerlink" href="#build-your-package" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+<p>Then you will get a new folder <code class="docutils literal notranslate"><span class="pre">dist</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+├── PySparkAudit-1.0.0-py2.7.egg
+├── PySparkAudit-1.0.0-py2-none-any.whl
+└── PySparkAudit-1.0.0.tar.gz
+</pre></div>
+</div>
+</div>
+<div class="section" id="upload-your-package">
+<h3>19.2.3. Upload Your Package<a class="headerlink" href="#upload-your-package" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>twine upload dist/*
+</pre></div>
+</div>
+<p>During the uploading processing, you need to provide your PyPI account <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Enter your username: runawayhorse001
+Enter your password: ***************
+</pre></div>
+</div>
+</div>
+<div class="section" id="package-at-pypi">
+<h3>19.2.4. Package at PyPI<a class="headerlink" href="#package-at-pypi" title="Permalink to this headline">¶</a></h3>
+<p>Here is my <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> package at [PyPI](<a class="reference external" href="https://pypi.org/project/PySparkAudit">https://pypi.org/project/PySparkAudit</a>). You can install <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install PySparkAudit
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 
 
            </div>
@@ -302,7 +355,7 @@ python test1.py
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jul 01, 2019.
+        Last updated on Jul 10, 2019.
       </span>
 
     </p>

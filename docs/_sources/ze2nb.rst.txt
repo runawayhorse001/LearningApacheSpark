@@ -9,7 +9,7 @@
 Zeppelin to jupyter notebook
 ============================
 
-The Zeppelin users may have same problem with me that the Zeppelin ``.json`` notebook is hard to open and read. **ze2nb**: A piece of code to convert Zeppelin .json notebook to .ipynb Jupyter notebook, .py and .html file. This library is based on Ryan Blue's Jupyter/Zeppelin conversion: [jupyter-zeppelin]_. The API book can be found at [zeppelin2nb]_.  **You may download and distribute it. Please be aware, however, that the note contains typos as well as inaccurate or incorrect description.** 
+The Zeppelin users may have same problem with me that the Zeppelin ``.json`` notebook is hard to open and read. **ze2nb**: A piece of code to convert Zeppelin ``.json`` notebook to ``.ipynb`` Jupyter notebook, ``.py`` and ``.html`` file. This library is based on Ryan Blue's Jupyter/Zeppelin conversion: [jupyter-zeppelin]_. The API book can be found at `ze2nb API`_ or [zeppelin2nb]_.  **You may download and distribute it. Please be aware, however, that the note contains typos as well as inaccurate or incorrect description.** 
 
 
 How to Install
@@ -92,3 +92,6 @@ Results in output1:
 
 .. figure:: images/output1.png
 	:align: center    
+
+
+.. _ze2nb API: https://runawayhorse001.github.io/ze2nb/
