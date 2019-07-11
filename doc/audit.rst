@@ -9,7 +9,7 @@
 PySpark Data Audit Library
 ==========================
 
-**PySparkAudit**: PySpark Data Audit Library. The PDF version can be downloaded from `HERE <https://runawayhorse001.github.io/PySparkAudit/PySparkAudit.pdf>`_.
+**PySparkAudit**: `PySpark Data Audit Library`_. The PDF version can be downloaded from `HERE <https://runawayhorse001.github.io/PySparkAudit/PySparkAudit.pdf>`_.
 The python version **PyAudit**: Python Data Audit Library API can be found at `PyAudit`_.
 
 Install with ``pip``
@@ -218,5 +218,5 @@ Audited results folder
   .. figure:: images/demo3_folder.png
     :align: center
 
-
+.. _PySpark Data Audit Library: https://runawayhorse001.github.io/PySparkAudit/
 .. _PyAudit: https://runawayhorse001.github.io/PyAudit/
