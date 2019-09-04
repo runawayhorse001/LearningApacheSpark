@@ -24,14 +24,14 @@ There are many ways that can describe patterns found in univariate data include 
 The variable could be either categorical or numerical, I will demostrate the different statistical and visulization techniques to investigate each type of the variable. 
 
 * The Jupyter notebook can be download from `Data Exploration <_static/Data_exploration.ipynb>`_.
-* The data can be downloaf from `German Credit <_static/german_credit.csv>`_.
+* The data can be download from `German Credit <_static/german_credit.csv>`_.
 
 Numerical Variables
 -------------------
 
 * Describe 
 
-The ``desctibe`` function in ``pandas`` and ``spark`` will give us most of the statistical results, such as ``min``, ``median``, ``max``, ``quartiles`` and ``standard deviation``. With the help of the user defined function, you can get even more statistical results. 
+The ``describe`` function in ``pandas`` and ``spark`` will give us most of the statistical results, such as ``min``, ``median``, ``max``, ``quartiles`` and ``standard deviation``. With the help of the user defined function, you can get even more statistical results. 
 
 .. code-block:: python
 
@@ -262,7 +262,7 @@ The fundamental difference between histogram and bar graph will help you to iden
 .. figure:: images/his_d.png
     :align: center
 
-Sometimes, some people will ask you to plot the unequal width (invalid argument for histogram) of the bars. YOu can still achieve it by the follwing trick. 
+Sometimes, some people will ask you to plot the unequal width (invalid argument for histogram) of the bars. You can still achieve it by the following trick. 
 
 .. code-block:: python
 

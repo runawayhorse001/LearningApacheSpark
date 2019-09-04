@@ -215,7 +215,7 @@ a set of collection of objects. The following examples show some simplest ways t
 <code class="docutils literal notranslate"><span class="pre">parallelize()</span></code> fucntion which takes an already existing collection in your program and pass the same
 to the Spark Context.</p>
 <ol class="arabic simple">
-<li>By using <code class="docutils literal notranslate"><span class="pre">parallelize(</span> <span class="pre">)</span></code> fucntion</li>
+<li>By using <code class="docutils literal notranslate"><span class="pre">parallelize(</span> <span class="pre">)</span></code> function</li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -673,7 +673,7 @@ PythonTips
 </div>
 <div class="section" id="fill-null">
 <h3>5.3.6. Fill Null<a class="headerlink" href="#fill-null" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;female&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 <span class="n">dp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 <span class="c1">#</span>
@@ -914,6 +914,7 @@ PythonTips
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="s1">&#39;log_tv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">TV</span><span class="p">)</span>
 <span class="n">dp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">as</span> <span class="nn">F</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;log_tv&#39;</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">TV</span><span class="p">))</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1042,7 +1043,7 @@ PythonTips
 <li><p class="first">Full Join</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">::</span> <span class="pre">Python</span> <span class="pre">Code:</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leftp</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">rightp</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leftp</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">rightp</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">lefts</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rights</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span>
      <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1245,7 +1246,7 @@ PythonTips
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jul 21, 2019.
+        Last updated on Sep 03, 2019.
       </span>
 
     </p>

@@ -197,14 +197,14 @@
 <p>The variable could be either categorical or numerical, I will demostrate the different statistical and visulization techniques to investigate each type of the variable.</p>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/Data_exploration.ipynb">Data Exploration</a>.</li>
-<li>The data can be downloaf from <a class="reference external" href="_static/german_credit.csv">German Credit</a>.</li>
+<li>The data can be download from <a class="reference external" href="_static/german_credit.csv">German Credit</a>.</li>
 </ul>
 <div class="section" id="numerical-variables">
 <h3>7.1.1. Numerical Variables<a class="headerlink" href="#numerical-variables" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Describe</li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">desctibe</span></code> function in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">spark</span></code> will give us most of the statistical results, such as <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">quartiles</span></code> and <code class="docutils literal notranslate"><span class="pre">standard</span> <span class="pre">deviation</span></code>. With the help of the user defined function, you can get even more statistical results.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">describe</span></code> function in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">spark</span></code> will give us most of the statistical results, such as <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">quartiles</span></code> and <code class="docutils literal notranslate"><span class="pre">standard</span> <span class="pre">deviation</span></code>. With the help of the user defined function, you can get even more statistical results.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># selected varables for the demonstration</span>
 <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Account Balance&#39;</span><span class="p">,</span><span class="s1">&#39;No of dependents&#39;</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -410,7 +410,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <div class="figure align-center" id="fig-his-d">
 <img alt="_images/his_d.png" src="_images/his_d.png" />
 </div>
-<p>Sometimes, some people will ask you to plot the unequal width (invalid argument for histogram) of the bars. YOu can still achieve it by the follwing trick.</p>
+<p>Sometimes, some people will ask you to plot the unequal width (invalid argument for histogram) of the bars. You can still achieve it by the following trick.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;Credit Amount&#39;</span>
 <span class="n">plot_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">x</span><span class="o">=</span> <span class="n">plot_data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
@@ -707,7 +707,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jul 21, 2019.
+        Last updated on Sep 03, 2019.
       </span>
 
     </p>

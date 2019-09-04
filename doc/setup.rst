@@ -65,7 +65,7 @@ listed below.
     /FileStore/tables/05rmhuqv1489687378010/. Since we will use
     this path to load the dataset.
 
-5. Creat your notebook
+5. Create your notebook
 
   .. _fig_notebook:
   .. figure:: images/notebook.png

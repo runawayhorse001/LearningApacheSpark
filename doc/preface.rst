@@ -89,7 +89,9 @@ solutions and source code on the internet. Without those help,
 this repository would not have been possible to be made. Wenqiang 
 also would like to thank the `Institute for Mathematics and Its 
 Applications (IMA)`_ at `University of Minnesota, Twin Cities`_ 
-for support during his IMA Data Scientist Fellow visit.
+for support during his IMA Data Scientist Fellow visit and thank TAN THIAM HUAT and 
+Mark Rabins for finding the typos. 
+
 
 A special thank you goes to `Dr. Haiping Lu`_, Lecturer in Machine Learning 
 at Department of Computer Science, University of Sheffield, for recommending 

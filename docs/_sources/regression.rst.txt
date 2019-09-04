@@ -225,7 +225,7 @@ Then you will get
 	 |-- Newspaper: double (nullable = true)
 	 |-- Sales: double (nullable = true)
 
-You can also get the Statistical resutls from the data frame 
+You can also get the Statistical results from the data frame 
 (Unfortunately, it only works for numerical). 
 
 .. code-block:: python
@@ -855,7 +855,7 @@ When you check you data at this point, you will get
 	(trainingData, testData) = transformed.randomSplit([0.6, 0.4])
 
 You can check your train and test data as follows (In my opinion, it is always 
-to good to keep tracking your data during prototype pahse):
+to good to keep tracking your data during prototype phase):
 
 .. code-block:: python
 

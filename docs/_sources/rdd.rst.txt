@@ -24,7 +24,7 @@ a set of collection of objects. The following examples show some simplest ways t
 ``parallelize()`` fucntion which takes an already existing collection in your program and pass the same 
 to the Spark Context.
 
-1. By using ``parallelize( )`` fucntion
+1. By using ``parallelize( )`` function
 
 .. code-block:: python
 
@@ -559,7 +559,7 @@ Fill Null
 
 .. code-block:: python
 
-	my_list = [['a', 1, None], ['b', 2, 3],['c', 3, 4]]
+	my_list = [['male', 1, None], ['female', 2, 3],['male', 3, 4]]
 	dp = pd.DataFrame(my_list,columns=['A', 'B', 'C'])
 	ds = spark.createDataFrame(my_list, ['A', 'B', 'C'])
 	#
@@ -853,6 +853,7 @@ With New Column
 	dp['log_tv'] = np.log(dp.TV)
 	dp.head(4)
 	#
+	import pyspark.sql.functions as F
 	ds.withColumn('log_tv',F.log(ds.TV)).show(4)
 
 |comp|
@@ -1001,7 +1002,7 @@ Join
 
 	.. code-block:: python
 
-		leftp.merge(rightp,on='A',how='full')
+		leftp.merge(rightp,on='A',how='outer')
 		#
 		lefts.join(rights,on='A',how='full')
 		     .orderBy('A',ascending=True).show()
