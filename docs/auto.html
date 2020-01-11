@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>19. Automation for Cloudera Distribution Hadoop &mdash; Learning Apache Spark with Python  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="20. Wrap PySpark Package" href="pack.html" />
+    <link rel="prev" title="18. Neural Network" href="fnn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">19. Automation for Cloudera Distribution Hadoop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#automation-pipeline">19.1. Automation Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-clean-and-manipulation-automation">19.2. Data Clean and Manipulation Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jinja-2">19.2.1. Jinja 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-sql">19.2.2. Spark SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ml-pipeline-automation">19.3. ML Pipeline Automation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>19. Automation for Cloudera Distribution Hadoop</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="automation-for-cloudera-distribution-hadoop">
+<span id="auto"></span><h1>19. Automation for Cloudera Distribution Hadoop<a class="headerlink" href="#automation-for-cloudera-distribution-hadoop" title="Permalink to this headline">¶</a></h1>
+<p>CDH (Cloudera Distribution Hadoop) is the most complete, tested, and widely deployed distribution of Apache Hadoop. A lot of small or middle size companies are using CHD. While Cloudera does not support IPython or Jupyter notebooks on CDH and the Cloudera Data Science Workbench is expensive, many compaies are using <code class="docutils literal notranslate"><span class="pre">CDH+zeppelin</span></code> or <code class="docutils literal notranslate"><span class="pre">CDH+jupyterhub</span></code> infrastructure. This infrastructure works pretty well, but it’s inconvenient for Data Engineer or Data Scientist to do automation during the production process.  This chapter will cover how to use  <a class="reference external" href="https://jinja.palletsprojects.com/en/2.10.x/">Jinja2</a>, <a class="reference external" href="https://spark.apache.org/sql/">spark sql</a> and <a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> to implement the automation for Cloudera Distribution Hadoop.</p>
+<div class="section" id="automation-pipeline">
+<h2>19.1. Automation Pipeline<a class="headerlink" href="#automation-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>The automation pipeline mainly contains two parts:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference external" href="https://jinja.palletsprojects.com/en/2.10.x/">Jinja2</a> + <a class="reference external" href="https://spark.apache.org/sql/">spark sql</a> for data clean and manipulation automation</li>
+<li><a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> for Machine  Leanring automation</li>
+</ol>
+</div></blockquote>
+<div class="figure align-center" id="fig-pipline-flow">
+<img alt="_images/pipline_flow.png" src="_images/pipline_flow.png" />
+</div>
+</div>
+<div class="section" id="data-clean-and-manipulation-automation">
+<h2>19.2. Data Clean and Manipulation Automation<a class="headerlink" href="#data-clean-and-manipulation-automation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jinja-2">
+<h3>19.2.1. Jinja 2<a class="headerlink" href="#jinja-2" title="Permalink to this headline">¶</a></h3>
+<p>Jinja is a modern and designer-friendly templating language for Python, modelled after Django’s templates. Use Jinja2 to generate
+SQL query will need two steps:</p>
+<ol class="arabic simple">
+<li>Get template</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT project, timesheet, hours</span>
+<span class="s2">    FROM timesheet</span>
+<span class="s2">    WHERE user_id = {{ user_id }}</span>
+<span class="s2">    {</span><span class="si">% i</span><span class="s2">f project_id %}</span>
+<span class="s2">    AND project_id = {{ project_id }}</span>
+<span class="s2">    {</span><span class="si">% e</span><span class="s2">ndif %}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>render the tempalte</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="sa">u</span><span class="s2">&quot;runawayhorse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;project_id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}</span>
+
+<span class="n">query</span><span class="o">=</span>  <span class="n">Template</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, you will get the following SQL query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">project</span><span class="p">,</span> <span class="n">timesheet</span><span class="p">,</span> <span class="n">hours</span>
+<span class="k">FROM</span> <span class="n">timesheet</span>
+<span class="k">WHERE</span> <span class="n">user_id</span> <span class="o">=</span> <span class="n">runawayhorse</span>
+
+<span class="k">AND</span> <span class="n">project_id</span> <span class="o">=</span> <span class="mi">123</span>
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="first admonition-title">Note</p>
+<p>The Jinja is smart then you think. If you try this</p>
+<blockquote class="last">
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="sa">u</span><span class="s2">&quot;runawayhorse&quot;</span><span class="p">}</span>
+
+<span class="n">query</span><span class="o">=</span>  <span class="n">Template</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, you will get the following SQL query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">project</span><span class="p">,</span> <span class="n">timesheet</span><span class="p">,</span> <span class="n">hours</span>
+<span class="k">FROM</span> <span class="n">timesheet</span>
+<span class="k">WHERE</span> <span class="n">user_id</span> <span class="o">=</span> <span class="n">runawayhorse</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<p>If you have a long query, you can use Iinja <code class="docutils literal notranslate"><span class="pre">get_template</span></code> to read the tempalte:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Template</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
+
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">jinja_env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="n">template</span> <span class="o">=</span> <span class="n">jinja_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;test.sql&#39;</span><span class="p">)</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">states</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with <code class="docutils literal notranslate"><span class="pre">test.sql</span></code> file is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="nb">id</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">states</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">,</span> <span class="p">(</span><span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">off_st</span> <span class="o">=</span> <span class="s1">&#39;{{var}}&#39;</span><span class="p">)</span> <span class="n">THEN</span> <span class="mi">1</span> <span class="n">ELSE</span> <span class="mi">0</span> <span class="n">END</span><span class="p">)</span>  <span class="n">AS</span> <span class="n">off_st_</span><span class="p">{{</span><span class="n">var</span><span class="p">}}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="n">FROM</span> <span class="n">table1</span>
+</pre></div>
+</div>
+<p>Then you will get the following query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">id</span>
+
+<span class="p">,</span> <span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="p">(</span><span class="n">off_st</span> <span class="o">=</span> <span class="s1">&#39;MO&#39;</span><span class="p">)</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>  <span class="k">AS</span> <span class="n">off_st_MO</span>
+
+<span class="p">,</span> <span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="p">(</span><span class="n">off_st</span> <span class="o">=</span> <span class="s1">&#39;KS&#39;</span><span class="p">)</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>  <span class="k">AS</span> <span class="n">off_st_KS</span>
+
+<span class="p">,</span> <span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="p">(</span><span class="n">off_st</span> <span class="o">=</span> <span class="s1">&#39;KY&#39;</span><span class="p">)</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>  <span class="k">AS</span> <span class="n">off_st_KY</span>
+
+<span class="p">,</span> <span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="p">(</span><span class="n">off_st</span> <span class="o">=</span> <span class="s1">&#39;OH&#39;</span><span class="p">)</span> <span class="k">THEN</span> <span class="mi">1</span> <span class="k">ELSE</span> <span class="mi">0</span> <span class="k">END</span><span class="p">)</span>  <span class="k">AS</span> <span class="n">off_st_OH</span>
+
+<span class="k">FROM</span> <span class="n">table1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="spark-sql">
+<h3>19.2.2. Spark SQL<a class="headerlink" href="#spark-sql" title="Permalink to this headline">¶</a></h3>
+<p>Spark SQL at here will be call to excute SQL or HiveQL queries which generated by Jinjia2 on existing warehouses.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># without output</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="c1"># with output</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ml-pipeline-automation">
+<h2>19.3. ML Pipeline Automation<a class="headerlink" href="#ml-pipeline-automation" title="Permalink to this headline">¶</a></h2>
+<p>I will not cover the details of the ML Pipeline at here, the interested reader is referred to  <a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> . The The main steps for defining the stages are as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scalering</span> <span class="o">=</span><span class="s1">&#39;Standard&#39;</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">Normalizer</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
+<span class="k">if</span> <span class="n">scalering</span><span class="o">==</span><span class="s1">&#39;Normal&#39;</span><span class="p">:</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaledFeatures&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">scalering</span><span class="o">==</span><span class="s1">&#39;Standard&#39;</span><span class="p">:</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaledFeatures&quot;</span><span class="p">,</span>
+                            <span class="n">withStd</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">withMean</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaledFeatures&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span>
+<span class="c1"># Index labels, adding metadata to the label column</span>
+<span class="n">labelIndexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span>
+                             <span class="n">outputCol</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">IndexToString</span>
+<span class="c1"># Convert indexed labels back to original labels.</span>
+<span class="n">labelConverter</span> <span class="o">=</span> <span class="n">IndexToString</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;predictedLabel&quot;</span><span class="p">,</span>
+                               <span class="n">labels</span><span class="o">=</span><span class="n">labelIndexer</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+
+<span class="kn">from</span> <span class="nn">pyspark.ml.classification</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="n">ml</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s1">&#39;scaledFeatures&#39;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">regParam</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Chain indexers and tree in a Pipeline</span>
+<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">scaler</span><span class="p">,</span><span class="n">labelIndexer</span><span class="p">,</span><span class="n">ml</span><span class="p">,</span><span class="n">labelConverter</span><span class="p">])</span>
+
+<span class="c1"># Train model.  This also runs the indexers.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pipeline_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
+
+<span class="c1"># Make predictions.</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pack.html" class="btn btn-neutral float-right" title="20. Wrap PySpark Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fnn.html" class="btn btn-neutral float-left" title="18. Neural Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Jan 11, 2020.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
