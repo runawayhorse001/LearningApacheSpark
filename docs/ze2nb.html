@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>21. Zeppelin to jupyter notebook &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>22. Zeppelin to jupyter notebook &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="22. My Cheat Sheet" href="cheat.html" />
-    <link rel="prev" title="20. PySpark Data Audit Library" href="audit.html" /> 
+    <link rel="next" title="23. My Cheat Sheet" href="cheat.html" />
+    <link rel="prev" title="21. PySpark Data Audit Library" href="audit.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,25 +101,26 @@
 <li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">19. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">21. Zeppelin to jupyter notebook</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-install">21.1. How to Install</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-with-pip">21.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-from-repo">21.1.2. Install from Repo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#uninstall">21.1.3. Uninstall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">22. Zeppelin to jupyter notebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install">22.1. How to Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-with-pip">22.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-from-repo">22.1.2. Install from Repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uninstall">22.1.3. Uninstall</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#converting-demos">21.2. Converting Demos</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#converting-in-one-function">21.2.1. Converting in one function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#converted-results">21.2.2. Converted results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-demos">22.2. Converting Demos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#converting-in-one-function">22.2.1. Converting in one function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converted-results">22.2.2. Converted results</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">22. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">23. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
 </ul>
 
             
@@ -165,7 +166,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>21. Zeppelin to jupyter notebook</li>
+      <li>22. Zeppelin to jupyter notebook</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,19 +184,19 @@
            <div itemprop="articleBody">
             
   <div class="section" id="zeppelin-to-jupyter-notebook">
-<span id="ze2nb"></span><h1>21. Zeppelin to jupyter notebook<a class="headerlink" href="#zeppelin-to-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<span id="ze2nb"></span><h1>22. Zeppelin to jupyter notebook<a class="headerlink" href="#zeppelin-to-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
 <p>The Zeppelin users may have same problem with me that the Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook is hard to open and read. <strong>ze2nb</strong>: A piece of code to convert Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook to <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> Jupyter notebook, <code class="docutils literal notranslate"><span class="pre">.py</span></code> and <code class="docutils literal notranslate"><span class="pre">.html</span></code> file. This library is based on Ryan Blue’s Jupyter/Zeppelin conversion: <a class="reference internal" href="reference.html#jupyter-zeppelin" id="id1">[jupyter-zeppelin]</a>. The API book can be found at <a class="reference external" href="https://runawayhorse001.github.io/ze2nb/">ze2nb API</a> or <a class="reference internal" href="reference.html#zeppelin2nb" id="id2">[zeppelin2nb]</a>.  <strong>You may download and distribute it. Please be aware, however, that the note contains typos as well as inaccurate or incorrect description.</strong></p>
 <div class="section" id="how-to-install">
-<h2>21.1. How to Install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
+<h2>22.1. How to Install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-with-pip">
-<h3>21.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h3>
+<h3>22.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h3>
 <p>You can install the <code class="docutils literal notranslate"><span class="pre">ze2nb</span></code> from [PyPI](<a class="reference external" href="https://pypi.org/project/ze2nb">https://pypi.org/project/ze2nb</a>):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install ze2nb
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-from-repo">
-<h3>21.1.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h3>
+<h3>22.1.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Clone the Repository</li>
 </ol>
@@ -212,17 +213,17 @@ python setup.py install
 </div>
 </div>
 <div class="section" id="uninstall">
-<h3>21.1.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h3>
+<h3>22.1.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall ze2nb
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="converting-demos">
-<h2>21.2. Converting Demos<a class="headerlink" href="#converting-demos" title="Permalink to this headline">¶</a></h2>
+<h2>22.2. Converting Demos<a class="headerlink" href="#converting-demos" title="Permalink to this headline">¶</a></h2>
 <p>The following demos are designed to show how to use <code class="docutils literal notranslate"><span class="pre">zepplin2nb</span></code> to convert the <code class="docutils literal notranslate"><span class="pre">.json</span></code> to  <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> , <code class="docutils literal notranslate"><span class="pre">.py</span></code> and <code class="docutils literal notranslate"><span class="pre">.html</span></code>.</p>
 <div class="section" id="converting-in-one-function">
-<h3>21.2.1. Converting in one function<a class="headerlink" href="#converting-in-one-function" title="Permalink to this headline">¶</a></h3>
+<h3>22.2.1. Converting in one function<a class="headerlink" href="#converting-in-one-function" title="Permalink to this headline">¶</a></h3>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import python library</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
@@ -250,7 +251,7 @@ python setup.py install
 </div>
 </div>
 <div class="section" id="converted-results">
-<h3>21.2.2. Converted results<a class="headerlink" href="#converted-results" title="Permalink to this headline">¶</a></h3>
+<h3>22.2.2. Converted results<a class="headerlink" href="#converted-results" title="Permalink to this headline">¶</a></h3>
 <p>Result:</p>
 <div class="figure align-center">
 <img alt="_images/test.png" src="_images/test.png" />
@@ -275,10 +276,10 @@ python setup.py install
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cheat.html" class="btn btn-neutral float-right" title="22. My Cheat Sheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cheat.html" class="btn btn-neutral float-right" title="23. My Cheat Sheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="audit.html" class="btn btn-neutral float-left" title="20. PySpark Data Audit Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="audit.html" class="btn btn-neutral float-left" title="21. PySpark Data Audit Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -289,7 +290,7 @@ python setup.py install
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Sep 03, 2019.
+        Last updated on Jan 11, 2020.
       </span>
 
     </p>

@@ -36,6 +36,7 @@ Contents
    mc
    mcmc
    fnn
+   auto
    pack
    audit
    ze2nb

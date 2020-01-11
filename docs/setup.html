@@ -124,12 +124,13 @@
 <li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">19. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">20. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">21. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">22. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">23. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">24. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
 </ul>
 
             
@@ -405,8 +406,8 @@ SparkSession available as <span class="s1">&#39;spark&#39;</span>.
 <span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>your_spark_installation_path
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$SPARK_HOME</span>/bin:<span class="nv">$SPARK_HOME</span>/sbin
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$SPARK_HOME</span>/bin
-<span class="nb">export</span> <span class="nv">PYSPARK_DRIVE_PYTHON</span><span class="o">=</span><span class="s2">&quot;jupyter&quot;</span>
-<span class="nb">export</span> <span class="nv">PYSPARK_DRIVE_PYTHON_OPTS</span><span class="o">=</span><span class="s2">&quot;notebook&quot;</span>
+<span class="nb">export</span> <span class="nv">PYSPARK_DRIVER_PYTHON</span><span class="o">=</span><span class="s2">&quot;jupyter&quot;</span>
+<span class="nb">export</span> <span class="nv">PYSPARK_DRIVER_PYTHON_OPTS</span><span class="o">=</span><span class="s2">&quot;notebook&quot;</span>
 </pre></div>
 </div>
 <p>At last, remember to source your <code class="docutils literal notranslate"><span class="pre">bash_profile</span></code></p>
@@ -671,7 +672,7 @@ and the Jupyter notebook can be download from <a class="reference external" href
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Sep 03, 2019.
+        Last updated on Jan 11, 2020.
       </span>
 
     </p>

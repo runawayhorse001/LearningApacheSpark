@@ -234,8 +234,8 @@ Configure the Spark
    export SPARK_HOME=your_spark_installation_path
    export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
    export PATH=$PATH:$SPARK_HOME/bin
-   export PYSPARK_DRIVE_PYTHON="jupyter"
-   export PYSPARK_DRIVE_PYTHON_OPTS="notebook"
+   export PYSPARK_DRIVER_PYTHON="jupyter"
+   export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
 
   At last, remember to source your ``bash_profile``
    
