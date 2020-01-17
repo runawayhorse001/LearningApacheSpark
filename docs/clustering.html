@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
@@ -298,7 +298,8 @@ c_k = \frac{\sum_{i=1}^{m}w_{ik}x_i}{\sum_{i=1}^{m}w_{ik}}"/></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in complex dataset.</p>
+<blockquote>
+<div><p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in complex dataset.</p>
 <p>Supervised learning version:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">):</span>
@@ -330,7 +331,7 @@ c_k = \frac{\sum_{i=1}^{m}w_{ik}x_i}{\sum_{i=1}^{m}w_{ik}}"/></p>
 </div>
 </div></blockquote>
 <p>Unsupervised learning version:</p>
-<blockquote class="last">
+<blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get dummy variables and concat with continuous variables for unsupervised learning.</span>
@@ -360,6 +361,90 @@ c_k = \frac{\sum_{i=1}^{m}w_{ik}x_i}{\sum_{i=1}^{m}w_{ik}}"/></p>
     <span class="n">data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexCol</span><span class="p">,</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p>Two in one:</p>
+<blockquote class="last">
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
+<span class="sd">    :param df: the dataframe</span>
+<span class="sd">    :param categoricalCols: the name list of the categorical data</span>
+<span class="sd">    :param continuousCols:  the name list of the numerical data</span>
+<span class="sd">    :param labelCol:  the name of label column</span>
+<span class="sd">    :param dropLast:  the flag of drop last column</span>
+<span class="sd">    :return: feature matrix</span>
+
+<span class="sd">    :author: Wenqiang Feng</span>
+<span class="sd">    :email:  von198@gmail.com</span>
+
+<span class="sd">    &gt;&gt;&gt; df = spark.createDataFrame([</span>
+<span class="sd">                  (0, &quot;a&quot;),</span>
+<span class="sd">                  (1, &quot;b&quot;),</span>
+<span class="sd">                  (2, &quot;c&quot;),</span>
+<span class="sd">                  (3, &quot;a&quot;),</span>
+<span class="sd">                  (4, &quot;a&quot;),</span>
+<span class="sd">                  (5, &quot;c&quot;)</span>
+<span class="sd">              ], [&quot;id&quot;, &quot;category&quot;])</span>
+
+<span class="sd">    &gt;&gt;&gt; indexCol = &#39;id&#39;</span>
+<span class="sd">    &gt;&gt;&gt; categoricalCols = [&#39;category&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; continuousCols = []</span>
+<span class="sd">    &gt;&gt;&gt; labelCol = []</span>
+
+<span class="sd">    &gt;&gt;&gt; mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)</span>
+<span class="sd">    &gt;&gt;&gt; mat.show()</span>
+
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">        +---+-------------+</span>
+<span class="sd">        | id|     features|</span>
+<span class="sd">        +---+-------------+</span>
+<span class="sd">        |  0|[1.0,0.0,0.0]|</span>
+<span class="sd">        |  1|[0.0,0.0,1.0]|</span>
+<span class="sd">        |  2|[0.0,1.0,0.0]|</span>
+<span class="sd">        |  3|[1.0,0.0,0.0]|</span>
+<span class="sd">        |  4|[1.0,0.0,0.0]|</span>
+<span class="sd">        |  5|[0.0,1.0,0.0]|</span>
+<span class="sd">        +---+-------------+</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+    <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
+    <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
+
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
+
+    <span class="c1"># default setting: dropLast=True</span>
+    <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
+
+    <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
+                                <span class="o">+</span> <span class="n">continuousCols</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">)</span>
+
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">indexers</span> <span class="o">+</span> <span class="n">encoders</span> <span class="o">+</span> <span class="p">[</span><span class="n">assembler</span><span class="p">])</span>
+
+    <span class="n">model</span><span class="o">=</span><span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for supervised learning</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">(</span><span class="n">labelCol</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexCol</span><span class="p">,</span><span class="s1">&#39;features&#39;</span><span class="p">,</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for supervised learning</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">(</span><span class="n">labelCol</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;features&#39;</span><span class="p">,</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for unsupervised learning</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexCol</span><span class="p">,</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for unsupervised learning</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -639,7 +724,7 @@ c_k = \frac{\sum_{i=1}^{m}w_{ik}x_i}{\sum_{i=1}^{m}w_{ik}}"/></p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 11, 2020.
+        Last updated on Jan 17, 2020.
       </span>
 
     </p>

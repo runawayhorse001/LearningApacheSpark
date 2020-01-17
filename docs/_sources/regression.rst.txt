@@ -306,7 +306,10 @@ Then you will get
 		    
 		    data = data.withColumn('label',col(labelCol))
 		    
-		    return data.select(indexCol,'features','label')
+		    if indexCol:
+		    	return data.select(indexCol,'features','label')
+		    else:
+		    	return data.select('features','label')		     	
 
   Unsupervised learning version:
 
@@ -340,7 +343,93 @@ Then you will get
 		    model=pipeline.fit(df)
 		    data = model.transform(df)
 
-		    return data.select(indexCol,'features')
+		    if indexCol:
+		    	return data.select(indexCol,'features')
+		    else:
+		    	return data.select('features')	
+
+ Two in one:
+
+	.. code-block:: python
+
+		def get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol,dropLast=False):
+
+		    '''
+		    Get dummy variables and concat with continuous variables for ml modeling.
+		    :param df: the dataframe
+		    :param categoricalCols: the name list of the categorical data
+		    :param continuousCols:  the name list of the numerical data
+		    :param labelCol:  the name of label column
+		    :param dropLast:  the flag of drop last column         
+		    :return: feature matrix
+
+		    :author: Wenqiang Feng
+		    :email:  von198@gmail.com
+
+		    >>> df = spark.createDataFrame([
+		                  (0, "a"),
+		                  (1, "b"),
+		                  (2, "c"),
+		                  (3, "a"),
+		                  (4, "a"),
+		                  (5, "c")
+		              ], ["id", "category"])
+
+		    >>> indexCol = 'id'
+		    >>> categoricalCols = ['category']
+		    >>> continuousCols = []
+		    >>> labelCol = []
+
+		    >>> mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)
+		    >>> mat.show()
+
+		    >>>
+		        +---+-------------+
+		        | id|     features|
+		        +---+-------------+
+		        |  0|[1.0,0.0,0.0]|
+		        |  1|[0.0,0.0,1.0]|
+		        |  2|[0.0,1.0,0.0]|
+		        |  3|[1.0,0.0,0.0]|
+		        |  4|[1.0,0.0,0.0]|
+		        |  5|[0.0,1.0,0.0]|
+		        +---+-------------+
+		    '''
+
+		    from pyspark.ml import Pipeline
+		    from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
+		    from pyspark.sql.functions import col
+
+		    indexers = [ StringIndexer(inputCol=c, outputCol="{0}_indexed".format(c))
+		                 for c in categoricalCols ]
+
+		    # default setting: dropLast=True
+		    encoders = [ OneHotEncoder(inputCol=indexer.getOutputCol(),
+		                 outputCol="{0}_encoded".format(indexer.getOutputCol()),dropLast=dropLast)
+		                 for indexer in indexers ]
+
+		    assembler = VectorAssembler(inputCols=[encoder.getOutputCol() for encoder in encoders]
+		                                + continuousCols, outputCol="features")
+
+		    pipeline = Pipeline(stages=indexers + encoders + [assembler])
+
+		    model=pipeline.fit(df)
+		    data = model.transform(df)
+
+		    if indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select(indexCol,'features','label')
+		    elif not indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select('features','label') 
+		    elif indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select(indexCol,'features')
+		    elif not indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select('features')      
 
 
 4. Transform the dataset to DataFrame
@@ -718,7 +807,10 @@ Then you will get
 		    
 		    data = data.withColumn('label',col(labelCol))
 		    
-		    return data.select(indexCol,'features','label')
+		    if indexCol:
+		    	return data.select(indexCol,'features','label')
+		    else:
+		    	return data.select('features','label')	
 
   Unsupervised learning version:
 
@@ -752,7 +844,95 @@ Then you will get
 		    model=pipeline.fit(df)
 		    data = model.transform(df)
 
-		    return data.select(indexCol,'features')
+		    if indexCol:
+		    	return data.select(indexCol,'features')
+		    else:
+		    	return data.select('features')	
+
+ Two in one:
+
+	.. code-block:: python
+
+		def get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol,dropLast=False):
+
+		    '''
+		    Get dummy variables and concat with continuous variables for ml modeling.
+		    :param df: the dataframe
+		    :param categoricalCols: the name list of the categorical data
+		    :param continuousCols:  the name list of the numerical data
+		    :param labelCol:  the name of label column
+		    :param dropLast:  the flag of drop last column         
+		    :return: feature matrix
+
+		    :author: Wenqiang Feng
+		    :email:  von198@gmail.com
+
+		    >>> df = spark.createDataFrame([
+		                  (0, "a"),
+		                  (1, "b"),
+		                  (2, "c"),
+		                  (3, "a"),
+		                  (4, "a"),
+		                  (5, "c")
+		              ], ["id", "category"])
+
+		    >>> indexCol = 'id'
+		    >>> categoricalCols = ['category']
+		    >>> continuousCols = []
+		    >>> labelCol = []
+
+		    >>> mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)
+		    >>> mat.show()
+
+		    >>>
+		        +---+-------------+
+		        | id|     features|
+		        +---+-------------+
+		        |  0|[1.0,0.0,0.0]|
+		        |  1|[0.0,0.0,1.0]|
+		        |  2|[0.0,1.0,0.0]|
+		        |  3|[1.0,0.0,0.0]|
+		        |  4|[1.0,0.0,0.0]|
+		        |  5|[0.0,1.0,0.0]|
+		        +---+-------------+
+		    '''
+
+		    from pyspark.ml import Pipeline
+		    from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
+		    from pyspark.sql.functions import col
+
+		    indexers = [ StringIndexer(inputCol=c, outputCol="{0}_indexed".format(c))
+		                 for c in categoricalCols ]
+
+		    # default setting: dropLast=True
+		    encoders = [ OneHotEncoder(inputCol=indexer.getOutputCol(),
+		                 outputCol="{0}_encoded".format(indexer.getOutputCol()),dropLast=dropLast)
+		                 for indexer in indexers ]
+
+		    assembler = VectorAssembler(inputCols=[encoder.getOutputCol() for encoder in encoders]
+		                                + continuousCols, outputCol="features")
+
+		    pipeline = Pipeline(stages=indexers + encoders + [assembler])
+
+		    model=pipeline.fit(df)
+		    data = model.transform(df)
+
+		    if indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select(indexCol,'features','label')
+		    elif not indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select('features','label') 
+		    elif indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select(indexCol,'features')
+		    elif not indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select('features')      
+
+
 
 .. code-block:: python
 
@@ -1175,6 +1355,89 @@ Then you will get
 
 		    return data.select(indexCol,'features')
 
+ Two in one:
+
+	.. code-block:: python
+
+		def get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol,dropLast=False):
+
+		    '''
+		    Get dummy variables and concat with continuous variables for ml modeling.
+		    :param df: the dataframe
+		    :param categoricalCols: the name list of the categorical data
+		    :param continuousCols:  the name list of the numerical data
+		    :param labelCol:  the name of label column
+		    :param dropLast:  the flag of drop last column         
+		    :return: feature matrix
+
+		    :author: Wenqiang Feng
+		    :email:  von198@gmail.com
+
+		    >>> df = spark.createDataFrame([
+		                  (0, "a"),
+		                  (1, "b"),
+		                  (2, "c"),
+		                  (3, "a"),
+		                  (4, "a"),
+		                  (5, "c")
+		              ], ["id", "category"])
+
+		    >>> indexCol = 'id'
+		    >>> categoricalCols = ['category']
+		    >>> continuousCols = []
+		    >>> labelCol = []
+
+		    >>> mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)
+		    >>> mat.show()
+
+		    >>>
+		        +---+-------------+
+		        | id|     features|
+		        +---+-------------+
+		        |  0|[1.0,0.0,0.0]|
+		        |  1|[0.0,0.0,1.0]|
+		        |  2|[0.0,1.0,0.0]|
+		        |  3|[1.0,0.0,0.0]|
+		        |  4|[1.0,0.0,0.0]|
+		        |  5|[0.0,1.0,0.0]|
+		        +---+-------------+
+		    '''
+
+		    from pyspark.ml import Pipeline
+		    from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
+		    from pyspark.sql.functions import col
+
+		    indexers = [ StringIndexer(inputCol=c, outputCol="{0}_indexed".format(c))
+		                 for c in categoricalCols ]
+
+		    # default setting: dropLast=True
+		    encoders = [ OneHotEncoder(inputCol=indexer.getOutputCol(),
+		                 outputCol="{0}_encoded".format(indexer.getOutputCol()),dropLast=dropLast)
+		                 for indexer in indexers ]
+
+		    assembler = VectorAssembler(inputCols=[encoder.getOutputCol() for encoder in encoders]
+		                                + continuousCols, outputCol="features")
+
+		    pipeline = Pipeline(stages=indexers + encoders + [assembler])
+
+		    model=pipeline.fit(df)
+		    data = model.transform(df)
+
+		    if indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select(indexCol,'features','label')
+		    elif not indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select('features','label') 
+		    elif indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select(indexCol,'features')
+		    elif not indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select('features')      
+
 .. code-block:: python
 
 	from pyspark.sql import Row
@@ -1547,6 +1810,89 @@ Demo
 
 		    return data.select(indexCol,'features')
 
+ Two in one:
+
+	.. code-block:: python
+
+		def get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol,dropLast=False):
+
+		    '''
+		    Get dummy variables and concat with continuous variables for ml modeling.
+		    :param df: the dataframe
+		    :param categoricalCols: the name list of the categorical data
+		    :param continuousCols:  the name list of the numerical data
+		    :param labelCol:  the name of label column
+		    :param dropLast:  the flag of drop last column         
+		    :return: feature matrix
+
+		    :author: Wenqiang Feng
+		    :email:  von198@gmail.com
+
+		    >>> df = spark.createDataFrame([
+		                  (0, "a"),
+		                  (1, "b"),
+		                  (2, "c"),
+		                  (3, "a"),
+		                  (4, "a"),
+		                  (5, "c")
+		              ], ["id", "category"])
+
+		    >>> indexCol = 'id'
+		    >>> categoricalCols = ['category']
+		    >>> continuousCols = []
+		    >>> labelCol = []
+
+		    >>> mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)
+		    >>> mat.show()
+
+		    >>>
+		        +---+-------------+
+		        | id|     features|
+		        +---+-------------+
+		        |  0|[1.0,0.0,0.0]|
+		        |  1|[0.0,0.0,1.0]|
+		        |  2|[0.0,1.0,0.0]|
+		        |  3|[1.0,0.0,0.0]|
+		        |  4|[1.0,0.0,0.0]|
+		        |  5|[0.0,1.0,0.0]|
+		        +---+-------------+
+		    '''
+
+		    from pyspark.ml import Pipeline
+		    from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
+		    from pyspark.sql.functions import col
+
+		    indexers = [ StringIndexer(inputCol=c, outputCol="{0}_indexed".format(c))
+		                 for c in categoricalCols ]
+
+		    # default setting: dropLast=True
+		    encoders = [ OneHotEncoder(inputCol=indexer.getOutputCol(),
+		                 outputCol="{0}_encoded".format(indexer.getOutputCol()),dropLast=dropLast)
+		                 for indexer in indexers ]
+
+		    assembler = VectorAssembler(inputCols=[encoder.getOutputCol() for encoder in encoders]
+		                                + continuousCols, outputCol="features")
+
+		    pipeline = Pipeline(stages=indexers + encoders + [assembler])
+
+		    model=pipeline.fit(df)
+		    data = model.transform(df)
+
+		    if indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select(indexCol,'features','label')
+		    elif not indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select('features','label') 
+		    elif indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select(indexCol,'features')
+		    elif not indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select('features')      
+
 .. code-block:: python
 
 	from pyspark.sql import Row
@@ -1901,6 +2247,90 @@ Demo
 
 		    return data.select(indexCol,'features')
 
+ Two in one:
+
+	.. code-block:: python
+
+		def get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol,dropLast=False):
+
+		    '''
+		    Get dummy variables and concat with continuous variables for ml modeling.
+		    :param df: the dataframe
+		    :param categoricalCols: the name list of the categorical data
+		    :param continuousCols:  the name list of the numerical data
+		    :param labelCol:  the name of label column
+		    :param dropLast:  the flag of drop last column         
+		    :return: feature matrix
+
+		    :author: Wenqiang Feng
+		    :email:  von198@gmail.com
+
+		    >>> df = spark.createDataFrame([
+		                  (0, "a"),
+		                  (1, "b"),
+		                  (2, "c"),
+		                  (3, "a"),
+		                  (4, "a"),
+		                  (5, "c")
+		              ], ["id", "category"])
+
+		    >>> indexCol = 'id'
+		    >>> categoricalCols = ['category']
+		    >>> continuousCols = []
+		    >>> labelCol = []
+
+		    >>> mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)
+		    >>> mat.show()
+
+		    >>>
+		        +---+-------------+
+		        | id|     features|
+		        +---+-------------+
+		        |  0|[1.0,0.0,0.0]|
+		        |  1|[0.0,0.0,1.0]|
+		        |  2|[0.0,1.0,0.0]|
+		        |  3|[1.0,0.0,0.0]|
+		        |  4|[1.0,0.0,0.0]|
+		        |  5|[0.0,1.0,0.0]|
+		        +---+-------------+
+		    '''
+
+		    from pyspark.ml import Pipeline
+		    from pyspark.ml.feature import StringIndexer, OneHotEncoder, VectorAssembler
+		    from pyspark.sql.functions import col
+
+		    indexers = [ StringIndexer(inputCol=c, outputCol="{0}_indexed".format(c))
+		                 for c in categoricalCols ]
+
+		    # default setting: dropLast=True
+		    encoders = [ OneHotEncoder(inputCol=indexer.getOutputCol(),
+		                 outputCol="{0}_encoded".format(indexer.getOutputCol()),dropLast=dropLast)
+		                 for indexer in indexers ]
+
+		    assembler = VectorAssembler(inputCols=[encoder.getOutputCol() for encoder in encoders]
+		                                + continuousCols, outputCol="features")
+
+		    pipeline = Pipeline(stages=indexers + encoders + [assembler])
+
+		    model=pipeline.fit(df)
+		    data = model.transform(df)
+
+		    if indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select(indexCol,'features','label')
+		    elif not indexCol and labelCol:
+		        # for supervised learning
+		        data = data.withColumn('label',col(labelCol))
+		        return data.select('features','label') 
+		    elif indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select(indexCol,'features')
+		    elif not indexCol and not labelCol:
+		        # for unsupervised learning
+		        return data.select('features')      
+
+		        
 .. code-block:: python
 
 	from pyspark.sql import Row
