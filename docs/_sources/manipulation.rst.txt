@@ -26,6 +26,19 @@ Word2Vec
 Feature Transform
 +++++++++++++++++
 
+StringIndexer
+-------------
+
+labelConverter
+--------------
+
+
+VectorIndexer
+-------------
+
+VectorAssembler
+---------------
+
 
 OneHotEncoder 
 -------------
@@ -325,17 +338,8 @@ b. Supervised scenario
 The Jupyter Notebook can be found on Colab: `OneHotEncoder`_ . 
 
 
-StringIndexer
--------------
 
-labelConverter
---------------
 
-VectorAssembler
----------------
-
-VectorIndexer
--------------
 
 
 

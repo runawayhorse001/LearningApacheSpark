@@ -555,6 +555,82 @@ Categorical V.S. Categorical
 Numerical V.S. Categorical
 --------------------------
 
+1. Line Chart with Error Bars
+
+.. code-block:: python
+
+	import pandas as pd
+	import numpy as np
+	import matplotlib.pyplot as plt
+	import seaborn as sns
+	from scipy import stats
+	%matplotlib inline
+
+	plt.rcParams['figure.figsize'] =(16,9)
+	plt.style.use('ggplot')
+	sns.set()
+
+	ax = sns.pointplot(x="day", y="tip", data=tips, capsize=.2)
+	plt.show()
+
+
+.. figure:: images/line_bar.png
+   :align: center
+
+
+
+2. Combination Chart 
+
+
+.. code-block:: python
+
+	import pandas as pd
+	import numpy as np
+	import matplotlib.pyplot as plt
+	import seaborn as sns
+	from scipy import stats
+	%matplotlib inline
+
+	plt.rcParams['figure.figsize'] =(16,9)
+	plt.style.use('ggplot')
+	sns.set()
+
+
+	#create list of months
+	Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 
+	         'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	#create list for made up average temperatures
+	Avg_Temp = [35, 45, 55, 65, 75, 85, 95, 100, 85, 65, 45, 35]
+	#create list for made up average percipitation %
+	Avg_Percipitation_Perc = [.90, .75, .55, .10, .35, .05, .05, .08, .20, .45, .65, .80]
+	#assign lists to a value
+	data = {'Month': Month, 'Avg_Temp': Avg_Temp, 'Avg_Percipitation_Perc': Avg_Percipitation_Perc}
+	#convert dictionary to a dataframe
+	df = pd.DataFrame(data)
+
+
+	fig, ax1 = plt.subplots(figsize=(10,6))
+	ax1.set_title('Average Percipitation Percentage by Month', fontsize=16)
+	ax1.tick_params(axis='y')
+
+	ax2 = sns.barplot(x='Month', y='Avg_Temp', data = df, color = 'gold')
+	ax2 = ax1.twinx()
+	ax2 = sns.lineplot(x='Month', y='Avg_Percipitation_Perc', data = df, sort=False, color=color)
+
+	ax1.set_xlabel('Month', fontsize=16)
+	ax1.set_ylabel('Avg Temp', fontsize=16)
+
+	ax2.tick_params(axis='y', color=color)
+	ax2.set_ylabel('Avg Percipitation %', fontsize=16)
+	plt.show()
+
+
+.. figure:: images/combo_chart.png
+   :align: center
+
+
+
+
 
 .. _Skewness: https://en.wikipedia.org/wiki/Skewness
 .. _Kurtosis: https://en.wikipedia.org/wiki/Kurtosis
