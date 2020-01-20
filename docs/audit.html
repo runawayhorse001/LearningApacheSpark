@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>21. PySpark Data Audit Library &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>22. PySpark Data Audit Library &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="22. Zeppelin to jupyter notebook" href="ze2nb.html" />
-    <link rel="prev" title="20. Wrap PySpark Package" href="pack.html" /> 
+    <link rel="next" title="23. Zeppelin to jupyter notebook" href="ze2nb.html" />
+    <link rel="prev" title="21. Wrap PySpark Package" href="pack.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,44 +89,45 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">21. PySpark Data Audit Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install-with-pip">21.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-from-repo">21.2. Install from Repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">21.2.1. Clone the Repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install">21.2.2. Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">22. PySpark Data Audit Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-with-pip">22.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-from-repo">22.2. Install from Repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">22.2.1. Clone the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install">22.2.2. Install</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#uninstall">21.3. Uninstall</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test">21.4. Test</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#run-test-code">21.4.1. Run test code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#audited-results">21.4.2. Audited Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uninstall">22.3. Uninstall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test">22.4. Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-test-code">22.4.1. Run test code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audited-results">22.4.2. Audited Results</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#auditing-on-big-dataset">21.5. Auditing on Big Dataset</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#print-in-bash">21.5.1. print in bash</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#audited-results-folder">21.5.2. Audited results folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auditing-on-big-dataset">22.5. Auditing on Big Dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#print-in-bash">22.5.1. print in bash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audited-results-folder">22.5.2. Audited results folder</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -172,7 +173,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>21. PySpark Data Audit Library</li>
+      <li>22. PySpark Data Audit Library</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -190,26 +191,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pyspark-data-audit-library">
-<span id="audit"></span><h1>21. PySpark Data Audit Library<a class="headerlink" href="#pyspark-data-audit-library" title="Permalink to this headline">¶</a></h1>
+<span id="audit"></span><h1>22. PySpark Data Audit Library<a class="headerlink" href="#pyspark-data-audit-library" title="Permalink to this headline">¶</a></h1>
 <p><strong>PySparkAudit</strong>: <a class="reference external" href="https://runawayhorse001.github.io/PySparkAudit/">PySpark Data Audit Library</a>. The PDF version can be downloaded from <a class="reference external" href="https://runawayhorse001.github.io/PySparkAudit/PySparkAudit.pdf">HERE</a>.
 The python version <strong>PyAudit</strong>: Python Data Audit Library API can be found at <a class="reference external" href="https://runawayhorse001.github.io/PyAudit/">PyAudit</a>.</p>
 <div class="section" id="install-with-pip">
-<h2>21.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h2>
+<h2>22.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h2>
 <p>You can install the <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> from [PyPI](<a class="reference external" href="https://pypi.org/project/PySparkAudit">https://pypi.org/project/PySparkAudit</a>):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install PySparkAudit
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-from-repo">
-<h2>21.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h2>
+<h2>22.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="clone-the-repository">
-<h3>21.2.1. Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
+<h3>22.2.1. Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/runawayhorse001/PySparkAudit.git
 </pre></div>
 </div>
 </div>
 <div class="section" id="install">
-<h3>21.2.2. Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<h3>22.2.2. Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> PySparkAudit
 pip install -r requirements.txt
 python setup.py install
@@ -218,15 +219,15 @@ python setup.py install
 </div>
 </div>
 <div class="section" id="uninstall">
-<h2>21.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
+<h2>22.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall statspy
 </pre></div>
 </div>
 </div>
 <div class="section" id="test">
-<h2>21.4. Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<h2>22.4. Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="run-test-code">
-<h3>21.4.1. Run test code<a class="headerlink" href="#run-test-code" title="Permalink to this headline">¶</a></h3>
+<h3>22.4.1. Run test code<a class="headerlink" href="#run-test-code" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> PySparkAudit/test
 python test.py
 </pre></div>
@@ -259,7 +260,7 @@ python test.py
 </div>
 </div>
 <div class="section" id="audited-results">
-<h3>21.4.2. Audited Results<a class="headerlink" href="#audited-results" title="Permalink to this headline">¶</a></h3>
+<h3>22.4.2. Audited Results<a class="headerlink" href="#audited-results" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="figure align-center">
 <img alt="_images/t_folder.png" src="_images/t_folder.png" />
@@ -317,7 +318,7 @@ python test.py
 </div>
 </div>
 <div class="section" id="auditing-on-big-dataset">
-<h2>21.5. Auditing on Big Dataset<a class="headerlink" href="#auditing-on-big-dataset" title="Permalink to this headline">¶</a></h2>
+<h2>22.5. Auditing on Big Dataset<a class="headerlink" href="#auditing-on-big-dataset" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we will demonstrate the auditing performance and audited results on the big data set.
 The data set is <code class="docutils literal notranslate"><span class="pre">Spanish</span> <span class="pre">High</span> <span class="pre">Speed</span> <span class="pre">Rail</span> <span class="pre">tickets</span> <span class="pre">pricing</span></code>.  It is available at :
 <a class="reference external" href="https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing">https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing</a>. This data set has 2579771
@@ -357,7 +358,7 @@ you to use <code class="docutils literal notranslate"><span class="pre">sample_s
 </div>
 <p>Result:</p>
 <div class="section" id="print-in-bash">
-<h3>21.5.1. print in bash<a class="headerlink" href="#print-in-bash" title="Permalink to this headline">¶</a></h3>
+<h3>22.5.1. print in bash<a class="headerlink" href="#print-in-bash" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">================================================================</span>
 The audited results summary audited_results.xlsx was located at:
 /home/feng/Desktop/Audited
@@ -440,7 +441,7 @@ The auditing processes are DONE!!!
 </div>
 </div>
 <div class="section" id="audited-results-folder">
-<h3>21.5.2. Audited results folder<a class="headerlink" href="#audited-results-folder" title="Permalink to this headline">¶</a></h3>
+<h3>22.5.2. Audited results folder<a class="headerlink" href="#audited-results-folder" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="figure align-center">
 <img alt="_images/demo3_folder.png" src="_images/demo3_folder.png" />
@@ -458,10 +459,10 @@ The auditing processes are DONE!!!
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ze2nb.html" class="btn btn-neutral float-right" title="22. Zeppelin to jupyter notebook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ze2nb.html" class="btn btn-neutral float-right" title="23. Zeppelin to jupyter notebook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pack.html" class="btn btn-neutral float-left" title="20. Wrap PySpark Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pack.html" class="btn btn-neutral float-left" title="21. Wrap PySpark Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -472,7 +473,7 @@ The auditing processes are DONE!!!
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>

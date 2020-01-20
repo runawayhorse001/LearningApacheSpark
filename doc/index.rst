@@ -25,6 +25,7 @@ Contents
    rdd
    stats
    exploration
+   manipulation
    regression
    reg
    classification

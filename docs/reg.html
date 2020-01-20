@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Regularization &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>10. Regularization &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10. Classification" href="classification.html" />
-    <link rel="prev" title="8. Regression" href="regression.html" /> 
+    <link rel="next" title="11. Classification" href="classification.html" />
+    <link rel="prev" title="9. Regression" href="regression.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,31 +89,32 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Regularization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ordinary-least-squares-regression">9.1. Ordinary least squares regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ridge-regression">9.2. Ridge regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#least-absolute-shrinkage-and-selection-operator-lasso">9.3. Least Absolute Shrinkage and Selection Operator (LASSO)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#elastic-net">9.4. Elastic net</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Regularization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ordinary-least-squares-regression">10.1. Ordinary least squares regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ridge-regression">10.2. Ridge regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#least-absolute-shrinkage-and-selection-operator-lasso">10.3. Least Absolute Shrinkage and Selection Operator (LASSO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elastic-net">10.4. Elastic net</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -159,7 +160,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>9. Regularization</li>
+      <li>10. Regularization</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,7 +178,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="regularization">
-<span id="id1"></span><h1>9. Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>10. Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
 <p>In mathematics, statistics, and computer science, particularly in the fields of machine learning and inverse problems, regularization is a process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting (<a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">Wikipedia Regularization</a>).</p>
 <p>Due to the sparsity within our data, our training sets will often be ill-posed (singular).  Applying regularization to the regression has many advantages, including:</p>
 <ol class="arabic simple">
@@ -186,7 +187,7 @@
 <li>Variable selection and the removal of correlated variables (<a class="reference external" href="https://web.stanford.edu/~hastie/Papers/Glmnet_Vignette.pdf">Glmnet Vignette</a>).  The Ridge method shrinks the coefficients of correlated variables while the LASSO method picks one variable and discards the others.  The elastic net penalty is a mixture of these two; if variables are correlated in groups then <img class="math" src="_images/math/487c271c3f4e816a00140a32b75636a430b43d75.png" alt="\alpha=0.5"/> tends to select the groups as in or out. If α is close to 1, the elastic net performs much like the LASSO method and removes any degeneracies and wild behavior caused by extreme correlations.</li>
 </ol>
 <div class="section" id="ordinary-least-squares-regression">
-<h2>9.1. Ordinary least squares regression<a class="headerlink" href="#ordinary-least-squares-regression" title="Permalink to this headline">¶</a></h2>
+<h2>10.1. Ordinary least squares regression<a class="headerlink" href="#ordinary-least-squares-regression" title="Permalink to this headline">¶</a></h2>
 <div class="math">
 <p><img src="_images/math/16115a4e9471093b7af52fabc388337a506d4a92.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta -{\y}\|^{2}"/></p>
 </div><p>When <img class="math" src="_images/math/75c4d193ebd92dbdf5d19ca59d2f949ab6c654f3.png" alt="\lambda=0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/a9260a9413abc112c8d6a6a6432204c4567100e6.png" alt="=0"/>), then there is no penalty.</p>
@@ -197,7 +198,7 @@
 </div>
 </div>
 <div class="section" id="ridge-regression">
-<h2>9.2. Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
+<h2>10.2. Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
 <div class="math">
 <p><img src="_images/math/61e8f8613632a93a09d263df8079357a3771d5d0.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda \|\Bbeta\|_{2}^{2}"/></p>
 </div><p>When <img class="math" src="_images/math/c68950621ef1d7bde0a0d8fc6bbf0b9715c989b1.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/5af2a05f08d01a65fe242757b6fff5ed63116b56.png" alt="&gt;0"/>) and <img class="math" src="_images/math/cb59afbbbddffd9a7eff6d0ff1802ba514d23e1a.png" alt="\alpha=0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/a9260a9413abc112c8d6a6a6432204c4567100e6.png" alt="=0"/>)  , then the penalty is an L2 penalty.</p>
@@ -208,7 +209,7 @@
 </div>
 </div>
 <div class="section" id="least-absolute-shrinkage-and-selection-operator-lasso">
-<h2>9.3. Least Absolute Shrinkage and Selection Operator (LASSO)<a class="headerlink" href="#least-absolute-shrinkage-and-selection-operator-lasso" title="Permalink to this headline">¶</a></h2>
+<h2>10.3. Least Absolute Shrinkage and Selection Operator (LASSO)<a class="headerlink" href="#least-absolute-shrinkage-and-selection-operator-lasso" title="Permalink to this headline">¶</a></h2>
 <div class="math">
 <p><img src="_images/math/18d3a927e0f0c83639cb55e755cfe9c29c532d89.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda\|\Bbeta\|_{1}"/></p>
 </div><p>When <img class="math" src="_images/math/c68950621ef1d7bde0a0d8fc6bbf0b9715c989b1.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/5af2a05f08d01a65fe242757b6fff5ed63116b56.png" alt="&gt;0"/>) and <img class="math" src="_images/math/80c5ad2ed65e28a4dee747d665916caac68d8440.png" alt="\alpha=1"/> (i.e. <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/a3bd02c9bd422fb3280cde4384c00524b7a688fd.png" alt="=1"/>), then the penalty is an L1 penalty.</p>
@@ -219,7 +220,7 @@
 </div>
 </div>
 <div class="section" id="elastic-net">
-<h2>9.4. Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h2>
+<h2>10.4. Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h2>
 <div class="math">
 <p><img src="_images/math/396506754ece89f15f5da58b2766fed484d2f7ee.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda (\alpha \|\Bbeta\|_{1}+(1-\alpha )\|\Bbeta\|_{2}^{2}),\alpha \in (0,1)"/></p>
 </div><p>When <img class="math" src="_images/math/c68950621ef1d7bde0a0d8fc6bbf0b9715c989b1.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/5af2a05f08d01a65fe242757b6fff5ed63116b56.png" alt="&gt;0"/>) and <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/330248af239a0e5b99607bd0614730ad42d9da2c.png" alt="\in (0,1)"/> (i.e. <img class="math" src="_images/math/2a393edb9475fa8f68ef800cc1804a5c94e89cf1.png" alt="\alpha\in (0,1)"/>) , then the penalty is an L1 + L2 penalty.</p>
@@ -239,10 +240,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="classification.html" class="btn btn-neutral float-right" title="10. Classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="classification.html" class="btn btn-neutral float-right" title="11. Classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="regression.html" class="btn btn-neutral float-left" title="8. Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="regression.html" class="btn btn-neutral float-left" title="9. Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -253,7 +254,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>

@@ -184,7 +184,7 @@ Create matrix of daily returns
 	b = vol/math.sqrt(T)
 	v = mat.map(lambda x: a +  (b - a)* x)
 
-3.  Convert Rdd mstrix to dataframe 
+3.  Convert Rdd matrix to dataframe 
 
 .. code-block:: python
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>15. ALS: Stock Portfolio Recommendations &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>16. ALS: Stock Portfolio Recommendations &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16. Monte Carlo Simulation" href="mc.html" />
-    <link rel="prev" title="14. Social Network Analysis" href="socialnetwork.html" /> 
+    <link rel="next" title="17. Monte Carlo Simulation" href="mc.html" />
+    <link rel="prev" title="15. Social Network Analysis" href="socialnetwork.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,36 +89,37 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">15. ALS: Stock Portfolio Recommendations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#recommender-systems">15.1. Recommender systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#alternating-least-squares">15.2. Alternating Least Squares</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#demo">15.3. Demo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#load-and-clean-data">15.3.1. Load and clean data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build-feature-matrix">15.3.2. Build feature matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#train-model">15.3.3. Train model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#make-prediction">15.3.4. Make prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">16. ALS: Stock Portfolio Recommendations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#recommender-systems">16.1. Recommender systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alternating-least-squares">16.2. Alternating Least Squares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo">16.3. Demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-and-clean-data">16.3.1. Load and clean data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-feature-matrix">16.3.2. Build feature matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train-model">16.3.3. Train model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-prediction">16.3.4. Make prediction</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -164,7 +165,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>15. ALS: Stock Portfolio Recommendations</li>
+      <li>16. ALS: Stock Portfolio Recommendations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,7 +183,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="als-stock-portfolio-recommendations">
-<span id="als"></span><h1>15. ALS: Stock Portfolio Recommendations<a class="headerlink" href="#als-stock-portfolio-recommendations" title="Permalink to this headline">¶</a></h1>
+<span id="als"></span><h1>16. ALS: Stock Portfolio Recommendations<a class="headerlink" href="#als-stock-portfolio-recommendations" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
 <p class="first admonition-title">Chinese proverb</p>
 <p class="last"><strong>Don’t put all your eggs in one basket.</strong></p>
@@ -231,24 +232,24 @@
 </pre></div>
 </div>
 <div class="section" id="recommender-systems">
-<h2>15.1. Recommender systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h2>
+<h2>16.1. Recommender systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h2>
 <p>Recommender systems or recommendation systems (sometimes replacing “system” with a synonym such as platform or engine) are a subclass of information filtering system that seek to predict the “rating” or “preference” that a user would give to an item.”</p>
 <p>The main idea is to build a matrix users <code class="docutils literal notranslate"><span class="pre">R</span></code> items rating values and try to factorize it, to recommend main products rated by other users. A popular approach for this is matrix factorization is Alternating Least Squares (ALS)</p>
 </div>
 <div class="section" id="alternating-least-squares">
-<h2>15.2. Alternating Least Squares<a class="headerlink" href="#alternating-least-squares" title="Permalink to this headline">¶</a></h2>
+<h2>16.2. Alternating Least Squares<a class="headerlink" href="#alternating-least-squares" title="Permalink to this headline">¶</a></h2>
 <p>Apache Spark ML implements ALS for collaborative filtering, a very popular algorithm for making recommendations.</p>
 <p>ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It factors the user to item matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> into the user-to-feature matrix <code class="docutils literal notranslate"><span class="pre">U</span></code> and the item-to-feature matrix <code class="docutils literal notranslate"><span class="pre">M</span></code>: It runs the ALS algorithm in a parallel fashion.  The ALS algorithm should uncover the latent factors that explain the observed user to item ratings and tries to find optimal factor weights to minimize the least squares between predicted and actual ratings.</p>
 <p><a class="reference external" href="https://www.elenacuoco.com/2016/12/22/alternating-least-squares-als-spark-ml/">https://www.elenacuoco.com/2016/12/22/alternating-least-squares-als-spark-ml/</a></p>
 </div>
 <div class="section" id="demo">
-<h2>15.3. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<h2>16.3. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/ALS.ipynb">ALS Recommender systems</a>.</li>
 <li>The data can be downloaf from <a class="reference external" href="_static/OnlineRetail.csv">German Credit</a>.</li>
 </ul>
 <div class="section" id="load-and-clean-data">
-<h3>15.3.1. Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
+<h3>16.3.1. Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Set up spark context and SparkSession</li>
 </ol>
@@ -388,7 +389,7 @@
 </div>
 </div>
 <div class="section" id="build-feature-matrix">
-<h3>15.3.2. Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
+<h3>16.3.2. Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fetch the top <code class="docutils literal notranslate"><span class="pre">n</span></code> cusip list</li>
 </ul>
@@ -520,7 +521,7 @@
 </div>
 </div>
 <div class="section" id="train-model">
-<h3>15.3.3. Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h3>
+<h3>16.3.3. Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>build <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> dataset</li>
 </ul>
@@ -608,7 +609,7 @@
 </div>
 </div>
 <div class="section" id="make-prediction">
-<h3>15.3.4. Make prediction<a class="headerlink" href="#make-prediction" title="Permalink to this headline">¶</a></h3>
+<h3>16.3.4. Make prediction<a class="headerlink" href="#make-prediction" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>make prediction</li>
 </ul>
@@ -643,10 +644,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mc.html" class="btn btn-neutral float-right" title="16. Monte Carlo Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mc.html" class="btn btn-neutral float-right" title="17. Monte Carlo Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="socialnetwork.html" class="btn btn-neutral float-left" title="14. Social Network Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="socialnetwork.html" class="btn btn-neutral float-left" title="15. Social Network Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -657,7 +658,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>

@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. Data Manipulation: Features &mdash; Learning Apache Spark with Python  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Regression" href="regression.html" />
+    <link rel="prev" title="7. Data Exploration" href="exploration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Data Manipulation: Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#feature-extraction">8.1. Feature Extraction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#countvectorizer">8.1.1. Countvectorizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tf-idf">8.1.2. TF-IDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#word2vec">8.1.3. Word2Vec</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-transform">8.2. Feature Transform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#onehotencoder">8.2.1. OneHotEncoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stringindexer">8.2.2. StringIndexer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#labelconverter">8.2.3. labelConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vectorassembler">8.2.4. VectorAssembler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vectorindexer">8.2.5. VectorIndexer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-selection">8.3. Feature Selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>8. Data Manipulation: Features</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-manipulation-features">
+<span id="manipulation"></span><h1>8. Data Manipulation: Features<a class="headerlink" href="#data-manipulation-features" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-chinese-proverb admonition">
+<p class="first admonition-title">Chinese proverb</p>
+<p class="last"><strong>All things are diffcult before they are easy!</strong></p>
+</div>
+<p>Feature building is a super important step for modeling which will determine the success or failure of your model. Otherwise, you will get: garbage in; garbage out! The techniques have been covered in the following chapters, the followings are the brief summary.</p>
+<div class="section" id="feature-extraction">
+<h2>8.1. Feature Extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="countvectorizer">
+<h3>8.1.1. Countvectorizer<a class="headerlink" href="#countvectorizer" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="tf-idf">
+<h3>8.1.2. TF-IDF<a class="headerlink" href="#tf-idf" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="word2vec">
+<h3>8.1.3. Word2Vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="feature-transform">
+<h2>8.2. Feature Transform<a class="headerlink" href="#feature-transform" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="onehotencoder">
+<h3>8.2.1. OneHotEncoder<a class="headerlink" href="#onehotencoder" title="Permalink to this headline">¶</a></h3>
+<p>This is the note I wrote for one of my readers for explaining the OneHotEncoder. I would like to share it at here:</p>
+<ol class="arabic simple">
+<li>Import and creating SparkSession</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
+    <span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Python Spark create RDD example&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.some.config.option&quot;</span><span class="p">,</span> <span class="s2">&quot;some-value&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="p">],</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+---+--------+</span>
+<span class="o">|</span> <span class="nb">id</span><span class="o">|</span><span class="n">category</span><span class="o">|</span>
+<span class="o">+---+--------+</span>
+<span class="o">|</span>  <span class="mi">0</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span><span class="o">|</span>       <span class="n">b</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>
+<span class="o">+---+--------+</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>OneHotEncoder</li>
+</ol>
+<ol class="loweralpha simple">
+<li>Encoder</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StringIndexer</span>
+
+
+<span class="n">stringIndexer</span> <span class="o">=</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;categoryIndex&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">stringIndexer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">indexed</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># default setting: dropLast=True</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;categoryIndex&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;categoryVec&quot;</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">indexed</span><span class="p">)</span>
+<span class="n">encoded</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+---+--------+-------------+-------------+</span>
+<span class="o">|</span> <span class="nb">id</span><span class="o">|</span><span class="n">category</span><span class="o">|</span><span class="n">categoryIndex</span><span class="o">|</span>  <span class="n">categoryVec</span><span class="o">|</span>
+<span class="o">+---+--------+-------------+-------------+</span>
+<span class="o">|</span>  <span class="mi">0</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>          <span class="mf">0.0</span><span class="o">|</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span><span class="o">|</span>       <span class="n">b</span><span class="o">|</span>          <span class="mf">2.0</span><span class="o">|</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">2</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>          <span class="mf">1.0</span><span class="o">|</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>          <span class="mf">0.0</span><span class="o">|</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>          <span class="mf">0.0</span><span class="o">|</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>          <span class="mf">1.0</span><span class="o">|</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">+---+--------+-------------+-------------+</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The default setting of <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> is: dropLast=True</p>
+<blockquote class="last">
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># default setting: dropLast=True</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;categoryIndex&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;categoryVec&quot;</span><span class="p">)</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">indexed</span><span class="p">)</span>
+<span class="n">encoded</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+---+--------+-------------+-------------+</span>
+<span class="o">|</span> <span class="nb">id</span><span class="o">|</span><span class="n">category</span><span class="o">|</span><span class="n">categoryIndex</span><span class="o">|</span>  <span class="n">categoryVec</span><span class="o">|</span>
+<span class="o">+---+--------+-------------+-------------+</span>
+<span class="o">|</span>  <span class="mi">0</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>          <span class="mf">0.0</span><span class="o">|</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span><span class="o">|</span>       <span class="n">b</span><span class="o">|</span>          <span class="mf">2.0</span><span class="o">|</span>    <span class="p">(</span><span class="mi">2</span><span class="p">,[],[])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>          <span class="mf">1.0</span><span class="o">|</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>          <span class="mf">0.0</span><span class="o">|</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>          <span class="mf">0.0</span><span class="o">|</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>          <span class="mf">1.0</span><span class="o">|</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span>
+<span class="o">+---+--------+-------------+-------------+</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<ol class="loweralpha simple" start="2">
+<li>Vector Assembler</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">VectorAssembler</span>
+<span class="n">categoricalCols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span>
+
+<span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
+<span class="c1"># default setting: dropLast=True</span>
+<span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
+<span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
+                            <span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">indexers</span> <span class="o">+</span> <span class="n">encoders</span> <span class="o">+</span> <span class="p">[</span><span class="n">assembler</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">=</span><span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="o">+---+--------+----------------+------------------------+-------------+</span>
+<span class="o">|</span> <span class="nb">id</span><span class="o">|</span><span class="n">category</span><span class="o">|</span><span class="n">category_indexed</span><span class="o">|</span><span class="n">category_indexed_encoded</span><span class="o">|</span>     <span class="n">features</span><span class="o">|</span>
+<span class="o">+---+--------+----------------+------------------------+-------------+</span>
+<span class="o">|</span>  <span class="mi">0</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>             <span class="mf">0.0</span><span class="o">|</span>           <span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span><span class="o">|</span>       <span class="n">b</span><span class="o">|</span>             <span class="mf">2.0</span><span class="o">|</span>           <span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">2</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>             <span class="mf">1.0</span><span class="o">|</span>           <span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>             <span class="mf">0.0</span><span class="o">|</span>           <span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span><span class="o">|</span>       <span class="n">a</span><span class="o">|</span>             <span class="mf">0.0</span><span class="o">|</span>           <span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span><span class="o">|</span>       <span class="n">c</span><span class="o">|</span>             <span class="mf">1.0</span><span class="o">|</span>           <span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">])</span><span class="o">|</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">+---+--------+----------------+------------------------+-------------+</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Application: Get Dummy Variable</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
+<span class="sd">    :param df: the dataframe</span>
+<span class="sd">    :param categoricalCols: the name list of the categorical data</span>
+<span class="sd">    :param continuousCols:  the name list of the numerical data</span>
+<span class="sd">    :param labelCol:  the name of label column</span>
+<span class="sd">    :param dropLast:  the flag of drop last column</span>
+<span class="sd">    :return: feature matrix</span>
+
+<span class="sd">    :author: Wenqiang Feng</span>
+<span class="sd">    :email:  von198@gmail.com</span>
+
+<span class="sd">    &gt;&gt;&gt; df = spark.createDataFrame([</span>
+<span class="sd">                  (0, &quot;a&quot;),</span>
+<span class="sd">                  (1, &quot;b&quot;),</span>
+<span class="sd">                  (2, &quot;c&quot;),</span>
+<span class="sd">                  (3, &quot;a&quot;),</span>
+<span class="sd">                  (4, &quot;a&quot;),</span>
+<span class="sd">                  (5, &quot;c&quot;)</span>
+<span class="sd">              ], [&quot;id&quot;, &quot;category&quot;])</span>
+
+<span class="sd">    &gt;&gt;&gt; indexCol = &#39;id&#39;</span>
+<span class="sd">    &gt;&gt;&gt; categoricalCols = [&#39;category&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; continuousCols = []</span>
+<span class="sd">    &gt;&gt;&gt; labelCol = []</span>
+
+<span class="sd">    &gt;&gt;&gt; mat = get_dummy(df,indexCol,categoricalCols,continuousCols,labelCol)</span>
+<span class="sd">    &gt;&gt;&gt; mat.show()</span>
+
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">        +---+-------------+</span>
+<span class="sd">        | id|     features|</span>
+<span class="sd">        +---+-------------+</span>
+<span class="sd">        |  0|[1.0,0.0,0.0]|</span>
+<span class="sd">        |  1|[0.0,0.0,1.0]|</span>
+<span class="sd">        |  2|[0.0,1.0,0.0]|</span>
+<span class="sd">        |  3|[1.0,0.0,0.0]|</span>
+<span class="sd">        |  4|[1.0,0.0,0.0]|</span>
+<span class="sd">        |  5|[0.0,1.0,0.0]|</span>
+<span class="sd">        +---+-------------+</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+    <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
+    <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
+
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
+
+    <span class="c1"># default setting: dropLast=True</span>
+    <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
+
+    <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
+                                <span class="o">+</span> <span class="n">continuousCols</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">)</span>
+
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">indexers</span> <span class="o">+</span> <span class="n">encoders</span> <span class="o">+</span> <span class="p">[</span><span class="n">assembler</span><span class="p">])</span>
+
+    <span class="n">model</span><span class="o">=</span><span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for supervised learning</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">(</span><span class="n">labelCol</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexCol</span><span class="p">,</span><span class="s1">&#39;features&#39;</span><span class="p">,</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for supervised learning</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="n">col</span><span class="p">(</span><span class="n">labelCol</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;features&#39;</span><span class="p">,</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for unsupervised learning</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">indexCol</span><span class="p">,</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">indexCol</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">labelCol</span><span class="p">:</span>
+        <span class="c1"># for unsupervised learning</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="loweralpha simple">
+<li>Unsupervised scenario</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="p">],</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">indexCol</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span>
+<span class="n">categoricalCols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span>
+<span class="n">continuousCols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">labelCol</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">mat</span> <span class="o">=</span> <span class="n">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="o">+---+-------------+</span>
+<span class="o">|</span> <span class="nb">id</span><span class="o">|</span>     <span class="n">features</span><span class="o">|</span>
+<span class="o">+---+-------------+</span>
+<span class="o">|</span>  <span class="mi">0</span><span class="o">|</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">1</span><span class="o">|</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">2</span><span class="o">|</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">3</span><span class="o">|</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">4</span><span class="o">|</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">|</span>  <span class="mi">5</span><span class="o">|</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span><span class="o">|</span>
+<span class="o">+---+-------------+</span>
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="2">
+<li>Supervised scenario</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;bank.csv&#39;</span><span class="p">,</span>
+                    <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span><span class="n">comment</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                    <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">indexCol</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">catCols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">,</span><span class="s1">&#39;marital&#39;</span><span class="p">,</span><span class="s1">&#39;education&#39;</span><span class="p">,</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;housing&#39;</span><span class="p">,</span><span class="s1">&#39;loan&#39;</span><span class="p">,</span><span class="s1">&#39;contact&#39;</span><span class="p">,</span><span class="s1">&#39;poutcome&#39;</span><span class="p">]</span>
+
+<span class="n">contCols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;balance&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">,</span><span class="s1">&#39;campaign&#39;</span><span class="p">,</span><span class="s1">&#39;pdays&#39;</span><span class="p">,</span><span class="s1">&#39;previous&#39;</span><span class="p">]</span>
+<span class="n">labelCol</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">catCols</span><span class="p">,</span><span class="n">contCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+-----+</span>
+<span class="o">|</span>            <span class="n">features</span><span class="o">|</span><span class="n">label</span><span class="o">|</span>
+<span class="o">+--------------------+-----+</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">37</span><span class="p">,[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mf">2.</span><span class="o">..|</span>   <span class="n">no</span><span class="o">|</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">37</span><span class="p">,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mf">2.</span><span class="o">..|</span>   <span class="n">no</span><span class="o">|</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">37</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mf">2.</span><span class="o">..|</span>   <span class="n">no</span><span class="o">|</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">37</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mf">2.</span><span class="o">..|</span>   <span class="n">no</span><span class="o">|</span>
+<span class="o">|</span><span class="p">(</span><span class="mi">37</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mf">2.</span><span class="o">..|</span>   <span class="n">no</span><span class="o">|</span>
+<span class="o">+--------------------+-----+</span>
+<span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
+</pre></div>
+</div>
+<p>The Jupyter Notebook can be found on Colab: <a class="reference external" href="https://colab.research.google.com/drive/1pbrFQ-mcyijsVJNPP5GHbOeJaKdTLte3#scrollTo=kLU4xy3XLQG3">OneHotEncoder</a> .</p>
+</div>
+<div class="section" id="stringindexer">
+<h3>8.2.2. StringIndexer<a class="headerlink" href="#stringindexer" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="labelconverter">
+<h3>8.2.3. labelConverter<a class="headerlink" href="#labelconverter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="vectorassembler">
+<h3>8.2.4. VectorAssembler<a class="headerlink" href="#vectorassembler" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="vectorindexer">
+<h3>8.2.5. VectorIndexer<a class="headerlink" href="#vectorindexer" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="feature-selection">
+<h2>8.3. Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regression.html" class="btn btn-neutral float-right" title="9. Regression" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="exploration.html" class="btn btn-neutral float-left" title="7. Data Exploration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Jan 20, 2020.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

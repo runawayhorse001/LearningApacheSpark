@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>12. RFM Analysis &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>13. RFM Analysis &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="13. Text Mining" href="textmining.html" />
-    <link rel="prev" title="11. Clustering" href="clustering.html" /> 
+    <link rel="next" title="14. Text Mining" href="textmining.html" />
+    <link rel="prev" title="12. Clustering" href="clustering.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,45 +89,46 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">12. RFM Analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#rfm-analysis-methodology">12.1. RFM Analysis Methodology</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build-the-rfm-features-matrix-for-each-customer">12.1.1. 1. Build the RFM features matrix for each customer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#determine-cutting-points-for-each-feature">12.1.2. 2. Determine cutting points for each feature</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#determine-the-rfm-scores-and-summarize-the-corresponding-business-value">12.1.3. 3. Determine the RFM scores and summarize the corresponding business value</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. RFM Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rfm-analysis-methodology">13.1. RFM Analysis Methodology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-rfm-features-matrix-for-each-customer">13.1.1. 1. Build the RFM features matrix for each customer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#determine-cutting-points-for-each-feature">13.1.2. 2. Determine cutting points for each feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#determine-the-rfm-scores-and-summarize-the-corresponding-business-value">13.1.3. 3. Determine the RFM scores and summarize the corresponding business value</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#demo">12.2. Demo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#load-and-clean-data">12.2.1. Load and clean data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rfm-segmentation">12.2.2. RFM Segmentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#statistical-summary">12.2.3. Statistical Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo">13.2. Demo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-and-clean-data">13.2.1. Load and clean data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rfm-segmentation">13.2.2. RFM Segmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#statistical-summary">13.2.3. Statistical Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#extension">12.3. Extension</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build-feature-matrix">12.3.1. Build feature matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k-means-clustering">12.3.2. K-means clustering</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">12.3.3. Statistical summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extension">13.3. Extension</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-feature-matrix">13.3.1. Build feature matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k-means-clustering">13.3.2. K-means clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">13.3.3. Statistical summary</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -173,7 +174,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>12. RFM Analysis</li>
+      <li>13. RFM Analysis</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -191,7 +192,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="rfm-analysis">
-<span id="rfm"></span><h1>12. RFM Analysis<a class="headerlink" href="#rfm-analysis" title="Permalink to this headline">¶</a></h1>
+<span id="rfm"></span><h1>13. RFM Analysis<a class="headerlink" href="#rfm-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-center">
 <img alt="_images/rfm_business.png" src="_images/rfm_business.png" />
 </div>
@@ -205,10 +206,10 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 <li>Monetary Value – How much do they spend? i.e. Total money this customer spent</li>
 </ul>
 <div class="section" id="rfm-analysis-methodology">
-<h2>12.1. RFM Analysis Methodology<a class="headerlink" href="#rfm-analysis-methodology" title="Permalink to this headline">¶</a></h2>
+<h2>13.1. RFM Analysis Methodology<a class="headerlink" href="#rfm-analysis-methodology" title="Permalink to this headline">¶</a></h2>
 <p>RFM Analysis contains three main steps:</p>
 <div class="section" id="build-the-rfm-features-matrix-for-each-customer">
-<h3>12.1.1. 1. Build the RFM features matrix for each customer<a class="headerlink" href="#build-the-rfm-features-matrix-for-each-customer" title="Permalink to this headline">¶</a></h3>
+<h3>13.1.1. 1. Build the RFM features matrix for each customer<a class="headerlink" href="#build-the-rfm-features-matrix-for-each-customer" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------+---------+---------+</span>
 <span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span><span class="n">Recency</span><span class="o">|</span><span class="n">Frequency</span><span class="o">|</span> <span class="n">Monetary</span><span class="o">|</span>
 <span class="o">+----------+-------+---------+---------+</span>
@@ -223,7 +224,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="determine-cutting-points-for-each-feature">
-<h3>12.1.2. 2. Determine cutting points for each feature<a class="headerlink" href="#determine-cutting-points-for-each-feature" title="Permalink to this headline">¶</a></h3>
+<h3>13.1.2. 2. Determine cutting points for each feature<a class="headerlink" href="#determine-cutting-points-for-each-feature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------+---------+--------+-----+-----+-----+</span>
 <span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span><span class="n">Recency</span><span class="o">|</span><span class="n">Frequency</span><span class="o">|</span><span class="n">Monetary</span><span class="o">|</span><span class="n">r_seg</span><span class="o">|</span><span class="n">f_seg</span><span class="o">|</span><span class="n">m_seg</span><span class="o">|</span>
 <span class="o">+----------+-------+---------+--------+-----+-----+-----+</span>
@@ -238,7 +239,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="determine-the-rfm-scores-and-summarize-the-corresponding-business-value">
-<h3>12.1.3. 3. Determine the RFM scores and summarize the corresponding business value<a class="headerlink" href="#determine-the-rfm-scores-and-summarize-the-corresponding-business-value" title="Permalink to this headline">¶</a></h3>
+<h3>13.1.3. 3. Determine the RFM scores and summarize the corresponding business value<a class="headerlink" href="#determine-the-rfm-scores-and-summarize-the-corresponding-business-value" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------+---------+--------+-----+-----+-----+--------+</span>
 <span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span><span class="n">Recency</span><span class="o">|</span><span class="n">Frequency</span><span class="o">|</span><span class="n">Monetary</span><span class="o">|</span><span class="n">r_seg</span><span class="o">|</span><span class="n">f_seg</span><span class="o">|</span><span class="n">m_seg</span><span class="o">|</span><span class="n">RFMScore</span><span class="o">|</span>
 <span class="o">+----------+-------+---------+--------+-----+-----+-----+--------+</span>
@@ -259,13 +260,13 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="demo">
-<h2>12.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<h2>13.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/RFM.ipynb">Data Exploration</a>.</li>
 <li>The data can be downloaf from <a class="reference external" href="_static/OnlineRetail.csv">German Credit</a>.</li>
 </ul>
 <div class="section" id="load-and-clean-data">
-<h3>12.2.1. Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
+<h3>13.2.1. Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Set up spark context and SparkSession</li>
 </ol>
@@ -428,11 +429,11 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="rfm-segmentation">
-<h3>12.2.2. RFM Segmentation<a class="headerlink" href="#rfm-segmentation" title="Permalink to this headline">¶</a></h3>
+<h3>13.2.2. RFM Segmentation<a class="headerlink" href="#rfm-segmentation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="4">
 <li>Determine cutting points</li>
 </ol>
-<p>In this section, you can use the techniques (statistical results and visualizations) in <a class="reference internal" href="exploration.html#exploration"><span class="std std-ref">Data Exploration and Manipulation</span></a> section to help you determine the cutting points for each attribute. In my opinion, the cutting points are mainly depend on the business sense. You’s better talk to your makrting people and get feedback and suggestion from them. I will use the quantile as the cutting points in this demo.</p>
+<p>In this section, you can use the techniques (statistical results and visualizations) in <a class="reference internal" href="exploration.html#exploration"><span class="std std-ref">Data Exploration</span></a> section to help you determine the cutting points for each attribute. In my opinion, the cutting points are mainly depend on the business sense. You’s better talk to your makrting people and get feedback and suggestion from them. I will use the quantile as the cutting points in this demo.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recency&#39;</span><span class="p">,</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span><span class="s1">&#39;Monetary&#39;</span><span class="p">]</span>
 <span class="n">describe_pd</span><span class="p">(</span><span class="n">rfm</span><span class="p">,</span><span class="n">cols</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -530,7 +531,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="statistical-summary">
-<h3>12.2.3. Statistical Summary<a class="headerlink" href="#statistical-summary" title="Permalink to this headline">¶</a></h3>
+<h3>13.2.3. Statistical Summary<a class="headerlink" href="#statistical-summary" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="6">
 <li>Statistical Summary</li>
 </ol>
@@ -573,10 +574,10 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="extension">
-<h2>12.3. Extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h2>
+<h2>13.3. Extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h2>
 <p>You can also apply the K-means clustering in <a class="reference internal" href="clustering.html#clustering"><span class="std std-ref">Clustering</span></a> section to do the segmentation.</p>
 <div class="section" id="build-feature-matrix">
-<h3>12.3.1. Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
+<h3>13.3.1. Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>build dense feature matrix</li>
 </ol>
@@ -637,7 +638,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="k-means-clustering">
-<h3>12.3.2. K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h3>
+<h3>13.3.2. K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="3">
 <li>Find optimal number of cluster</li>
 </ol>
@@ -817,7 +818,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="id1">
-<h3>12.3.3. Statistical summary<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>13.3.3. Statistical summary<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="5">
 <li>statistical summary</li>
 </ol>
@@ -882,10 +883,10 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="textmining.html" class="btn btn-neutral float-right" title="13. Text Mining" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="textmining.html" class="btn btn-neutral float-right" title="14. Text Mining" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="clustering.html" class="btn btn-neutral float-left" title="11. Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="clustering.html" class="btn btn-neutral float-left" title="12. Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -896,7 +897,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>16. Monte Carlo Simulation &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>17. Monte Carlo Simulation &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="17. Markov Chain Monte Carlo" href="mcmc.html" />
-    <link rel="prev" title="15. ALS: Stock Portfolio Recommendations" href="als.html" /> 
+    <link rel="next" title="18. Markov Chain Monte Carlo" href="mcmc.html" />
+    <link rel="prev" title="16. ALS: Stock Portfolio Recommendations" href="als.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,38 +89,39 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">16. Monte Carlo Simulation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#simulating-casino-win">16.1. Simulating Casino Win</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#simulating-a-random-walk">16.2. Simulating a Random Walk</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#fetch-the-histrical-stock-price">16.2.1. Fetch the histrical stock price</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#calulate-the-compound-annual-growth-rate">16.2.2. Calulate the Compound Annual Growth Rate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#calulate-the-annual-volatility">16.2.3. Calulate the annual volatility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#create-matrix-of-daily-returns">16.2.4. Create matrix of daily returns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">16.2.5. Monte Carlo Simulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#summary">16.2.6. Summary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#one-year-stock-price-simulation">16.2.7. One-year Stock price simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">17. Monte Carlo Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulating-casino-win">17.1. Simulating Casino Win</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulating-a-random-walk">17.2. Simulating a Random Walk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fetch-the-histrical-stock-price">17.2.1. Fetch the histrical stock price</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calulate-the-compound-annual-growth-rate">17.2.2. Calulate the Compound Annual Growth Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calulate-the-annual-volatility">17.2.3. Calulate the annual volatility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-matrix-of-daily-returns">17.2.4. Create matrix of daily returns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">17.2.5. Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">17.2.6. Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#one-year-stock-price-simulation">17.2.7. One-year Stock price simulation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -166,7 +167,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>16. Monte Carlo Simulation</li>
+      <li>17. Monte Carlo Simulation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,14 +185,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="monte-carlo-simulation">
-<span id="mc"></span><h1>16. Monte Carlo Simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">¶</a></h1>
+<span id="mc"></span><h1>17. Monte Carlo Simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-center">
 <img alt="_images/baba_sim_price.png" src="_images/baba_sim_price.png" />
 </div>
 <p>Monte Carlo simulations are just a way of estimating a fixed parameter by repeatedly generating random numbers. More details can be found at <a class="reference external" href="https://towardsdatascience.com/a-zero-math-introduction-to-markov-chain-monte-carlo-methods-dcba889e0c50">A Zero Math Introduction to Markov Chain Monte Carlo Methods</a>.</p>
 <p>Monte Carlo simulation is a technique used to understand the impact of risk and uncertainty in financial, project management, cost, and other forecasting models. A Monte Carlo simulator helps one visualize most or all of the potential outcomes to have a better idea regarding the risk of a decision. More details can be found at <a class="reference external" href="https://towardsdatascience.com/the-house-always-wins-monte-carlo-simulation-eb82787da2a3">The house always wins</a>.</p>
 <div class="section" id="simulating-casino-win">
-<h2>16.1. Simulating Casino Win<a class="headerlink" href="#simulating-casino-win" title="Permalink to this headline">¶</a></h2>
+<h2>17.1. Simulating Casino Win<a class="headerlink" href="#simulating-casino-win" title="Permalink to this headline">¶</a></h2>
 <p>We assume that the player John has the 49% chance to win the game and the wager will be $5 per game.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -228,9 +229,9 @@
 </div>
 </div>
 <div class="section" id="simulating-a-random-walk">
-<h2>16.2. Simulating a Random Walk<a class="headerlink" href="#simulating-a-random-walk" title="Permalink to this headline">¶</a></h2>
+<h2>17.2. Simulating a Random Walk<a class="headerlink" href="#simulating-a-random-walk" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fetch-the-histrical-stock-price">
-<h3>16.2.1. Fetch the histrical stock price<a class="headerlink" href="#fetch-the-histrical-stock-price" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.1. Fetch the histrical stock price<a class="headerlink" href="#fetch-the-histrical-stock-price" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Fecth the data. If you need the code for this piece, you can contact with me.</li>
 </ol>
@@ -294,7 +295,7 @@
 </div>
 </div>
 <div class="section" id="calulate-the-compound-annual-growth-rate">
-<h3>16.2.2. Calulate the Compound Annual Growth Rate<a class="headerlink" href="#calulate-the-compound-annual-growth-rate" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.2. Calulate the Compound Annual Growth Rate<a class="headerlink" href="#calulate-the-compound-annual-growth-rate" title="Permalink to this headline">¶</a></h3>
 <p>The formula for Compound Annual Growth Rate (CAGR) is very useful for investment analysis. It may also be referred to as the annualized rate of return or annual percent yield or effective annual rate, depending on the algebraic form of the equation. Many investments such as stocks have returns that can vary wildly. The CAGR formula allows you to calculate a “smoothed” rate of return that you can use to compare to other investments. The formula is defined as (more details can be found at <a class="reference external" href="https://www.vertex42.com/Calculators/cagr-calculator.html">CAGR Calculator and Formula</a>)</p>
 <div class="math">
 <p><img src="_images/math/76e4f9fb0f9c842a0c4d84777d0274f7c231f99d.png" alt="\text{CAGR}=\left(\frac{\text{End Value}}{\text{Start Value}}\right)^{\frac{365}{\text{Days}}} -1"/></p>
@@ -306,7 +307,7 @@
 </div>
 </div>
 <div class="section" id="calulate-the-annual-volatility">
-<h3>16.2.3. Calulate the annual volatility<a class="headerlink" href="#calulate-the-annual-volatility" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.3. Calulate the annual volatility<a class="headerlink" href="#calulate-the-annual-volatility" title="Permalink to this headline">¶</a></h3>
 <p>A stock’s volatility is the variation in its price over a period of time. For example, one stock may have a tendency to swing wildly higher and lower, while another stock may move in much steadier, less turbulent way. Both stocks may end up at the same price at the end of day, but their path to that point can vary wildly. First, we create a series of percentage returns and calculate the annual volatility of returns Annualizing volatility. To present this volatility in annualized terms,
 we simply need to multiply our daily standard deviation
 by the square root of 252. This assumes there are 252
@@ -317,7 +318,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="create-matrix-of-daily-returns">
-<h3>16.2.4. Create matrix of daily returns<a class="headerlink" href="#create-matrix-of-daily-returns" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.4. Create matrix of daily returns<a class="headerlink" href="#create-matrix-of-daily-returns" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Create matrix of daily returns using random normal distribution Generates an RDD matrix comprised of i.i.d. samples from the uniform distribution U(0.0, 1.0).</li>
 </ol>
@@ -339,7 +340,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert Rdd mstrix to dataframe</li>
+<li>Convert Rdd matrix to dataframe</li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">toDF</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -394,7 +395,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="id1">
-<h3>16.2.5. Monte Carlo Simulation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.5. Monte Carlo Simulation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">round</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">price</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">*</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;init_price&#39;</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
@@ -417,7 +418,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="summary">
-<h3>16.2.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">selected_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;day_&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 
 <span class="n">simulated</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">selected_col</span><span class="p">)</span>
@@ -461,7 +462,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="one-year-stock-price-simulation">
-<h3>16.2.7. One-year Stock price simulation<a class="headerlink" href="#one-year-stock-price-simulation" title="Permalink to this headline">¶</a></h3>
+<h3>17.2.7. One-year Stock price simulation<a class="headerlink" href="#one-year-stock-price-simulation" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id4">
 <span id="fig-mc-stock-price"></span><img alt="_images/baba_sim_price.png" src="_images/baba_sim_price.png" />
 <p class="caption"><span class="caption-text">Simulated Stock Price</span></p>
@@ -482,10 +483,10 @@ trading days in a given year.  More details can be found at <a class="reference 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mcmc.html" class="btn btn-neutral float-right" title="17. Markov Chain Monte Carlo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mcmc.html" class="btn btn-neutral float-right" title="18. Markov Chain Monte Carlo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="als.html" class="btn btn-neutral float-left" title="15. ALS: Stock Portfolio Recommendations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="als.html" class="btn btn-neutral float-left" title="16. ALS: Stock Portfolio Recommendations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -496,7 +497,7 @@ trading days in a given year.  More details can be found at <a class="reference 
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>10. Classification &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>11. Classification &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11. Clustering" href="clustering.html" />
-    <link rel="prev" title="9. Regularization" href="reg.html" /> 
+    <link rel="next" title="12. Clustering" href="clustering.html" />
+    <link rel="prev" title="10. Regularization" href="reg.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,62 +89,63 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Classification</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#binomial-logistic-regression">10.1. Binomial logistic regression</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">10.1.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#demo">10.1.2. Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#binomial-logistic-regression">11.1. Binomial logistic regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">11.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demo">11.1.2. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#multinomial-logistic-regression">10.2. Multinomial logistic regression</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">10.2.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">10.2.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multinomial-logistic-regression">11.2. Multinomial logistic regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">11.2.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">11.2.2. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#decision-tree-classification">10.3. Decision tree Classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">10.3.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">10.3.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-tree-classification">11.3. Decision tree Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">11.3.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">11.3.2. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#random-forest-classification">10.4. Random forest Classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">10.4.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">10.4.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-forest-classification">11.4. Random forest Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">11.4.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">11.4.2. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#gradient-boosted-tree-classification">10.5. Gradient-boosted tree Classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">10.5.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">10.5.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gradient-boosted-tree-classification">11.5. Gradient-boosted tree Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">11.5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">11.5.2. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#xgboost-gradient-boosted-tree-classification">10.6. XGBoost: Gradient-boosted tree Classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">10.6.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">10.6.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xgboost-gradient-boosted-tree-classification">11.6. XGBoost: Gradient-boosted tree Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">11.6.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">11.6.2. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#naive-bayes-classification">10.7. Naive Bayes Classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id17">10.7.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">10.7.2. Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#naive-bayes-classification">11.7. Naive Bayes Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">11.7.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">11.7.2. Demo</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcmc.html">17. Markov Chain Monte Carlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -190,7 +191,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>10. Classification</li>
+      <li>11. Classification</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -208,18 +209,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="classification">
-<span id="id1"></span><h1>10. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>11. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
 <p class="first admonition-title">Chinese proverb</p>
 <p class="last"><strong>Birds of a feather folock together.</strong> – old Chinese proverb</p>
 </div>
 <div class="section" id="binomial-logistic-regression">
-<h2>10.1. Binomial logistic regression<a class="headerlink" href="#binomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<h2>11.1. Binomial logistic regression<a class="headerlink" href="#binomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
-<h3>10.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<h3>11.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="demo">
-<h3>10.1.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
+<h3>11.1.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/logisticRegression.ipynb">Logistic Regression</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.BinaryLogisticRegressionSummary.html">Logistic Regression API</a> .</li>
@@ -756,12 +757,12 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
 </div>
 </div>
 <div class="section" id="multinomial-logistic-regression">
-<h2>10.2. Multinomial logistic regression<a class="headerlink" href="#multinomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<h2>11.2. Multinomial logistic regression<a class="headerlink" href="#multinomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>10.2.1. Introduction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>11.2.1. Introduction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id3">
-<h3>10.2.2. Demo<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>11.2.2. Demo<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/logisticRegression.ipynb">Logistic Regression</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.BinaryLogisticRegressionSummary.html">Logistic Regression API</a> .</li>
@@ -1355,12 +1356,12 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
 </div>
 </div>
 <div class="section" id="decision-tree-classification">
-<h2>10.3. Decision tree Classification<a class="headerlink" href="#decision-tree-classification" title="Permalink to this headline">¶</a></h2>
+<h2>11.3. Decision tree Classification<a class="headerlink" href="#decision-tree-classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3>10.3.1. Introduction<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.1. Introduction<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id6">
-<h3>10.3.2. Demo<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.2. Demo<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/DecisionTreeC.ipynb">Decision Tree Classification</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.DecisionTreeClassifier.html">DecisionTreeClassifier API</a> .</li>
@@ -1884,12 +1885,12 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
 </div>
 </div>
 <div class="section" id="random-forest-classification">
-<h2>10.4. Random forest Classification<a class="headerlink" href="#random-forest-classification" title="Permalink to this headline">¶</a></h2>
+<h2>11.4. Random forest Classification<a class="headerlink" href="#random-forest-classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
-<h3>10.4.1. Introduction<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>11.4.1. Introduction<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2Mg8QD0F1dQ" frameborder="0" allowfullscreen></iframe></div>
 <div class="section" id="id9">
-<h3>10.4.2. Demo<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>11.4.2. Demo<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/RandomForestC3.ipynb">Random forest Classification</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.RandomForestClassifier.html">RandomForestClassifier API</a> .</li>
@@ -2412,12 +2413,12 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
 </div>
 </div>
 <div class="section" id="gradient-boosted-tree-classification">
-<h2>10.5. Gradient-boosted tree Classification<a class="headerlink" href="#gradient-boosted-tree-classification" title="Permalink to this headline">¶</a></h2>
+<h2>11.5. Gradient-boosted tree Classification<a class="headerlink" href="#gradient-boosted-tree-classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id11">
-<h3>10.5.1. Introduction<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3>11.5.1. Introduction<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GM3CDQfQ4sw" frameborder="0" allowfullscreen></iframe></div>
 <div class="section" id="id12">
-<h3>10.5.2. Demo<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3>11.5.2. Demo<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/gbtC3.ipynb">Gradient boosted tree Classification</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.GBTClassifier.html">GBTClassifier API</a> .</li>
@@ -2429,12 +2430,12 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
 </div>
 </div>
 <div class="section" id="xgboost-gradient-boosted-tree-classification">
-<h2>10.6. XGBoost: Gradient-boosted tree Classification<a class="headerlink" href="#xgboost-gradient-boosted-tree-classification" title="Permalink to this headline">¶</a></h2>
+<h2>11.6. XGBoost: Gradient-boosted tree Classification<a class="headerlink" href="#xgboost-gradient-boosted-tree-classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id14">
-<h3>10.6.1. Introduction<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3>11.6.1. Introduction<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id15">
-<h3>10.6.2. Demo<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3>11.6.2. Demo<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/gbtC3.ipynb">Gradient boosted tree Classification</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.GBTClassifier.html">GBTClassifier API</a> .</li>
@@ -2535,12 +2536,12 @@ on my machine.</p>
 </div>
 </div>
 <div class="section" id="naive-bayes-classification">
-<h2>10.7. Naive Bayes Classification<a class="headerlink" href="#naive-bayes-classification" title="Permalink to this headline">¶</a></h2>
+<h2>11.7. Naive Bayes Classification<a class="headerlink" href="#naive-bayes-classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id17">
-<h3>10.7.1. Introduction<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3>11.7.1. Introduction<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id18">
-<h3>10.7.2. Demo<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3>11.7.2. Demo<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The Jupyter notebook can be download from <a class="reference external" href="_static/NaiveBayes.ipynb">Naive Bayes Classification</a>.</li>
 <li>For more details, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.classification.NaiveBayes.html">NaiveBayes API</a> .</li>
@@ -3134,10 +3135,10 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="clustering.html" class="btn btn-neutral float-right" title="11. Clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="clustering.html" class="btn btn-neutral float-right" title="12. Clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="reg.html" class="btn btn-neutral float-left" title="9. Regularization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="reg.html" class="btn btn-neutral float-left" title="10. Regularization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -3148,7 +3149,7 @@ use <code class="docutils literal notranslate"><span class="pre">sql</span></cod
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>

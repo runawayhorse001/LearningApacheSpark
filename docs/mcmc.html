@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>17. Markov Chain Monte Carlo &mdash; Learning Apache Spark with Python  documentation</title>
+  <title>18. Markov Chain Monte Carlo &mdash; Learning Apache Spark with Python  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="18. Neural Network" href="fnn.html" />
-    <link rel="prev" title="16. Monte Carlo Simulation" href="mc.html" /> 
+    <link rel="next" title="19. Neural Network" href="fnn.html" />
+    <link rel="prev" title="17. Monte Carlo Simulation" href="mc.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,40 +89,41 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration and Manipulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression.html">8. Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reg.html">9. Regularization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classification.html">10. Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">11. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rfm.html">12. RFM Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="textmining.html">13. Text Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">14. Social Network Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="als.html">15. ALS: Stock Portfolio Recommendations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mc.html">16. Monte Carlo Simulation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">17. Markov Chain Monte Carlo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#metropolis-algorithm">17.1. Metropolis algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-toy-example-of-metropolis">17.2. A Toy Example of Metropolis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#conjugate-normal-normal-model">17.2.1. Conjugate Normal-Normal model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-setup">17.2.2. Example setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#essential-mathematical-derivation">17.2.3. Essential mathematical derivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. Markov Chain Monte Carlo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#metropolis-algorithm">18.1. Metropolis algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-toy-example-of-metropolis">18.2. A Toy Example of Metropolis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conjugate-normal-normal-model">18.2.1. Conjugate Normal-Normal model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-setup">18.2.2. Example setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#essential-mathematical-derivation">18.2.3. Essential mathematical derivation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#demos">17.3. Demos</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#r-results">17.3.1. R results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python-results">17.3.2. Python results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pyspark-results">17.3.3. PySpark results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demos">18.3. Demos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#r-results">18.3.1. R results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-results">18.3.2. Python results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyspark-results">18.3.3. PySpark results</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fnn.html">18. Neural Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto.html">19. Automation for Cloudera Distribution Hadoop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pack.html">20. Wrap PySpark Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="audit.html">21. PySpark Data Audit Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">22. Zeppelin to jupyter notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheat.html">23. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">24. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">25. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
 </ul>
 
             
@@ -168,7 +169,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>17. Markov Chain Monte Carlo</li>
+      <li>18. Markov Chain Monte Carlo</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,7 +187,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="markov-chain-monte-carlo">
-<span id="mcmc"></span><h1>17. Markov Chain Monte Carlo<a class="headerlink" href="#markov-chain-monte-carlo" title="Permalink to this headline">¶</a></h1>
+<span id="mcmc"></span><h1>18. Markov Chain Monte Carlo<a class="headerlink" href="#markov-chain-monte-carlo" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
 <p class="first admonition-title">Chinese proverb</p>
 <p class="last"><strong>A book is known in time of need.</strong></p>
@@ -198,7 +199,7 @@
 <p>Markov Chain Monte Carlo (MCMC) methods are used to approximate the posterior distribution of a parameter of interest by random sampling in a probabilistic space. More details can be found at <a class="reference external" href="https://towardsdatascience.com/a-zero-math-introduction-to-markov-chain-monte-carlo-methods-dcba889e0c50">A Zero Math Introduction to Markov Chain Monte Carlo Methods</a>.</p>
 <p>The following theory and demo are from Dr. Rebecca C. Steorts’s <a class="reference external" href="http://www2.stat.duke.edu/~rcs46/lecturesModernBayes/601-module6-markov/markov-chain-monte-carlo.pdf">Intro to Markov Chain Monte Carlo</a>. More details can be found at Dr. Rebecca C. Steorts’s STA 360/601: <a class="reference external" href="http://www2.stat.duke.edu/~rcs46/bayes.html">Bayesian Methods and Modern Statistics</a> class at Duke.</p>
 <div class="section" id="metropolis-algorithm">
-<span id="metroalg"></span><h2>17.1. Metropolis algorithm<a class="headerlink" href="#metropolis-algorithm" title="Permalink to this headline">¶</a></h2>
+<span id="metroalg"></span><h2>18.1. Metropolis algorithm<a class="headerlink" href="#metropolis-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>The Metropolis algorithm takes three main steps:</p>
 <ol class="arabic">
 <li><p class="first">Sample  <img class="math" src="_images/math/7d0d93d79b878ae26589d7d45fc55dec8e1723ed.png" alt="\theta^* \sim J(\theta | \theta ^{(s)})"/></p>
@@ -229,10 +230,10 @@
 </div>
 </div>
 <div class="section" id="a-toy-example-of-metropolis">
-<h2>17.2. A Toy Example of Metropolis<a class="headerlink" href="#a-toy-example-of-metropolis" title="Permalink to this headline">¶</a></h2>
+<h2>18.2. A Toy Example of Metropolis<a class="headerlink" href="#a-toy-example-of-metropolis" title="Permalink to this headline">¶</a></h2>
 <p>The following example is going to test out the Metropolis algorithm for the conjugate Normal-Normal model with a known variance situation.</p>
 <div class="section" id="conjugate-normal-normal-model">
-<h3>17.2.1. Conjugate Normal-Normal model<a class="headerlink" href="#conjugate-normal-normal-model" title="Permalink to this headline">¶</a></h3>
+<h3>18.2.1. Conjugate Normal-Normal model<a class="headerlink" href="#conjugate-normal-normal-model" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="math">
 <p><img src="_images/math/bc19b41be6b98ee7dc229e31614f750b04003fd5.png" alt="\begin{array}{ll}
@@ -252,7 +253,7 @@
 </div></div></blockquote>
 </div>
 <div class="section" id="example-setup">
-<h3>17.2.2. Example setup<a class="headerlink" href="#example-setup" title="Permalink to this headline">¶</a></h3>
+<h3>18.2.2. Example setup<a class="headerlink" href="#example-setup" title="Permalink to this headline">¶</a></h3>
 <p>The rest of the parameters are <img class="math" src="_images/math/15dbeccc5f0148fc54abf1121da7cae460871c94.png" alt="\sigma^2=1"/>, <img class="math" src="_images/math/bca968bbd4f1478300e96501e23c5c1b4c7f3902.png" alt="\tau^2=10"/>, <img class="math" src="_images/math/d440748302343a480c5aec3bc47e2589fc449a06.png" alt="\mu=5"/>, <img class="math" src="_images/math/ff31105a4838e5bdcebab81bcede58286eaaecc7.png" alt="n=5"/> and</p>
 <blockquote>
 <div><div class="math">
@@ -261,7 +262,7 @@
 <p>For this setup, we get that <img class="math" src="_images/math/4f6345da82306437efbe1676a6f74343bf03e252.png" alt="\mu_n=10.02745"/> and <img class="math" src="_images/math/89c4295ff75abbb47bde7df27631762cb780935e.png" alt="\tau_n^2=0.1960784"/>.</p>
 </div>
 <div class="section" id="essential-mathematical-derivation">
-<h3>17.2.3. Essential mathematical derivation<a class="headerlink" href="#essential-mathematical-derivation" title="Permalink to this headline">¶</a></h3>
+<h3>18.2.3. Essential mathematical derivation<a class="headerlink" href="#essential-mathematical-derivation" title="Permalink to this headline">¶</a></h3>
 <p>In the <a class="reference internal" href="#metroalg"><span class="std std-ref">Metropolis algorithm</span></a>, we need to compute the acceptance ratio <img class="math" src="_images/math/c836518ae10699a394d5775093257eb52b017fdd.png" alt="r"/>, i.e.</p>
 <blockquote>
 <div><div class="math">
@@ -280,14 +281,14 @@
 </div>
 </div>
 <div class="section" id="demos">
-<h2>17.3. Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
+<h2>18.3. Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
 <p>Now, We generate <img class="math" src="_images/math/1a2dc13f5e56a34848a2b8b5a35b2484cc01ed7d.png" alt="S"/> iterations of the Metropolis algorithm starting at <img class="math" src="_images/math/7e4c36ae87c0c9b4d69b8a279464dbe585c7f8a3.png" alt="\theta^{(0)}=0"/> and using a normal proposal distribution, where</p>
 <blockquote>
 <div><div class="math">
 <p><img src="_images/math/fcc01d9c18795d54730217b34f422244c115e315.png" alt="\theta^{(s+1)} \sim \text{Normal}(\theta^{(s)},2)."/></p>
 </div></div></blockquote>
 <div class="section" id="r-results">
-<h3>17.3.1. R results<a class="headerlink" href="#r-results" title="Permalink to this headline">¶</a></h3>
+<h3>18.3.1. R results<a class="headerlink" href="#r-results" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting values</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 <span class="n">s2</span><span class="o">&lt;-</span><span class="m">1</span>
@@ -348,7 +349,7 @@
 the Metropolis algorithm compared with a draw from the true normal density.</p>
 </div>
 <div class="section" id="python-results">
-<h3>17.3.2. Python results<a class="headerlink" href="#python-results" title="Permalink to this headline">¶</a></h3>
+<h3>18.3.2. Python results<a class="headerlink" href="#python-results" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># coding: utf-8</span>
 
@@ -497,7 +498,7 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
 the Metropolis algorithm compared with a draw from the true normal density.</p>
 </div>
 <div class="section" id="pyspark-results">
-<h3>17.3.3. PySpark results<a class="headerlink" href="#pyspark-results" title="Permalink to this headline">¶</a></h3>
+<h3>18.3.3. PySpark results<a class="headerlink" href="#pyspark-results" title="Permalink to this headline">¶</a></h3>
 <p>TODO…</p>
 <div class="figure align-center" id="id3">
 <span id="fig-mcmc-pyspark"></span><img alt="_images/mcmc_py.png" src="_images/mcmc_py.png" />
@@ -517,10 +518,10 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fnn.html" class="btn btn-neutral float-right" title="18. Neural Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fnn.html" class="btn btn-neutral float-right" title="19. Neural Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mc.html" class="btn btn-neutral float-left" title="16. Monte Carlo Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mc.html" class="btn btn-neutral float-left" title="17. Monte Carlo Simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -531,7 +532,7 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 17, 2020.
+        Last updated on Jan 20, 2020.
       </span>
 
     </p>
