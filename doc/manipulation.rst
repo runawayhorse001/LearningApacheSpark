@@ -1103,7 +1103,7 @@ Variable selection and the removal of correlated variables.  The Ridge method sh
 RandomForest
 ------------
 
-`AutoFeatures`_ libray based on RandomForest is coming soon.............
+`AutoFeatures`_ library based on RandomForest is coming soon.............
 
 .. _Extracting transforming and selecting features: https://spark.apache.org/docs/latest/ml-features
 .. _Stackoverflow TF: https://stackoverflow.com/questions/35205865/what-is-the-difference-between-hashingtf-and-countvectorizer-in-spark
