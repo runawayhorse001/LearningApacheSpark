@@ -29,7 +29,8 @@ The variable could be either categorical or numerical, I will demostrate the dif
 Numerical Variables
 -------------------
 
-* Describe 
+Describe 
+^^^^^^^^
 
 The ``describe`` function in ``pandas`` and ``spark`` will give us most of the statistical results, such as ``min``, ``median``, ``max``, ``quartiles`` and ``standard deviation``. With the help of the user defined function, you can get even more statistical results. 
 
@@ -131,20 +132,21 @@ Sometimes, because of the confidential data issues, you can not deliver the real
 	|   100%|               4.0|              2.0|
 	+-------+------------------+-----------------+
 
-* Skewness and Kurtosis 
-  
-  This subsection comes from Wikipedia `Skewness`_. 
+Skewness and Kurtosis 
+^^^^^^^^^^^^^^^^^^^^^
 
-  In probability theory and statistics, skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean. The skewness value can be positive or negative, or undefined.For a unimodal distribution, negative skew commonly indicates that the tail is on the left side of the distribution, and positive skew indicates that the tail is on the right.
+This subsection comes from Wikipedia `Skewness`_. 
 
-  Consider the two distributions in the figure just below. Within each graph, the values on the right side of the distribution taper differently from the values on the left side. These tapering sides are called tails, and they provide a visual means to determine which of the two kinds of skewness a distribution has:
+In probability theory and statistics, skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean. The skewness value can be positive or negative, or undefined.For a unimodal distribution, negative skew commonly indicates that the tail is on the left side of the distribution, and positive skew indicates that the tail is on the right.
 
-  1. negative skew: The left tail is longer; the mass of the distribution is concentrated on the right of the figure. The distribution is said to be left-skewed, left-tailed, or skewed to the left, despite the fact that the curve itself appears to be skewed or leaning to the right; left instead refers to the left tail being drawn out and, often, the mean being skewed to the left of a typical center of the data. A left-skewed distribution usually appears as a right-leaning curve.
-  2. positive skew: The right tail is longer; the mass of the distribution is concentrated on the left of the figure. The distribution is said to be right-skewed, right-tailed, or skewed to the right, despite the fact that the curve itself appears to be skewed or leaning to the left; right instead refers to the right tail being drawn out and, often, the mean being skewed to the right of a typical center of the data. A right-skewed distribution usually appears as a left-leaning curve.
+Consider the two distributions in the figure just below. Within each graph, the values on the right side of the distribution taper differently from the values on the left side. These tapering sides are called tails, and they provide a visual means to determine which of the two kinds of skewness a distribution has:
 
-  This subsection comes from Wikipedia `Kurtosis`_. 
-  
-  In probability theory and statistics, kurtosis (kyrtos or kurtos, meaning "curved, arching") is a measure of the "tailedness" of the probability distribution of a real-valued random variable. In a similar way to the concept of skewness, kurtosis is a descriptor of the shape of a probability distribution and, just as for skewness, there are different ways of quantifying it for a theoretical distribution and corresponding ways of estimating it from a sample from a population.
+1. negative skew: The left tail is longer; the mass of the distribution is concentrated on the right of the figure. The distribution is said to be left-skewed, left-tailed, or skewed to the left, despite the fact that the curve itself appears to be skewed or leaning to the right; left instead refers to the left tail being drawn out and, often, the mean being skewed to the left of a typical center of the data. A left-skewed distribution usually appears as a right-leaning curve.
+2. positive skew: The right tail is longer; the mass of the distribution is concentrated on the left of the figure. The distribution is said to be right-skewed, right-tailed, or skewed to the right, despite the fact that the curve itself appears to be skewed or leaning to the left; right instead refers to the right tail being drawn out and, often, the mean being skewed to the right of a typical center of the data. A right-skewed distribution usually appears as a left-leaning curve.
+
+This subsection comes from Wikipedia `Kurtosis`_. 
+
+In probability theory and statistics, kurtosis (kyrtos or kurtos, meaning "curved, arching") is a measure of the "tailedness" of the probability distribution of a real-valued random variable. In a similar way to the concept of skewness, kurtosis is a descriptor of the shape of a probability distribution and, just as for skewness, there are different ways of quantifying it for a theoretical distribution and corresponding ways of estimating it from a sample from a population.
 
 .. _fig_skewed:
 .. figure:: images/skewed.png
@@ -178,8 +180,8 @@ These 13 datasets in Figure :ref:`fig_misleading` (the Datasaurus, plus 12 other
 
     Same Stats, Different Graphs
 
-* Histogram  
-
+Histogram  
+^^^^^^^^^
 .. warning::
 
   **Histograms are often confused with Bar graphs!**
@@ -296,7 +298,8 @@ Sometimes, some people will ask you to plot the unequal width (invalid argument 
 .. figure:: images/unequal.png
     :align: center
 
-* Box plot and violin plot
+Box plot and violin plot
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Note that although violin plots are closely related to Tukey's (1977) box plots, the violin plot can show more information than box plot. When we perform an exploratory analysis, nothing about the samples could be known. So the distribution of the samples can not be assumed to a normal distribution and usually when you get a big data, the normal distribution will show some out liars in box plot. 
 
@@ -323,7 +326,8 @@ Categorical Variables
 
 Compared with the numerical variables, the categorical variables are much more easier to do the exploration. 
 
-* Frequency table
+Frequency table
+^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -356,7 +360,8 @@ Compared with the numerical variables, the categorical variables are much more e
 	|      65+|        23|3210.1739130434785|       571|     14896|    2.3|
 	+---------+----------+------------------+----------+----------+-------+
 
-* Pie plot 
+Pie plot 
+^^^^^^^^
 
 .. code-block:: python
 
@@ -378,7 +383,8 @@ Compared with the numerical variables, the categorical variables are much more e
 .. figure:: images/pie.png
     :align: center
 
-* Bar plot
+Bar plot
+^^^^^^^^
 
 .. code-block:: python
 
@@ -432,7 +438,8 @@ In this section, I will only demostrate the bivariate analysis. Since the multiv
 Numerical V.S. Numerical
 ------------------------
 
-* Correlation matrix
+Correlation matrix
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -459,7 +466,8 @@ Numerical V.S. Numerical
 	+--------------------+--------------------+
 
 
-* Scatter Plot
+Scatter Plot
+^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -478,7 +486,8 @@ Numerical V.S. Numerical
 Categorical V.S. Categorical
 ----------------------------
 
-* Pearson’s Chi-squared test
+Pearson’s Chi-squared test
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
@@ -508,7 +517,8 @@ Categorical V.S. Categorical
 	degreesOfFreedom: [2, 3]
 	statistics: [0.75,1.5]
 
-* Cross table 
+Cross table 
+^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -527,7 +537,8 @@ Categorical V.S. Categorical
 	|               45-54|  1| 29| 73| 17|
 	+--------------------+---+---+---+---+
 
-* Stacked plot 
+Stacked plot 
+^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -555,7 +566,8 @@ Categorical V.S. Categorical
 Numerical V.S. Categorical
 --------------------------
 
-1. Line Chart with Error Bars
+Line Chart with Error Bars
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -579,8 +591,8 @@ Numerical V.S. Categorical
 
 
 
-2. Combination Chart 
-
+Combination Chart 
+^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 

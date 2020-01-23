@@ -91,14 +91,38 @@
 <li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Data Exploration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#univariate-analysis">7.1. Univariate Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#numerical-variables">7.1.1. Numerical Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#categorical-variables">7.1.2. Categorical Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numerical-variables">7.1.1. Numerical Variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#describe">7.1.1.1. Describe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#skewness-and-kurtosis">7.1.1.2. Skewness and Kurtosis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#histogram">7.1.1.3. Histogram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#box-plot-and-violin-plot">7.1.1.4. Box plot and violin plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#categorical-variables">7.1.2. Categorical Variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-table">7.1.2.1. Frequency table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pie-plot">7.1.2.2. Pie plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bar-plot">7.1.2.3. Bar plot</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#multivariate-analysis">7.2. Multivariate Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#numerical-v-s-numerical">7.2.1. Numerical V.S. Numerical</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#categorical-v-s-categorical">7.2.2. Categorical V.S. Categorical</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#numerical-v-s-categorical">7.2.3. Numerical V.S. Categorical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numerical-v-s-numerical">7.2.1. Numerical V.S. Numerical</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#correlation-matrix">7.2.1.1. Correlation matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scatter-plot">7.2.1.2. Scatter Plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#categorical-v-s-categorical">7.2.2. Categorical V.S. Categorical</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pearsons-chi-squared-test">7.2.2.1. Pearson’s Chi-squared test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-table">7.2.2.2. Cross table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stacked-plot">7.2.2.3. Stacked plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#numerical-v-s-categorical">7.2.3. Numerical V.S. Categorical</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#line-chart-with-error-bars">7.2.3.1. Line Chart with Error Bars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combination-chart">7.2.3.2. Combination Chart</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -203,9 +227,8 @@
 </ul>
 <div class="section" id="numerical-variables">
 <h3>7.1.1. Numerical Variables<a class="headerlink" href="#numerical-variables" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Describe</li>
-</ul>
+<div class="section" id="describe">
+<h4>7.1.1.1. Describe<a class="headerlink" href="#describe" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">describe</span></code> function in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">spark</span></code> will give us most of the statistical results, such as <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">quartiles</span></code> and <code class="docutils literal notranslate"><span class="pre">standard</span> <span class="pre">deviation</span></code>. With the help of the user defined function, you can get even more statistical results.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># selected varables for the demonstration</span>
 <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Account Balance&#39;</span><span class="p">,</span><span class="s1">&#39;No of dependents&#39;</span><span class="p">]</span>
@@ -296,8 +319,9 @@ results in Pandas</p>
 <span class="o">+-------+------------------+-----------------+</span>
 </pre></div>
 </div>
-<ul>
-<li><p class="first">Skewness and Kurtosis</p>
+</div>
+<div class="section" id="skewness-and-kurtosis">
+<h4>7.1.1.2. Skewness and Kurtosis<a class="headerlink" href="#skewness-and-kurtosis" title="Permalink to this headline">¶</a></h4>
 <p>This subsection comes from Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">Skewness</a>.</p>
 <p>In probability theory and statistics, skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean. The skewness value can be positive or negative, or undefined.For a unimodal distribution, negative skew commonly indicates that the tail is on the left side of the distribution, and positive skew indicates that the tail is on the right.</p>
 <p>Consider the two distributions in the figure just below. Within each graph, the values on the right side of the distribution taper differently from the values on the left side. These tapering sides are called tails, and they provide a visual means to determine which of the two kinds of skewness a distribution has:</p>
@@ -307,8 +331,6 @@ results in Pandas</p>
 </ol>
 <p>This subsection comes from Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">Kurtosis</a>.</p>
 <p>In probability theory and statistics, kurtosis (kyrtos or kurtos, meaning “curved, arching”) is a measure of the “tailedness” of the probability distribution of a real-valued random variable. In a similar way to the concept of skewness, kurtosis is a descriptor of the shape of a probability distribution and, just as for skewness, there are different ways of quantifying it for a theoretical distribution and corresponding ways of estimating it from a sample from a population.</p>
-</li>
-</ul>
 <div class="figure align-center" id="fig-skewed">
 <img alt="_images/skewed.png" src="_images/skewed.png" />
 </div>
@@ -333,9 +355,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span id="fig-misleading"></span><img alt="_images/misleading.png" src="_images/misleading.png" />
 <p class="caption"><span class="caption-text">Same Stats, Different Graphs</span></p>
 </div>
-<ul class="simple">
-<li>Histogram</li>
-</ul>
+</div>
+<div class="section" id="histogram">
+<h4>7.1.1.3. Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h4>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last"><strong>Histograms are often confused with Bar graphs!</strong></p>
@@ -443,9 +465,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <div class="figure align-center" id="fig-vis4">
 <img alt="_images/unequal.png" src="_images/unequal.png" />
 </div>
-<ul class="simple">
-<li>Box plot and violin plot</li>
-</ul>
+</div>
+<div class="section" id="box-plot-and-violin-plot">
+<h4>7.1.1.4. Box plot and violin plot<a class="headerlink" href="#box-plot-and-violin-plot" title="Permalink to this headline">¶</a></h4>
 <p>Note that although violin plots are closely related to Tukey’s (1977) box plots, the violin plot can show more information than box plot. When we perform an exploratory analysis, nothing about the samples could be known. So the distribution of the samples can not be assumed to a normal distribution and usually when you get a big data, the normal distribution will show some out liars in box plot.</p>
 <p>However, the violin plots are potentially misleading for smaller sample sizes, where the density plots can appear to show interesting features (and group-differences therein) even when produced for standard normal data. Some poster suggested the sample size should larger that 250. The sample sizes (e.g. n&gt;250 or ideally even larger), where the kernel density plots provide a reasonably accurate representation of the distributions, potentially showing nuances such as bimodality or other forms of non-normality that would be invisible or less clear in box plots. More details can be found in <a class="reference external" href="https://figshare.com/articles/A_simple_comparison_of_box_plots_and_violin_plots/1544525">A simple comparison of box plots and violin plots</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
@@ -462,12 +484,12 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <img alt="_images/box_vio.png" src="_images/box_vio.png" />
 </div>
 </div>
+</div>
 <div class="section" id="categorical-variables">
 <h3>7.1.2. Categorical Variables<a class="headerlink" href="#categorical-variables" title="Permalink to this headline">¶</a></h3>
 <p>Compared with the numerical variables, the categorical variables are much more easier to do the exploration.</p>
-<ul class="simple">
-<li>Frequency table</li>
-</ul>
+<div class="section" id="frequency-table">
+<h4>7.1.2.1. Frequency table<a class="headerlink" href="#frequency-table" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">rank</span><span class="p">,</span><span class="nb">sum</span><span class="p">,</span><span class="n">col</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">Window</span>
@@ -497,9 +519,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="o">+---------+----------+------------------+----------+----------+-------+</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Pie plot</li>
-</ul>
+</div>
+<div class="section" id="pie-plot">
+<h4>7.1.2.2. Pie plot<a class="headerlink" href="#pie-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data to plot</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">age_class</span>
 <span class="n">sizes</span> <span class="o">=</span>  <span class="n">plot_data</span><span class="o">.</span><span class="n">Percent</span>
@@ -518,9 +540,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <div class="figure align-center" id="fig-vis1">
 <img alt="_images/pie.png" src="_images/pie.png" />
 </div>
-<ul class="simple">
-<li>Bar plot</li>
-</ul>
+</div>
+<div class="section" id="bar-plot">
+<h4>7.1.2.3. Bar plot<a class="headerlink" href="#bar-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">age_class</span>
 <span class="n">missing</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">Percent</span>
 <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)]</span>
@@ -561,14 +583,14 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="multivariate-analysis">
 <h2>7.2. Multivariate Analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this headline">¶</a></h2>
 <p>In this section, I will only demostrate the bivariate analysis. Since the multivariate analysis is the generation of the bivariate.</p>
 <div class="section" id="numerical-v-s-numerical">
 <h3>7.2.1. Numerical V.S. Numerical<a class="headerlink" href="#numerical-v-s-numerical" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Correlation matrix</li>
-</ul>
+<div class="section" id="correlation-matrix">
+<h4>7.2.1.1. Correlation matrix<a class="headerlink" href="#correlation-matrix" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.mllib.stat</span> <span class="kn">import</span> <span class="n">Statistics</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
@@ -591,9 +613,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="o">+--------------------+--------------------+</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Scatter Plot</li>
-</ul>
+</div>
+<div class="section" id="scatter-plot">
+<h4>7.2.1.2. Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
 
@@ -606,11 +628,11 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <img alt="_images/pairplot.png" src="_images/pairplot.png" />
 </div>
 </div>
+</div>
 <div class="section" id="categorical-v-s-categorical">
 <h3>7.2.2. Categorical V.S. Categorical<a class="headerlink" href="#categorical-v-s-categorical" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Pearson’s Chi-squared test</li>
-</ul>
+<div class="section" id="pearsons-chi-squared-test">
+<h4>7.2.2.1. Pearson’s Chi-squared test<a class="headerlink" href="#pearsons-chi-squared-test" title="Permalink to this headline">¶</a></h4>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last"><code class="docutils literal notranslate"><span class="pre">pyspark.ml.stat</span></code> is only available in Spark 2.4.0.</p>
@@ -637,9 +659,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="n">statistics</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">1.5</span><span class="p">]</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Cross table</li>
-</ul>
+</div>
+<div class="section" id="cross-table">
+<h4>7.2.2.2. Cross table<a class="headerlink" href="#cross-table" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">stat</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="s2">&quot;age_class&quot;</span><span class="p">,</span> <span class="s2">&quot;Occupation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -655,9 +677,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="o">+--------------------+---+---+---+---+</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>Stacked plot</li>
-</ul>
+</div>
+<div class="section" id="stacked-plot">
+<h4>7.2.2.3. Stacked plot<a class="headerlink" href="#stacked-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;missing&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;25&#39;</span><span class="p">,</span> <span class="s1">&#39;25-34&#39;</span><span class="p">,</span> <span class="s1">&#39;35-44&#39;</span><span class="p">,</span> <span class="s1">&#39;45-54&#39;</span><span class="p">,</span><span class="s1">&#39;55-64&#39;</span><span class="p">,</span><span class="s1">&#39;65+&#39;</span><span class="p">]</span>
 <span class="n">missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.000095</span><span class="p">,</span> <span class="mf">0.024830</span><span class="p">,</span> <span class="mf">0.028665</span><span class="p">,</span> <span class="mf">0.029477</span><span class="p">,</span> <span class="mf">0.031918</span><span class="p">,</span><span class="mf">0.037073</span><span class="p">,</span><span class="mf">0.026699</span><span class="p">])</span>
 <span class="n">man</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.000147</span><span class="p">,</span> <span class="mf">0.036311</span><span class="p">,</span> <span class="mf">0.038684</span><span class="p">,</span> <span class="mf">0.044761</span><span class="p">,</span> <span class="mf">0.051269</span><span class="p">,</span> <span class="mf">0.059542</span><span class="p">,</span> <span class="mf">0.054259</span><span class="p">])</span>
@@ -681,11 +703,11 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <img alt="_images/stacked.png" src="_images/stacked.png" />
 </div>
 </div>
+</div>
 <div class="section" id="numerical-v-s-categorical">
 <h3>7.2.3. Numerical V.S. Categorical<a class="headerlink" href="#numerical-v-s-categorical" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Line Chart with Error Bars</li>
-</ol>
+<div class="section" id="line-chart-with-error-bars">
+<h4>7.2.3.1. Line Chart with Error Bars<a class="headerlink" href="#line-chart-with-error-bars" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -704,9 +726,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <div class="figure align-center">
 <img alt="_images/line_bar.png" src="_images/line_bar.png" />
 </div>
-<ol class="arabic simple" start="2">
-<li>Combination Chart</li>
-</ol>
+</div>
+<div class="section" id="combination-chart">
+<h4>7.2.3.2. Combination Chart<a class="headerlink" href="#combination-chart" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -754,6 +776,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -777,7 +800,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Jan 20, 2020.
+        Last updated on Jan 22, 2020.
       </span>
 
     </p>

@@ -25,41 +25,28 @@ b. **memory and computational overhead** - HashingTF requires only a single data
 c. hashing **depends on** a size of the vector , hashing function and a document. Counting depends on a size of the vector, training corpus and a document.
 d. **a source of the information loss** - in case of HashingTF it is dimensionality reduction with possible collisions. CountVectorizer discards infrequent tokens. How it affects downstream models depends on a particular use case and data.
 
-1. HashingTF
 
-`Stackoverflow TF`_: HashingTF is a Transformer which takes sets of terms and converts those sets into fixed-length feature vectors. In text processing, a “set of terms” might be a bag of words. HashingTF utilizes the hashing trick. A raw feature is mapped into an index (term) by applying a hash function. The hash function used here is MurmurHash 3. Then term frequencies are calculated based on the mapped indices. This approach avoids the need to compute a global term-to-index map, which can be expensive for a large corpus, but it suffers from potential hash collisions, where different raw features may become the same term after hashing. 
+**HashingTF** and **CountVectorizer** are the two popular alogoritms which used to generate term frequency vectors. They basically convert documents into a numerical representation which can be fed directly or with further processing into other algorithms like LDA, MinHash for Jaccard Distance, Cosine Distance.
 
-.. code-block:: python
+* :math:`t`: term  
+* :math:`d`: document 
+* :math:`D`: corpus  
+* :math:`|D|`: the number of the elements in corpus  
+* :math:`TF(t,d)`: Term Frequency: the number of times that term :math:`t` appears in document :math:`d` 
+* :math:`DF(t,D)`: Document Frequency: the number of documents that contains term :math:`t`
+* :math:`IDF(t, D)`: Inverse Document Frequency is a numerical measure of how much information a term provides
 
-	from pyspark.ml import Pipeline
-	from pyspark.ml.feature import HashingTF, IDF, Tokenizer
+.. math::
 
-	sentenceData = spark.createDataFrame([
-	    (0.0, "I love Spark"),
-	    (0.0, "I love python"),
-	    (1.0, "I think ML is awesome")],
-	 ["label", "sentence"])
+	IDF(t, D) = \log \frac{|D| + 1}{DF(t, D) + 1}
 
-	tokenizer = Tokenizer(inputCol="sentence", outputCol="words")
-	vectorizer  = HashingTF(inputCol="words", outputCol="rawFeatures", numFeatures=100)
+* :math:`TFIDF(t, d, D)` the product of TF and IDF
 
-	idf = IDF(inputCol="rawFeatures", outputCol="features")
+.. math::
 
-	pipeline = Pipeline(stages=[tokenizer, vectorizer])
+	TFIDF(t, d, D) = TF(t, d) \cdot IDF(t, D)
 
-
-	model = pipeline.fit(sentenceData)
-	model.transform(sentenceData).show(truncate=False)
-
-.. code-block:: python
-
-	+-----+---------------------+---------------------------+--------------------------------------------+
-	|label|sentence             |words                      |rawFeatures                                 |
-	+-----+---------------------+---------------------------+--------------------------------------------+
-	|0.0  |I love Spark         |[i, love, spark]           |(100,[5,29,40],[1.0,1.0,1.0])               |
-	|0.0  |I love python        |[i, love, python]          |(100,[29,40,89],[1.0,1.0,1.0])              |
-	|1.0  |I think ML is awesome|[i, think, ml, is, awesome]|(100,[24,29,59,64,81],[1.0,1.0,1.0,1.0,1.0])|
-	+-----+---------------------+---------------------------+--------------------------------------------+
+Let's look at the example:
 
 .. code-block:: python
 
@@ -67,51 +54,57 @@ d. **a source of the information loss** - in case of HashingTF it is dimensional
 	from pyspark.ml.feature import HashingTF, IDF, Tokenizer
 
 	sentenceData = spark.createDataFrame([
-	    (0.0, "I love Spark"),
-	    (0.0, "I love python"),
-	    (1.0, "I think ML is awesome")],
-	 ["label", "sentence"])
-
-	tokenizer = Tokenizer(inputCol="sentence", outputCol="words")
-	vectorizer  = HashingTF(inputCol="words", outputCol="rawFeatures", numFeatures=100)
-
-	idf = IDF(inputCol="rawFeatures", outputCol="features")
-
-	pipeline = Pipeline(stages=[tokenizer, vectorizer,idf])
-
-
-	model = pipeline.fit(sentenceData)
-	model.transform(sentenceData).show(truncate=False)
+	    (0, "Python python Spark Spark"),
+	    (1, "Python SQL")],
+	 ["document", "sentence"])
 
 .. code-block:: python
 
-	+-----+---------------------+---------------------------+--------------------------------------------+--------------------------------------------------------------------------------------------------------+
-	|label|sentence             |words                      |rawFeatures                                 |features                                                                                                |
-	+-----+---------------------+---------------------------+--------------------------------------------+--------------------------------------------------------------------------------------------------------+
-	|0.0  |I love Spark         |[i, love, spark]           |(100,[5,29,40],[1.0,1.0,1.0])               |(100,[5,29,40],[0.6931471805599453,0.0,0.28768207245178085])                                            |
-	|0.0  |I love python        |[i, love, python]          |(100,[29,40,89],[1.0,1.0,1.0])              |(100,[29,40,89],[0.0,0.28768207245178085,0.6931471805599453])                                           |
-	|1.0  |I think ML is awesome|[i, think, ml, is, awesome]|(100,[24,29,59,64,81],[1.0,1.0,1.0,1.0,1.0])|(100,[24,29,59,64,81],[0.6931471805599453,0.0,0.6931471805599453,0.6931471805599453,0.6931471805599453])|
-	+-----+---------------------+---------------------------+--------------------------------------------+--------------------------------------------------------------------------------------------------------+
+	sentenceData.show(truncate=False)
+	+--------+-------------------------+
+	|document|sentence                 |
+	+--------+-------------------------+
+	|0       |Python python Spark Spark|
+	|1       |Python SQL               |
+	+--------+-------------------------+
 
-.. code-block:: python
+Then:
 
-	model.transform(sentenceData).select('features').show(truncate=False)
+* :math:`TF(python,document 1) = 1, TF(spark,document 1) = 2`
+* :math:`DF(Spark,D)= 2,  DF(sql,D)= 1`
 
-	+--------------------------------------------------------------------------------------------------------+
-	|features                                                                                                |
-	+--------------------------------------------------------------------------------------------------------+
-	|(100,[5,29,40],[0.6931471805599453,0.0,0.28768207245178085])                                            |
-	|(100,[29,40,89],[0.0,0.28768207245178085,0.6931471805599453])                                           |
-	|(100,[24,29,59,64,81],[0.6931471805599453,0.0,0.6931471805599453,0.6931471805599453,0.6931471805599453])|
-	+--------------------------------------------------------------------------------------------------------+
+* IDF:
 
+.. math::
 
-2. Countvectorizer
+	IDF(python, D)= \log \frac{|D| + 1}{DF(t, D) + 1} =\log(\frac{2+1}{2+1}) =0
 
-`Stackoverflow TF`_: CountVectorizer and CountVectorizerModel aim to help convert a collection of text documents to vectors of token counts. When an a-priori dictionary is not available, CountVectorizer can be used as an Estimator to extract the vocabulary, and generates a CountVectorizerModel. The model produces sparse representations for the documents over the vocabulary, which can then be passed to other algorithms like LDA.
+.. math::
+
+	IDF(spark, D)= \log \frac{|D| + 1}{DF(t, D) + 1} =\log(\frac{2+1}{1+1}) =  0.4054651081081644	
+
+.. math::
+
+	IDF(sql, D)= \log \frac{|D| + 1}{DF(t, D) + 1} =\log(\frac{2+1}{1+1}) = 0.4054651081081644
+
+* TFIDF
+
+.. math::
+
+	TFIDF(python, document 1, D) = 3*0 = 0 
+
+.. math::
+
+	TFIDF(spark, document 1, D) = 2*0.4054651081081644 = 0.8109302162163288
+
+.. math::
+
+	TFIDF(sql, document 1, D) = 1*0.4054651081081644 = 0.4054651081081644
 
 Countvectorizer
----------------
+^^^^^^^^^^^^^^^
+
+`Stackoverflow TF`_: CountVectorizer and CountVectorizerModel aim to help convert a collection of text documents to vectors of token counts. When an a-priori dictionary is not available, CountVectorizer can be used as an Estimator to extract the vocabulary, and generates a CountVectorizerModel. The model produces sparse representations for the documents over the vocabulary, which can then be passed to other algorithms like LDA.
 
 .. code-block:: python
 
@@ -120,41 +113,18 @@ Countvectorizer
 	from pyspark.ml.feature import HashingTF, IDF, Tokenizer
 
 	sentenceData = spark.createDataFrame([
-	    (0.0, "I love Spark"),
-	    (0.0, "I love python"),
-	    (1.0, "I think ML is awesome")],
-	 ["label", "sentence"])
+	    (0, "Python python Spark Spark"),
+	    (1, "Python SQL")],
+	 ["document", "sentence"])
 
 	tokenizer = Tokenizer(inputCol="sentence", outputCol="words")
 	vectorizer  = CountVectorizer(inputCol="words", outputCol="rawFeatures")
 
 	idf = IDF(inputCol="rawFeatures", outputCol="features")
 
-	pipeline = Pipeline(stages=[tokenizer, vectorizer])
-
+	pipeline = Pipeline(stages=[tokenizer, vectorizer, idf])
 
 	model = pipeline.fit(sentenceData)
-	model.transform(sentenceData).show(truncate=False)
-
-.. code-block:: python
-
-	+-----+---------------------+---------------------------+-------------------------------------+
-	|label|sentence             |words                      |rawFeatures                          |
-	+-----+---------------------+---------------------------+-------------------------------------+
-	|0.0  |I love Spark         |[i, love, spark]           |(8,[0,1,2],[1.0,1.0,1.0])            |
-	|0.0  |I love python        |[i, love, python]          |(8,[0,1,4],[1.0,1.0,1.0])            |
-	|1.0  |I think ML is awesome|[i, think, ml, is, awesome]|(8,[0,3,5,6,7],[1.0,1.0,1.0,1.0,1.0])|
-	+-----+---------------------+---------------------------+-------------------------------------+
-
-
-.. code-block:: python
-
-	counts = model.transform(sentenceData).select('rawFeatures').collect()
-	counts
-
-	[Row(rawFeatures=SparseVector(8, {0: 1.0, 1: 1.0, 2: 1.0})),
-	 Row(rawFeatures=SparseVector(8, {0: 1.0, 1: 1.0, 4: 1.0})),
-	 Row(rawFeatures=SparseVector(8, {0: 1.0, 3: 1.0, 5: 1.0, 6: 1.0, 7: 1.0}))]
 
 .. code-block:: python
 
@@ -170,70 +140,165 @@ Countvectorizer
 
 	spark.createDataFrame(np.array(list(d.values())).T.tolist(),list(d.keys())).show()
 
+
+.. code-block:: python
+
+	counts = model.transform(sentenceData).select('rawFeatures').collect()
+	counts
+
+	[Row(rawFeatures=SparseVector(8, {0: 1.0, 1: 1.0, 2: 1.0})),
+	 Row(rawFeatures=SparseVector(8, {0: 1.0, 1: 1.0, 4: 1.0})),
+	 Row(rawFeatures=SparseVector(8, {0: 1.0, 3: 1.0, 5: 1.0, 6: 1.0, 7: 1.0}))]
+
 .. code-block:: python
 
 	+---------+------+
 	|vocabList|counts|
 	+---------+------+
-	|        i|   3.0|
-	|     love|   2.0|
-	|       is|   1.0|
-	|    think|   1.0|
-	|       ml|   1.0|
-	|  awesome|   1.0|
-	|   python|   1.0|
-	|    spark|   1.0|
+	|   python|   3.0|
+	|    spark|   2.0|
+	|      sql|   1.0|
 	+---------+------+
+
+
+.. code-block:: python
+
+	model.transform(sentenceData).show(truncate=False)
+
+.. code-block:: python
+
+	+--------+-------------------------+------------------------------+-------------------+----------------------------------+
+	|document|sentence                 |words                         |rawFeatures        |features                          |
+	+--------+-------------------------+------------------------------+-------------------+----------------------------------+
+	|0       |Python python Spark Spark|[python, python, spark, spark]|(3,[0,1],[2.0,2.0])|(3,[0,1],[0.0,0.8109302162163288])|
+	|1       |Python SQL               |[python, sql]                 |(3,[0,2],[1.0,1.0])|(3,[0,2],[0.0,0.4054651081081644])|
+	+--------+-------------------------+------------------------------+-------------------+----------------------------------+
+
+
+.. code-block:: python
+
+	from pyspark.sql.types import ArrayType, StringType
+
+	def termsIdx2Term(vocabulary):
+	    def termsIdx2Term(termIndices):
+	        return [vocabulary[int(index)] for index in termIndices]
+	    return udf(termsIdx2Term, ArrayType(StringType()))
+
+	vectorizerModel = model.stages[1]
+	vocabList = vectorizerModel.vocabulary
+	vocabList
+
+.. code-block:: python
+
+	['python', 'spark', 'sql']
+
+.. code-block:: python
+
+	rawFeatures = model.transform(sentenceData).select('rawFeatures')
+	rawFeatures.show()
+
+	+-------------------+
+	|        rawFeatures|
+	+-------------------+
+	|(3,[0,1],[2.0,2.0])|
+	|(3,[0,2],[1.0,1.0])|
+	+-------------------+
+
+.. code-block:: python
+
+	from pyspark.sql.functions import udf
+	import pyspark.sql.functions as F
+	from pyspark.sql.types import  StringType, DoubleType, IntegerType
+
+	indices_udf = udf(lambda vector: vector.indices.tolist(), ArrayType(IntegerType()))
+	values_udf = udf(lambda vector: vector.toArray().tolist(), ArrayType(DoubleType()))
+
+
+	rawFeatures.withColumn('indices', indices_udf(F.col('rawFeatures')))\
+	           .withColumn('values', values_udf(F.col('rawFeatures')))\
+	           .withColumn("Terms", termsIdx2Term(vocabList)("indices")).show()
+
+.. code-block:: python
+
+	+-------------------+-------+---------------+---------------+
+	|        rawFeatures|indices|         values|          Terms|
+	+-------------------+-------+---------------+---------------+
+	|(3,[0,1],[2.0,2.0])| [0, 1]|[2.0, 2.0, 0.0]|[python, spark]|
+	|(3,[0,2],[1.0,1.0])| [0, 2]|[1.0, 0.0, 1.0]|  [python, sql]|
+	+-------------------+-------+---------------+---------------+
+
+
+HashingTF
+^^^^^^^^^
+
+`Stackoverflow TF`_: HashingTF is a Transformer which takes sets of terms and converts those sets into fixed-length feature vectors. In text processing, a “set of terms” might be a bag of words. HashingTF utilizes the hashing trick. A raw feature is mapped into an index (term) by applying a hash function. The hash function used here is MurmurHash 3. Then term frequencies are calculated based on the mapped indices. This approach avoids the need to compute a global term-to-index map, which can be expensive for a large corpus, but it suffers from potential hash collisions, where different raw features may become the same term after hashing. 
 
 .. code-block:: python
 
 	from pyspark.ml import Pipeline
-	from pyspark.ml.feature import CountVectorizer
 	from pyspark.ml.feature import HashingTF, IDF, Tokenizer
 
 	sentenceData = spark.createDataFrame([
-	    (0.0, "I love Spark"),
-	    (0.0, "I love python"),
-	    (1.0, "I think ML is awesome")],
-	 ["label", "sentence"])
+	    (0, "Python python Spark Spark"),
+	    (1, "Python SQL")],
+	 ["document", "sentence"])
 
 	tokenizer = Tokenizer(inputCol="sentence", outputCol="words")
-	vectorizer  = CountVectorizer(inputCol="words", outputCol="rawFeatures")
+	vectorizer  = HashingTF(inputCol="words", outputCol="rawFeatures", numFeatures=5)
 
 	idf = IDF(inputCol="rawFeatures", outputCol="features")
 
-	pipeline = Pipeline(stages=[tokenizer, vectorizer,idf])
+	pipeline = Pipeline(stages=[tokenizer, vectorizer, idf])
 
 
 	model = pipeline.fit(sentenceData)
-	model.transform(sentenceData).show()
-
-
-.. code-block:: python
-
-	+-----+---------------------+---------------------------+-------------------------------------+-------------------------------------------------------------------------------------------------+
-	|label|sentence             |words                      |rawFeatures                          |features                                                                                         |
-	+-----+---------------------+---------------------------+-------------------------------------+-------------------------------------------------------------------------------------------------+
-	|0.0  |I love Spark         |[i, love, spark]           |(8,[0,1,5],[1.0,1.0,1.0])            |(8,[0,1,5],[0.0,0.28768207245178085,0.6931471805599453])                                         |
-	|0.0  |I love python        |[i, love, python]          |(8,[0,1,6],[1.0,1.0,1.0])            |(8,[0,1,6],[0.0,0.28768207245178085,0.6931471805599453])                                         |
-	|1.0  |I think ML is awesome|[i, think, ml, is, awesome]|(8,[0,2,3,4,7],[1.0,1.0,1.0,1.0,1.0])|(8,[0,2,3,4,7],[0.0,0.6931471805599453,0.6931471805599453,0.6931471805599453,0.6931471805599453])|
-	+-----+---------------------+---------------------------+-------------------------------------+-------------------------------------------------------------------------------------------------+
+	model.transform(sentenceData).show(truncate=False)
 
 .. code-block:: python
 
-	+-------------------------------------------------------------------------------------------------+
-	|features                                                                                         |
-	+-------------------------------------------------------------------------------------------------+
-	|(8,[0,1,3],[0.0,0.28768207245178085,0.6931471805599453])                                         |
-	|(8,[0,1,5],[0.0,0.28768207245178085,0.6931471805599453])                                         |
-	|(8,[0,2,4,6,7],[0.0,0.6931471805599453,0.6931471805599453,0.6931471805599453,0.6931471805599453])|
-	+-------------------------------------------------------------------------------------------------+
+	+--------+-------------------------+------------------------------+-------------------+----------------------------------+
+	|document|sentence                 |words                         |rawFeatures        |features                          |
+	+--------+-------------------------+------------------------------+-------------------+----------------------------------+
+	|0       |Python python Spark Spark|[python, python, spark, spark]|(5,[0,4],[2.0,2.0])|(5,[0,4],[0.8109302162163288,0.0])|
+	|1       |Python SQL               |[python, sql]                 |(5,[1,4],[1.0,1.0])|(5,[1,4],[0.4054651081081644,0.0])|
+	+--------+-------------------------+------------------------------+-------------------+----------------------------------+
 
 
 
 Word2Vec
 --------
 
+Word Embeddings
+^^^^^^^^^^^^^^^
+
+**Word2Vec** is one of the popupar method to implement the **Word Embeddings**.  `Word embeddings`_ (The best tutorial I have red. The following word and images content are from Chris Bail, PhD
+Duke University. So the copyright belongs to Chris Bail, PhD
+Duke University.) gained fame in the world of automated text analysis when it was demonstrated that they could be used to identify analogies. Figure 1 illustrates the output of a word embedding model where individual words are plotted in three dimensional space generated by the model. By examining the adjacency of words in this space, word embedding models can complete analogies such as “Man is to woman as king is to queen.” If you’d like to explore what the output of a large word embedding model looks like in more detail, check out this fantastic visualization of most words in the English language that was produced using a word embedding model called GloVE.
+
+
+.. figure:: images/w2v_1.png
+   :align: center
+
+   output of a word embedding model
+
+The Context Window
+^^^^^^^^^^^^^^^^^^
+
+Word embeddings are created by identifying the words that occur within something called a “Context Window.” The Figure below illustrates context windows of varied length for a single sentence. The context window is defined by a string of words before and after a focal or “center” word that will be used to train a word embedding model. Each center word and context words can be represented as a vector of numbers that describe the presence or absence of unique words within a dataset, which is perhaps why word embedding models are often described as “word vector” models, or “word2vec” models.
+
+.. figure:: images/w2v_2.png
+   :align: center
+
+Two Types of Embedding Models
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Word embeddings are usually performed in one of two ways: “Continuous Bag of Words” (CBOW) or a “Skip-Gram Model.” The figure below illustrates the differences between the two models. The CBOW model reads in the context window words and tries to predict the most likely center word. The Skip-Gram Model predicts the context words given the center word. The examples above were created using the Skip-Gram model, which is perhaps most useful for people who want to identify patterns within texts to represent them in multimensional space, whereas the CBOW model is more useful in practical applications such as predictive web search.
+
+.. figure:: images/w2v_3.png
+   :align: center
+
+Word Embedding Models in PySpark
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -267,18 +332,18 @@ Word2Vec
 	w2v = model.stages[1]
 	w2v.getVectors().show()
 
-+-------+-----------------------------------------------------------------+
-|word   |vector                                                           |
-+-------+-----------------------------------------------------------------+
-|is     |[0.13657838106155396,0.060924094170331955,-0.03379475697875023]  |
-|awesome|[0.037024181336164474,-0.023855900391936302,0.0760037824511528]  |
-|i      |[-0.0014482572441920638,0.049365971237421036,0.12016955763101578]|
-|ml     |[-0.14006119966506958,0.01626444421708584,0.042281970381736755]  |
-|spark  |[0.1589149385690689,-0.10970081388950348,-0.10547549277544022]   |
-|think  |[0.030011219903826714,-0.08994936943054199,0.16471518576145172]  |
-|love   |[0.01036644633859396,-0.017782460898160934,0.08870164304971695]  |
-|python |[-0.11402882635593414,0.045119188725948334,-0.029877422377467155]|
-+-------+-----------------------------------------------------------------+
+	+-------+-----------------------------------------------------------------+
+	|word   |vector                                                           |
+	+-------+-----------------------------------------------------------------+
+	|is     |[0.13657838106155396,0.060924094170331955,-0.03379475697875023]  |
+	|awesome|[0.037024181336164474,-0.023855900391936302,0.0760037824511528]  |
+	|i      |[-0.0014482572441920638,0.049365971237421036,0.12016955763101578]|
+	|ml     |[-0.14006119966506958,0.01626444421708584,0.042281970381736755]  |
+	|spark  |[0.1589149385690689,-0.10970081388950348,-0.10547549277544022]   |
+	|think  |[0.030011219903826714,-0.08994936943054199,0.16471518576145172]  |
+	|love   |[0.01036644633859396,-0.017782460898160934,0.08870164304971695]  |
+	|python |[-0.11402882635593414,0.045119188725948334,-0.029877422377467155]|
+	+-------+-----------------------------------------------------------------+
 
 .. code-block:: python
 
@@ -442,28 +507,39 @@ NGram
 
 .. code-block:: python
 
+	from pyspark.ml import Pipeline
+	from pyspark.ml.feature import CountVectorizer
+	from pyspark.ml.feature import HashingTF, IDF, Tokenizer
+
 	from pyspark.ml.feature import NGram
 
-	wordDataFrame = spark.createDataFrame([
-	    (0, ["Hi", "I", "heard", "about", "Spark"]),
-	    (1, ["I", "wish", "Java", "could", "use", "case", "classes"]),
-	    (2, ["Logistic", "regression", "models", "are", "neat"])
-	], ["id", "words"])
+	sentenceData = spark.createDataFrame([
+	    (0.0, "I love Spark"),
+	    (0.0, "I love python"),
+	    (1.0, "I think ML is awesome")],
+	 ["label", "sentence"])
 
+	tokenizer = Tokenizer(inputCol="sentence", outputCol="words")
 	ngram = NGram(n=2, inputCol="words", outputCol="ngrams")
 
-	ngramDataFrame = ngram.transform(wordDataFrame)
-	ngramDataFrame.select("ngrams").show(truncate=False)
+	idf = IDF(inputCol="rawFeatures", outputCol="features")
+
+	pipeline = Pipeline(stages=[tokenizer, ngram])
+
+	model = pipeline.fit(sentenceData)
+
+	model.transform(sentenceData).show(truncate=False)
+
 
 .. code-block:: python
 
-	+------------------------------------------------------------------+
-	|ngrams                                                            |
-	+------------------------------------------------------------------+
-	|[Hi I, I heard, heard about, about Spark]                         |
-	|[I wish, wish Java, Java could, could use, use case, case classes]|
-	|[Logistic regression, regression models, models are, are neat]    |
-	+------------------------------------------------------------------+
+	+-----+---------------------+---------------------------+--------------------------------------+
+	|label|sentence             |words                      |ngrams                                |
+	+-----+---------------------+---------------------------+--------------------------------------+
+	|0.0  |I love Spark         |[i, love, spark]           |[i love, love spark]                  |
+	|0.0  |I love python        |[i, love, python]          |[i love, love python]                 |
+	|1.0  |I think ML is awesome|[i, think, ml, is, awesome]|[i think, think ml, ml is, is awesome]|
+	+-----+---------------------+---------------------------+--------------------------------------+
 
 Binarizer
 ---------
@@ -499,64 +575,161 @@ Binarizer
 	|  3|    0.5|              0.0|
 	+---+-------+-----------------+
 
-PCA
----
+
+Bucketizer
+----------
+
+[Bucketizer](https://spark.apache.org/docs/latest/ml-features.html#bucketizer) transforms a column of continuous features to a column of feature buckets, where the buckets are specified by users.
 
 .. code-block:: python
 
-	from pyspark.ml.feature import PCA
-	from pyspark.ml.linalg import Vectors
+	from pyspark.ml.feature import QuantileDiscretizer, Bucketizer
 
-	data = [(Vectors.sparse(5, [(1, 1.0), (3, 7.0)]),),
-	        (Vectors.dense([2.0, 0.0, 3.0, 4.0, 5.0]),),
-	        (Vectors.dense([4.0, 0.0, 0.0, 6.0, 7.0]),)]
-	df = spark.createDataFrame(data, ["features"])
+	data = [(0, 18.0), (1, 19.0), (2, 8.0), (3, 5.0), (4, 2.0)]
+	df = spark.createDataFrame(data, ["id", "age"])
+	print(df.show())
 
-	pca = PCA(k=3, inputCol="features", outputCol="pcaFeatures")
-	model = pca.fit(df)
-
-	result = model.transform(df).select("pcaFeatures")
-	result.show(truncate=False)
-
+	splits = [-float("inf"),3, 10,float("inf")]
+	result_bucketizer = Bucketizer(splits=splits, inputCol="age",outputCol="result").transform(df)
+	result_bucketizer.show()
 
 .. code-block:: python
 
-	+-----------------------------------------------------------+
-	|pcaFeatures                                                |
-	+-----------------------------------------------------------+
-	|[1.6485728230883807,-4.013282700516296,-5.524543751369388] |
-	|[-4.645104331781534,-1.1167972663619026,-5.524543751369387]|
-	|[-6.428880535676489,-5.337951427775355,-5.524543751369389] |
-	+-----------------------------------------------------------+
+	+---+----+
+	| id| age|
+	+---+----+
+	|  0|18.0|
+	|  1|19.0|
+	|  2| 8.0|
+	|  3| 5.0|
+	|  4| 2.0|
+	+---+----+
 
-DCT
----
+	None
+	+---+----+------+
+	| id| age|result|
+	+---+----+------+
+	|  0|18.0|   2.0|
+	|  1|19.0|   2.0|
+	|  2| 8.0|   1.0|
+	|  3| 5.0|   1.0|
+	|  4| 2.0|   0.0|
+	+---+----+------+
+
+QuantileDiscretizer
+-------------------
+
+QuantileDiscretizer takes a column with continuous features and outputs a column with binned categorical features. The number of bins is set by the numBuckets parameter. It is possible that the number of buckets used will be smaller than this value, for example, if there are too few distinct values of the input to create enough distinct quantiles.
 
 .. code-block:: python
 
-	from pyspark.ml.feature import DCT
-	from pyspark.ml.linalg import Vectors
+	from pyspark.ml.feature import QuantileDiscretizer, Bucketizer
 
-	df = spark.createDataFrame([
-	    (Vectors.dense([0.0, 1.0, -2.0, 3.0]),),
-	    (Vectors.dense([-1.0, 2.0, 4.0, -7.0]),),
-	    (Vectors.dense([14.0, -2.0, -5.0, 1.0]),)], ["features"])
+	data = [(0, 18.0), (1, 19.0), (2, 8.0), (3, 5.0), (4, 2.0)]
+	df = spark.createDataFrame(data, ["id", "age"])
+	print(df.show())
 
-	dct = DCT(inverse=False, inputCol="features", outputCol="featuresDCT")
-
-	dctDf = dct.transform(df)
-
-	dctDf.select("featuresDCT").show(truncate=False)
+	qds = QuantileDiscretizer(numBuckets=5, inputCol="age", outputCol="buckets",
+	                               relativeError=0.01, handleInvalid="error")
+	bucketizer = qds.fit(df)
+	bucketizer.transform(df).show()
+	bucketizer.setHandleInvalid("skip").transform(df).show()
 
 .. code-block:: python
 
-	+----------------------------------------------------------------+
-	|featuresDCT                                                     |
-	+----------------------------------------------------------------+
-	|[1.0,-1.1480502970952693,2.0000000000000004,-2.7716385975338604]|
-	|[-1.0,3.378492794482933,-7.000000000000001,2.9301512653149677]  |
-	|[4.0,9.304453421915744,11.000000000000002,1.5579302036357163]   |
-	+----------------------------------------------------------------+
+	+---+----+
+	| id| age|
+	+---+----+
+	|  0|18.0|
+	|  1|19.0|
+	|  2| 8.0|
+	|  3| 5.0|
+	|  4| 2.0|
+	+---+----+
+
+	None
+	+---+----+-------+
+	| id| age|buckets|
+	+---+----+-------+
+	|  0|18.0|    3.0|
+	|  1|19.0|    3.0|
+	|  2| 8.0|    2.0|
+	|  3| 5.0|    2.0|
+	|  4| 2.0|    1.0|
+	+---+----+-------+
+
+	+---+----+-------+
+	| id| age|buckets|
+	+---+----+-------+
+	|  0|18.0|    3.0|
+	|  1|19.0|    3.0|
+	|  2| 8.0|    2.0|
+	|  3| 5.0|    2.0|
+	|  4| 2.0|    1.0|
+	+---+----+-------+
+
+If the data has NULL values, then you will get the following results:
+
+.. code-block:: python
+
+	from pyspark.ml.feature import QuantileDiscretizer, Bucketizer
+
+	data = [(0, 18.0), (1, 19.0), (2, 8.0), (3, 5.0), (4, None)]
+	df = spark.createDataFrame(data, ["id", "age"])
+	print(df.show())
+
+	splits = [-float("inf"),3, 10,float("inf")]
+	result_bucketizer = Bucketizer(splits=splits,
+	                               inputCol="age",outputCol="result").transform(df)
+	result_bucketizer.show()
+
+	qds = QuantileDiscretizer(numBuckets=5, inputCol="age", outputCol="buckets", 
+	                               relativeError=0.01, handleInvalid="error")
+	bucketizer = qds.fit(df)
+	bucketizer.transform(df).show()
+	bucketizer.setHandleInvalid("skip").transform(df).show()
+
+.. code-block:: python
+
+	+---+----+
+	| id| age|
+	+---+----+
+	|  0|18.0|
+	|  1|19.0|
+	|  2| 8.0|
+	|  3| 5.0|
+	|  4|null|
+	+---+----+
+
+	None
+	+---+----+------+
+	| id| age|result|
+	+---+----+------+
+	|  0|18.0|   2.0|
+	|  1|19.0|   2.0|
+	|  2| 8.0|   1.0|
+	|  3| 5.0|   1.0|
+	|  4|null|  null|
+	+---+----+------+
+
+	+---+----+-------+
+	| id| age|buckets|
+	+---+----+-------+
+	|  0|18.0|    3.0|
+	|  1|19.0|    4.0|
+	|  2| 8.0|    2.0|
+	|  3| 5.0|    1.0|
+	|  4|null|   null|
+	+---+----+-------+
+
+	+---+----+-------+
+	| id| age|buckets|
+	+---+----+-------+
+	|  0|18.0|    3.0|
+	|  1|19.0|    4.0|
+	|  2| 8.0|    2.0|
+	|  3| 5.0|    1.0|
+	+---+----+-------+
 
 
 StringIndexer
@@ -598,7 +771,7 @@ labelConverter
 	from pyspark.ml.feature import IndexToString, StringIndexer
 
 	df = spark.createDataFrame(
-	    [(0, "a"), (1, "b"), (2, "c"), (3, "a"), (4, "a"), (5, "c")],
+	    [(0, "Yes"), (1, "Yes"), (2, "Yes"), (3, "No"), (4, "No"), (5, "No")],
 	    ["id", "label"])
 
 	indexer = StringIndexer(inputCol="label", outputCol="labelIndex")
@@ -618,19 +791,18 @@ labelConverter
 	      "labels in metadata" % (converter.getInputCol(), converter.getOutputCol()))
 	converted.select("id", "labelIndex", "originalLabel").show()
 
-
 .. code-block:: python
 
 	Transformed string column 'label' to indexed column 'labelIndex'
 	+---+-----+----------+
 	| id|label|labelIndex|
 	+---+-----+----------+
-	|  0|    a|       0.0|
-	|  1|    b|       2.0|
-	|  2|    c|       1.0|
-	|  3|    a|       0.0|
-	|  4|    a|       0.0|
-	|  5|    c|       1.0|
+	|  0|  Yes|       1.0|
+	|  1|  Yes|       1.0|
+	|  2|  Yes|       1.0|
+	|  3|   No|       0.0|
+	|  4|   No|       0.0|
+	|  5|   No|       0.0|
 	+---+-----+----------+
 
 	StringIndexer will store labels in output column metadata
@@ -639,12 +811,12 @@ labelConverter
 	+---+----------+-------------+
 	| id|labelIndex|originalLabel|
 	+---+----------+-------------+
-	|  0|       0.0|            a|
-	|  1|       2.0|            b|
-	|  2|       1.0|            c|
-	|  3|       0.0|            a|
-	|  4|       0.0|            a|
-	|  5|       1.0|            c|
+	|  0|       1.0|          Yes|
+	|  1|       1.0|          Yes|
+	|  2|       1.0|          Yes|
+	|  3|       0.0|           No|
+	|  4|       0.0|           No|
+	|  5|       0.0|           No|
 	+---+----------+-------------+
 
 
@@ -654,7 +826,7 @@ labelConverter
 	from pyspark.ml.feature import IndexToString, StringIndexer
 
 	df = spark.createDataFrame(
-	    [(0, "a"), (1, "b"), (2, "c"), (3, "a"), (4, "a"), (5, "c")],
+	    [(0, "Yes"), (1, "Yes"), (2, "Yes"), (3, "No"), (4, "No"), (5, "No")],
 	    ["id", "label"])
 
 	indexer = StringIndexer(inputCol="label", outputCol="labelIndex")
@@ -673,12 +845,12 @@ labelConverter
 	+---+-----+----------+-------------+
 	| id|label|labelIndex|originalLabel|
 	+---+-----+----------+-------------+
-	|  0|    a|       0.0|            a|
-	|  1|    b|       2.0|            b|
-	|  2|    c|       1.0|            c|
-	|  3|    a|       0.0|            a|
-	|  4|    a|       0.0|            a|
-	|  5|    c|       1.0|            c|
+	|  0|  Yes|       1.0|          Yes|
+	|  1|  Yes|       1.0|          Yes|
+	|  2|  Yes|       1.0|          Yes|
+	|  3|   No|       0.0|           No|
+	|  4|   No|       0.0|           No|
+	|  5|   No|       0.0|           No|
 	+---+-----+----------+-------------+
 
 
@@ -692,30 +864,45 @@ VectorIndexer
 	from pyspark.ml.feature import VectorIndexer
 	from pyspark.ml.evaluation import RegressionEvaluator
 
-	# Automatically identify categorical features, and index them.
-	# We specify maxCategories so features with > 4 distinct values are treated as continuous.
+	from pyspark.ml.feature import RFormula
 
+	df = spark.createDataFrame([
+	    (0, 2.2, True, "1", "foo", 'CA'),
+	    (1, 3.3, False, "2", "bar", 'US'),
+	    (0, 4.4, False, "3", "baz", 'CHN'),
+	    (1, 5.5, False, "4", "foo", 'AUS')
+	], ['label',"real", "bool", "stringNum", "string","country"])
+
+	formula = RFormula(
+	    formula="label ~ real + bool + stringNum + string + country",
+	    featuresCol="features",
+	    labelCol="label")
+
+	# Automatically identify categorical features, and index them.
+	# We specify maxCategories so features with > 4 distinct values 
+	# are treated as continuous.
 	featureIndexer = VectorIndexer(inputCol="features", \
 	                               outputCol="indexedFeatures",\
-	                               maxCategories=4).fit(transformed)
+	                               maxCategories=2)
 
-	data = featureIndexer.transform(transformed)
+	pipeline = Pipeline(stages=[formula, featureIndexer])
+
+	model = pipeline.fit(df)
+	result = model.transform(df)
+
+	result.show()
 
 
 .. code-block:: python
 
-	data.show(5,True)
-
-	+-----------------+-----+-----------------+
-	|         features|label|  indexedFeatures|
-	+-----------------+-----+-----------------+
-	|[230.1,37.8,69.2]| 22.1|[230.1,37.8,69.2]|
-	| [44.5,39.3,45.1]| 10.4| [44.5,39.3,45.1]|
-	| [17.2,45.9,69.3]|  9.3| [17.2,45.9,69.3]|
-	|[151.5,41.3,58.5]| 18.5|[151.5,41.3,58.5]|
-	|[180.8,10.8,58.4]| 12.9|[180.8,10.8,58.4]|
-	+-----------------+-----+-----------------+
-	only showing top 5 rows
+	+-----+----+-----+---------+------+-------+--------------------+--------------------+
+	|label|real| bool|stringNum|string|country|            features|     indexedFeatures|
+	+-----+----+-----+---------+------+-------+--------------------+--------------------+
+	|    0| 2.2| true|        1|   foo|     CA|(10,[0,1,5,7],[2....|(10,[0,1,5,7],[2....|
+	|    1| 3.3|false|        2|   bar|     US|(10,[0,3,8],[3.3,...|(10,[0,3,8],[3.3,...|
+	|    0| 4.4|false|        3|   baz|    CHN|(10,[0,4,6,9],[4....|(10,[0,4,6,9],[4....|
+	|    1| 5.5|false|        4|   foo|    AUS|(10,[0,2,5],[5.5,...|(10,[0,2,5],[5.5,...|
+	+-----+----+-----+---------+------+-------+--------------------+--------------------+
 
 VectorAssembler
 ---------------
@@ -751,8 +938,8 @@ OneHotEncoder
 
 This is the note I wrote for one of my readers for explaining the OneHotEncoder. I would like to share it at here:
 
-1. Import and creating SparkSession
-
+Import and creating SparkSession
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. code-block:: python
@@ -792,11 +979,11 @@ This is the note I wrote for one of my readers for explaining the OneHotEncoder.
 	+---+--------+
 
 
-2. OneHotEncoder
+OneHotEncoder
+^^^^^^^^^^^^^
 
-
-a.  Encoder
-
+Encoder
+~~~~~~~
 
 .. code-block:: python
 
@@ -852,7 +1039,8 @@ a.  Encoder
 		|  5|       c|          1.0|(2,[1],[1.0])|
 		+---+--------+-------------+-------------+
 
-b. Vector Assembler
+Vector Assembler
+~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -887,7 +1075,8 @@ b. Vector Assembler
 	|  5|       c|             1.0|           (3,[1],[1.0])|[0.0,1.0,0.0]|
 	+---+--------+----------------+------------------------+-------------+
 
-3. Application: Get Dummy Variable
+Application: Get Dummy Variable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -971,7 +1160,8 @@ b. Vector Assembler
 	        return data.select('features')      
 
 
-a. Unsupervised scenario
+Unsupervised scenario
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -1009,7 +1199,8 @@ a. Unsupervised scenario
 	+---+-------------+
 
 
-b. Supervised scenario
+Supervised scenario
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -1044,9 +1235,64 @@ b. Supervised scenario
 The Jupyter Notebook can be found on Colab: `OneHotEncoder`_ . 
 
 
-Normalizer
-----------
+Scaler
+------
 
+.. code-block:: python
+
+	from pyspark.ml.feature import Normalizer, StandardScaler, MinMaxScaler, MaxAbsScaler
+
+	scaler_type = 'Normal'
+	if scaler_type=='Normal':
+	    scaler = Normalizer(inputCol="features", outputCol="scaledFeatures", p=1.0)
+	elif scaler_type=='Standard':
+	    scaler = StandardScaler(inputCol="features", outputCol="scaledFeatures",
+	                            withStd=True, withMean=False)
+	elif scaler_type=='MinMaxScaler':
+	    scaler = MinMaxScaler(inputCol="features", outputCol="scaledFeatures")
+	elif scaler_type=='MaxAbsScaler':
+	    scaler = MaxAbsScaler(inputCol="features", outputCol="scaledFeatures")
+
+.. code-block:: python
+
+	from pyspark.ml import Pipeline
+	from pyspark.ml.linalg import Vectors
+
+	df = spark.createDataFrame([
+	    (0, Vectors.dense([1.0, 0.5, -1.0]),),
+	    (1, Vectors.dense([2.0, 1.0, 1.0]),),
+	    (2, Vectors.dense([4.0, 10.0, 2.0]),)
+	], ["id", "features"])
+	df.show()
+
+
+	pipeline = Pipeline(stages=[scaler])
+
+	model  =pipeline.fit(df)
+	data = model.transform(df)
+	data.show()
+
+.. code-block:: python
+
+	+---+--------------+
+	| id|      features|
+	+---+--------------+
+	|  0|[1.0,0.5,-1.0]|
+	|  1| [2.0,1.0,1.0]|
+	|  2|[4.0,10.0,2.0]|
+	+---+--------------+
+
+	+---+--------------+------------------+
+	| id|      features|    scaledFeatures|
+	+---+--------------+------------------+
+	|  0|[1.0,0.5,-1.0]|    [0.4,0.2,-0.4]|
+	|  1| [2.0,1.0,1.0]|   [0.5,0.25,0.25]|
+	|  2|[4.0,10.0,2.0]|[0.25,0.625,0.125]|
+	+---+--------------+------------------+
+
+
+Normalizer
+^^^^^^^^^^
 
 .. code-block:: python
 
@@ -1090,6 +1336,155 @@ Normalizer
 	|  2|[4.0,10.0,2.0]| [0.4,1.0,0.2]|
 	+---+--------------+--------------+
 
+
+StandardScaler
+^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+	from pyspark.ml.feature import Normalizer, StandardScaler, MinMaxScaler, MaxAbsScaler
+
+	from pyspark.ml.linalg import Vectors
+
+	dataFrame = spark.createDataFrame([
+	    (0, Vectors.dense([1.0, 0.5, -1.0]),),
+	    (1, Vectors.dense([2.0, 1.0, 1.0]),),
+	    (2, Vectors.dense([4.0, 10.0, 2.0]),)
+	], ["id", "features"])
+
+	scaler = StandardScaler(inputCol="features", outputCol="scaledFeatures",
+	                            withStd=True, withMean=False)
+	scaleredData = scaler.fit((dataFrame)).transform(dataFrame)
+	scaleredData.show(truncate=False)
+
+.. code-block:: python
+
+	+---+--------------+------------------------------------------------------------+
+	|id |features      |scaledFeatures                                              |
+	+---+--------------+------------------------------------------------------------+
+	|0  |[1.0,0.5,-1.0]|[0.6546536707079772,0.09352195295828244,-0.6546536707079771]|
+	|1  |[2.0,1.0,1.0] |[1.3093073414159544,0.1870439059165649,0.6546536707079771]  |
+	|2  |[4.0,10.0,2.0]|[2.618614682831909,1.870439059165649,1.3093073414159542]    |
+	+---+--------------+------------------------------------------------------------+
+
+MinMaxScaler
+^^^^^^^^^^^^
+
+.. code-block:: python
+
+	from pyspark.ml.feature import Normalizer, StandardScaler, MinMaxScaler, MaxAbsScaler
+
+	from pyspark.ml.linalg import Vectors
+
+	dataFrame = spark.createDataFrame([
+	    (0, Vectors.dense([1.0, 0.5, -1.0]),),
+	    (1, Vectors.dense([2.0, 1.0, 1.0]),),
+	    (2, Vectors.dense([4.0, 10.0, 2.0]),)
+	], ["id", "features"])
+
+	scaler = MinMaxScaler(inputCol="features", outputCol="scaledFeatures")
+	scaledData = scaler.fit((dataFrame)).transform(dataFrame)
+	scaledData.show(truncate=False)
+
+.. code-block:: python
+
+	+---+--------------+-----------------------------------------------------------+
+	|id |features      |scaledFeatures                                             |
+	+---+--------------+-----------------------------------------------------------+
+	|0  |[1.0,0.5,-1.0]|[0.0,0.0,0.0]                                              |
+	|1  |[2.0,1.0,1.0] |[0.3333333333333333,0.05263157894736842,0.6666666666666666]|
+	|2  |[4.0,10.0,2.0]|[1.0,1.0,1.0]                                              |
+	+---+--------------+-----------------------------------------------------------+
+
+MaxAbsScaler
+^^^^^^^^^^^^
+
+.. code-block:: python
+
+	from pyspark.ml.feature import Normalizer, StandardScaler, MinMaxScaler, MaxAbsScaler
+
+	from pyspark.ml.linalg import Vectors
+
+	dataFrame = spark.createDataFrame([
+	    (0, Vectors.dense([1.0, 0.5, -1.0]),),
+	    (1, Vectors.dense([2.0, 1.0, 1.0]),),
+	    (2, Vectors.dense([4.0, 10.0, 2.0]),)
+	], ["id", "features"])
+
+	scaler = MaxAbsScaler(inputCol="features", outputCol="scaledFeatures")
+	scaledData = scaler.fit((dataFrame)).transform(dataFrame)
+	scaledData.show(truncate=False)
+
+.. code-block:: python
+
+	+---+--------------+----------------+
+	|id |features      |scaledFeatures  |
+	+---+--------------+----------------+
+	|0  |[1.0,0.5,-1.0]|[0.25,0.05,-0.5]|
+	|1  |[2.0,1.0,1.0] |[0.5,0.1,0.5]   |
+	|2  |[4.0,10.0,2.0]|[1.0,1.0,1.0]   |
+	+---+--------------+----------------+
+
+PCA
+---
+
+.. code-block:: python
+
+	from pyspark.ml.feature import PCA
+	from pyspark.ml.linalg import Vectors
+
+	data = [(Vectors.sparse(5, [(1, 1.0), (3, 7.0)]),),
+	        (Vectors.dense([2.0, 0.0, 3.0, 4.0, 5.0]),),
+	        (Vectors.dense([4.0, 0.0, 0.0, 6.0, 7.0]),)]
+	df = spark.createDataFrame(data, ["features"])
+
+	pca = PCA(k=3, inputCol="features", outputCol="pcaFeatures")
+	model = pca.fit(df)
+
+	result = model.transform(df).select("pcaFeatures")
+	result.show(truncate=False)
+
+
+.. code-block:: python
+
+	+-----------------------------------------------------------+
+	|pcaFeatures                                                |
+	+-----------------------------------------------------------+
+	|[1.6485728230883807,-4.013282700516296,-5.524543751369388] |
+	|[-4.645104331781534,-1.1167972663619026,-5.524543751369387]|
+	|[-6.428880535676489,-5.337951427775355,-5.524543751369389] |
+	+-----------------------------------------------------------+
+
+DCT
+---
+
+.. code-block:: python
+
+	from pyspark.ml.feature import DCT
+	from pyspark.ml.linalg import Vectors
+
+	df = spark.createDataFrame([
+	    (Vectors.dense([0.0, 1.0, -2.0, 3.0]),),
+	    (Vectors.dense([-1.0, 2.0, 4.0, -7.0]),),
+	    (Vectors.dense([14.0, -2.0, -5.0, 1.0]),)], ["features"])
+
+	dct = DCT(inverse=False, inputCol="features", outputCol="featuresDCT")
+
+	dctDf = dct.transform(df)
+
+	dctDf.select("featuresDCT").show(truncate=False)
+
+.. code-block:: python
+
+	+----------------------------------------------------------------+
+	|featuresDCT                                                     |
+	+----------------------------------------------------------------+
+	|[1.0,-1.1480502970952693,2.0000000000000004,-2.7716385975338604]|
+	|[-1.0,3.378492794482933,-7.000000000000001,2.9301512653149677]  |
+	|[4.0,9.304453421915744,11.000000000000002,1.5579302036357163]   |
+	+----------------------------------------------------------------+
+
+
 Feature Selection
 +++++++++++++++++
 
@@ -1105,7 +1500,91 @@ RandomForest
 
 `AutoFeatures`_ library based on RandomForest is coming soon.............
 
+
+Unbalanced data: Undersampling
+++++++++++++++++++++++++++++++
+
+Since we use PySpark to deal with the big data, Undersampling for Unbalanced Classification is a useful method to deal with the Unbalanced data. Undersampling is a popular technique for unbalanced datasets to reduce the skew in class distributions. However, it is well-known that undersampling one class modifies the priors of the training set and consequently biases the posterior probabilities of a classifier. After you applied the Undersampling, you need to recalibrate the Probability `Calibrating Probability with Undersampling for Unbalanced Classification`_.
+
+.. figure:: images/underSampling.png
+   :align: center
+
+.. code-block:: python
+
+	df = spark.createDataFrame([
+	    (0, "Yes"),
+	    (1, "Yes"),
+	    (2, "Yes"),
+	    (3, "Yes"),
+	    (4, "No"),
+	    (5, "No")
+	], ["id", "label"])
+	df.show()
+
+.. code-block:: python
+
+	+---+-----+
+	| id|label|
+	+---+-----+
+	|  0|  Yes|
+	|  1|  Yes|
+	|  2|  Yes|
+	|  3|  Yes|
+	|  4|   No|
+	|  5|   No|
+	+---+-----+
+
+
+Calculate undersampling Ratio
+-----------------------------
+
+.. code-block:: python
+
+	import math
+	def round_up(n, decimals=0):
+	    multiplier = 10 ** decimals
+	    return math.ceil(n * multiplier) / multiplier
+
+	  # drop missing value rows
+	df = df.dropna()
+	# under-sampling majority set
+	label_Y = df.filter(df.label=='Yes')
+	label_N = df.filter(df.label=='No')
+	sampleRatio = round_up(label_N.count() / df.count(),2)
+
+Undersampling
+-------------
+
+.. code-block:: python
+
+	label_Y_sample = label_Y.sample(False, sampleRatio)
+	# union minority set and the under-sampling majority set
+	data = label_N.unionAll(label_Y_sample)
+	data.show()
+
+.. code-block:: python
+
+	+---+-----+
+	| id|label|
+	+---+-----+
+	|  4|   No|
+	|  5|   No|
+	|  1|  Yes|
+	|  2|  Yes|
+	+---+-----+
+
+Recalibrating Probability 
+-------------------------
+
+Undersampling is a popular technique for unbalanced datasets to reduce the skew in class distributions. However, it is well-known that undersampling one class modifies the priors of the training set and consequently biases the posterior probabilities of a classifier `Calibrating Probability with Undersampling for Unbalanced Classification`_.
+
+.. code-block:: python
+
+	predication.withColumn('adj_probability',sampleRatio*F.col('probability')/((sampleRatio-1)*F.col('probability')+1))
+
+.. _Word embeddings: https://cbail.github.io/textasdata/word2vec/rmarkdown/word2vec.html
 .. _Extracting transforming and selecting features: https://spark.apache.org/docs/latest/ml-features
 .. _Stackoverflow TF: https://stackoverflow.com/questions/35205865/what-is-the-difference-between-hashingtf-and-countvectorizer-in-spark
 .. _OneHotEncoder: https://colab.research.google.com/drive/1pbrFQ-mcyijsVJNPP5GHbOeJaKdTLte3#scrollTo=kLU4xy3XLQG3
 .. _AutoFeatures: https://github.com/runawayhorse001/AutoFeatures
+.. _Calibrating Probability with Undersampling for Unbalanced Classification: https://www3.nd.edu/~dial/publications/dalpozzolo2015calibrating.pdf
