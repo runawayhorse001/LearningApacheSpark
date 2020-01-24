@@ -46,7 +46,7 @@ About the authors
 
 * **Biography**
 
-  Wenqiang Feng is a Sr. Data Scientist at HR & Block. Before joining Block, Dr. Feng is a Data Scientist at Applied Analytics Group, DST (now SS&C). Dr. Feng’s responsibilities include providing clients with access to cutting-edge skills and technologies, including Big Data analytic solutions, advanced analytic and data enhancement techniques and modeling.
+  Wenqiang Feng is a Sr. Data Scientist at Machine Learning Lab, H&R Block. Before joining Block, Dr. Feng is a Data Scientist at Applied Analytics Group, DST (now SS&C). Dr. Feng’s responsibilities include providing clients with access to cutting-edge skills and technologies, including Big Data analytic solutions, advanced analytic and data enhancement techniques and modeling.
 
   Dr. Feng has deep analytic expertise in data mining, analytic systems, machine learning algorithms, business intelligence, and applying Big Data tools to strategically solve industry problems in a cross-functional business. Before joining DST, Dr. Feng was an IMA Data Science Fellow at The Institute for Mathematics and its Applications (IMA) at the University of Minnesota. While there, he helped startup companies make marketing decisions based on deep predictive analytics. 
 
