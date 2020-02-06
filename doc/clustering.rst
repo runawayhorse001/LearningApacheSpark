@@ -139,6 +139,7 @@ Then you will get
 .. code-block:: python
 
 	# convert the data to dense vector
+	from pyspark.mllib.linalg import Vectors 
 	def transData(data):
 	    return data.rdd.map(lambda r: [Vectors.dense(r[:-1])]).toDF(['features'])
 
