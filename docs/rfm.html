@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -127,8 +128,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -174,7 +177,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>13. RFM Analysis</li>
+      <li><span class="section-number">13. </span>RFM Analysis</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,7 +195,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="rfm-analysis">
-<span id="rfm"></span><h1>13. RFM Analysis<a class="headerlink" href="#rfm-analysis" title="Permalink to this headline">¶</a></h1>
+<span id="rfm"></span><h1><span class="section-number">13. </span>RFM Analysis<a class="headerlink" href="#rfm-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-center">
 <img alt="_images/rfm_business.png" src="_images/rfm_business.png" />
 </div>
@@ -201,15 +204,15 @@
 Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_(customer_value)">RFM_wikipedia</a>.</p>
 <p>RFM stands for the three dimensions:</p>
 <ul class="simple">
-<li>Recency – How recently did the customer purchase? i.e. Duration since last purchase</li>
-<li>Frequency – How often do they purchase?  i.e. Total number of purchases</li>
-<li>Monetary Value – How much do they spend? i.e. Total money this customer spent</li>
+<li><p>Recency – How recently did the customer purchase? i.e. Duration since last purchase</p></li>
+<li><p>Frequency – How often do they purchase?  i.e. Total number of purchases</p></li>
+<li><p>Monetary Value – How much do they spend? i.e. Total money this customer spent</p></li>
 </ul>
 <div class="section" id="rfm-analysis-methodology">
-<h2>13.1. RFM Analysis Methodology<a class="headerlink" href="#rfm-analysis-methodology" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.1. </span>RFM Analysis Methodology<a class="headerlink" href="#rfm-analysis-methodology" title="Permalink to this headline">¶</a></h2>
 <p>RFM Analysis contains three main steps:</p>
 <div class="section" id="build-the-rfm-features-matrix-for-each-customer">
-<h3>13.1.1. 1. Build the RFM features matrix for each customer<a class="headerlink" href="#build-the-rfm-features-matrix-for-each-customer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.1. </span>1. Build the RFM features matrix for each customer<a class="headerlink" href="#build-the-rfm-features-matrix-for-each-customer" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------+---------+---------+</span>
 <span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span><span class="n">Recency</span><span class="o">|</span><span class="n">Frequency</span><span class="o">|</span> <span class="n">Monetary</span><span class="o">|</span>
 <span class="o">+----------+-------+---------+---------+</span>
@@ -224,7 +227,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="determine-cutting-points-for-each-feature">
-<h3>13.1.2. 2. Determine cutting points for each feature<a class="headerlink" href="#determine-cutting-points-for-each-feature" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.2. </span>2. Determine cutting points for each feature<a class="headerlink" href="#determine-cutting-points-for-each-feature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------+---------+--------+-----+-----+-----+</span>
 <span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span><span class="n">Recency</span><span class="o">|</span><span class="n">Frequency</span><span class="o">|</span><span class="n">Monetary</span><span class="o">|</span><span class="n">r_seg</span><span class="o">|</span><span class="n">f_seg</span><span class="o">|</span><span class="n">m_seg</span><span class="o">|</span>
 <span class="o">+----------+-------+---------+--------+-----+-----+-----+</span>
@@ -239,7 +242,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="determine-the-rfm-scores-and-summarize-the-corresponding-business-value">
-<h3>13.1.3. 3. Determine the RFM scores and summarize the corresponding business value<a class="headerlink" href="#determine-the-rfm-scores-and-summarize-the-corresponding-business-value" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1.3. </span>3. Determine the RFM scores and summarize the corresponding business value<a class="headerlink" href="#determine-the-rfm-scores-and-summarize-the-corresponding-business-value" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------+---------+--------+-----+-----+-----+--------+</span>
 <span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span><span class="n">Recency</span><span class="o">|</span><span class="n">Frequency</span><span class="o">|</span><span class="n">Monetary</span><span class="o">|</span><span class="n">r_seg</span><span class="o">|</span><span class="n">f_seg</span><span class="o">|</span><span class="n">m_seg</span><span class="o">|</span><span class="n">RFMScore</span><span class="o">|</span>
 <span class="o">+----------+-------+---------+--------+-----+-----+-----+--------+</span>
@@ -255,20 +258,20 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 <p>The corresponding business description and marketing value:</p>
 <div class="figure align-center" id="id2">
 <span id="fig-rfm-business"></span><img alt="_images/rfm_business.png" src="_images/rfm_business.png" />
-<p class="caption"><span class="caption-text">Source: Blast Analytics Marketing</span></p>
+<p class="caption"><span class="caption-text">Source: Blast Analytics Marketing</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="demo">
-<h2>13.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.2. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/RFM.ipynb">Data Exploration</a>.</li>
-<li>The data can be downloaf from <a class="reference external" href="_static/OnlineRetail.csv">German Credit</a>.</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/RFM.ipynb">Data Exploration</a>.</p></li>
+<li><p>The data can be downloaf from <a class="reference external" href="_static/OnlineRetail.csv">German Credit</a>.</p></li>
 </ul>
 <div class="section" id="load-and-clean-data">
-<h3>13.2.1. Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.2.1. </span>Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -280,12 +283,12 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_raw</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                        <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                        <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;Online Retail.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;Online Retail.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>check the data set</p>
@@ -317,10 +320,10 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Data clean and data manipulation</li>
+<li><p>Data clean and data manipulation</p></li>
 </ol>
 <ul class="simple">
-<li>check and remove the <code class="docutils literal notranslate"><span class="pre">null</span></code> values</li>
+<li><p>check and remove the <code class="docutils literal notranslate"><span class="pre">null</span></code> values</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">count</span>
 
@@ -351,7 +354,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ul class="simple">
-<li>Dealwith the InvoiceDate</li>
+<li><p>Dealwith the InvoiceDate</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">to_utc_timestamp</span><span class="p">,</span> <span class="n">unix_timestamp</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">datediff</span><span class="p">,</span> <span class="n">col</span>
 
@@ -367,21 +370,21 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 <span class="o">+---------+---------+--------------------+--------+------------+---------+----------+--------------+--------------------+</span>
 <span class="o">|</span><span class="n">InvoiceNo</span><span class="o">|</span><span class="n">StockCode</span><span class="o">|</span>         <span class="n">Description</span><span class="o">|</span><span class="n">Quantity</span><span class="o">|</span> <span class="n">InvoiceDate</span><span class="o">|</span><span class="n">UnitPrice</span><span class="o">|</span><span class="n">CustomerID</span><span class="o">|</span>       <span class="n">Country</span><span class="o">|</span>      <span class="n">NewInvoiceDate</span><span class="o">|</span>
 <span class="o">+---------+---------+--------------------+--------+------------+---------+----------+--------------+--------------------+</span>
-<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">85123</span><span class="n">A</span><span class="o">|</span><span class="n">WHITE</span> <span class="n">HANGING</span> <span class="n">HEA</span><span class="o">...|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">2.55</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
-<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>    <span class="mi">71053</span><span class="o">|</span> <span class="n">WHITE</span> <span class="n">METAL</span> <span class="n">LANTERN</span><span class="o">|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">3.39</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
-<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">84406</span><span class="n">B</span><span class="o">|</span><span class="n">CREAM</span> <span class="n">CUPID</span> <span class="n">HEART</span><span class="o">...|</span>       <span class="mi">8</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">2.75</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
-<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">84029</span><span class="n">G</span><span class="o">|</span><span class="n">KNITTED</span> <span class="n">UNION</span> <span class="n">FLA</span><span class="o">...|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">3.39</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
-<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">84029</span><span class="n">E</span><span class="o">|</span><span class="n">RED</span> <span class="n">WOOLLY</span> <span class="n">HOTTIE</span><span class="o">...|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">3.39</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
+<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">85123</span><span class="n">A</span><span class="o">|</span><span class="n">WHITE</span> <span class="n">HANGING</span> <span class="n">HEA</span><span class="o">...|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">2.55</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
+<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>    <span class="mi">71053</span><span class="o">|</span> <span class="n">WHITE</span> <span class="n">METAL</span> <span class="n">LANTERN</span><span class="o">|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">3.39</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
+<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">84406</span><span class="n">B</span><span class="o">|</span><span class="n">CREAM</span> <span class="n">CUPID</span> <span class="n">HEART</span><span class="o">...|</span>       <span class="mi">8</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">2.75</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
+<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">84029</span><span class="n">G</span><span class="o">|</span><span class="n">KNITTED</span> <span class="n">UNION</span> <span class="n">FLA</span><span class="o">...|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">3.39</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
+<span class="o">|</span>   <span class="mi">536365</span><span class="o">|</span>   <span class="mi">84029</span><span class="n">E</span><span class="o">|</span><span class="n">RED</span> <span class="n">WOOLLY</span> <span class="n">HOTTIE</span><span class="o">...|</span>       <span class="mi">6</span><span class="o">|</span><span class="mi">12</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="o">|</span>     <span class="mf">3.39</span><span class="o">|</span>     <span class="mi">17850</span><span class="o">|</span><span class="n">United</span> <span class="n">Kingdom</span><span class="o">|</span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="o">...|</span>
 <span class="o">+---------+---------+--------------------+--------+------------+---------+----------+--------------+--------------------+</span>
 <span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The spark is pretty sensitive to the date format!</p>
+<p class="admonition-title">Warning</p>
+<p>The spark is pretty sensitive to the date format!</p>
 </div>
 <ul class="simple">
-<li>calculate total price</li>
+<li><p>calculate total price</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">round</span>
 
@@ -389,7 +392,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ul class="simple">
-<li>calculate the time difference</li>
+<li><p>calculate the time difference</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">mean</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">datediff</span><span class="p">,</span> <span class="n">to_date</span>
 
@@ -402,7 +405,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ul class="simple">
-<li>build the Recency, Frequency and Monetary</li>
+<li><p>build the Recency, Frequency and Monetary</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recency</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="s1">&#39;Duration&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;Recency&#39;</span><span class="p">))</span>
 <span class="n">frequency</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">,</span> <span class="s1">&#39;InvoiceNo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>\
@@ -429,9 +432,9 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="rfm-segmentation">
-<h3>13.2.2. RFM Segmentation<a class="headerlink" href="#rfm-segmentation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.2.2. </span>RFM Segmentation<a class="headerlink" href="#rfm-segmentation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="4">
-<li>Determine cutting points</li>
+<li><p>Determine cutting points</p></li>
 </ol>
 <p>In this section, you can use the techniques (statistical results and visualizations) in <a class="reference internal" href="exploration.html#exploration"><span class="std std-ref">Data Exploration</span></a> section to help you determine the cutting points for each attribute. In my opinion, the cutting points are mainly depend on the business sense. You’s better talk to your makrting people and get feedback and suggestion from them. I will use the quantile as the cutting points in this demo.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recency&#39;</span><span class="p">,</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span><span class="s1">&#39;Monetary&#39;</span><span class="p">]</span>
@@ -492,7 +495,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>RFM Segmentation</li>
+<li><p>RFM Segmentation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rfm_seg</span> <span class="o">=</span> <span class="n">rfm</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;r_seg&quot;</span><span class="p">,</span> <span class="n">R_udf</span><span class="p">(</span><span class="s2">&quot;Recency&quot;</span><span class="p">))</span>
 <span class="n">rfm_seg</span> <span class="o">=</span> <span class="n">rfm_seg</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;f_seg&quot;</span><span class="p">,</span> <span class="n">F_udf</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">))</span>
@@ -531,12 +534,12 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="statistical-summary">
-<h3>13.2.3. Statistical Summary<a class="headerlink" href="#statistical-summary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.2.3. </span>Statistical Summary<a class="headerlink" href="#statistical-summary" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="6">
-<li>Statistical Summary</li>
+<li><p>Statistical Summary</p></li>
 </ol>
 <ul class="simple">
-<li>simple summary</li>
+<li><p>simple summary</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rfm_seg</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;RFMScore&#39;</span><span class="p">)</span>\
        <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Recency&#39;</span><span class="p">:</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
@@ -558,7 +561,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ul class="simple">
-<li>complex summary</li>
+<li><p>complex summary</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grp</span> <span class="o">=</span> <span class="s1">&#39;RFMScore&#39;</span>
 <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recency&#39;</span><span class="p">,</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span><span class="s1">&#39;Monetary&#39;</span><span class="p">]</span>
@@ -574,12 +577,12 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="extension">
-<h2>13.3. Extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">13.3. </span>Extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h2>
 <p>You can also apply the K-means clustering in <a class="reference internal" href="clustering.html#clustering"><span class="std std-ref">Clustering</span></a> section to do the segmentation.</p>
 <div class="section" id="build-feature-matrix">
-<h3>13.3.1. Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.3.1. </span>Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>build dense feature matrix</li>
+<li><p>build dense feature matrix</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">Row</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="kn">import</span> <span class="n">Vectors</span>
@@ -613,7 +616,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Scaler the feature matrix</li>
+<li><p>Scaler the feature matrix</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 
@@ -621,7 +624,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
          <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">)</span>
 <span class="n">scalerModel</span> <span class="o">=</span>  <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
 <span class="n">scaledData</span> <span class="o">=</span> <span class="n">scalerModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
-<span class="n">scaledData</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">scaledData</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------------------+--------------------------------------------------------------+</span>
@@ -638,13 +641,13 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="k-means-clustering">
-<h3>13.3.2. K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.3.2. </span>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="3">
-<li>Find optimal number of cluster</li>
+<li><p>Find optimal number of cluster</p></li>
 </ol>
 <p>I will present two popular ways to determine the optimal number of the cluster.</p>
 <ul class="simple">
-<li>elbow analysis</li>
+<li><p>elbow analysis</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#PySpark libraries</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -653,12 +656,12 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 <span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Row</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructType</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>  <span class="c1"># For Python 3.x</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>  <span class="c1"># For Python 3.x</span>
 
 <span class="kn">from</span> <span class="nn">pyspark.ml.clustering</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="c1">#from pyspark.ml.evaluation import ClusteringEvaluator  # requires Spark 2.4 or later</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">()</span>\
@@ -671,27 +674,27 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
     <span class="n">cost</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">computeCost</span><span class="p">(</span><span class="n">scaledData</span><span class="p">)</span> <span class="c1"># requires Spark 2.0 or later</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="kn">as</span> <span class="nn">mlab</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sbs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="k">as</span> <span class="nn">mlab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sbs</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MaxNLocator</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span><span class="n">cost</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">20</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;cost&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="figure align-center" id="id3">
 <span id="fig-elbow-rfm"></span><img alt="_images/elbow_rfm.png" src="_images/elbow_rfm.png" />
-<p class="caption"><span class="caption-text">Cost v.s. the number of the clusters</span></p>
+<p class="caption"><span class="caption-text">Cost v.s. the number of the clusters</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>In my opinion, sometimes it’s hard to choose the number of the clusters. As shown in Figure <a class="reference internal" href="#fig-elbow-rfm"><span class="std std-ref">Cost v.s. the number of the clusters</span></a>, you can choose 3, 5 or even 8. I will choose <code class="docutils literal notranslate"><span class="pre">3</span></code> in this demo.</p>
 <ul class="simple">
-<li>Silhouette analysis</li>
+<li><p>Silhouette analysis</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#PySpark libraries</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -700,7 +703,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 <span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Row</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructType</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>  <span class="c1"># For Python 3.x</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>  <span class="c1"># For Python 3.x</span>
 
 <span class="kn">from</span> <span class="nn">pyspark.ml.clustering</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">ClusteringEvaluator</span>
@@ -743,7 +746,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 
             <span class="c1"># Make predictions</span>
             <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_in</span><span class="p">)</span>
-            <span class="n">r_table</span><span class="p">[</span><span class="s1">&#39;cluster_{k}_{run}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">run</span><span class="o">=</span><span class="n">run</span><span class="p">)]</span><span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+            <span class="n">r_table</span><span class="p">[</span><span class="s1">&#39;cluster_</span><span class="si">{k}</span><span class="s1">_</span><span class="si">{run}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">run</span><span class="o">=</span><span class="n">run</span><span class="p">)]</span><span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 
             <span class="c1"># Evaluate clustering by computing Silhouette score</span>
             <span class="n">evaluator</span> <span class="o">=</span> <span class="n">ClusteringEvaluator</span><span class="p">()</span>
@@ -757,9 +760,9 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 
     <span class="n">silhouette</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">k_lst</span><span class="p">,</span><span class="n">silh_lst</span><span class="p">)),</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;silhouette&#39;</span><span class="p">])</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;+------------------------------------------------------------+&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;|         The finding optimal k phase took </span><span class="si">%8.0f</span><span class="s2"> s.       |&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">elapsed</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;+------------------------------------------------------------+&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+------------------------------------------------------------+&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|         The finding optimal k phase took </span><span class="si">%8.0f</span><span class="s2"> s.       |&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">elapsed</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+------------------------------------------------------------+&#39;</span><span class="p">)</span>
 
 
     <span class="k">return</span> <span class="n">k_lst</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">silh_lst</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)],</span> <span class="n">silhouette</span> <span class="p">,</span> <span class="n">r_table</span>
@@ -790,18 +793,18 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 <p>From the silhouette list, we can choose <code class="docutils literal notranslate"><span class="pre">3</span></code> as the optimal number of the clusters.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">ClusteringEvaluator</span></code> in <code class="docutils literal notranslate"><span class="pre">pyspark.ml.evaluation</span></code> requires Spark 2.4 or later!!</p>
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">ClusteringEvaluator</span></code> in <code class="docutils literal notranslate"><span class="pre">pyspark.ml.evaluation</span></code> requires Spark 2.4 or later!!</p>
 </div>
 <ol class="arabic simple" start="4">
-<li>K-means clustering</li>
+<li><p>K-means clustering</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">()</span><span class="o">.</span><span class="n">setK</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">scaledData</span><span class="p">)</span>
 <span class="c1"># Make predictions</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">scaledData</span><span class="p">)</span>
-<span class="n">predictions</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">predictions</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------+-------------------+--------------------+----------+</span>
@@ -818,9 +821,9 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </div>
 </div>
 <div class="section" id="id1">
-<h3>13.3.3. Statistical summary<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.3.3. </span>Statistical summary<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="5">
-<li>statistical summary</li>
+<li><p>statistical summary</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">rfm</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">,</span><span class="s1">&#39;prediction&#39;</span><span class="p">),</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -839,7 +842,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ul class="simple">
-<li>simple summary</li>
+<li><p>simple summary</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span>\
        <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Recency&#39;</span><span class="p">:</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
@@ -858,7 +861,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
 </pre></div>
 </div>
 <ul class="simple">
-<li>complex summary</li>
+<li><p>complex summary</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grp</span> <span class="o">=</span> <span class="s1">&#39;RFMScore&#39;</span>
 <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recency&#39;</span><span class="p">,</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span><span class="s1">&#39;Monetary&#39;</span><span class="p">]</span>
@@ -897,7 +900,7 @@ Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/RFM_
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

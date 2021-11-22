@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -135,8 +136,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -182,7 +185,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>3. Configure Running Platform</li>
+      <li><span class="section-number">3. </span>Configure Running Platform</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,10 +203,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="configure-running-platform">
-<span id="setup"></span><h1>3. Configure Running Platform<a class="headerlink" href="#configure-running-platform" title="Permalink to this headline">¶</a></h1>
+<span id="setup"></span><h1><span class="section-number">3. </span>Configure Running Platform<a class="headerlink" href="#configure-running-platform" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>Good tools are prerequisite to the successful execution
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>Good tools are prerequisite to the successful execution
 of a job.</strong> – old Chinese proverb</p>
 </div>
 <p>A good programming platform can save you lots of troubles and time.
@@ -213,7 +216,7 @@ on Linux system. If you want to install on the other operator
 system, you can Google it. In this section, you may learn how to
 set up Pyspark on the corresponding programming platform and package.</p>
 <div class="section" id="run-on-databricks-community-cloud">
-<span id="index-0"></span><h2>3.1. Run on Databricks Community Cloud<a class="headerlink" href="#run-on-databricks-community-cloud" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">3.1. </span>Run on Databricks Community Cloud<a class="headerlink" href="#run-on-databricks-community-cloud" title="Permalink to this headline">¶</a></h2>
 <p>If you don’t have any experience with Linux or Unix operator
 system, I would love to recommend you to use Spark on Databricks
 Community Cloud. Since you do not need to setup the Spark and it’s
@@ -221,7 +224,7 @@ totally <strong>free</strong> for Community Edition. Please follow the steps
 listed below.</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Sign up a account at: <a class="reference external" href="https://community.cloud.databricks.com/login.html">https://community.cloud.databricks.com/login.html</a></li>
+<li><p>Sign up a account at: <a class="reference external" href="https://community.cloud.databricks.com/login.html">https://community.cloud.databricks.com/login.html</a></p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-login">
@@ -229,8 +232,8 @@ listed below.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Sign in with your account, then you can creat your cluster(machine), table(dataset)
-and notebook(code).</li>
+<li><p>Sign in with your account, then you can creat your cluster(machine), table(dataset)
+and notebook(code).</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-workspace">
@@ -238,7 +241,7 @@ and notebook(code).</li>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Create your cluster where your code will run</li>
+<li><p>Create your cluster where your code will run</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-cluster">
@@ -246,7 +249,7 @@ and notebook(code).</li>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Import your dataset</li>
+<li><p>Import your dataset</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-table">
@@ -257,14 +260,14 @@ and notebook(code).</li>
 </div>
 </div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You need to save the path which appears at Uploaded to DBFS:
+<p class="admonition-title">Note</p>
+<p>You need to save the path which appears at Uploaded to DBFS:
 /FileStore/tables/05rmhuqv1489687378010/. Since we will use
 this path to load the dataset.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>Create your notebook</li>
+<li><p>Create your notebook</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-notebook">
@@ -301,20 +304,20 @@ you run the demo code, you will get the following results:</p>
 </div></blockquote>
 </div>
 <div class="section" id="configure-spark-on-mac-and-ubuntu">
-<span id="set-up-ubuntu"></span><span id="index-1"></span><h2>3.2. Configure Spark on Mac and Ubuntu<a class="headerlink" href="#configure-spark-on-mac-and-ubuntu" title="Permalink to this headline">¶</a></h2>
+<span id="set-up-ubuntu"></span><span id="index-1"></span><h2><span class="section-number">3.2. </span>Configure Spark on Mac and Ubuntu<a class="headerlink" href="#configure-spark-on-mac-and-ubuntu" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="installing-prerequisites">
-<h3>3.2.1. Installing Prerequisites<a class="headerlink" href="#installing-prerequisites" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.1. </span>Installing Prerequisites<a class="headerlink" href="#installing-prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>I will strongly recommend you to install <a class="reference external" href="https://www.anaconda.com/download/">Anaconda</a>, since it contains most
 of the prerequisites and support multiple Operator Systems.</p>
 <ol class="arabic simple">
-<li><strong>Install Python</strong></li>
+<li><p><strong>Install Python</strong></p></li>
 </ol>
 <p>Go to Ubuntu Software Center and follow the following steps:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li>Open Ubuntu Software Center</li>
-<li>Search for python</li>
-<li>And click Install</li>
+<li><p>Open Ubuntu Software Center</p></li>
+<li><p>Search for python</p></li>
+<li><p>And click Install</p></li>
 </ol>
 </div></blockquote>
 <p>Or Open your terminal and  using the following command:</p>
@@ -328,7 +331,7 @@ sudo pip install ipython
 </div>
 </div>
 <div class="section" id="install-java">
-<h3>3.2.2. Install Java<a class="headerlink" href="#install-java" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2. </span>Install Java<a class="headerlink" href="#install-java" title="Permalink to this headline">¶</a></h3>
 <p>Java is used by many other softwares. So it is quite possible that you have already installed it. You can
 by using the following command in Command Prompt:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java -version
@@ -342,11 +345,11 @@ sudo apt-get install oracle-java8-installer
 </div>
 </div>
 <div class="section" id="install-java-se-runtime-environment">
-<h3>3.2.3. Install Java SE Runtime Environment<a class="headerlink" href="#install-java-se-runtime-environment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.3. </span>Install Java SE Runtime Environment<a class="headerlink" href="#install-java-se-runtime-environment" title="Permalink to this headline">¶</a></h3>
 <p>I installed ORACLE <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">Java JDK</a>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><strong>Installing Java and Java SE Runtime Environment steps are very important, since Spark is a domain-specific language written in Java.</strong></p>
+<p class="admonition-title">Warning</p>
+<p><strong>Installing Java and Java SE Runtime Environment steps are very important, since Spark is a domain-specific language written in Java.</strong></p>
 </div>
 <p>You can check if your Java is available and find it’s version by using the following
 command in Command Prompt:</p>
@@ -361,13 +364,13 @@ Java HotSpot<span class="o">(</span>TM<span class="o">)</span> <span class="m">6
 </div>
 </div>
 <div class="section" id="install-apache-spark">
-<h3>3.2.4. Install Apache Spark<a class="headerlink" href="#install-apache-spark" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.4. </span>Install Apache Spark<a class="headerlink" href="#install-apache-spark" title="Permalink to this headline">¶</a></h3>
 <p>Actually, the Pre-build version doesn’t need installation. You can use it when you unpack it.</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li>Download: You can get the Pre-built Apache Spark™ from <a class="reference external" href="http://spark.apache.org/downloads.html">Download Apache Spark™</a>.</li>
-<li>Unpack: Unpack the Apache Spark™ to the path where you want to install the Spark.</li>
-<li>Test: Test the Prerequisites: change the direction <code class="docutils literal notranslate"><span class="pre">spark-#.#.#-bin-hadoop#.#/bin</span></code> and run</li>
+<li><p>Download: You can get the Pre-built Apache Spark™ from <a class="reference external" href="http://spark.apache.org/downloads.html">Download Apache Spark™</a>.</p></li>
+<li><p>Unpack: Unpack the Apache Spark™ to the path where you want to install the Spark.</p></li>
+<li><p>Test: Test the Prerequisites: change the direction <code class="docutils literal notranslate"><span class="pre">spark-#.#.#-bin-hadoop#.#/bin</span></code> and run</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./pyspark
 </pre></div>
@@ -399,10 +402,10 @@ SparkSession available as <span class="s1">&#39;spark&#39;</span>.
 </div></blockquote>
 </div>
 <div class="section" id="configure-the-spark">
-<h3>3.2.5. Configure the Spark<a class="headerlink" href="#configure-the-spark" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.5. </span>Configure the Spark<a class="headerlink" href="#configure-the-spark" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><strong>Mac Operator System:</strong> open your <code class="docutils literal notranslate"><span class="pre">bash_profile</span></code> in Terminal</li>
+<li><p><strong>Mac Operator System:</strong> open your <code class="docutils literal notranslate"><span class="pre">bash_profile</span></code> in Terminal</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim ~/.bash_profile
 </pre></div>
@@ -421,7 +424,7 @@ SparkSession available as <span class="s1">&#39;spark&#39;</span>.
 </pre></div>
 </div>
 <ol class="loweralpha simple" start="2">
-<li><strong>Ubuntu Operator Sysytem:</strong> open your <code class="docutils literal notranslate"><span class="pre">bashrc</span></code> in Terminal</li>
+<li><p><strong>Ubuntu Operator Sysytem:</strong> open your <code class="docutils literal notranslate"><span class="pre">bashrc</span></code> in Terminal</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim ~/.bashrc
 </pre></div>
@@ -443,16 +446,16 @@ SparkSession available as <span class="s1">&#39;spark&#39;</span>.
 </div>
 </div>
 <div class="section" id="configure-spark-on-windows">
-<h2>3.3. Configure Spark on Windows<a class="headerlink" href="#configure-spark-on-windows" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Configure Spark on Windows<a class="headerlink" href="#configure-spark-on-windows" title="Permalink to this headline">¶</a></h2>
 <p>Installing open source software on Windows is always a nightmare for me.
 Thanks for Deelesh Mandloi. You can follow the detailed procedures in the
 blog <a class="reference external" href="http://deelesh.github.io/pyspark-windows.html">Getting Started with PySpark on Windows</a> to install the Apache Spark™
 on your Windows Operator System.</p>
 </div>
 <div class="section" id="pyspark-with-text-editor-or-ide">
-<h2>3.4. PySpark With Text Editor or IDE<a class="headerlink" href="#pyspark-with-text-editor-or-ide" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4. </span>PySpark With Text Editor or IDE<a class="headerlink" href="#pyspark-with-text-editor-or-ide" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pyspark-with-jupyter-notebook">
-<h3>3.4.1. PySpark With Jupyter Notebook<a class="headerlink" href="#pyspark-with-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.1. </span>PySpark With Jupyter Notebook<a class="headerlink" href="#pyspark-with-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
 <p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
 then you should be good to write and run your PySpark Code
 in Jupyter notebook.</p>
@@ -463,11 +466,11 @@ in Jupyter notebook.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark-with-pycharm">
-<h3>3.4.2. PySpark With PyCharm<a class="headerlink" href="#pyspark-with-pycharm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.2. </span>PySpark With PyCharm<a class="headerlink" href="#pyspark-with-pycharm" title="Permalink to this headline">¶</a></h3>
 <p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
 then you should be good to add the PySpark to your PyCharm project.</p>
 <ol class="arabic simple">
-<li>Create a new PyCharm project</li>
+<li><p>Create a new PyCharm project</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -475,7 +478,7 @@ then you should be good to add the PySpark to your PyCharm project.</p>
 </div>
 </div></blockquote>
 <ol class="arabic" start="2">
-<li><p class="first">Go to Project Structure</p>
+<li><p>Go to Project Structure</p>
 <p>Option 1: File -&gt; Settings -&gt; Project: -&gt; Project Structure</p>
 <p>Option 2: PyCharm -&gt; Preferences -&gt; Project: -&gt; Project Structure</p>
 </li>
@@ -486,7 +489,7 @@ then you should be good to add the PySpark to your PyCharm project.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Add Content Root: all <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> files from $SPARK_HOME/python/lib</li>
+<li><p>Add Content Root: all <code class="docutils literal notranslate"><span class="pre">ZIP</span></code> files from $SPARK_HOME/python/lib</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -497,7 +500,7 @@ then you should be good to add the PySpark to your PyCharm project.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Run your script</li>
+<li><p>Run your script</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -506,7 +509,7 @@ then you should be good to add the PySpark to your PyCharm project.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark-with-apache-zeppelin">
-<h3>3.4.3. PySpark With Apache Zeppelin<a class="headerlink" href="#pyspark-with-apache-zeppelin" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.3. </span>PySpark With Apache Zeppelin<a class="headerlink" href="#pyspark-with-apache-zeppelin" title="Permalink to this headline">¶</a></h3>
 <p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
 then you should be good to write and run your PySpark Code
 in Apache Zeppelin.</p>
@@ -517,7 +520,7 @@ in Apache Zeppelin.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark-with-sublime-text">
-<h3>3.4.4. PySpark With Sublime Text<a class="headerlink" href="#pyspark-with-sublime-text" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.4. </span>PySpark With Sublime Text<a class="headerlink" href="#pyspark-with-sublime-text" title="Permalink to this headline">¶</a></h3>
 <p>After you finishing the above setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>,
 then you should be good to use Sublime Text to write your PySpark
 Code and run your code as a normal python code in Terminal.</p>
@@ -534,13 +537,13 @@ Code and run your code as a normal python code in Terminal.</p>
 </div></blockquote>
 </div>
 <div class="section" id="pyspark-with-eclipse">
-<h3>3.4.5. PySpark With Eclipse<a class="headerlink" href="#pyspark-with-eclipse" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.5. </span>PySpark With Eclipse<a class="headerlink" href="#pyspark-with-eclipse" title="Permalink to this headline">¶</a></h3>
 <p>If you want to run PySpark code on Eclipse, you need to add the
 paths for the <strong>External Libraries</strong> for your <strong>Current Project</strong>
 as follows:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Open the properties of your project</li>
+<li><p>Open the properties of your project</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-pydevproperties">
@@ -548,7 +551,7 @@ as follows:</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add the paths for the <strong>External Libraries</strong></li>
+<li><p>Add the paths for the <strong>External Libraries</strong></p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center" id="fig-pydevpath">
@@ -565,10 +568,10 @@ as follows:</p>
 </div>
 </div>
 <div class="section" id="pysparkling-water-spark-h2o">
-<span id="index-2"></span><h2>3.5. PySparkling Water: Spark + H2O<a class="headerlink" href="#pysparkling-water-spark-h2o" title="Permalink to this headline">¶</a></h2>
+<span id="index-2"></span><h2><span class="section-number">3.5. </span>PySparkling Water: Spark + H2O<a class="headerlink" href="#pysparkling-water-spark-h2o" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Download <code class="docutils literal notranslate"><span class="pre">Sparkling</span> <span class="pre">Water</span></code> from: <a class="reference external" href="https://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.4/5/index.html">https://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.4/5/index.html</a></li>
-<li>Test PySparking</li>
+<li><p>Download <code class="docutils literal notranslate"><span class="pre">Sparkling</span> <span class="pre">Water</span></code> from: <a class="reference external" href="https://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.4/5/index.html">https://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.4/5/index.html</a></p></li>
+<li><p>Test PySparking</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip sparkling-water-2.4.5.zip
 <span class="nb">cd</span>  ~/sparkling-water-2.4.5/bin
@@ -604,21 +607,21 @@ SparkSession available as <span class="s1">&#39;spark&#39;</span>.
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Setup <code class="docutils literal notranslate"><span class="pre">pysparkling</span></code> with Jupyter notebook</li>
+<li><p>Setup <code class="docutils literal notranslate"><span class="pre">pysparkling</span></code> with Jupyter notebook</p></li>
 </ol>
 <p>Add the following alias to your <code class="docutils literal notranslate"><span class="pre">bashrc</span></code> (Linux systems) or <code class="docutils literal notranslate"><span class="pre">bash_profile</span></code> (Mac system)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">sparkling</span><span class="o">=</span><span class="s2">&quot;PYSPARK_DRIVER_PYTHON=&quot;</span>ipython<span class="s2">&quot; PYSPARK_DRIVER_PYTHON_OPTS=    &quot;</span>notebook<span class="s2">&quot; /~/~/sparkling-water-2.4.5/bin/pysparkling&quot;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Open <code class="docutils literal notranslate"><span class="pre">pysparkling</span></code> in terminal</li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">pysparkling</span></code> in terminal</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sparkling
 </pre></div>
 </div>
 </div>
 <div class="section" id="set-up-spark-on-cloud">
-<h2>3.6. Set up Spark on Cloud<a class="headerlink" href="#set-up-spark-on-cloud" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Set up Spark on Cloud<a class="headerlink" href="#set-up-spark-on-cloud" title="Permalink to this headline">¶</a></h2>
 <p>Following the setup steps in <a class="reference internal" href="#set-up-ubuntu"><span class="std std-ref">Configure Spark on Mac and Ubuntu</span></a>, you can set
 up your own cluster on the cloud, for example AWS, Google Cloud.
 Actually, for those clouds, they have their own Big Data tool.
@@ -627,16 +630,16 @@ Databricks Community Cloud. If you want more details, please feel
 free to contact with me.</p>
 </div>
 <div class="section" id="pyspark-on-colaboratory">
-<h2>3.7. PySpark on Colaboratory<a class="headerlink" href="#pyspark-on-colaboratory" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7. </span>PySpark on Colaboratory<a class="headerlink" href="#pyspark-on-colaboratory" title="Permalink to this headline">¶</a></h2>
 <p>Colaboratory is a free Jupyter notebook environment that requires no setup and runs entirely in the cloud.</p>
 <div class="section" id="installation">
-<h3>3.7.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip install pyspark
 </pre></div>
 </div>
 </div>
 <div class="section" id="testing">
-<h3>3.7.2. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.2. </span>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
@@ -667,14 +670,14 @@ free to contact with me.</p>
 </div>
 </div>
 <div class="section" id="demo-code-in-this-section">
-<h2>3.8. Demo Code in this Section<a class="headerlink" href="#demo-code-in-this-section" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.8. </span>Demo Code in this Section<a class="headerlink" href="#demo-code-in-this-section" title="Permalink to this headline">¶</a></h2>
 <p>The  Jupyter notebook can be download from <a class="reference external" href="https://colab.research.google.com/drive/15LvijFl1gFoazvWlPxGFbYUl43KubrW1#scrollTo=mGHjEx_yixDx">installation on colab</a>.</p>
 <ul class="simple">
-<li>Python Source code</li>
+<li><p>Python Source code</p></li>
 </ul>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## set up  SparkSession</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="k">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
 <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span> \
     <span class="o">.</span><span class="n">builder</span> \
@@ -717,7 +720,7 @@ free to contact with me.</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

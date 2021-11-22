@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>25. JDBC Connection &mdash; Learning Apache Spark with Python  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="26. Databricks Tips" href="bricks.html" />
+    <link rel="prev" title="24. My Cheat Sheet" href="cheat.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">25. JDBC Connection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-driver">25.1. JDBC Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-jar-file">25.1.1. Get the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#put-jar-in-the-jars-folder">25.1.2. Put <code class="docutils literal notranslate"><span class="pre">.jar</span></code> in the jars folder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-read">25.2. JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-write">25.3. JDBC <code class="docutils literal notranslate"><span class="pre">write</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-temp-view">25.4. JDBC <code class="docutils literal notranslate"><span class="pre">temp_view</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">25. </span>JDBC Connection</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jdbc-connection">
+<span id="jdbc"></span><h1><span class="section-number">25. </span>JDBC Connection<a class="headerlink" href="#jdbc-connection" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, you will learn how to use JDBC source to write and read data in PySpark. The idea database for spark
+is HDFS. But not many companies are not willing to move all the data (PII data) into Databricks’ HDFS. Then you have
+to use JDBC to connect to external database. While JDBC read and write are always tricky and confusion for beginner.</p>
+<div class="section" id="jdbc-driver">
+<h2><span class="section-number">25.1. </span>JDBC Driver<a class="headerlink" href="#jdbc-driver" title="Permalink to this headline">¶</a></h2>
+<p>For successfully connection, you need the corresponding JDBC driver for the specify Database. Here I will use Greenplum
+database as an example to demonstrate how to get the correct <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file and where to put the <code class="docutils literal notranslate"><span class="pre">.jar</span></code>.</p>
+<div class="section" id="get-the-jar-file">
+<h3><span class="section-number">25.1.1. </span>Get the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file<a class="headerlink" href="#get-the-jar-file" title="Permalink to this headline">¶</a></h3>
+<p>Since Greenplum is using PostgreSQL, you can search with ‘PostgreSQL JDBC Driver’. There is a high chance that
+you will reach to this page: <a class="reference external" href="https://jdbc.postgresql.org/download.html">https://jdbc.postgresql.org/download.html</a>. Then download the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file.</p>
+</div>
+<div class="section" id="put-jar-in-the-jars-folder">
+<h3><span class="section-number">25.1.2. </span>Put <code class="docutils literal notranslate"><span class="pre">.jar</span></code> in the jars folder<a class="headerlink" href="#put-jar-in-the-jars-folder" title="Permalink to this headline">¶</a></h3>
+<p>Now what you need to do is putting the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file in the jar folder under your spark installation folder. Here is my
+jar folder: <code class="docutils literal notranslate"><span class="pre">/opt/spark/jars</span></code></p>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<span id="fig-jar"></span><img alt="_images/postgresql_driver.png" src="_images/postgresql_driver.png" />
+<p class="caption"><span class="caption-text">JDBC connection jars folder</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="jdbc-read">
+<h2><span class="section-number">25.2. </span>JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code><a class="headerlink" href="#jdbc-read" title="Permalink to this headline">¶</a></h2>
+<p>See code <a class="reference external" href="https://github.com/apache/spark/blob/17edfec59de8d8680f7450b4d07c147c086c105a/sql/core/src/main/scala/org/apache/spark/sql/execution/datasources/jdbc/JDBCRelation.scala#L85-L97">JDBC lower-upper Bound</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stride</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_bound</span><span class="o">/</span><span class="n">partitions_number</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">lower_bound</span><span class="o">/</span><span class="n">partitions_number</span><span class="p">)</span>
+<span class="n">partition_nr</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="n">partitions_number</span><span class="p">)</span>
+  <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span><span class="p">:</span>
+    <span class="n">partition_column</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="n">stride</span>
+    <span class="k">if</span><span class="p">:</span>
+      <span class="n">partition_nr</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="n">partitions_number</span>
+  <span class="ow">or</span> <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span><span class="p">:</span>
+    <span class="n">partition_column</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="n">stride</span> <span class="n">AND</span> <span class="n">partition_column</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span>  <span class="n">next_stride</span>
+    <span class="k">if</span><span class="p">:</span>
+      <span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">partitions_number</span>
+  <span class="ow">or</span> <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span>
+    <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="n">stride</span>
+    <span class="k">if</span><span class="p">:</span>
+      <span class="n">partition_nr</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">==</span> <span class="n">partitions_number</span>
+  <span class="n">where</span> <span class="n">next_stride</span> <span class="ow">is</span> <span class="n">calculated</span> <span class="n">after</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">left</span> <span class="n">sideo</span>
+  <span class="n">of</span> <span class="n">the</span> <span class="n">WHERE</span> <span class="n">clause</span> <span class="n">by</span> <span class="n">next_stride</span> <span class="o">+=</span> <span class="n">stride</span>
+
+
+
+<span class="p">(</span><span class="n">stride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">0</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_table</span> <span class="n">WHERE</span> <span class="n">partition_column</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="mi">4</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_table</span> <span class="n">WHERE</span> <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="n">AND</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="mi">8</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_table</span> <span class="n">WHERE</span> <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="n">AND</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="mi">12</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_table</span> <span class="n">WHERE</span> <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="mi">12</span> <span class="n">AND</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="mi">16</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_table</span> <span class="n">WHERE</span> <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="mi">16</span>
+</pre></div>
+</div>
+<p>As you see, the above queries generate 5 partitions of data, each containing the values
+from: (0-3), (4-7), (8-11), (12-15) and (16 and more).</p>
+</div>
+<div class="section" id="jdbc-write">
+<h2><span class="section-number">25.3. </span>JDBC <code class="docutils literal notranslate"><span class="pre">write</span></code><a class="headerlink" href="#jdbc-write" title="Permalink to this headline">¶</a></h2>
+<p>TODO…</p>
+</div>
+<div class="section" id="jdbc-temp-view">
+<h2><span class="section-number">25.4. </span>JDBC <code class="docutils literal notranslate"><span class="pre">temp_view</span></code><a class="headerlink" href="#jdbc-temp-view" title="Permalink to this headline">¶</a></h2>
+<p>TODO…</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bricks.html" class="btn btn-neutral float-right" title="26. Databricks Tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cheat.html" class="btn btn-neutral float-left" title="24. My Cheat Sheet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Nov 21, 2021.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

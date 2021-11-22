@@ -48,7 +48,7 @@ Uninstall
 
 .. code-block:: bash
 
-	pip uninstall statspy
+	pip uninstall PySparkAudit
 
 Test
 ++++

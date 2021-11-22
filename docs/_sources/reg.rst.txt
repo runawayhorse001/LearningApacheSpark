@@ -5,13 +5,22 @@ Regularization
 ==============
 
 
-In mathematics, statistics, and computer science, particularly in the fields of machine learning and inverse problems, regularization is a process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting (`Wikipedia Regularization`_). 
+In mathematics, statistics, and computer science, particularly in the fields of machine learning and inverse problems,
+regularization is a process of introducing additional information in order to solve an ill-posed problem or to prevent
+overfitting (`Wikipedia Regularization`_).
 
-Due to the sparsity within our data, our training sets will often be ill-posed (singular).  Applying regularization to the regression has many advantages, including:
+Due to the sparsity within our data, our training sets will often be ill-posed (singular).  Applying regularization
+to the regression has many advantages, including:
 
-1. Converting ill-posed problems to well-posed by adding additional information via the penalty parameter :math:`\lambda`
+1. Converting ill-posed problems to well-posed by adding additional information via the
+   penalty parameter :math:`\lambda`
 2. Preventing overfitting
-3. Variable selection and the removal of correlated variables (`Glmnet Vignette`_).  The Ridge method shrinks the coefficients of correlated variables while the LASSO method picks one variable and discards the others.  The elastic net penalty is a mixture of these two; if variables are correlated in groups then :math:`\alpha=0.5` tends to select the groups as in or out. If α is close to 1, the elastic net performs much like the LASSO method and removes any degeneracies and wild behavior caused by extreme correlations. 
+3. Variable selection and the removal of correlated variables (`Glmnet Vignette`_).  The Ridge method
+   shrinks the coefficients of correlated variables while the LASSO method picks one variable and discards
+   the others.  The elastic net penalty is a mixture of these two; if variables are correlated in groups then
+   :math:`\alpha=0.5` tends to select the groups as in or out. If :math:`\alpha` is close to 1, the elastic
+   net performs much like the LASSO method and removes any degeneracies and wild behavior caused by extreme
+   correlations.
 
 
 Ordinary least squares regression

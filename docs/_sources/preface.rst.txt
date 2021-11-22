@@ -16,7 +16,8 @@ The PDF version can be downloaded from `HERE <pyspark.pdf>`_.
 The first version was posted on Github in `ChenFeng`_ ([Feng2017]_).  
 This shared repository mainly contains the self-learning and 
 self-teaching notes from Wenqiang during his `IMA Data Science
-Fellowship`_. The reader is referred to the repository https://github.com/runawayhorse001/LearningApacheSpark for more
+Fellowship`_. The reader is referred to the repository
+https://github.com/runawayhorse001/LearningApacheSpark for more
 details about the ``dataset`` and the ``.ipynb`` files. 
 
 In this repository, I try to use the detailed demo code and 
@@ -35,26 +36,39 @@ of programming and Linux. And this document is generated automatically
 by using `sphinx`_.
 
 
-About the authors
------------------
+About the author
+----------------
 
 * **Wenqiang Feng** 
 	
-  * Sr. Data Scientist and PhD in Mathematics 
+  * Director of Data Science and PhD in Mathematics 
   * University of Tennessee at Knoxville
   * Email: von198@gmail.com
 
 * **Biography**
 
-  Wenqiang Feng is a Sr. Data Scientist at Machine Learning Lab, H&R Block. Before joining Block, Dr. Feng is a Data Scientist at Applied Analytics Group, DST (now SS&C). Dr. Feng’s responsibilities include providing clients with access to cutting-edge skills and technologies, including Big Data analytic solutions, advanced analytic and data enhancement techniques and modeling.
+  Wenqiang Feng is the Director of Data Science at American Express (AMEX). Prior to his time at AMEX, Dr. Feng was a
+  Sr. Data Scientist in Machine Learning Lab, H&R Block. Before joining Block, Dr. Feng was a Data Scientist at Applied
+  Analytics Group, DST (now SS&C). Dr. Feng’s responsibilities include providing clients with access to cutting-edge
+  skills and technologies, including Big Data analytic solutions, advanced analytic and data enhancement techniques
+  and modeling.
 
-  Dr. Feng has deep analytic expertise in data mining, analytic systems, machine learning algorithms, business intelligence, and applying Big Data tools to strategically solve industry problems in a cross-functional business. Before joining DST, Dr. Feng was an IMA Data Science Fellow at The Institute for Mathematics and its Applications (IMA) at the University of Minnesota. While there, he helped startup companies make marketing decisions based on deep predictive analytics. 
+  Dr. Feng has deep analytic expertise in data mining, analytic systems, machine learning algorithms,
+  business intelligence, and applying Big Data tools to strategically solve industry problems in a
+  cross-functional business. Before joining DST, Dr. Feng was an IMA Data Science Fellow
+  at The Institute for Mathematics and its Applications (IMA) at the University of Minnesota.
+  While there, he helped startup companies make marketing decisions based on deep predictive analytics.
 
-  Dr. Feng graduated from University of Tennessee, Knoxville, with Ph.D. in Computational Mathematics and Master’s degree in Statistics. He also holds Master’s degree in Computational Mathematics from Missouri University of Science and Technology (MST) and Master’s degree in Applied Mathematics from the University of Science and Technology of China (USTC).	
+  Dr. Feng graduated from University of Tennessee, Knoxville, with Ph.D. in Computational Mathematics
+  and Master’s degree in Statistics. He also holds Master’s degree in Computational Mathematics from
+  Missouri University of Science and Technology (MST) and Master’s degree in Applied Mathematics from
+  the University of Science and Technology of China (USTC).
 
 * **Declaration**
 
-  The work of Wenqiang Feng was supported by the IMA, while working at IMA. However, any opinion, finding, and conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the IMA, UTK, DST and HR & Block.
+  The work of Wenqiang Feng was supported by the IMA, while working at IMA. However, any opinion, finding,
+  and conclusions or recommendations expressed in this material are those of the author and do not necessarily
+  reflect the views of the IMA, UTK, DST, HR & Block and AMEX.
 
 Motivation for this tutorial 
 ++++++++++++++++++++++++++++
@@ -75,15 +89,20 @@ PySpark. And I foud that:
 Copyright notice and license info
 +++++++++++++++++++++++++++++++++
 
-This `Learning Apache Spark with Python <pyspark.pdf>`_ PDF file is supposed to be a free and living document, which is why its source is available online at https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf. But this document is licensed according to both `MIT License`_ and  `Creative Commons Attribution-NonCommercial 2.0 Generic (CC BY-NC 2.0) License`_. 
+This `Learning Apache Spark with Python <pyspark.pdf>`_ PDF file is supposed to be a free and living
+document, which is why its source is available online at
+https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf. But this document is licensed
+according to both `MIT License`_ and  `Creative Commons Attribution-NonCommercial 2.0 Generic
+(CC BY-NC 2.0) License`_.
 
-**When you plan to use, copy, modify, merge, publish, distribute or sublicense, Please see the terms of those licenses for more details and give the corresponding credits to the author**.
+**When you plan to use, copy, modify, merge, publish, distribute or sublicense, Please see the
+terms of those licenses for more details and give the corresponding credits to the author**.
 
 Acknowledgement
 +++++++++++++++
 
 At here, I would like to thank Ming Chen, Jian Sun and Zhongbo Li at the 
-University of Tennessee at Knoxville for the valuable disscussion
+University of Tennessee at Knoxville for the valuable discussion
 and thank the generous anonymous authors for providing the detailed
 solutions and source code on the internet. Without those help, 
 this repository would not have been possible to be made. Wenqiang 

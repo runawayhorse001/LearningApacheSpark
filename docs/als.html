@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -118,8 +119,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -165,7 +168,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>16. ALS: Stock Portfolio Recommendations</li>
+      <li><span class="section-number">16. </span>ALS: Stock Portfolio Recommendations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,17 +186,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="als-stock-portfolio-recommendations">
-<span id="als"></span><h1>16. ALS: Stock Portfolio Recommendations<a class="headerlink" href="#als-stock-portfolio-recommendations" title="Permalink to this headline">¶</a></h1>
+<span id="als"></span><h1><span class="section-number">16. </span>ALS: Stock Portfolio Recommendations<a class="headerlink" href="#als-stock-portfolio-recommendations" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>Don’t put all your eggs in one basket.</strong></p>
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>Don’t put all your eggs in one basket.</strong></p>
 </div>
 <div class="figure align-center">
 <img alt="_images/stock_portfolio.png" src="_images/stock_portfolio.png" />
 </div>
 <p>Code for the above figure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">))</span>
 
@@ -208,11 +211,11 @@
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">recipe</span><span class="p">]</span>
 <span class="n">ingredients</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">:])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">recipe</span><span class="p">]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">pct</span><span class="p">,</span> <span class="n">allvals</span><span class="p">):</span>
     <span class="n">absolute</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pct</span><span class="o">/</span><span class="mf">100.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">allvals</span><span class="p">))</span>
-    <span class="k">return</span> <span class="s2">&quot;{:.1f}%</span><span class="se">\n</span><span class="s2">({:d} k)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pct</span><span class="p">,</span> <span class="n">absolute</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">(</span><span class="si">{:d}</span><span class="s2"> k)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pct</span><span class="p">,</span> <span class="n">absolute</span><span class="p">)</span>
 
 <span class="n">explode</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="c1">#(0.1, 0.1, 0.1,  0.1, 0.1, 0.1)  # explode 1st slice</span>
 <span class="n">explode</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -232,26 +235,26 @@
 </pre></div>
 </div>
 <div class="section" id="recommender-systems">
-<h2>16.1. Recommender systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.1. </span>Recommender systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h2>
 <p>Recommender systems or recommendation systems (sometimes replacing “system” with a synonym such as platform or engine) are a subclass of information filtering system that seek to predict the “rating” or “preference” that a user would give to an item.”</p>
 <p>The main idea is to build a matrix users <code class="docutils literal notranslate"><span class="pre">R</span></code> items rating values and try to factorize it, to recommend main products rated by other users. A popular approach for this is matrix factorization is Alternating Least Squares (ALS)</p>
 </div>
 <div class="section" id="alternating-least-squares">
-<h2>16.2. Alternating Least Squares<a class="headerlink" href="#alternating-least-squares" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.2. </span>Alternating Least Squares<a class="headerlink" href="#alternating-least-squares" title="Permalink to this headline">¶</a></h2>
 <p>Apache Spark ML implements ALS for collaborative filtering, a very popular algorithm for making recommendations.</p>
 <p>ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It factors the user to item matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> into the user-to-feature matrix <code class="docutils literal notranslate"><span class="pre">U</span></code> and the item-to-feature matrix <code class="docutils literal notranslate"><span class="pre">M</span></code>: It runs the ALS algorithm in a parallel fashion.  The ALS algorithm should uncover the latent factors that explain the observed user to item ratings and tries to find optimal factor weights to minimize the least squares between predicted and actual ratings.</p>
 <p><a class="reference external" href="https://www.elenacuoco.com/2016/12/22/alternating-least-squares-als-spark-ml/">https://www.elenacuoco.com/2016/12/22/alternating-least-squares-als-spark-ml/</a></p>
 </div>
 <div class="section" id="demo">
-<h2>16.3. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.3. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/ALS.ipynb">ALS Recommender systems</a>.</li>
-<li>The data can be downloaf from <a class="reference external" href="_static/OnlineRetail.csv">German Credit</a>.</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/ALS.ipynb">ALS Recommender systems</a>.</p></li>
+<li><p>The data can be downloaf from <a class="reference external" href="_static/OnlineRetail.csv">German Credit</a>.</p></li>
 </ul>
 <div class="section" id="load-and-clean-data">
-<h3>16.3.1. Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.1. </span>Load and clean data<a class="headerlink" href="#load-and-clean-data" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -263,12 +266,12 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_raw</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                        <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                        <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;Online Retail.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;Online Retail.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>check the data set</p>
@@ -300,10 +303,10 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Data clean and data manipulation</li>
+<li><p>Data clean and data manipulation</p></li>
 </ol>
 <ul class="simple">
-<li>check and remove the <code class="docutils literal notranslate"><span class="pre">null</span></code> values</li>
+<li><p>check and remove the <code class="docutils literal notranslate"><span class="pre">null</span></code> values</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">count</span>
 
@@ -311,7 +314,7 @@
     <span class="n">df_in</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span> <span class="o">*</span><span class="p">[</span> <span class="n">count</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df_in</span><span class="o">.</span><span class="n">columns</span> <span class="p">]</span> <span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">as</span> <span class="nn">F</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">round</span>
 <span class="n">df_raw</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;Asset&#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;Quantity&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;UnitPrice&#39;</span><span class="p">),</span> <span class="mi">2</span> <span class="p">))</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s1">&#39;StockCode&#39;</span><span class="p">,</span> <span class="s1">&#39;Cusip&#39;</span><span class="p">)</span>\
@@ -354,7 +357,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Convert the <code class="docutils literal notranslate"><span class="pre">Cusip</span></code> to consistent format</li>
+<li><p>Convert the <code class="docutils literal notranslate"><span class="pre">Cusip</span></code> to consistent format</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">udf</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">DoubleType</span>
@@ -366,7 +369,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Find the most top <code class="docutils literal notranslate"><span class="pre">n</span></code> stockes</li>
+<li><p>Find the most top <code class="docutils literal notranslate"><span class="pre">n</span></code> stockes</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;Cusip&#39;</span><span class="p">)</span>\
   <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;Customers&#39;</span><span class="p">),</span><span class="n">F</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;Asset&#39;</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;TotalAsset&#39;</span><span class="p">))</span>\
@@ -389,9 +392,9 @@
 </div>
 </div>
 <div class="section" id="build-feature-matrix">
-<h3>16.3.2. Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.2. </span>Build feature matrix<a class="headerlink" href="#build-feature-matrix" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Fetch the top <code class="docutils literal notranslate"><span class="pre">n</span></code> cusip list</li>
+<li><p>Fetch the top <code class="docutils literal notranslate"><span class="pre">n</span></code> cusip list</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">top</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">cusip_lst</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;Cusip&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -402,14 +405,14 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Create the portfolio table for each customer</li>
+<li><p>Create the portfolio table for each customer</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pivot_tab</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;Cusip&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;Asset&#39;</span><span class="p">)</span>
 <span class="n">pivot_tab</span> <span class="o">=</span> <span class="n">pivot_tab</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Fetch the most <code class="docutils literal notranslate"><span class="pre">n</span></code> stock’s portfolio table for each customer</li>
+<li><p>Fetch the most <code class="docutils literal notranslate"><span class="pre">n</span></code> stock’s portfolio table for each customer</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">selected_tab</span>  <span class="o">=</span> <span class="n">pivot_tab</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cusip_lst</span><span class="p">)</span>
 <span class="n">selected_tab</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -427,7 +430,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Build the <code class="docutils literal notranslate"><span class="pre">rating</span></code> matrix</li>
+<li><p>Build the <code class="docutils literal notranslate"><span class="pre">rating</span></code> matrix</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elemwiseDiv</span><span class="p">(</span><span class="n">df_in</span><span class="p">):</span>
     <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_in</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -452,7 +455,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Convert <code class="docutils literal notranslate"><span class="pre">rating</span></code> matrix to long table</li>
+<li><p>Convert <code class="docutils literal notranslate"><span class="pre">rating</span></code> matrix to long table</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">explode</span><span class="p">,</span> <span class="n">struct</span><span class="p">,</span> <span class="n">lit</span>
 
@@ -489,7 +492,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Convert the string <code class="docutils literal notranslate"><span class="pre">Cusip</span></code> to numerical index</li>
+<li><p>Convert the string <code class="docutils literal notranslate"><span class="pre">Cusip</span></code> to numerical index</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span>
 <span class="c1"># Index labels, adding metadata to the label column</span>
@@ -497,7 +500,7 @@
                              <span class="n">outputCol</span><span class="o">=</span><span class="s1">&#39;indexedCusip&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
 <span class="n">df_all</span> <span class="o">=</span> <span class="n">labelIndexer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_all</span><span class="p">)</span>
 
-<span class="n">df_all</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">df_all</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">df_all</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -513,7 +516,7 @@
 <span class="n">only</span> <span class="n">showing</span> <span class="n">top</span> <span class="mi">5</span> <span class="n">rows</span>
 
 <span class="n">root</span>
- <span class="o">|--</span> <span class="n">CustomerID</span><span class="p">:</span> <span class="nb">long</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+ <span class="o">|--</span> <span class="n">CustomerID</span><span class="p">:</span> <span class="n">long</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
  <span class="o">|--</span> <span class="n">Cusip</span><span class="p">:</span> <span class="n">string</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">false</span><span class="p">)</span>
  <span class="o">|--</span> <span class="n">rating</span><span class="p">:</span> <span class="n">double</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
  <span class="o">|--</span> <span class="n">indexedCusip</span><span class="p">:</span> <span class="n">double</span> <span class="p">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
@@ -521,9 +524,9 @@
 </div>
 </div>
 <div class="section" id="train-model">
-<h3>16.3.3. Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.3. </span>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>build <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> dataset</li>
+<li><p>build <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> dataset</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
 
@@ -555,7 +558,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>train model</li>
+<li><p>train model</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
@@ -573,7 +576,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Root-mean-square error = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmse</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root-mean-square error = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmse</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">rmse</span>
 
 <span class="c1">#train models and evaluate them on the validation set</span>
@@ -581,7 +584,7 @@
 <span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">lambdas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">]</span>
 <span class="n">numIters</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">]</span>
-<span class="n">bestModel</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">bestModel</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">bestValidationRmse</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
 <span class="n">bestRank</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">bestLambda</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
@@ -589,13 +592,13 @@
 
 <span class="n">val</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">rank</span><span class="p">,</span> <span class="n">lmbda</span><span class="p">,</span> <span class="n">numIter</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">lambdas</span><span class="p">,</span> <span class="n">numIters</span><span class="p">):</span>
-    <span class="n">als</span> <span class="o">=</span> <span class="n">ALS</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="n">numIter</span><span class="p">,</span> <span class="n">regParam</span><span class="o">=</span><span class="n">lmbda</span><span class="p">,</span> <span class="n">numUserBlocks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">numItemBlocks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">implicitPrefs</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">als</span> <span class="o">=</span> <span class="n">ALS</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="n">numIter</span><span class="p">,</span> <span class="n">regParam</span><span class="o">=</span><span class="n">lmbda</span><span class="p">,</span> <span class="n">numUserBlocks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">numItemBlocks</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">implicitPrefs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
               <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-              <span class="n">userCol</span><span class="o">=</span><span class="s2">&quot;CustomerID&quot;</span><span class="p">,</span> <span class="n">itemCol</span><span class="o">=</span><span class="s2">&quot;indexedCusip&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ratingCol</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="n">nonnegative</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+              <span class="n">userCol</span><span class="o">=</span><span class="s2">&quot;CustomerID&quot;</span><span class="p">,</span> <span class="n">itemCol</span><span class="o">=</span><span class="s2">&quot;indexedCusip&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ratingCol</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="n">nonnegative</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">model</span><span class="o">=</span><span class="n">als</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
 
     <span class="n">validationRmse</span> <span class="o">=</span> <span class="n">computeRmse</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;RMSE (validation) = </span><span class="si">%f</span><span class="s2"> for the model trained with &quot;</span> <span class="o">%</span> <span class="n">validationRmse</span> <span class="o">+</span> \
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE (validation) = </span><span class="si">%f</span><span class="s2"> for the model trained with &quot;</span> <span class="o">%</span> <span class="n">validationRmse</span> <span class="o">+</span> \
             <span class="s2">&quot;rank = </span><span class="si">%d</span><span class="s2">, lambda = </span><span class="si">%.1f</span><span class="s2">, and numIter = </span><span class="si">%d</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">lmbda</span><span class="p">,</span> <span class="n">numIter</span><span class="p">))</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">validationRmse</span><span class="p">,</span> <span class="n">bestValidationRmse</span><span class="p">):</span>
         <span class="n">bestModel</span> <span class="o">=</span> <span class="n">model</span>
@@ -609,9 +612,9 @@
 </div>
 </div>
 <div class="section" id="make-prediction">
-<h3>16.3.4. Make prediction<a class="headerlink" href="#make-prediction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.4. </span>Make prediction<a class="headerlink" href="#make-prediction" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>make prediction</li>
+<li><p>make prediction</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">topredict</span><span class="o">=</span><span class="n">test</span><span class="p">[</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
 
@@ -658,7 +661,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -120,8 +121,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -167,7 +170,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>23. Zeppelin to jupyter notebook</li>
+      <li><span class="section-number">23. </span>Zeppelin to jupyter notebook</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,27 +188,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="zeppelin-to-jupyter-notebook">
-<span id="ze2nb"></span><h1>23. Zeppelin to jupyter notebook<a class="headerlink" href="#zeppelin-to-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
-<p>The Zeppelin users may have same problem with me that the Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook is hard to open and read. <strong>ze2nb</strong>: A piece of code to convert Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook to <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> Jupyter notebook, <code class="docutils literal notranslate"><span class="pre">.py</span></code> and <code class="docutils literal notranslate"><span class="pre">.html</span></code> file. This library is based on Ryan Blue’s Jupyter/Zeppelin conversion: <a class="reference internal" href="reference.html#jupyter-zeppelin" id="id1">[jupyter-zeppelin]</a>. The API book can be found at <a class="reference external" href="https://runawayhorse001.github.io/ze2nb/">ze2nb API</a> or <a class="reference internal" href="reference.html#zeppelin2nb" id="id2">[zeppelin2nb]</a>.  <strong>You may download and distribute it. Please be aware, however, that the note contains typos as well as inaccurate or incorrect description.</strong></p>
+<span id="ze2nb"></span><h1><span class="section-number">23. </span>Zeppelin to jupyter notebook<a class="headerlink" href="#zeppelin-to-jupyter-notebook" title="Permalink to this headline">¶</a></h1>
+<p>The Zeppelin users may have same problem with me that the Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook is hard to open and read. <strong>ze2nb</strong>: A piece of code to convert Zeppelin <code class="docutils literal notranslate"><span class="pre">.json</span></code> notebook to <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> Jupyter notebook, <code class="docutils literal notranslate"><span class="pre">.py</span></code> and <code class="docutils literal notranslate"><span class="pre">.html</span></code> file. This library is based on Ryan Blue’s Jupyter/Zeppelin conversion: <a class="reference internal" href="reference.html#jupyter-zeppelin" id="id1"><span>[jupyter-zeppelin]</span></a>. The API book can be found at <a class="reference external" href="https://runawayhorse001.github.io/ze2nb/">ze2nb API</a> or <a class="reference internal" href="reference.html#zeppelin2nb" id="id2"><span>[zeppelin2nb]</span></a>.  <strong>You may download and distribute it. Please be aware, however, that the note contains typos as well as inaccurate or incorrect description.</strong></p>
 <div class="section" id="how-to-install">
-<h2>23.1. How to Install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.1. </span>How to Install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-with-pip">
-<h3>23.1.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.1.1. </span>Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h3>
 <p>You can install the <code class="docutils literal notranslate"><span class="pre">ze2nb</span></code> from [PyPI](<a class="reference external" href="https://pypi.org/project/ze2nb">https://pypi.org/project/ze2nb</a>):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install ze2nb
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-from-repo">
-<h3>23.1.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.1.2. </span>Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Clone the Repository</li>
+<li><p>Clone the Repository</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/runawayhorse001/ze2nb.git
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Install</li>
+<li><p>Install</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> zeppelin2nb
 pip install -r requirements.txt
@@ -214,17 +217,17 @@ python setup.py install
 </div>
 </div>
 <div class="section" id="uninstall">
-<h3>23.1.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.1.3. </span>Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall ze2nb
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="converting-demos">
-<h2>23.2. Converting Demos<a class="headerlink" href="#converting-demos" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.2. </span>Converting Demos<a class="headerlink" href="#converting-demos" title="Permalink to this headline">¶</a></h2>
 <p>The following demos are designed to show how to use <code class="docutils literal notranslate"><span class="pre">zepplin2nb</span></code> to convert the <code class="docutils literal notranslate"><span class="pre">.json</span></code> to  <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> , <code class="docutils literal notranslate"><span class="pre">.py</span></code> and <code class="docutils literal notranslate"><span class="pre">.html</span></code>.</p>
 <div class="section" id="converting-in-one-function">
-<h3>23.2.1. Converting in one function<a class="headerlink" href="#converting-in-one-function" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.2.1. </span>Converting in one function<a class="headerlink" href="#converting-in-one-function" title="Permalink to this headline">¶</a></h3>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import python library</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
@@ -240,19 +243,19 @@ python setup.py install
 
 <span class="c1"># scenario 2</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span><span class="s1">&#39;/output&#39;</span>
-<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_Sparking.json&#39;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">to_html</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">to_py</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_Sparking.json&#39;</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">to_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">to_py</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># scenario 3</span>
 <span class="c1"># with load and output path</span>
 <span class="n">load_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/dt216661/Documents/MyJson/&#39;</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">+</span><span class="s1">&#39;/output1&#39;</span>
-<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_GBM.json&#39;</span><span class="p">,</span> <span class="n">load_path</span><span class="o">=</span><span class="n">load_path</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">to_html</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">to_py</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ze2nb</span><span class="p">(</span><span class="s1">&#39;H2o_GBM.json&#39;</span><span class="p">,</span> <span class="n">load_path</span><span class="o">=</span><span class="n">load_path</span><span class="p">,</span> <span class="n">out_path</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">to_html</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">to_py</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 </pre></div>
 </div>
 </div>
 <div class="section" id="converted-results">
-<h3>23.2.2. Converted results<a class="headerlink" href="#converted-results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.2.2. </span>Converted results<a class="headerlink" href="#converted-results" title="Permalink to this headline">¶</a></h3>
 <p>Result:</p>
 <div class="figure align-center">
 <img alt="_images/test.png" src="_images/test.png" />
@@ -291,7 +294,7 @@ python setup.py install
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

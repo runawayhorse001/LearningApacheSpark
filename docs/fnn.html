@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -114,8 +115,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -161,7 +164,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>19. Neural Network</li>
+      <li><span class="section-number">19. </span>Neural Network</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,28 +182,31 @@
            <div itemprop="articleBody">
             
   <div class="section" id="neural-network">
-<span id="fnn"></span><h1>19. Neural Network<a class="headerlink" href="#neural-network" title="Permalink to this headline">¶</a></h1>
+<span id="fnn"></span><h1><span class="section-number">19. </span>Neural Network<a class="headerlink" href="#neural-network" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last">Sharpening the knife longer can make it easier to hack the firewood – old Chinese proverb</p>
+<p class="admonition-title">Chinese proverb</p>
+<p>Sharpening the knife longer can make it easier to hack the firewood – old Chinese proverb</p>
 </div>
 <div class="section" id="feedforward-neural-network">
-<h2>19.1. Feedforward Neural Network<a class="headerlink" href="#feedforward-neural-network" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.1. </span>Feedforward Neural Network<a class="headerlink" href="#feedforward-neural-network" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
-<h3>19.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
-<p>A feedforward neural network is an artificial neural network wherein connections between the units do not form a cycle. As such, it is different from recurrent neural networks.</p>
-<p>The feedforward neural network was the first and simplest type of artificial neural network devised. In this network, the information moves in only one direction, forward (see Fig. <a class="reference internal" href="#fig-fnn"><span class="std std-ref">MultiLayer Neural Network</span></a>), from the input nodes, through the hidden nodes (if any) and to the output nodes. There are no cycles or loops in the network.</p>
+<h3><span class="section-number">19.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>A feedforward neural network is an artificial neural network wherein connections between the units do not
+form a cycle. As such, it is different from recurrent neural networks.</p>
+<p>The feedforward neural network was the first and simplest type of artificial neural network devised. In this
+network, the information moves in only one direction, forward (see Fig. <a class="reference internal" href="#fig-fnn"><span class="std std-ref">MultiLayer Neural Network</span></a>), from the input nodes,
+through the hidden nodes (if any) and to the output nodes. There are no cycles or loops in the network.</p>
 <blockquote>
 <div><div class="figure align-center" id="id1">
 <span id="fig-fnn"></span><img alt="_images/fnn.png" src="_images/fnn.png" />
-<p class="caption"><span class="caption-text">MultiLayer Neural Network</span></p>
+<p class="caption"><span class="caption-text">MultiLayer Neural Network</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div></blockquote>
 </div>
 <div class="section" id="demo">
-<h3>19.1.2. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">19.1.2. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -212,7 +218,7 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-----+--------+------+-----+---------+----+-----+-------+----+---------+-------+-------+</span>
 <span class="o">|</span><span class="n">fixed</span><span class="o">|</span><span class="n">volatile</span><span class="o">|</span><span class="n">citric</span><span class="o">|</span><span class="n">sugar</span><span class="o">|</span><span class="n">chlorides</span><span class="o">|</span><span class="n">free</span><span class="o">|</span><span class="n">total</span><span class="o">|</span><span class="n">density</span><span class="o">|</span>  <span class="n">pH</span><span class="o">|</span><span class="n">sulphates</span><span class="o">|</span><span class="n">alcohol</span><span class="o">|</span><span class="n">quality</span><span class="o">|</span>
@@ -227,7 +233,7 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>change categorical variable size</li>
+<li><p>change categorical variable size</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to float format</span>
 <span class="k">def</span> <span class="nf">string_to_float</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -252,7 +258,7 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Convert the data to dense vector</li>
+<li><p>Convert the data to dense vector</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert the data to dense vector</span>
 <span class="k">def</span> <span class="nf">transData</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -267,14 +273,14 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Split the data into training and test sets (40% held out for testing)</li>
+<li><p>Split the data into training and test sets (40% held out for testing)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into train and test</span>
 <span class="p">(</span><span class="n">trainingData</span><span class="p">,</span> <span class="n">testData</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Train neural network</li>
+<li><p>Train neural network</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify layers for the neural network:</span>
 <span class="c1"># input layer of size 11 (features), two intermediate of size 5 and 4</span>
@@ -298,7 +304,7 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Make predictions</li>
+<li><p>Make predictions</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make predictions.</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
@@ -307,13 +313,13 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="8">
-<li>Evaluation</li>
+<li><p>Evaluation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select (prediction, true label) and compute test error</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">MulticlassClassificationEvaluator</span><span class="p">(</span>
     <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;indexedLabel&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Predictions accuracy = </span><span class="si">%g</span><span class="s2">, Test Error = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy</span><span class="p">,(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">accuracy</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predictions accuracy = </span><span class="si">%g</span><span class="s2">, Test Error = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy</span><span class="p">,(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">accuracy</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -342,7 +348,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

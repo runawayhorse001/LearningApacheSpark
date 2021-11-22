@@ -621,7 +621,7 @@ You will get the following summary results:
 .. code-block:: python
 
 	# Select example rows to display.
-	predictions.select("features","label","predictedLabel").show(5)
+	predictions.select("features","label","prediction").show(5)
 
 .. code-block:: python
 

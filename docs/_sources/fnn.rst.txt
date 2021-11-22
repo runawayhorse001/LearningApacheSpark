@@ -17,9 +17,12 @@ Feedforward Neural Network
 Introduction
 ------------
 
-A feedforward neural network is an artificial neural network wherein connections between the units do not form a cycle. As such, it is different from recurrent neural networks.
+A feedforward neural network is an artificial neural network wherein connections between the units do not
+form a cycle. As such, it is different from recurrent neural networks.
 
-The feedforward neural network was the first and simplest type of artificial neural network devised. In this network, the information moves in only one direction, forward (see Fig. :ref:`fig_fnn`), from the input nodes, through the hidden nodes (if any) and to the output nodes. There are no cycles or loops in the network.
+The feedforward neural network was the first and simplest type of artificial neural network devised. In this
+network, the information moves in only one direction, forward (see Fig. :ref:`fig_fnn`), from the input nodes,
+through the hidden nodes (if any) and to the output nodes. There are no cycles or loops in the network.
 
   .. _fig_fnn:
   .. figure:: images/fnn.png

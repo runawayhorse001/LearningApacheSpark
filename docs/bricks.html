@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>26. Databricks Tips &mdash; Learning Apache Spark with Python  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/fix_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="27. PySpark API" href="api.html" />
+    <link rel="prev" title="25. JDBC Connection" href="jdbc.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Learning Apache Spark with Python
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">2. Why Spark with Python ?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">3. Configure Running Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">4. An Introduction to Apache Spark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rdd.html">5. Programming with RDDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">6. Statistics and Linear Algebra Preliminaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploration.html">7. Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation.html">8. Data Manipulation: Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">9. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reg.html">10. Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">11. Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">12. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfm.html">13. RFM Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textmining.html">14. Text Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="socialnetwork.html">15. Social Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als.html">16. ALS: Stock Portfolio Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mc.html">17. Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcmc.html">18. Markov Chain Monte Carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnn.html">19. Neural Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto.html">20. Automation for Cloudera Distribution Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack.html">21. Wrap PySpark Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">26. Databricks Tips</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#display-samples">26.1. Display samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auto-files-download">26.2. Auto files download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delta-format">26.3. <code class="docutils literal notranslate"><span class="pre">delta</span></code> format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mlflow">26.4. <code class="docutils literal notranslate"><span class="pre">mlflow</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Learning Apache Spark with Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">26. </span>Databricks Tips</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="databricks-tips">
+<span id="bricks"></span><h1><span class="section-number">26. </span>Databricks Tips<a class="headerlink" href="#databricks-tips" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, I will share some of the useful tips when using Databricks.</p>
+<div class="section" id="display-samples">
+<h2><span class="section-number">26.1. </span>Display samples<a class="headerlink" href="#display-samples" title="Permalink to this headline">¶</a></h2>
+<p>In pyspark, we can use <code class="docutils literal notranslate"><span class="pre">show()</span></code> to display the given size of the sample. While in databricks environment, we also
+have <code class="docutils literal notranslate"><span class="pre">display()</span></code> function to display the sample records. The CPU time for big data table/set is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">df</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c1"># n is the number of the given size</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auto-files-download">
+<h2><span class="section-number">26.2. </span>Auto files download<a class="headerlink" href="#auto-files-download" title="Permalink to this headline">¶</a></h2>
+<p>Databricks is the most powerful big data analytics and machine learning platform, while it’s not perfect. The file
+management system is not that good like jupyter Notebook/Lab. Here I will provide one way to download the files under
+<code class="docutils literal notranslate"><span class="pre">dbfs:/FileStore</span></code> (This method only works for the files under <code class="docutils literal notranslate"><span class="pre">dbfs:/FileStore</span></code>).</p>
+<p>In general, the file link for downloading is like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cluster_address</span><span class="si">}</span><span class="s2">/files/</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">?o=</span><span class="si">{</span><span class="n">cluster_no</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Here I provided my auto click download functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">IPython</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Template</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
+
+<span class="k">def</span> <span class="nf">get_hdfs_files</span><span class="p">(</span><span class="n">hdfs_path</span><span class="p">,</span> <span class="n">relative_path</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Get file names and file path or relative path for the given HDFS path. Note: os.listdir does not work in</span>
+<span class="sd">`community.cloud.databricks`.</span>
+
+<span class="sd">:param hdfs_path: the input HDFS path</span>
+<span class="sd">:param relative_path: flag of return full path or the path relative to ``dbfs:/FileStore`` (We need the relative</span>
+<span class="sd">                      for the file download.)</span>
+
+<span class="sd">:return file_names: file names under the given path</span>
+<span class="sd">:return  relative_p: file paths, full path if ``relative_path=False`` else paths relative to ``bdfs:/FileStore``</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># get the file information</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">hdfs_path</span><span class="p">)</span>
+
+<span class="c1"># get hdfs path and folder name</span>
+<span class="n">file_names</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xx</span><span class="p">))]</span>
+<span class="n">hdfs_paths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xx</span><span class="p">))]</span>
+
+<span class="k">if</span> <span class="n">relative_path</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">relative_p</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">hdfs_path</span><span class="p">,</span> <span class="s1">&#39;dbfs:/FileStore&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">hdfs_path</span> <span class="ow">in</span> <span class="n">hdfs_paths</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Only suooprt the files under &#39;dbfs:/FileStore/&#39;&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">relative_p</span> <span class="o">=</span> <span class="n">hdfs_paths</span>
+
+<span class="k">return</span> <span class="n">file_names</span><span class="p">,</span> <span class="n">relative_p</span>
+
+
+<span class="k">def</span> <span class="nf">azdb_files_download</span><span class="p">(</span><span class="n">files_path</span><span class="p">,</span> <span class="n">cluster_address</span><span class="o">=</span><span class="s2">&quot;https://community.cloud.databricks.com&quot;</span><span class="p">,</span>
+                    <span class="n">cluster_no</span><span class="o">=</span><span class="s1">&#39;4622560542654492&#39;</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">List the files download links.</span>
+
+<span class="sd">:param files_path: the given file path ot folder path</span>
+<span class="sd">:param cluster_address: Your databricks cluster address, i.e. the link before ``/?o``</span>
+<span class="sd">:param cluster_no: YOur databricks cluster number, i.e. the number after ``?o=``</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">files_path</span><span class="p">):</span>  <span class="c1"># os.path.isdir(files_path):</span>
+    <span class="n">file_names</span><span class="p">,</span> <span class="n">files_path</span> <span class="o">=</span> <span class="n">get_hdfs_files</span><span class="p">(</span><span class="n">files_path</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files_path</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">files_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">files_path</span><span class="p">]</span>
+
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cluster_address</span><span class="si">}</span><span class="s2">/files/</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">?o=</span><span class="si">{</span><span class="n">cluster_no</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">files_path</span><span class="p">]</span>
+
+<span class="n">temp</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">       &lt;h2&gt;AZDB files download&lt;/h2&gt;</span>
+<span class="s2">       {</span><span class="si">% f</span><span class="s2">or i in range(len(urls)) %}</span>
+
+<span class="s2">          &lt;a href=&quot;{{urls[i]}}&quot; target=&#39;_blank&#39;&gt; Click me to download  {{files_path[i].split(&#39;/&#39;)[-1]}}&lt;/a&gt; &lt;br&gt;</span>
+<span class="s2">       {</span><span class="si">% e</span><span class="s2">ndfor %}</span>
+<span class="s2">       &quot;&quot;&quot;</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">files_path</span><span class="o">=</span><span class="n">files_path</span><span class="p">,</span> <span class="n">urls</span><span class="o">=</span><span class="n">urls</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="c1"># get dbutils module</span>
+<span class="n">dbutils</span> <span class="o">=</span> <span class="n">IPython</span><span class="o">.</span><span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">user_ns</span><span class="p">[</span><span class="s2">&quot;dbutils&quot;</span><span class="p">]</span>
+
+<span class="n">dbutils</span><span class="o">.</span><span class="n">displayHTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In commercial version of databricks, you can use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.databricks.clusterUsageTags.instanceWorkerEnvId&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to get the <code class="docutils literal notranslate"><span class="pre">cluster_no</span></code>. But it will not work for community version.</p>
+</div>
+<p>By using the above code, you can download the files relative to <code class="docutils literal notranslate"><span class="pre">dbfs:/FileStore</span></code>.</p>
+<p>The files under <code class="docutils literal notranslate"><span class="pre">dbfs:/FileStore/data</span></code></p>
+<blockquote>
+<div><div class="figure align-center" id="id1">
+<span id="dbfs-data"></span><img alt="_images/dbfs_data.png" src="_images/dbfs_data.png" />
+<p class="caption"><span class="caption-text">File under <code class="docutils literal notranslate"><span class="pre">dbfs:/FileStore/data</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+<p>Click download demos:</p>
+<blockquote>
+<div><div class="figure align-center" id="id2">
+<span id="auto-download"></span><img alt="_images/auto_download.png" src="_images/auto_download.png" />
+<p class="caption"><span class="caption-text">File download in databricks</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="delta-format">
+<h2><span class="section-number">26.3. </span><code class="docutils literal notranslate"><span class="pre">delta</span></code> format<a class="headerlink" href="#delta-format" title="Permalink to this headline">¶</a></h2>
+<p>TODO…</p>
+</div>
+<div class="section" id="mlflow">
+<h2><span class="section-number">26.4. </span><code class="docutils literal notranslate"><span class="pre">mlflow</span></code><a class="headerlink" href="#mlflow" title="Permalink to this headline">¶</a></h2>
+<p>TODO…</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="27. PySpark API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jdbc.html" class="btn btn-neutral float-left" title="25. JDBC Connection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Wenqiang Feng
+      <span class="lastupdated">
+        Last updated on Nov 21, 2021.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -118,8 +119,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -165,7 +168,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>20. Automation for Cloudera Distribution Hadoop</li>
+      <li><span class="section-number">20. </span>Automation for Cloudera Distribution Hadoop</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,15 +186,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="automation-for-cloudera-distribution-hadoop">
-<span id="auto"></span><h1>20. Automation for Cloudera Distribution Hadoop<a class="headerlink" href="#automation-for-cloudera-distribution-hadoop" title="Permalink to this headline">¶</a></h1>
+<span id="auto"></span><h1><span class="section-number">20. </span>Automation for Cloudera Distribution Hadoop<a class="headerlink" href="#automation-for-cloudera-distribution-hadoop" title="Permalink to this headline">¶</a></h1>
 <p>CDH (Cloudera Distribution Hadoop) is the most complete, tested, and widely deployed distribution of Apache Hadoop. A lot of small or middle size companies are using CHD. While Cloudera does not support IPython or Jupyter notebooks on CDH and the Cloudera Data Science Workbench is expensive, many compaies are using <code class="docutils literal notranslate"><span class="pre">CDH+zeppelin</span></code> or <code class="docutils literal notranslate"><span class="pre">CDH+jupyterhub</span></code> infrastructure. This infrastructure works pretty well, but it’s inconvenient for Data Engineer or Data Scientist to do automation during the production process.  This chapter will cover how to use  <a class="reference external" href="https://jinja.palletsprojects.com/en/2.10.x/">Jinja2</a>, <a class="reference external" href="https://spark.apache.org/sql/">spark sql</a> and <a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> to implement the automation for Cloudera Distribution Hadoop.</p>
 <div class="section" id="automation-pipeline">
-<h2>20.1. Automation Pipeline<a class="headerlink" href="#automation-pipeline" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.1. </span>Automation Pipeline<a class="headerlink" href="#automation-pipeline" title="Permalink to this headline">¶</a></h2>
 <p>The automation pipeline mainly contains two parts:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference external" href="https://jinja.palletsprojects.com/en/2.10.x/">Jinja2</a> + <a class="reference external" href="https://spark.apache.org/sql/">spark sql</a> for data clean and manipulation automation</li>
-<li><a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> for Machine  Leanring automation</li>
+<li><p><a class="reference external" href="https://jinja.palletsprojects.com/en/2.10.x/">Jinja2</a> + <a class="reference external" href="https://spark.apache.org/sql/">spark sql</a> for data clean and manipulation automation</p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> for Machine  Leanring automation</p></li>
 </ol>
 </div></blockquote>
 <div class="figure align-center" id="fig-pipline-flow">
@@ -199,13 +202,13 @@
 </div>
 </div>
 <div class="section" id="data-clean-and-manipulation-automation">
-<h2>20.2. Data Clean and Manipulation Automation<a class="headerlink" href="#data-clean-and-manipulation-automation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.2. </span>Data Clean and Manipulation Automation<a class="headerlink" href="#data-clean-and-manipulation-automation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="jinja-2">
-<h3>20.2.1. Jinja 2<a class="headerlink" href="#jinja-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">20.2.1. </span>Jinja 2<a class="headerlink" href="#jinja-2" title="Permalink to this headline">¶</a></h3>
 <p>Jinja is a modern and designer-friendly templating language for Python, modelled after Django’s templates. Use Jinja2 to generate
 SQL query will need two steps:</p>
 <ol class="arabic simple">
-<li>Get template</li>
+<li><p>Get template</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    SELECT project, timesheet, hours</span>
@@ -218,14 +221,14 @@ SQL query will need two steps:</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>render the tempalte</li>
+<li><p>render the tempalte</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="sa">u</span><span class="s2">&quot;runawayhorse&quot;</span><span class="p">,</span>
         <span class="s2">&quot;project_id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}</span>
 
 <span class="n">query</span><span class="o">=</span>  <span class="n">Template</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, you will get the following SQL query:</p>
@@ -237,14 +240,14 @@ SQL query will need two steps:</p>
 </pre></div>
 </div>
 <div class="admonition-note admonition">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>The Jinja is smart then you think. If you try this</p>
-<blockquote class="last">
+<blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="sa">u</span><span class="s2">&quot;runawayhorse&quot;</span><span class="p">}</span>
 
 <span class="n">query</span><span class="o">=</span>  <span class="n">Template</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, you will get the following SQL query:</p>
@@ -267,12 +270,12 @@ SQL query will need two steps:</p>
 <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
     <span class="k">pass</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
 <span class="n">jinja_env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
 <span class="n">template</span> <span class="o">=</span> <span class="n">jinja_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s1">&#39;test.sql&#39;</span><span class="p">)</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">states</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>with <code class="docutils literal notranslate"><span class="pre">test.sql</span></code> file is as follows:</p>
@@ -299,7 +302,7 @@ SQL query will need two steps:</p>
 </div>
 </div>
 <div class="section" id="spark-sql">
-<h3>20.2.2. Spark SQL<a class="headerlink" href="#spark-sql" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">20.2.2. </span>Spark SQL<a class="headerlink" href="#spark-sql" title="Permalink to this headline">¶</a></h3>
 <p>Spark SQL at here will be called to excute SQL or HiveQL queries which generated by Jinjia2 on existing warehouses.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># without output</span>
 <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
@@ -311,7 +314,7 @@ SQL query will need two steps:</p>
 </div>
 </div>
 <div class="section" id="ml-pipeline-automation">
-<h2>20.3. ML Pipeline Automation<a class="headerlink" href="#ml-pipeline-automation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.3. </span>ML Pipeline Automation<a class="headerlink" href="#ml-pipeline-automation" title="Permalink to this headline">¶</a></h2>
 <p>I will not cover the details of the ML Pipeline at here, the interested reader is referred to  <a class="reference external" href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML Pipelines</a> . The The main steps for defining the stages are as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scalering</span> <span class="o">=</span><span class="s1">&#39;Standard&#39;</span>
 
@@ -320,7 +323,7 @@ SQL query will need two steps:</p>
     <span class="n">scaler</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaledFeatures&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">scalering</span><span class="o">==</span><span class="s1">&#39;Standard&#39;</span><span class="p">:</span>
     <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaledFeatures&quot;</span><span class="p">,</span>
-                            <span class="n">withStd</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">withMean</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                            <span class="n">withStd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">withMean</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaledFeatures&quot;</span><span class="p">)</span>
 
@@ -350,7 +353,7 @@ SQL query will need two steps:</p>
 </div>
 </div>
 <div class="section" id="save-and-load-pipelinemodel">
-<h2>20.4. Save and Load PipelineModel<a class="headerlink" href="#save-and-load-pipelinemodel" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.4. </span>Save and Load PipelineModel<a class="headerlink" href="#save-and-load-pipelinemodel" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># save PipelineModel</span>
 <span class="n">model</span><span class="o">.</span><span class="n">write</span><span class="p">()</span><span class="o">.</span><span class="n">overwrite</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span>
 
@@ -362,7 +365,7 @@ SQL query will need two steps:</p>
 </div>
 </div>
 <div class="section" id="ingest-results-back-into-hadoop">
-<h2>20.5. Ingest Results Back into Hadoop<a class="headerlink" href="#ingest-results-back-into-hadoop" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.5. </span>Ingest Results Back into Hadoop<a class="headerlink" href="#ingest-results-back-into-hadoop" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;temp_table&quot;</span><span class="p">)</span>
 
 <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
@@ -399,7 +402,7 @@ SQL query will need two steps:</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

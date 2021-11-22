@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -122,8 +123,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -169,7 +172,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>21. Wrap PySpark Package</li>
+      <li><span class="section-number">21. </span>Wrap PySpark Package</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,14 +190,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="wrap-pyspark-package">
-<span id="pack"></span><h1>21. Wrap PySpark Package<a class="headerlink" href="#wrap-pyspark-package" title="Permalink to this headline">¶</a></h1>
+<span id="pack"></span><h1><span class="section-number">21. </span>Wrap PySpark Package<a class="headerlink" href="#wrap-pyspark-package" title="Permalink to this headline">¶</a></h1>
 <p>It’s super easy to wrap your own package in Python. I packed some functions which I frequently
 used in my daily work. You can download and install it from <a class="reference external" href="https://github.com/runawayhorse001/PySparkAudit">My PySpark Package</a>. The hierarchical
 structure and the directory structure of this package are as follows.</p>
 <div class="section" id="package-wrapper">
-<h2>21.1. Package Wrapper<a class="headerlink" href="#package-wrapper" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.1. </span>Package Wrapper<a class="headerlink" href="#package-wrapper" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="hierarchical-structure">
-<h3>21.1.1. Hierarchical Structure<a class="headerlink" href="#hierarchical-structure" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.1.1. </span>Hierarchical Structure<a class="headerlink" href="#hierarchical-structure" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="p">|</span>-- build
 <span class="p">|</span>   <span class="p">|</span>-- bdist.linux-x86_64
 <span class="p">|</span>   <span class="p">|</span>-- lib.linux-x86_64-2.7
@@ -236,7 +239,7 @@ structure and the directory structure of this package are as follows.</p>
 <p>From the above hierarchical structure, you will find that you have to have <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in each directory. I will explain the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file with the example below:</p>
 </div>
 <div class="section" id="set-up">
-<h3>21.1.2. Set Up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.1.2. </span>Set Up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -265,7 +268,7 @@ structure and the directory structure of this package are as follows.</p>
 </div>
 </div>
 <div class="section" id="readme">
-<h3>21.1.3. ReadMe<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.1.3. </span>ReadMe<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># PySparkTools</span>
 
 This is my PySpark Tools. If you want to colne and install it, you can use
@@ -294,15 +297,15 @@ python test1.py
 </div>
 </div>
 <div class="section" id="pacakge-publishing-on-pypi">
-<h2>21.2. Pacakge Publishing on PyPI<a class="headerlink" href="#pacakge-publishing-on-pypi" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.2. </span>Pacakge Publishing on PyPI<a class="headerlink" href="#pacakge-publishing-on-pypi" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-twine">
-<h3>21.2.1. Install <code class="docutils literal notranslate"><span class="pre">twine</span></code><a class="headerlink" href="#install-twine" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.2.1. </span>Install <code class="docutils literal notranslate"><span class="pre">twine</span></code><a class="headerlink" href="#install-twine" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install twine
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-your-package">
-<h3>21.2.2. Build Your Package<a class="headerlink" href="#build-your-package" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.2.2. </span>Build Your Package<a class="headerlink" href="#build-your-package" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
@@ -315,7 +318,7 @@ python test1.py
 </div>
 </div>
 <div class="section" id="upload-your-package">
-<h3>21.2.3. Upload Your Package<a class="headerlink" href="#upload-your-package" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.2.3. </span>Upload Your Package<a class="headerlink" href="#upload-your-package" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>twine upload dist/*
 </pre></div>
 </div>
@@ -326,7 +329,7 @@ Enter your password: ***************
 </div>
 </div>
 <div class="section" id="package-at-pypi">
-<h3>21.2.4. Package at PyPI<a class="headerlink" href="#package-at-pypi" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.2.4. </span>Package at PyPI<a class="headerlink" href="#package-at-pypi" title="Permalink to this headline">¶</a></h3>
 <p>Here is my <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> package at [PyPI](<a class="reference external" href="https://pypi.org/project/PySparkAudit">https://pypi.org/project/PySparkAudit</a>). You can install <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install PySparkAudit
 </pre></div>
@@ -357,7 +360,7 @@ Enter your password: ***************
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

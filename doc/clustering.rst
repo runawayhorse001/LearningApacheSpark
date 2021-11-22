@@ -422,7 +422,6 @@ In my opinion, sometimes it's hard to choose the optimal number of the clusters 
 	    Determine optimal number of clusters by using Silhoutte Score Analysis.
 	    :param df_in: the input dataframe 
 	    :param index_col: the name of the index column 
-	    :param k_min: the train dataset
 	    :param k_min: the minmum number of the clusters  
 	    :param k_max: the maxmum number of the clusters
 	    :param num_runs: the number of runs for each fixed clusters

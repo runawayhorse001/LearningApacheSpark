@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -122,8 +123,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -169,7 +172,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>18. Markov Chain Monte Carlo</li>
+      <li><span class="section-number">18. </span>Markov Chain Monte Carlo</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,10 +190,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="markov-chain-monte-carlo">
-<span id="mcmc"></span><h1>18. Markov Chain Monte Carlo<a class="headerlink" href="#markov-chain-monte-carlo" title="Permalink to this headline">¶</a></h1>
+<span id="mcmc"></span><h1><span class="section-number">18. </span>Markov Chain Monte Carlo<a class="headerlink" href="#markov-chain-monte-carlo" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>A book is known in time of need.</strong></p>
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>A book is known in time of need.</strong></p>
 </div>
 <div class="figure align-center">
 <img alt="_images/mcmc_py.png" src="_images/mcmc_py.png" />
@@ -199,21 +202,20 @@
 <p>Markov Chain Monte Carlo (MCMC) methods are used to approximate the posterior distribution of a parameter of interest by random sampling in a probabilistic space. More details can be found at <a class="reference external" href="https://towardsdatascience.com/a-zero-math-introduction-to-markov-chain-monte-carlo-methods-dcba889e0c50">A Zero Math Introduction to Markov Chain Monte Carlo Methods</a>.</p>
 <p>The following theory and demo are from Dr. Rebecca C. Steorts’s <a class="reference external" href="http://www2.stat.duke.edu/~rcs46/lecturesModernBayes/601-module6-markov/markov-chain-monte-carlo.pdf">Intro to Markov Chain Monte Carlo</a>. More details can be found at Dr. Rebecca C. Steorts’s STA 360/601: <a class="reference external" href="http://www2.stat.duke.edu/~rcs46/bayes.html">Bayesian Methods and Modern Statistics</a> class at Duke.</p>
 <div class="section" id="metropolis-algorithm">
-<span id="metroalg"></span><h2>18.1. Metropolis algorithm<a class="headerlink" href="#metropolis-algorithm" title="Permalink to this headline">¶</a></h2>
+<span id="metroalg"></span><h2><span class="section-number">18.1. </span>Metropolis algorithm<a class="headerlink" href="#metropolis-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>The Metropolis algorithm takes three main steps:</p>
 <ol class="arabic">
-<li><p class="first">Sample  <img class="math" src="_images/math/7d0d93d79b878ae26589d7d45fc55dec8e1723ed.png" alt="\theta^* \sim J(\theta | \theta ^{(s)})"/></p>
-</li>
-<li><p class="first">Compute the acceptance ratio <img class="math" src="_images/math/1a198735d31179902240ab95aba38f0669b5f60e.png" alt="(r)"/></p>
+<li><p>Sample  <img class="math" src="_images/math/57d69aced4a1d7c57b24487ad7fd31a8fe70132d.png" alt="\theta^* \sim J(\theta | \theta ^{(s)})"/></p></li>
+<li><p>Compute the acceptance ratio <img class="math" src="_images/math/ea52020b9c5862d453157d40c05fceee626336fb.png" alt="(r)"/></p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/a2b09b7254bc445ae3ae2a1ca0922964ee66ed09.png" alt="r = \frac{p(\theta^*|y)}{p(\theta^{(s)}|y)} = \frac{p(y|\theta^*)p(\theta^*)}{p(y|\theta^{(s)})p(\theta^{(s)})}"/></p>
+<p><img src="_images/math/edba620049d78742358f1f220cc49a84a5686962.png" alt="r = \frac{p(\theta^*|y)}{p(\theta^{(s)}|y)} = \frac{p(y|\theta^*)p(\theta^*)}{p(y|\theta^{(s)})p(\theta^{(s)})}"/></p>
 </div></div></blockquote>
 </li>
-<li><p class="first">Let</p>
+<li><p>Let</p>
 <blockquote>
 <div><div class="math" id="equation-eq-step3">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-step3" title="Permalink to this equation">¶</a></span><img src="_images/math/042aacf32fabf25f6fb2a497e294b269b6b7b213.png" alt="\theta^{(s+1)}
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-step3" title="Permalink to this equation">¶</a></span><img src="_images/math/546b16fd33ca3fc2949fcfad03dfaa012819d2dd.png" alt="\theta^{(s+1)}
              =
              \left\{
      \begin{array}{ll}
@@ -225,70 +227,70 @@
 </li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Actually, the <a class="reference internal" href="#equation-eq-step3">(1)</a> in Step 3 can be replaced by sampling <img class="math" src="_images/math/4fbd02fcc1b40b40ea52f136c4613e0238576c95.png" alt="u \sim \text{Uniform}(0,1)"/> and setting <img class="math" src="_images/math/31dfe51eb636dddb1cc12bcc42e631a4f99329da.png" alt="\theta^{(s+1)}=\theta^*"/> if <img class="math" src="_images/math/e713aca4083ad505e02ed34909553ff898a1c863.png" alt="u&lt;r"/> and setting <img class="math" src="_images/math/1f4347acce132d724f51c8dd6a0b8670c43d7424.png" alt="\theta^{(s+1)}=\theta^{(s)}"/> otherwise.</p>
+<p class="admonition-title">Note</p>
+<p>Actually, the <a class="reference internal" href="#equation-eq-step3">(1)</a> in Step 3 can be replaced by sampling <img class="math" src="_images/math/221384ff69f0b30c3d535ef4672800f603d605d6.png" alt="u \sim \text{Uniform}(0,1)"/> and setting <img class="math" src="_images/math/b4b7505df6b71eb44d844b2247225d1e76b578ac.png" alt="\theta^{(s+1)}=\theta^*"/> if <img class="math" src="_images/math/fd08cf9f6b798121d97f04cd6cde22bcb3b18b1b.png" alt="u&lt;r"/> and setting <img class="math" src="_images/math/ff16ec4f0ea368e0ab500bc306221750adb3cd8e.png" alt="\theta^{(s+1)}=\theta^{(s)}"/> otherwise.</p>
 </div>
 </div>
 <div class="section" id="a-toy-example-of-metropolis">
-<h2>18.2. A Toy Example of Metropolis<a class="headerlink" href="#a-toy-example-of-metropolis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.2. </span>A Toy Example of Metropolis<a class="headerlink" href="#a-toy-example-of-metropolis" title="Permalink to this headline">¶</a></h2>
 <p>The following example is going to test out the Metropolis algorithm for the conjugate Normal-Normal model with a known variance situation.</p>
 <div class="section" id="conjugate-normal-normal-model">
-<h3>18.2.1. Conjugate Normal-Normal model<a class="headerlink" href="#conjugate-normal-normal-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2.1. </span>Conjugate Normal-Normal model<a class="headerlink" href="#conjugate-normal-normal-model" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/bc19b41be6b98ee7dc229e31614f750b04003fd5.png" alt="\begin{array}{ll}
+<p><img src="_images/math/58903ae71866af0d2b5fe2ac074305c9e27bd6eb.png" alt="\begin{array}{ll}
     X_1, \cdots, X_n &amp; \theta \stackrel{iid}{\sim}\text{Normal}(\theta,\sigma^2)\\
                       &amp; \theta \sim\text{Normal}(\mu,\tau^2)
 \end{array}"/></p>
 </div></div></blockquote>
-<p>Recall that the posterior of <img class="math" src="_images/math/3ba10dc6f996465d8acb878fc8f9d2edf4af53c0.png" alt="\theta"/> is <img class="math" src="_images/math/40bc440c8c32fc48ad07574b1d353ab9027ec294.png" alt="\text{Normal}(\mu_n,\tau^2_n)"/>, where</p>
+<p>Recall that the posterior of <img class="math" src="_images/math/68ef1d232f5389c1b13abf0e6c752600fa9d07dd.png" alt="\theta"/> is <img class="math" src="_images/math/007d9a65d04dab94e2524150bd2c9bb34fd46639.png" alt="\text{Normal}(\mu_n,\tau^2_n)"/>, where</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/375f6cf3ea59de0a16e18bf243df8376fc32c3ce.png" alt="\mu_n = \bar{x}\frac{n/\sigma^2}{n/\sigma^2+1/\tau^2} + \mu\frac{1/\tau^2}{n/\sigma^2+1/\tau^2}"/></p>
+<p><img src="_images/math/ae77d33a55d8fe47de7d1795b8b39135d0d8beec.png" alt="\mu_n = \bar{x}\frac{n/\sigma^2}{n/\sigma^2+1/\tau^2} + \mu\frac{1/\tau^2}{n/\sigma^2+1/\tau^2}"/></p>
 </div></div></blockquote>
 <p>and</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/70450b34379aa46575ece1c6ab6494dcce1acfe4.png" alt="\tau_n^2 = \frac{1}{n/\sigma^2+1/\tau^2}"/></p>
+<p><img src="_images/math/bad754182d71a94dbf246380fc5cbeb0fb898b2a.png" alt="\tau_n^2 = \frac{1}{n/\sigma^2+1/\tau^2}"/></p>
 </div></div></blockquote>
 </div>
 <div class="section" id="example-setup">
-<h3>18.2.2. Example setup<a class="headerlink" href="#example-setup" title="Permalink to this headline">¶</a></h3>
-<p>The rest of the parameters are <img class="math" src="_images/math/15dbeccc5f0148fc54abf1121da7cae460871c94.png" alt="\sigma^2=1"/>, <img class="math" src="_images/math/bca968bbd4f1478300e96501e23c5c1b4c7f3902.png" alt="\tau^2=10"/>, <img class="math" src="_images/math/d440748302343a480c5aec3bc47e2589fc449a06.png" alt="\mu=5"/>, <img class="math" src="_images/math/ff31105a4838e5bdcebab81bcede58286eaaecc7.png" alt="n=5"/> and</p>
+<h3><span class="section-number">18.2.2. </span>Example setup<a class="headerlink" href="#example-setup" title="Permalink to this headline">¶</a></h3>
+<p>The rest of the parameters are <img class="math" src="_images/math/1fd2952df4ecae909af71783d96a15dc47421471.png" alt="\sigma^2=1"/>, <img class="math" src="_images/math/ac7e4a6084669c4870cdedfa27c227946784b600.png" alt="\tau^2=10"/>, <img class="math" src="_images/math/7f5a54b6fd1cf15184a6da0dd2721778263c573a.png" alt="\mu=5"/>, <img class="math" src="_images/math/5430a0d403d57830eab4b9ddddb9b1f56506b95b.png" alt="n=5"/> and</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/a9888551ea77353c611d7c787a4be10507ad8ed9.png" alt="y = [9.37, 10.18, 9.16, 11.60, 10.33]"/></p>
+<p><img src="_images/math/f47eb5e339b558fa883470096e928056a20d7711.png" alt="y = [9.37, 10.18, 9.16, 11.60, 10.33]"/></p>
 </div></div></blockquote>
-<p>For this setup, we get that <img class="math" src="_images/math/4f6345da82306437efbe1676a6f74343bf03e252.png" alt="\mu_n=10.02745"/> and <img class="math" src="_images/math/89c4295ff75abbb47bde7df27631762cb780935e.png" alt="\tau_n^2=0.1960784"/>.</p>
+<p>For this setup, we get that <img class="math" src="_images/math/0115533af496315012bb2ed841b2f139e31ea6c1.png" alt="\mu_n=10.02745"/> and <img class="math" src="_images/math/f7ceed0b043e6d0adeb3e4ac09cb6977aed7ef61.png" alt="\tau_n^2=0.1960784"/>.</p>
 </div>
 <div class="section" id="essential-mathematical-derivation">
-<h3>18.2.3. Essential mathematical derivation<a class="headerlink" href="#essential-mathematical-derivation" title="Permalink to this headline">¶</a></h3>
-<p>In the <a class="reference internal" href="#metroalg"><span class="std std-ref">Metropolis algorithm</span></a>, we need to compute the acceptance ratio <img class="math" src="_images/math/c836518ae10699a394d5775093257eb52b017fdd.png" alt="r"/>, i.e.</p>
+<h3><span class="section-number">18.2.3. </span>Essential mathematical derivation<a class="headerlink" href="#essential-mathematical-derivation" title="Permalink to this headline">¶</a></h3>
+<p>In the <a class="reference internal" href="#metroalg"><span class="std std-ref">Metropolis algorithm</span></a>, we need to compute the acceptance ratio <img class="math" src="_images/math/22d7a9b01e068b7eb42ac8cf73df328c3007f071.png" alt="r"/>, i.e.</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/6bbe2ff46f1d1f1a666242cb83e2f22b7447603d.png" alt="r  &amp;=  \frac{p(\theta^*|x)}{p(\theta^{(s)}|x)} \\
+<p><img src="_images/math/28ae85427519099d87a456e9428a6c237bd16e02.png" alt="r  &amp;=  \frac{p(\theta^*|x)}{p(\theta^{(s)}|x)} \\
    &amp;=  \frac{p(x|\theta^*)p(\theta^*)}{p(x|\theta^{(s)})p(\theta^{(s)})}\\
    &amp;=  \left(\frac{\prod_i\text{dnorm}(x_i,\theta^*,\sigma)}{\prod_i\text{dnorm}(x_i,\theta^{(s)},\sigma)}\right)
         \left(\frac{\text{dnorm}(\theta^*,\mu,\tau)}{\text{dnorm}(\theta^{(s)},\mu,\tau)}\right)"/></p>
 </div></div></blockquote>
-<p>In many cases, computing the ratio <img class="math" src="_images/math/c836518ae10699a394d5775093257eb52b017fdd.png" alt="r"/> directly can be numerically unstable, however, this can be modified by taking <img class="math" src="_images/math/916e57802b1c57f68dd97ff8439673326e6acf70.png" alt="log r"/>. i.e.</p>
+<p>In many cases, computing the ratio <img class="math" src="_images/math/22d7a9b01e068b7eb42ac8cf73df328c3007f071.png" alt="r"/> directly can be numerically unstable, however, this can be modified by taking <img class="math" src="_images/math/af35d1ea75accb912b8d79c6818ecb06129d0abd.png" alt="log r"/>. i.e.</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/36d70bcb1b73a66e4c833e1de4cc7570afc954d9.png" alt="logr  &amp;=  \sum_i \left(log[\text{dnorm}(x_i,\theta^*,\sigma)] - log[\text{dnorm}(x_i, \theta^{(s)}, \sigma)]\right)\\
+<p><img src="_images/math/cf1c0c7002f67bad3c72a346dfe61de9d8c60161.png" alt="logr  &amp;=  \sum_i \left(log[\text{dnorm}(x_i,\theta^*,\sigma)] - log[\text{dnorm}(x_i, \theta^{(s)}, \sigma)]\right)\\
       &amp;+  \sum_i \left(log[\text{dnorm}(\theta^*,\mu,\tau)] - log[\text{dnorm}(\theta^{(s)}, \mu,\tau)]\right)"/></p>
 </div></div></blockquote>
-<p>Then the criteria of the acceptance becomes: if <img class="math" src="_images/math/77722c77003df4db121454b701352197b336c76f.png" alt="log u&lt; log r"/>, where <img class="math" src="_images/math/de89e65e294879d34c846fdd9fcbfc0d1729d4fd.png" alt="u"/> is sample form the <img class="math" src="_images/math/86a4efff573c2275e90a5ac82726a5ee66790bcf.png" alt="\text{Uniform}(0,1)"/>.</p>
+<p>Then the criteria of the acceptance becomes: if <img class="math" src="_images/math/00d62d1ab37adc442077138db0b5712420ea1b5a.png" alt="log u&lt; log r"/>, where <img class="math" src="_images/math/4751f942864917f89606ee1b189902c44b31590d.png" alt="u"/> is sample form the <img class="math" src="_images/math/f64db52bbc0dbd2fc4c9cc72dda069e15c279cb7.png" alt="\text{Uniform}(0,1)"/>.</p>
 </div>
 </div>
 <div class="section" id="demos">
-<h2>18.3. Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
-<p>Now, We generate <img class="math" src="_images/math/1a2dc13f5e56a34848a2b8b5a35b2484cc01ed7d.png" alt="S"/> iterations of the Metropolis algorithm starting at <img class="math" src="_images/math/7e4c36ae87c0c9b4d69b8a279464dbe585c7f8a3.png" alt="\theta^{(0)}=0"/> and using a normal proposal distribution, where</p>
+<h2><span class="section-number">18.3. </span>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
+<p>Now, We generate <img class="math" src="_images/math/5e08ccce7c0e78f7be5fcaffc7532c77f2a99b4d.png" alt="S"/> iterations of the Metropolis algorithm starting at <img class="math" src="_images/math/2c96884d37ced2d613a447d6292816a4f6f77c59.png" alt="\theta^{(0)}=0"/> and using a normal proposal distribution, where</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/fcc01d9c18795d54730217b34f422244c115e315.png" alt="\theta^{(s+1)} \sim \text{Normal}(\theta^{(s)},2)."/></p>
+<p><img src="_images/math/8d9a75b3c50d437595fe62c2fec30b231ba84544.png" alt="\theta^{(s+1)} \sim \text{Normal}(\theta^{(s)},2)."/></p>
 </div></div></blockquote>
 <div class="section" id="r-results">
-<h3>18.3.1. R results<a class="headerlink" href="#r-results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.3.1. </span>R results<a class="headerlink" href="#r-results" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting values</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 <span class="n">s2</span><span class="o">&lt;-</span><span class="m">1</span>
@@ -327,15 +329,15 @@
 
 <span class="c1">##two plots: trace of theta and comparing the empirical distribution</span>
 <span class="c1">##of simulated values to the true posterior</span>
-<span class="nf">par</span><span class="p">(</span><span class="n">mar</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">mgp</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1.75</span><span class="p">,</span><span class="m">.75</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">mar</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">mgp</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1.75</span><span class="p">,</span><span class="n">.</span><span class="m">75</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
 <span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
 <span class="c1"># creating a sequence</span>
 <span class="n">skeep</span><span class="o">&lt;-</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
 <span class="c1"># making a trace place</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">skeep</span><span class="p">,</span><span class="n">THETA[skeep]</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">skeep</span><span class="p">,</span><span class="n">THETA</span><span class="p">[</span><span class="n">skeep</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span>
      <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;iteration&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
 <span class="c1"># making a histogram</span>
-<span class="nf">hist</span><span class="p">(</span><span class="n">THETA[</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">)</span><span class="n">]</span><span class="p">,</span><span class="n">prob</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">THETA</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">)],</span><span class="n">prob</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
      <span class="n">xlab</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">)</span>
 <span class="n">th</span><span class="o">&lt;-</span><span class="nf">seq</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">THETA</span><span class="p">),</span><span class="nf">max</span><span class="p">(</span><span class="n">THETA</span><span class="p">),</span><span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
 <span class="nf">lines</span><span class="p">(</span><span class="n">th</span><span class="p">,</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">th</span><span class="p">,</span><span class="n">mu.n</span><span class="p">,</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">t2.n</span><span class="p">))</span> <span class="p">)</span>
@@ -343,19 +345,19 @@
 </div>
 <div class="figure align-center" id="id1">
 <span id="fig-mcmc-r"></span><img alt="_images/mcmc_r.png" src="_images/mcmc_r.png" />
-<p class="caption"><span class="caption-text">Histogram for the Metropolis algorithm with r</span></p>
+<p class="caption"><span class="caption-text">Histogram for the Metropolis algorithm with r</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Figure. <a class="reference internal" href="#fig-mcmc-r"><span class="std std-ref">Histogram for the Metropolis algorithm with r</span></a> shows a trace plot for this run as well as a histogram for
 the Metropolis algorithm compared with a draw from the true normal density.</p>
 </div>
 <div class="section" id="python-results">
-<h3>18.3.2. Python results<a class="headerlink" href="#python-results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.3.2. </span>Python results<a class="headerlink" href="#python-results" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># coding: utf-8</span>
 
 <span class="c1"># In[1]:</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <span class="c1"># In[2]:</span>
@@ -370,7 +372,7 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    same functions as dnorm in r</span>
 <span class="sd">    dnorm(x, mean=0, sd=1, log=FALSE)</span>
@@ -452,10 +454,10 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
 
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
     <span class="n">theta_star</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">logr</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">theta_star</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="o">+</span>            
-            <span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">theta_star</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">)))</span><span class="o">-</span>            
-            <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="o">+</span>             
-             <span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">([</span><span class="n">theta</span><span class="p">],</span><span class="n">mu</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="bp">True</span><span class="p">)))</span>
+    <span class="n">logr</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">theta_star</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="o">+</span>            
+            <span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">theta_star</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span><span class="o">-</span>            
+            <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="o">+</span>             
+             <span class="nb">sum</span><span class="p">(</span><span class="n">dnorm</span><span class="p">([</span><span class="n">theta</span><span class="p">],</span><span class="n">mu</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
     <span class="c1">#print(logr)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">&lt;</span><span class="n">logr</span><span class="p">:</span>
         <span class="n">theta</span> <span class="o">=</span> <span class="n">theta_star</span>
@@ -465,8 +467,8 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
 
 <span class="c1"># In[ ]:</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="kn">as</span> <span class="nn">mlab</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="k">as</span> <span class="nn">mlab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
@@ -475,7 +477,7 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
         
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1">#bins = np.arange(0, S, 10) </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">theta_v</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">theta_v</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">theta_v</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">theta_v</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span> 
 <span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu_n</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t2_n</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y-.&#39;</span><span class="p">)</span>
@@ -492,17 +494,17 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
 </div>
 <div class="figure align-center" id="id2">
 <span id="fig-mcmc-py"></span><img alt="_images/mcmc_py.png" src="_images/mcmc_py.png" />
-<p class="caption"><span class="caption-text">Histogram for the Metropolis algorithm with python</span></p>
+<p class="caption"><span class="caption-text">Histogram for the Metropolis algorithm with python</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>Figure. <a class="reference internal" href="#fig-mcmc-py"><span class="std std-ref">Histogram for the Metropolis algorithm with python</span></a> shows a trace plot for this run as well as a histogram for
 the Metropolis algorithm compared with a draw from the true normal density.</p>
 </div>
 <div class="section" id="pyspark-results">
-<h3>18.3.3. PySpark results<a class="headerlink" href="#pyspark-results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.3.3. </span>PySpark results<a class="headerlink" href="#pyspark-results" title="Permalink to this headline">¶</a></h3>
 <p>TODO…</p>
 <div class="figure align-center" id="id3">
 <span id="fig-mcmc-pyspark"></span><img alt="_images/mcmc_py.png" src="_images/mcmc_py.png" />
-<p class="caption"><span class="caption-text">Histogram for the Metropolis algorithm with PySpark</span></p>
+<p class="caption"><span class="caption-text">Histogram for the Metropolis algorithm with PySpark</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>Figure. <a class="reference internal" href="#fig-mcmc-pyspark"><span class="std std-ref">Histogram for the Metropolis algorithm with PySpark</span></a> shows a trace plot for this run as well as a histogram for
 the Metropolis algorithm compared with a draw from the true normal density.</p>
@@ -532,7 +534,7 @@ the Metropolis algorithm compared with a draw from the true normal density.</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

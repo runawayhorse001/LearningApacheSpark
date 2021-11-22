@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -120,8 +121,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -167,7 +170,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>17. Monte Carlo Simulation</li>
+      <li><span class="section-number">17. </span>Monte Carlo Simulation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,18 +188,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="monte-carlo-simulation">
-<span id="mc"></span><h1>17. Monte Carlo Simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">¶</a></h1>
+<span id="mc"></span><h1><span class="section-number">17. </span>Monte Carlo Simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-center">
 <img alt="_images/baba_sim_price.png" src="_images/baba_sim_price.png" />
 </div>
 <p>Monte Carlo simulations are just a way of estimating a fixed parameter by repeatedly generating random numbers. More details can be found at <a class="reference external" href="https://towardsdatascience.com/a-zero-math-introduction-to-markov-chain-monte-carlo-methods-dcba889e0c50">A Zero Math Introduction to Markov Chain Monte Carlo Methods</a>.</p>
 <p>Monte Carlo simulation is a technique used to understand the impact of risk and uncertainty in financial, project management, cost, and other forecasting models. A Monte Carlo simulator helps one visualize most or all of the potential outcomes to have a better idea regarding the risk of a decision. More details can be found at <a class="reference external" href="https://towardsdatascience.com/the-house-always-wins-monte-carlo-simulation-eb82787da2a3">The house always wins</a>.</p>
 <div class="section" id="simulating-casino-win">
-<h2>17.1. Simulating Casino Win<a class="headerlink" href="#simulating-casino-win" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.1. </span>Simulating Casino Win<a class="headerlink" href="#simulating-casino-win" title="Permalink to this headline">¶</a></h2>
 <p>We assume that the player John has the 49% chance to win the game and the wager will be $5 per game.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">start_m</span> <span class="o">=</span><span class="mi">100</span>
 <span class="n">wager</span> <span class="o">=</span> <span class="mi">5</span>
@@ -211,7 +214,7 @@
 <span class="n">end_m</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
-    <span class="n">money</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">],</span> <span class="n">trans</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">bets</span><span class="p">)),</span> <span class="p">[</span><span class="n">start_m</span><span class="p">])</span>
+    <span class="n">money</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">c</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">],</span> <span class="n">trans</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">bets</span><span class="p">)),</span> <span class="p">[</span><span class="n">start_m</span><span class="p">])</span>
     <span class="n">end_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">money</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">money</span><span class="p">)</span>
 
@@ -229,18 +232,18 @@
 </div>
 </div>
 <div class="section" id="simulating-a-random-walk">
-<h2>17.2. Simulating a Random Walk<a class="headerlink" href="#simulating-a-random-walk" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.2. </span>Simulating a Random Walk<a class="headerlink" href="#simulating-a-random-walk" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fetch-the-histrical-stock-price">
-<h3>17.2.1. Fetch the histrical stock price<a class="headerlink" href="#fetch-the-histrical-stock-price" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.1. </span>Fetch the histrical stock price<a class="headerlink" href="#fetch-the-histrical-stock-price" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Fecth the data. If you need the code for this piece, you can contact with me.</li>
+<li><p>Fecth the data. If you need the code for this piece, you can contact with me.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stock</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="o">+----------+----------+----------+----------+----------+----------+--------+</span>
 <span class="o">|</span>      <span class="n">Date</span><span class="o">|</span>      <span class="n">Open</span><span class="o">|</span>      <span class="n">High</span><span class="o">|</span>       <span class="n">Low</span><span class="o">|</span>     <span class="n">Close</span><span class="o">|</span> <span class="n">Adj</span> <span class="n">Close</span><span class="o">|</span>  <span class="n">Volume</span><span class="o">|</span>
 <span class="o">+----------+----------+----------+----------+----------+----------+--------+</span>
-<span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mo">07</span><span class="o">|</span><span class="mf">155.399994</span><span class="o">|</span><span class="mf">158.050003</span><span class="o">|</span><span class="mf">151.729996</span><span class="o">|</span><span class="mf">153.059998</span><span class="o">|</span><span class="mf">153.059998</span><span class="o">|</span><span class="mi">17447900</span><span class="o">|</span>
+<span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">07</span><span class="o">|</span><span class="mf">155.399994</span><span class="o">|</span><span class="mf">158.050003</span><span class="o">|</span><span class="mf">151.729996</span><span class="o">|</span><span class="mf">153.059998</span><span class="o">|</span><span class="mf">153.059998</span><span class="o">|</span><span class="mi">17447900</span><span class="o">|</span>
 <span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">10</span><span class="o">|</span><span class="mf">150.389999</span><span class="o">|</span><span class="mf">152.809998</span><span class="o">|</span><span class="mf">147.479996</span><span class="o">|</span><span class="mf">151.429993</span><span class="o">|</span><span class="mf">151.429993</span><span class="o">|</span><span class="mi">15525500</span><span class="o">|</span>
 <span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">11</span><span class="o">|</span><span class="mf">155.259995</span><span class="o">|</span><span class="mf">156.240005</span><span class="o">|</span><span class="mf">150.899994</span><span class="o">|</span><span class="mf">151.830002</span><span class="o">|</span><span class="mf">151.830002</span><span class="o">|</span><span class="mi">13651900</span><span class="o">|</span>
 <span class="o">|</span><span class="mi">2018</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">12</span><span class="o">|</span><span class="mf">155.240005</span><span class="o">|</span><span class="mf">156.169998</span><span class="o">|</span><span class="mf">151.429993</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span>     <span class="mf">151.5</span><span class="o">|</span><span class="mi">16597900</span><span class="o">|</span>
@@ -248,13 +251,13 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Convert the <code class="docutils literal notranslate"><span class="pre">str</span></code> type date to date type</li>
+<li><p>Convert the <code class="docutils literal notranslate"><span class="pre">str</span></code> type date to date type</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Data visualization</li>
+<li><p>Data visualization</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot everything by leveraging the very powerful matplotlib package</span>
 <span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>
@@ -287,27 +290,27 @@
 </div>
 <div class="figure align-center" id="id2">
 <span id="fig-mc-stock-his-price"></span><img alt="_images/baba_history.png" src="_images/baba_history.png" />
-<p class="caption"><span class="caption-text">Historical Stock Price</span></p>
+<p class="caption"><span class="caption-text">Historical Stock Price</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id3">
 <span id="fig-mc-stock-his-vol"></span><img alt="_images/baba_history_vol.png" src="_images/baba_history_vol.png" />
-<p class="caption"><span class="caption-text">Historical Stock Volume</span></p>
+<p class="caption"><span class="caption-text">Historical Stock Volume</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="calulate-the-compound-annual-growth-rate">
-<h3>17.2.2. Calulate the Compound Annual Growth Rate<a class="headerlink" href="#calulate-the-compound-annual-growth-rate" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.2. </span>Calulate the Compound Annual Growth Rate<a class="headerlink" href="#calulate-the-compound-annual-growth-rate" title="Permalink to this headline">¶</a></h3>
 <p>The formula for Compound Annual Growth Rate (CAGR) is very useful for investment analysis. It may also be referred to as the annualized rate of return or annual percent yield or effective annual rate, depending on the algebraic form of the equation. Many investments such as stocks have returns that can vary wildly. The CAGR formula allows you to calculate a “smoothed” rate of return that you can use to compare to other investments. The formula is defined as (more details can be found at <a class="reference external" href="https://www.vertex42.com/Calculators/cagr-calculator.html">CAGR Calculator and Formula</a>)</p>
 <div class="math">
-<p><img src="_images/math/76e4f9fb0f9c842a0c4d84777d0274f7c231f99d.png" alt="\text{CAGR}=\left(\frac{\text{End Value}}{\text{Start Value}}\right)^{\frac{365}{\text{Days}}} -1"/></p>
+<p><img src="_images/math/990f258e76e4df4c4bdf5826ee483a61a2b4eb2e.png" alt="\text{CAGR}=\left(\frac{\text{End Value}}{\text{Start Value}}\right)^{\frac{365}{\text{Days}}} -1"/></p>
 </div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">days</span> <span class="o">=</span>  <span class="p">(</span><span class="n">stock</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">days</span>
 <span class="n">cagr</span> <span class="o">=</span> <span class="p">((((</span><span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">**</span> <span class="p">(</span><span class="mf">365.0</span><span class="o">/</span><span class="n">days</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;CAGR =&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cagr</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;CAGR =&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cagr</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
 <span class="n">mu</span> <span class="o">=</span> <span class="n">cagr</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="calulate-the-annual-volatility">
-<h3>17.2.3. Calulate the annual volatility<a class="headerlink" href="#calulate-the-annual-volatility" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.3. </span>Calulate the annual volatility<a class="headerlink" href="#calulate-the-annual-volatility" title="Permalink to this headline">¶</a></h3>
 <p>A stock’s volatility is the variation in its price over a period of time. For example, one stock may have a tendency to swing wildly higher and lower, while another stock may move in much steadier, less turbulent way. Both stocks may end up at the same price at the end of day, but their path to that point can vary wildly. First, we create a series of percentage returns and calculate the annual volatility of returns Annualizing volatility. To present this volatility in annualized terms,
 we simply need to multiply our daily standard deviation
 by the square root of 252. This assumes there are 252
@@ -318,9 +321,9 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="create-matrix-of-daily-returns">
-<h3>17.2.4. Create matrix of daily returns<a class="headerlink" href="#create-matrix-of-daily-returns" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.4. </span>Create matrix of daily returns<a class="headerlink" href="#create-matrix-of-daily-returns" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Create matrix of daily returns using random normal distribution Generates an RDD matrix comprised of i.i.d. samples from the uniform distribution U(0.0, 1.0).</li>
+<li><p>Create matrix of daily returns using random normal distribution Generates an RDD matrix comprised of i.i.d. samples from the uniform distribution U(0.0, 1.0).</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#starting stock price (i.e. last available real stock price)</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1">#Number of trading days</span>
@@ -332,7 +335,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Transform the distribution in the generated RDD from U(0.0, 1.0) to U(a, b), use RandomRDDs.uniformRDD(sc, n, p, seed) .map(lambda v: a + (b - a) * v)</li>
+<li><p>Transform the distribution in the generated RDD from U(0.0, 1.0) to U(a, b), use RandomRDDs.uniformRDD(sc, n, p, seed) .map(lambda v: a + (b - a) * v)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">mu</span><span class="o">/</span><span class="n">T</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">vol</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
@@ -340,7 +343,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert Rdd matrix to dataframe</li>
+<li><p>Convert Rdd matrix to dataframe</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">toDF</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -395,7 +398,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="id1">
-<h3>17.2.5. Monte Carlo Simulation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.5. </span>Monte Carlo Simulation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">round</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">price</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">*</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;init_price&#39;</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
@@ -418,7 +421,7 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="summary">
-<h3>17.2.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">selected_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">price</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;day_&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 
 <span class="n">simulated</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">selected_col</span><span class="p">)</span>
@@ -462,14 +465,14 @@ trading days in a given year.  More details can be found at <a class="reference 
 </div>
 </div>
 <div class="section" id="one-year-stock-price-simulation">
-<h3>17.2.7. One-year Stock price simulation<a class="headerlink" href="#one-year-stock-price-simulation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.2.7. </span>One-year Stock price simulation<a class="headerlink" href="#one-year-stock-price-simulation" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id4">
 <span id="fig-mc-stock-price"></span><img alt="_images/baba_sim_price.png" src="_images/baba_sim_price.png" />
-<p class="caption"><span class="caption-text">Simulated Stock Price</span></p>
+<p class="caption"><span class="caption-text">Simulated Stock Price</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id5">
 <span id="fig-mc-stock-dis"></span><img alt="_images/baba_sim_dis1.png" src="_images/baba_sim_dis1.png" />
-<p class="caption"><span class="caption-text">Simulated Stock Price distribution</span></p>
+<p class="caption"><span class="caption-text">Simulated Stock Price distribution</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -497,7 +500,7 @@ trading days in a given year.  More details can be found at <a class="reference 
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -98,14 +99,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#total-sum-of-squares">6.3.4. Total sum of squares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#explained-sum-of-squares">6.3.5. Explained Sum of Squares</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#residual-sum-of-squares">6.3.6. Residual Sum of Squares</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#coefficient-of-determination-r-2">6.3.7. Coefficient of determination <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coefficient-of-determination-r-2">6.3.7. Coefficient of determination <img class="math" src="_images/math/5e8f938bbf96efd273c3b8e38dd751db89c25bfd.png" alt="R^2"/></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#confusion-matrix">6.4. Confusion Matrix</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#recall">6.4.1. Recall</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#precision">6.4.2. Precision</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#accuracy">6.4.3. Accuracy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#f-1-score">6.4.4. <img class="math" src="_images/math/7792c1f9c595f7dd6fc3cc810d9ab12bef97da1f.png" alt="F_1"/>-score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f-1-score">6.4.4. <img class="math" src="_images/math/d81d9f67b8d8e3c4cc0905881c66ff900112ab71.png" alt="F_1"/>-score</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#statistical-tests">6.5. Statistical Tests</a><ul>
@@ -134,8 +135,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -181,7 +184,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>6. Statistics and Linear Algebra Preliminaries</li>
+      <li><span class="section-number">6. </span>Statistics and Linear Algebra Preliminaries</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,135 +202,135 @@
            <div itemprop="articleBody">
             
   <div class="section" id="statistics-and-linear-algebra-preliminaries">
-<span id="stats"></span><h1>6. Statistics and Linear Algebra Preliminaries<a class="headerlink" href="#statistics-and-linear-algebra-preliminaries" title="Permalink to this headline">¶</a></h1>
+<span id="stats"></span><h1><span class="section-number">6. </span>Statistics and Linear Algebra Preliminaries<a class="headerlink" href="#statistics-and-linear-algebra-preliminaries" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>If you only know yourself, but not your opponent, you may win or may lose.
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>If you only know yourself, but not your opponent, you may win or may lose.
 If you know neither yourself nor your enemy, you will always endanger yourself</strong>
 – idiom, from Sunzi’s Art of War</p>
 </div>
 <div class="section" id="notations">
-<h2>6.1. Notations<a class="headerlink" href="#notations" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>m : the number of the samples</li>
-<li>n : the number of the features</li>
-<li><img class="math" src="_images/math/f25742cd5cf28cf855e7a6089d183c1d2a8f9c5b.png" alt="y_i"/> : i-th label</li>
-<li><img class="math" src="_images/math/ba191a86252f460cffbe98ce0825d19d7dd18bf1.png" alt="\hat{y}_i"/> : i-th predicted label</li>
-<li><img class="math" src="_images/math/15cfea19223d0df87409504dc45b86d0fd05e8e8.png" alt="{\displaystyle {\bar {\y}}} = {\frac {1}{m}}\sum _{i=1}^{m}y_{i}"/> :  the mean of <img class="math" src="_images/math/305bd617f1a5fac75829041961d4d1e4335fd170.png" alt="\y"/>.</li>
-<li><img class="math" src="_images/math/305bd617f1a5fac75829041961d4d1e4335fd170.png" alt="\y"/> : the label vector.</li>
-<li><img class="math" src="_images/math/c28ad8b5f9b1f4c1f951a8a78c1a825a0fb19efc.png" alt="\hat{\y}"/> : the predicted label vector.</li>
+<li><p>m : the number of the samples</p></li>
+<li><p>n : the number of the features</p></li>
+<li><p><img class="math" src="_images/math/b390f20de745618ca6e59a9c071db3ee4e778234.png" alt="y_i"/> : i-th label</p></li>
+<li><p><img class="math" src="_images/math/c1e0a24afe08ca15cb5e0eee2850e9987b262359.png" alt="\hat{y}_i"/> : i-th predicted label</p></li>
+<li><p><img class="math" src="_images/math/2af54bb401e4d729ddbb5afbc1a3686c2062bd67.png" alt="{\displaystyle {\bar {\y}}} = {\frac {1}{m}}\sum _{i=1}^{m}y_{i}"/> :  the mean of <img class="math" src="_images/math/db0f41f19ebbad9fcda0bda5f623a9dc857a11ea.png" alt="\y"/>.</p></li>
+<li><p><img class="math" src="_images/math/db0f41f19ebbad9fcda0bda5f623a9dc857a11ea.png" alt="\y"/> : the label vector.</p></li>
+<li><p><img class="math" src="_images/math/a1598f43a66a77af4908e0c245ec40b5b42047a5.png" alt="\hat{\y}"/> : the predicted label vector.</p></li>
 </ul>
 </div>
 <div class="section" id="linear-algebra-preliminaries">
-<h2>6.2. Linear Algebra Preliminaries<a class="headerlink" href="#linear-algebra-preliminaries" title="Permalink to this headline">¶</a></h2>
-<p>Since I have documented the Linear Algebra Preliminaries in my Prelim Exam note for Numerical Analysis, the interested reader is referred to <a class="reference internal" href="reference.html#feng2014" id="id1">[Feng2014]</a> for more details (Figure. <a class="reference internal" href="#fig-linear-algebra"><span class="std std-ref">Linear Algebra Preliminaries</span></a>).</p>
+<h2><span class="section-number">6.2. </span>Linear Algebra Preliminaries<a class="headerlink" href="#linear-algebra-preliminaries" title="Permalink to this headline">¶</a></h2>
+<p>Since I have documented the Linear Algebra Preliminaries in my Prelim Exam note for Numerical Analysis, the interested reader is referred to <a class="reference internal" href="reference.html#feng2014" id="id1"><span>[Feng2014]</span></a> for more details (Figure. <a class="reference internal" href="#fig-linear-algebra"><span class="std std-ref">Linear Algebra Preliminaries</span></a>).</p>
 <div class="figure align-center" id="id7">
 <span id="fig-linear-algebra"></span><img alt="_images/linear_algebra.png" src="_images/linear_algebra.png" />
-<p class="caption"><span class="caption-text">Linear Algebra Preliminaries</span></p>
+<p class="caption"><span class="caption-text">Linear Algebra Preliminaries</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="measurement-formula">
-<h2>6.3. Measurement Formula<a class="headerlink" href="#measurement-formula" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Measurement Formula<a class="headerlink" href="#measurement-formula" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="mean-absolute-error">
-<h3>6.3.1. Mean absolute error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.1. </span>Mean absolute error<a class="headerlink" href="#mean-absolute-error" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, <strong>MAE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_absolute_error">Mean absolute error</a>) is a measure of difference between two continuous variables. The Mean Absolute Error is given by:</p>
 <div class="math">
-<p><img src="_images/math/7cb3025235e8671f7874478d2917ba68e0e2dae3.png" alt="{\displaystyle \mathrm {MAE} ={\frac{1}{m} {\sum _{i=1}^{m}\left|\hat{y}_i-y_i\right|}}.}"/></p>
+<p><img src="_images/math/e71b063d0d7aea8aa18245a6d1608a8b12759096.png" alt="{\displaystyle \mathrm {MAE} ={\frac{1}{m} {\sum _{i=1}^{m}\left|\hat{y}_i-y_i\right|}}.}"/></p>
 </div></div>
 <div class="section" id="mean-squared-error">
-<h3>6.3.2. Mean squared error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2. </span>Mean squared error<a class="headerlink" href="#mean-squared-error" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, the <strong>MSE</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Mean_squared_error">Mean Squared Error</a>) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors or deviations—that is, the difference between the estimator and what is estimated.</p>
 <div class="math">
-<p><img src="_images/math/d4c4422bf81c8f27e4631fb0226536ecec324235.png" alt="\text{MSE}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+<p><img src="_images/math/39b39a50bb7191c7f6716148b0ced118e50f0607.png" alt="\text{MSE}=\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
 </div></div>
 <div class="section" id="root-mean-squared-error">
-<h3>6.3.3. Root Mean squared error<a class="headerlink" href="#root-mean-squared-error" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.3. </span>Root Mean squared error<a class="headerlink" href="#root-mean-squared-error" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/ec86b05be556df96e0e9b31ed22f9ebbfb00eb15.png" alt="\text{RMSE} = \sqrt{\text{MSE}}=\sqrt{\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2}"/></p>
+<p><img src="_images/math/84da78c36a1cd2183de01bfef508c34eef07ecfe.png" alt="\text{RMSE} = \sqrt{\text{MSE}}=\sqrt{\frac{1}{m}\sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2}"/></p>
 </div></div>
 <div class="section" id="total-sum-of-squares">
-<h3>6.3.4. Total sum of squares<a class="headerlink" href="#total-sum-of-squares" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.4. </span>Total sum of squares<a class="headerlink" href="#total-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistical data analysis the <strong>TSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_sum_of_squares">Total Sum of Squares</a>) is a quantity that appears as part of a standard way of presenting results of such analyses. It is defined as being the sum, over all observations, of the squared differences of each observation from the overall mean.</p>
 <div class="math">
-<p><img src="_images/math/994ba752d39e40092feed7d0a628a887bdeb1521.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{\y}\right)^2"/></p>
+<p><img src="_images/math/5d60ff5d01b72624f4ff4527d7d684c00e208feb.png" alt="\text{TSS} =  \sum_{i=1}^m\left( y_i-\bar{\y}\right)^2"/></p>
 </div></div>
 <div class="section" id="explained-sum-of-squares">
-<h3>6.3.5. Explained Sum of Squares<a class="headerlink" href="#explained-sum-of-squares" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.5. </span>Explained Sum of Squares<a class="headerlink" href="#explained-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, the <strong>ESS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Explained sum of squares</a>), alternatively known as the model sum of squares or sum of squares due to regression.</p>
 <p>The ESS is the sum of the squares of the differences of the predicted values and the mean value of the response variable which is given by:</p>
 <div class="math">
-<p><img src="_images/math/e9afd2f3e693e5f1e45b85d373cd2147a771131b.png" alt="\text{ESS}= \sum_{i=1}^m\left( \hat{y}_i-\bar{\y}\right)^2"/></p>
+<p><img src="_images/math/5bcf0b05e7dd7939dd32ca145fb275a95045bd91.png" alt="\text{ESS}= \sum_{i=1}^m\left( \hat{y}_i-\bar{\y}\right)^2"/></p>
 </div></div>
 <div class="section" id="residual-sum-of-squares">
-<h3>6.3.6. Residual Sum of Squares<a class="headerlink" href="#residual-sum-of-squares" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.6. </span>Residual Sum of Squares<a class="headerlink" href="#residual-sum-of-squares" title="Permalink to this headline">¶</a></h3>
 <p>In statistics, <strong>RSS</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Residual_sum_of_squares">Residual sum of squares</a>), also known as the sum of squared residuals (SSR) or the sum of squared errors of prediction (SSE), is the sum of the squares of residuals which is given by:</p>
 <div class="math">
-<p><img src="_images/math/31fb3a7e9ea49da5a5d8ed221b291291fb506550.png" alt="\text{RSS}= \sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
+<p><img src="_images/math/8d5a8bf9a97ebec45f10c3be51262bac6ea3e7b9.png" alt="\text{RSS}= \sum_{i=1}^m\left( \hat{y}_i-y_i\right)^2"/></p>
 </div></div>
 <div class="section" id="coefficient-of-determination-r-2">
-<h3>6.3.7. Coefficient of determination <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/><a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.7. </span>Coefficient of determination <img class="math" src="_images/math/5e8f938bbf96efd273c3b8e38dd751db89c25bfd.png" alt="R^2"/><a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/26a773e409cc86cf2289cc8e061a57c0d9c4e655.png" alt="R^{2} := \frac{ESS}{TSS} = 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
+<p><img src="_images/math/917dadd85ae40c0f831f73a95171b252f61f8c51.png" alt="R^{2} := \frac{ESS}{TSS} = 1-{\text{RSS} \over \text{TSS}}.\,"/></p>
 </div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>In general (<img class="math" src="_images/math/705c248bc17e51790314845f2839d2edfec72a9d.png" alt="\y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}"/>), total sum of squares = explained sum of squares + residual sum of squares, i.e.:</p>
+<p class="admonition-title">Note</p>
+<p>In general (<img class="math" src="_images/math/7260e83fac3cbecafaf639e07b528057b610aa37.png" alt="\y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}"/>), total sum of squares = explained sum of squares + residual sum of squares, i.e.:</p>
 <div class="math">
-<p><img src="_images/math/e70a7a43f3b6ab603a5558e9fd02579be0967ae0.png" alt="\text{TSS} = \text{ESS} + \text{RSS} \text{ if and only if } {\displaystyle \y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}}."/></p>
-</div><p class="last">More details can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Partitioning in the general ordinary least squares model</a>.</p>
+<p><img src="_images/math/0c9772adc191f4b5b00f15013dfe7480b761d8ac.png" alt="\text{TSS} = \text{ESS} + \text{RSS} \text{ if and only if } {\displaystyle \y^{T}{\bar {\y}}={\hat {\y}}^{T}{\bar {\y}}}."/></p>
+</div><p>More details can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Explained_sum_of_squares">Partitioning in the general ordinary least squares model</a>.</p>
 </div>
 </div>
 </div>
 <div class="section" id="confusion-matrix">
-<h2>6.4. Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4. </span>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id8">
 <span id="fig-con"></span><img alt="_images/confusion_matrix.png" src="_images/confusion_matrix.png" />
-<p class="caption"><span class="caption-text">Confusion Matrix</span></p>
+<p class="caption"><span class="caption-text">Confusion Matrix</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="recall">
-<h3>6.4.1. Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4.1. </span>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/695efcb46b2085cbcb9d540b3d8bd77bf404af6d.png" alt="\text{Recall}=\frac{\text{TP}}{\text{TP+FN}}"/></p>
+<p><img src="_images/math/aa1aec866dd78ac53bf3dc81c3f32d0f1763be66.png" alt="\text{Recall}=\frac{\text{TP}}{\text{TP+FN}}"/></p>
 </div></div>
 <div class="section" id="precision">
-<h3>6.4.2. Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4.2. </span>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/2e06514ae3b12b4cc9d3bf2fbe892b60ed2cbc05.png" alt="\text{Precision}=\frac{\text{TP}}{\text{TP+FP}}"/></p>
+<p><img src="_images/math/c5fdb3b34ac49ec63343bf2ff046dc72217c275a.png" alt="\text{Precision}=\frac{\text{TP}}{\text{TP+FP}}"/></p>
 </div></div>
 <div class="section" id="accuracy">
-<h3>6.4.3. Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4.3. </span>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/ac86bb5d763cd4fdffeca21b253284a88400e163.png" alt="\text{Accuracy }=\frac{\text{TP+TN}}{\text{Total}}"/></p>
+<p><img src="_images/math/7f2335a3251d54822baef4122821a03f9a0f7691.png" alt="\text{Accuracy }=\frac{\text{TP+TN}}{\text{Total}}"/></p>
 </div></div>
 <div class="section" id="f-1-score">
-<h3>6.4.4. <img class="math" src="_images/math/7792c1f9c595f7dd6fc3cc810d9ab12bef97da1f.png" alt="F_1"/>-score<a class="headerlink" href="#f-1-score" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4.4. </span><img class="math" src="_images/math/d81d9f67b8d8e3c4cc0905881c66ff900112ab71.png" alt="F_1"/>-score<a class="headerlink" href="#f-1-score" title="Permalink to this headline">¶</a></h3>
 <div class="math">
-<p><img src="_images/math/45bcecd31b9a7bff075319dec1db51f46c019877.png" alt="\text{F}_1=\frac{2*\text{Recall}*\text{Precision}}{\text{Recall}+ \text{Precision}}"/></p>
+<p><img src="_images/math/543ac6850ba5052d89585ae37d55772d6f9da32d.png" alt="\text{F}_1=\frac{2*\text{Recall}*\text{Precision}}{\text{Recall}+ \text{Precision}}"/></p>
 </div></div>
 </div>
 <div class="section" id="statistical-tests">
-<h2>6.5. Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5. </span>Statistical Tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="correlational-test">
-<h3>6.5.1. Correlational Test<a class="headerlink" href="#correlational-test" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.1. </span>Correlational Test<a class="headerlink" href="#correlational-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Pearson correlation: Tests for the strength of the association between two continuous variables.</li>
-<li>Spearman correlation: Tests for the strength of the association between two ordinal variables (does not rely on the assumption of normal distributed data).</li>
-<li>Chi-square: Tests for the strength of the association between two categorical variables.</li>
+<li><p>Pearson correlation: Tests for the strength of the association between two continuous variables.</p></li>
+<li><p>Spearman correlation: Tests for the strength of the association between two ordinal variables (does not rely on the assumption of normal distributed data).</p></li>
+<li><p>Chi-square: Tests for the strength of the association between two categorical variables.</p></li>
 </ul>
 </div>
 <div class="section" id="comparison-of-means-test">
-<h3>6.5.2. Comparison of Means test<a class="headerlink" href="#comparison-of-means-test" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.2. </span>Comparison of Means test<a class="headerlink" href="#comparison-of-means-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Paired T-test: Tests for difference between two related variables.</li>
-<li>Independent T-test: Tests for difference between two independent variables.</li>
-<li>ANOVA: Tests the difference between group means after any other variance in the outcome variable is accounted for.</li>
+<li><p>Paired T-test: Tests for difference between two related variables.</p></li>
+<li><p>Independent T-test: Tests for difference between two independent variables.</p></li>
+<li><p>ANOVA: Tests the difference between group means after any other variance in the outcome variable is accounted for.</p></li>
 </ul>
 </div>
 <div class="section" id="non-parametric-test">
-<h3>6.5.3. Non-parametric Test<a class="headerlink" href="#non-parametric-test" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.3. </span>Non-parametric Test<a class="headerlink" href="#non-parametric-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Wilcoxon rank-sum test: Tests for difference between two independent variables - takes into account magnitude and direction of difference.</li>
-<li>Wilcoxon sign-rank test: Tests for difference between two related variables - takes into account magnitude and direction of difference.</li>
-<li>Sign test: Tests if two related variables are different – ignores magnitude of change, only takes into account direction.</li>
+<li><p>Wilcoxon rank-sum test: Tests for difference between two independent variables - takes into account magnitude and direction of difference.</p></li>
+<li><p>Wilcoxon sign-rank test: Tests for difference between two related variables - takes into account magnitude and direction of difference.</p></li>
+<li><p>Sign test: Tests if two related variables are different – ignores magnitude of change, only takes into account direction.</p></li>
 </ul>
 </div>
 </div>
@@ -355,7 +358,7 @@ If you know neither yourself nor your enemy, you will always endanger yourself</
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

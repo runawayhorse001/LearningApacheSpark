@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -113,8 +114,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -160,7 +163,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>4. An Introduction to Apache Spark</li>
+      <li><span class="section-number">4. </span>An Introduction to Apache Spark</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,30 +181,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="an-introduction-to-apache-spark">
-<span id="introduction"></span><h1>4. An Introduction to Apache Spark<a class="headerlink" href="#an-introduction-to-apache-spark" title="Permalink to this headline">¶</a></h1>
+<span id="introduction"></span><h1><span class="section-number">4. </span>An Introduction to Apache Spark<a class="headerlink" href="#an-introduction-to-apache-spark" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>Know yourself and know your enemy, and you will never be defeated</strong> – idiom, from Sunzi’s Art of War</p>
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>Know yourself and know your enemy, and you will never be defeated</strong> – idiom, from Sunzi’s Art of War</p>
 </div>
 <div class="section" id="core-concepts">
-<h2>4.1. Core Concepts<a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
-<p>Most of the following content comes from <a class="reference internal" href="reference.html#kirillov2016" id="id1">[Kirillov2016]</a>. So the copyright belongs to <strong>Anton Kirillov</strong>.
+<h2><span class="section-number">4.1. </span>Core Concepts<a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
+<p>Most of the following content comes from <a class="reference internal" href="reference.html#kirillov2016" id="id1"><span>[Kirillov2016]</span></a>. So the copyright belongs to <strong>Anton Kirillov</strong>.
 I will refer you to get more details from <a class="reference external" href="http://datastrophic.io/core-concepts-architecture-and-internals-of-apache-spark/">Apache Spark core concepts, architecture and internals</a>.</p>
 <p>Before diving deep into how Apache Spark works, lets understand the jargon of Apache Spark</p>
 <blockquote>
 <div><ul class="simple">
-<li>Job: A piece of code which reads some input from HDFS or local, performs some computation on the data and writes some output data.</li>
-<li>Stages: Jobs are divided into stages. Stages are classified as a Map or reduce stages (Its easier to understand if you have worked on Hadoop and want to correlate). Stages are divided based on computational boundaries, all computations (operators) cannot be Updated in a single Stage. It happens over many stages.</li>
-<li>Tasks: Each stage has some tasks, one task per partition. One task is executed on one partition of data on one executor (machine).</li>
-<li>DAG: DAG stands for Directed Acyclic Graph, in the present context its a DAG of operators.</li>
-<li>Executor: The process responsible for executing a task.</li>
-<li>Master: The machine on which the Driver program runs</li>
-<li>Slave: The machine on which the Executor program runs</li>
+<li><p>Job: A piece of code which reads some input from HDFS or local, performs some computation on the data and writes some output data.</p></li>
+<li><p>Stages: Jobs are divided into stages. Stages are classified as a Map or reduce stages (Its easier to understand if you have worked on Hadoop and want to correlate). Stages are divided based on computational boundaries, all computations (operators) cannot be Updated in a single Stage. It happens over many stages.</p></li>
+<li><p>Tasks: Each stage has some tasks, one task per partition. One task is executed on one partition of data on one executor (machine).</p></li>
+<li><p>DAG: DAG stands for Directed Acyclic Graph, in the present context its a DAG of operators.</p></li>
+<li><p>Executor: The process responsible for executing a task.</p></li>
+<li><p>Master: The machine on which the Driver program runs</p></li>
+<li><p>Slave: The machine on which the Executor program runs</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="spark-components">
-<h2>4.2. Spark Components<a class="headerlink" href="#spark-components" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Spark Components<a class="headerlink" href="#spark-components" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><blockquote>
 <div><div class="figure align-center" id="fig-spark-components">
@@ -209,33 +212,33 @@ I will refer you to get more details from <a class="reference external" href="ht
 </div>
 </div></blockquote>
 <ol class="arabic simple">
-<li>Spark Driver</li>
+<li><p>Spark Driver</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>separate process to execute user applications</li>
-<li>creates SparkContext to schedule jobs execution
-and negotiate with cluster manager</li>
+<li><p>separate process to execute user applications</p></li>
+<li><p>creates SparkContext to schedule jobs execution
+and negotiate with cluster manager</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Executors</li>
+<li><p>Executors</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>run tasks scheduled by driver</li>
-<li>store computation results in memory, on disk or off-heap</li>
-<li>interact with storage systems</li>
+<li><p>run tasks scheduled by driver</p></li>
+<li><p>store computation results in memory, on disk or off-heap</p></li>
+<li><p>interact with storage systems</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Cluster Manager</li>
+<li><p>Cluster Manager</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>Mesos</li>
-<li>YARN</li>
-<li>Spark Standalone</li>
+<li><p>Mesos</p></li>
+<li><p>YARN</p></li>
+<li><p>Spark Standalone</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -248,42 +251,42 @@ of user code into actual jobs executed on cluster:</p>
 </div>
 </div></blockquote>
 <ul>
-<li><p class="first">SparkContext</p>
+<li><p>SparkContext</p>
 <blockquote>
 <div><ul class="simple">
-<li>represents the connection to a Spark cluster, and can be used to create RDDs,
-accumulators and broadcast variables  on that cluster</li>
+<li><p>represents the connection to a Spark cluster, and can be used to create RDDs,
+accumulators and broadcast variables  on that cluster</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">DAGScheduler</p>
+<li><p>DAGScheduler</p>
 <ul class="simple">
-<li>computes a DAG of stages for each job and submits them to TaskScheduler
+<li><p>computes a DAG of stages for each job and submits them to TaskScheduler
 determines preferred locations for tasks (based on cache status or
-shuffle files locations) and finds minimum schedule to run the jobs</li>
+shuffle files locations) and finds minimum schedule to run the jobs</p></li>
 </ul>
 </li>
-<li><p class="first">TaskScheduler</p>
+<li><p>TaskScheduler</p>
 <blockquote>
 <div><ul class="simple">
-<li>responsible for sending tasks to the cluster, running them,
-retrying if there are failures, and mitigating stragglers</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">SchedulerBackend</p>
-<blockquote>
-<div><ul class="simple">
-<li>backend interface for scheduling systems that allows plugging
-in different implementations(Mesos, YARN, Standalone, local)</li>
+<li><p>responsible for sending tasks to the cluster, running them,
+retrying if there are failures, and mitigating stragglers</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">BlockManager</p>
+<li><p>SchedulerBackend</p>
 <blockquote>
 <div><ul class="simple">
-<li>provides interfaces for putting and retrieving blocks both locally
-and remotely into various stores (memory,  disk, and off-heap)</li>
+<li><p>backend interface for scheduling systems that allows plugging
+in different implementations(Mesos, YARN, Standalone, local)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>BlockManager</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>provides interfaces for putting and retrieving blocks both locally
+and remotely into various stores (memory,  disk, and off-heap)</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -291,10 +294,10 @@ and remotely into various stores (memory,  disk, and off-heap)</li>
 </div></blockquote>
 </div>
 <div class="section" id="architecture">
-<h2>4.3. Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="how-spark-works">
-<h2>4.4. How Spark Works?<a class="headerlink" href="#how-spark-works" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>How Spark Works?<a class="headerlink" href="#how-spark-works" title="Permalink to this headline">¶</a></h2>
 <p>Spark has a small code base and the system is divided in various layers. Each layer has some responsibilities. The layers are independent of each other.</p>
 <p>The first layer is the interpreter, Spark uses a Scala interpreter, with some modifications.
 As you enter your code in spark console (creating RDD’s and applying operators), Spark creates a operator graph.
@@ -331,7 +334,7 @@ The stages are passed on to the Task Scheduler. The task scheduler launches task
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

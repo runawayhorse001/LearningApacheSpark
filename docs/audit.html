@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -126,8 +127,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -173,7 +176,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>22. PySpark Data Audit Library</li>
+      <li><span class="section-number">22. </span>PySpark Data Audit Library</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -191,26 +194,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pyspark-data-audit-library">
-<span id="audit"></span><h1>22. PySpark Data Audit Library<a class="headerlink" href="#pyspark-data-audit-library" title="Permalink to this headline">¶</a></h1>
+<span id="audit"></span><h1><span class="section-number">22. </span>PySpark Data Audit Library<a class="headerlink" href="#pyspark-data-audit-library" title="Permalink to this headline">¶</a></h1>
 <p><strong>PySparkAudit</strong>: <a class="reference external" href="https://runawayhorse001.github.io/PySparkAudit/">PySpark Data Audit Library</a>. The PDF version can be downloaded from <a class="reference external" href="https://runawayhorse001.github.io/PySparkAudit/PySparkAudit.pdf">HERE</a>.
 The python version <strong>PyAudit</strong>: Python Data Audit Library API can be found at <a class="reference external" href="https://runawayhorse001.github.io/PyAudit/">PyAudit</a>.</p>
 <div class="section" id="install-with-pip">
-<h2>22.1. Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.1. </span>Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#install-with-pip" title="Permalink to this headline">¶</a></h2>
 <p>You can install the <code class="docutils literal notranslate"><span class="pre">PySparkAudit</span></code> from [PyPI](<a class="reference external" href="https://pypi.org/project/PySparkAudit">https://pypi.org/project/PySparkAudit</a>):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install PySparkAudit
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-from-repo">
-<h2>22.2. Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.2. </span>Install from Repo<a class="headerlink" href="#install-from-repo" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="clone-the-repository">
-<h3>22.2.1. Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">22.2.1. </span>Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/runawayhorse001/PySparkAudit.git
 </pre></div>
 </div>
 </div>
 <div class="section" id="install">
-<h3>22.2.2. Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">22.2.2. </span>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> PySparkAudit
 pip install -r requirements.txt
 python setup.py install
@@ -219,15 +222,15 @@ python setup.py install
 </div>
 </div>
 <div class="section" id="uninstall">
-<h2>22.3. Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall statspy
+<h2><span class="section-number">22.3. </span>Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip uninstall PySparkAudit
 </pre></div>
 </div>
 </div>
 <div class="section" id="test">
-<h2>22.4. Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.4. </span>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="run-test-code">
-<h3>22.4.1. Run test code<a class="headerlink" href="#run-test-code" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">22.4.1. </span>Run test code<a class="headerlink" href="#run-test-code" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> PySparkAudit/test
 python test.py
 </pre></div>
@@ -252,15 +255,15 @@ python test.py
 
 <span class="c1"># load dataset</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;Heart.csv&#39;</span><span class="p">,</span>
-                      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># auditing in one function </span>
-<span class="k">print</span><span class="p">(</span><span class="n">auditing</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">auditing</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="audited-results">
-<h3>22.4.2. Audited Results<a class="headerlink" href="#audited-results" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">22.4.2. </span>Audited Results<a class="headerlink" href="#audited-results" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="figure align-center">
 <img alt="_images/t_folder.png" src="_images/t_folder.png" />
@@ -268,7 +271,7 @@ python test.py
 </div></blockquote>
 <p>The files in <code class="docutils literal notranslate"><span class="pre">00-audited_results.xlsx</span></code>:</p>
 <ol class="arabic simple">
-<li>Dataset_summary</li>
+<li><p>Dataset_summary</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -276,7 +279,7 @@ python test.py
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Numeric_summary</li>
+<li><p>Numeric_summary</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -284,7 +287,7 @@ python test.py
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Category_summary</li>
+<li><p>Category_summary</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -292,7 +295,7 @@ python test.py
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Correlation_matrix</li>
+<li><p>Correlation_matrix</p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -300,7 +303,7 @@ python test.py
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>Histograms in <code class="docutils literal notranslate"><span class="pre">Histograms.pdf</span></code></li>
+<li><p>Histograms in <code class="docutils literal notranslate"><span class="pre">Histograms.pdf</span></code></p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -308,7 +311,7 @@ python test.py
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="6">
-<li>Barplots in <code class="docutils literal notranslate"><span class="pre">Bar_plots.pdf</span></code></li>
+<li><p>Barplots in <code class="docutils literal notranslate"><span class="pre">Bar_plots.pdf</span></code></p></li>
 </ol>
 <blockquote>
 <div><div class="figure align-center">
@@ -318,7 +321,7 @@ python test.py
 </div>
 </div>
 <div class="section" id="auditing-on-big-dataset">
-<h2>22.5. Auditing on Big Dataset<a class="headerlink" href="#auditing-on-big-dataset" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.5. </span>Auditing on Big Dataset<a class="headerlink" href="#auditing-on-big-dataset" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we will demonstrate the auditing performance and audited results on the big data set.
 The data set is <code class="docutils literal notranslate"><span class="pre">Spanish</span> <span class="pre">High</span> <span class="pre">Speed</span> <span class="pre">Rail</span> <span class="pre">tickets</span> <span class="pre">pricing</span></code>.  It is available at :
 <a class="reference external" href="https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing">https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing</a>. This data set has 2579771
@@ -350,15 +353,15 @@ you to use <code class="docutils literal notranslate"><span class="pre">sample_s
 <span class="c1"># https://www.kaggle.com/thegurus/spanish-high-speed-rail-system-ticket-pricing</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/home/feng/Downloads/renfe.csv&#39;</span><span class="p">,</span>
-                      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># auditing in one function</span>
-<span class="n">auditing</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">out_path</span><span class="p">,</span> <span class="n">tracking</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">auditing</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">out_path</span><span class="p">,</span> <span class="n">tracking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Result:</p>
 <div class="section" id="print-in-bash">
-<h3>22.5.1. print in bash<a class="headerlink" href="#print-in-bash" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">22.5.1. </span>print in bash<a class="headerlink" href="#print-in-bash" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">================================================================</span>
 The audited results summary audited_results.xlsx was located at:
 /home/feng/Desktop/Audited
@@ -441,7 +444,7 @@ The auditing processes are DONE!!!
 </div>
 </div>
 <div class="section" id="audited-results-folder">
-<h3>22.5.2. Audited results folder<a class="headerlink" href="#audited-results-folder" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">22.5.2. </span>Audited results folder<a class="headerlink" href="#audited-results-folder" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="figure align-center">
 <img alt="_images/demo3_folder.png" src="_images/demo3_folder.png" />
@@ -473,7 +476,7 @@ The auditing processes are DONE!!!
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

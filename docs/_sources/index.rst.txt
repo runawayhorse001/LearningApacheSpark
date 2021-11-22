@@ -42,6 +42,8 @@ Contents
    audit
    ze2nb
    cheat
+   jdbc
+   bricks
    api
    reference
 

@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -145,8 +146,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -192,7 +195,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>9. Regression</li>
+      <li><span class="section-number">9. </span>Regression</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -210,84 +213,84 @@
            <div itemprop="articleBody">
             
   <div class="section" id="regression">
-<span id="id1"></span><h1>9. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">9. </span>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>A journey of a thousand miles begins with a single step.</strong> – old Chinese proverb</p>
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>A journey of a thousand miles begins with a single step.</strong> – old Chinese proverb</p>
 </div>
 <p>In statistical modeling, regression analysis focuses on investigating the relationship between a dependent variable and one or more independent variables. <a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">Wikipedia Regression analysis</a></p>
 <p>In data mining, Regression is a model to represent the relationship between the value of lable ( or target, it is numerical variable) and on one or more features (or predictors they can be numerical and categorical variables).</p>
 <div class="section" id="linear-regression">
-<h2>9.1. Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
-<h3>9.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
-<p>Given that a data set <img class="math" src="_images/math/34b3cb48dbd5b7362da5047a0ab2bebfbebf8528.png" alt="{\displaystyle \{\,x_{i1},\ldots ,x_{in},y_{i}\}_{i=1}^{m}}"/> which contains n features (variables) and m samples (data points), in simple linear regression model for modeling <img class="math" src="_images/math/831998a77f2825adddad9a1be0df47215c033921.png" alt="{\displaystyle m}"/> data points with <img class="math" src="_images/math/bd2a969175ddf061a2dd62750011e023cbfa55a5.png" alt="j"/> independent variables: <img class="math" src="_images/math/dbc14c69831985af6b8ee5d21811b0afe224a750.png" alt="{\displaystyle x_{ij}}"/>, the formula is given by:</p>
+<h3><span class="section-number">9.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>Given that a data set <img class="math" src="_images/math/baaf32468ef5508566a8bbcb1283e427a729bc21.png" alt="{\displaystyle \{\,x_{i1},\ldots ,x_{in},y_{i}\}_{i=1}^{m}}"/> which contains n features (variables) and m samples (data points), in simple linear regression model for modeling <img class="math" src="_images/math/c2bc8d9e9827513187ebec294483b66eaa010324.png" alt="{\displaystyle m}"/> data points with <img class="math" src="_images/math/e2626cd4f9906fbd2a1979a3694012539aeb3f23.png" alt="j"/> independent variables: <img class="math" src="_images/math/4d1920b3df7c15c8dd3fd47b1048269aa612a582.png" alt="{\displaystyle x_{ij}}"/>, the formula is given by:</p>
 <blockquote>
 <div><div class="math">
-<p><img src="_images/math/526ed22f9aa6b6f3982195c0ac0cddbced78e1a7.png" alt="y_i = \beta_0 + \beta_j x_{ij}, \text{where}, i= 1, \cdots m, j= 1, \cdots n."/></p>
+<p><img src="_images/math/72d38fc297dc537d008bd8452bee7c66f1c2b55c.png" alt="y_i = \beta_0 + \beta_j x_{ij}, \text{where}, i= 1, \cdots m, j= 1, \cdots n."/></p>
 </div></div></blockquote>
-<p>In matrix notation, the data set is written as <img class="math" src="_images/math/2ae8296dea77089d7a2c1ba73b65a52905db8762.png" alt="\X = [\x_1,\cdots, \x_n]"/> with
-<img class="math" src="_images/math/df6ebce3b1ad34268a3a26c5838fb67e33543eb8.png" alt="\x_j = {\displaystyle \{x_{ij}\}_{i=1}^{m}}"/>,
-<img class="math" src="_images/math/764eaf29d96ffc0aad4873b8fe055ef351fa2a1b.png" alt="\y = {\displaystyle \{y_{i}\}_{i=1}^{m}}"/> (see Fig. <a class="reference internal" href="#fig-fm"><span class="std std-ref">Feature matrix and label</span></a>)
-and <img class="math" src="_images/math/7e1c1b9704710b19ceacb4753a2a5f14f70be6ec.png" alt="\Bbeta^\top = {\displaystyle \{\beta_{j}\}_{j=1}^{n}}"/>.
+<p>In matrix notation, the data set is written as <img class="math" src="_images/math/f3dccbc22308d3d31fa6cb52c6a71a00c90bb63a.png" alt="\X = [\x_1,\cdots, \x_n]"/> with
+<img class="math" src="_images/math/60859f32d7ee47a9eec81d32d7994769ef80645a.png" alt="\x_j = {\displaystyle \{x_{ij}\}_{i=1}^{m}}"/>,
+<img class="math" src="_images/math/a7c5a9c904e4713a8c8cb97cdfb889f33f936b0b.png" alt="\y = {\displaystyle \{y_{i}\}_{i=1}^{m}}"/> (see Fig. <a class="reference internal" href="#fig-fm"><span class="std std-ref">Feature matrix and label</span></a>)
+and <img class="math" src="_images/math/507a08b61749c6b857e94fd447770b2dcdf42ed7.png" alt="\Bbeta^\top = {\displaystyle \{\beta_{j}\}_{j=1}^{n}}"/>.
 Then the matrix format equation is written as</p>
 <blockquote>
 <div><div class="math" id="equation-eq-ax">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-ax" title="Permalink to this equation">¶</a></span><img src="_images/math/639925bf451921dfe5397ce73b94a221b717fb93.png" alt="\y = \X \Bbeta."/></p>
+<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-ax" title="Permalink to this equation">¶</a></span><img src="_images/math/cc52826ba3bf496572a3128c262ecda867ca97f1.png" alt="\y = \X \Bbeta."/></p>
 </div></div></blockquote>
 <div class="figure align-center" id="id20">
 <span id="fig-fm"></span><img alt="_images/fm.png" src="_images/fm.png" />
-<p class="caption"><span class="caption-text">Feature matrix and label</span></p>
+<p class="caption"><span class="caption-text">Feature matrix and label</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="how-to-solve-it">
-<h3>9.1.2. How to solve it?<a class="headerlink" href="#how-to-solve-it" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.2. </span>How to solve it?<a class="headerlink" href="#how-to-solve-it" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Direct Methods (For more information please refer to my <a class="reference external" href="http://web.utk.edu/~wfeng1/doc/PrelimNum.pdf">Prelim Notes for Numerical Analysis</a>)</p>
+<li><p>Direct Methods (For more information please refer to my <a class="reference external" href="http://web.utk.edu/~wfeng1/doc/PrelimNum.pdf">Prelim Notes for Numerical Analysis</a>)</p>
 <blockquote>
 <div><ul>
-<li><p class="first">For squared or rectangular matrices</p>
+<li><p>For squared or rectangular matrices</p>
 <blockquote>
 <div><ul class="simple">
-<li>Singular Value Decomposition</li>
-<li>Gram-Schmidt orthogonalization</li>
-<li>QR Decomposition</li>
+<li><p>Singular Value Decomposition</p></li>
+<li><p>Gram-Schmidt orthogonalization</p></li>
+<li><p>QR Decomposition</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">For squared matrices</p>
+<li><p>For squared matrices</p>
 <blockquote>
 <div><ul class="simple">
-<li>LU Decomposition</li>
-<li>Cholesky Decomposition</li>
-<li>Regular Splittings</li>
+<li><p>LU Decomposition</p></li>
+<li><p>Cholesky Decomposition</p></li>
+<li><p>Regular Splittings</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Iterative Methods</p>
+<li><p>Iterative Methods</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Stationary cases iterative method</p>
+<li><p>Stationary cases iterative method</p>
 <blockquote>
 <div><ul class="simple">
-<li>Jacobi Method</li>
-<li>Gauss-Seidel Method</li>
-<li>Richardson Method</li>
-<li>Successive Over Relaxation (SOR) Method</li>
+<li><p>Jacobi Method</p></li>
+<li><p>Gauss-Seidel Method</p></li>
+<li><p>Richardson Method</p></li>
+<li><p>Successive Over Relaxation (SOR) Method</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Dynamic cases iterative method</p>
+<li><p>Dynamic cases iterative method</p>
 <blockquote>
 <div><ul class="simple">
-<li>Chebyshev iterative Method</li>
-<li>Minimal residuals Method</li>
-<li>Minimal correction iterative method</li>
-<li>Steepest Descent Method</li>
-<li>Conjugate Gradients Method</li>
+<li><p>Chebyshev iterative Method</p></li>
+<li><p>Minimal residuals Method</p></li>
+<li><p>Minimal correction iterative method</p></li>
+<li><p>Steepest Descent Method</p></li>
+<li><p>Conjugate Gradients Method</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -297,63 +300,63 @@ Then the matrix format equation is written as</p>
 </ol>
 </div>
 <div class="section" id="ordinary-least-squares">
-<h3>9.1.3. Ordinary Least Squares<a class="headerlink" href="#ordinary-least-squares" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.3. </span>Ordinary Least Squares<a class="headerlink" href="#ordinary-least-squares" title="Permalink to this headline">¶</a></h3>
 <p>In mathematics, <a class="reference internal" href="#equation-eq-ax">(1)</a> is a overdetermined system.  The method of ordinary least squares can be used to find an approximate solution to overdetermined systems. For the system overdetermined system <a class="reference internal" href="#equation-eq-ax">(1)</a>, the least squares formula is obtained from the problem</p>
 <div class="math" id="equation-eq-minax">
-<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-minax" title="Permalink to this equation">¶</a></span><img src="_images/math/a386b7e50e8317a0c0416106400235c5e93d33fc.png" alt="{\displaystyle \min _{\Bbeta}  ||\X \Bbeta-\y||} ,"/></p>
+<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-minax" title="Permalink to this equation">¶</a></span><img src="_images/math/be092eab4988206b263ff542bac772fb314eae83.png" alt="{\displaystyle \min _{\Bbeta}  ||\X \Bbeta-\y||} ,"/></p>
 </div><p>the solution of which can be written with the normal equations:</p>
 <div class="math" id="equation-eq-solax">
-<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-solax" title="Permalink to this equation">¶</a></span><img src="_images/math/e51f17383fb3f54631d708e7b6c2f76fa838b159.png" alt="\Bbeta  = (\X^T\X)^{-1}\X^T\y"/></p>
-</div><p>where <img class="math" src="_images/math/3f00f1bce437fe2a291cea00025febce05d9480a.png" alt="{\displaystyle {\mathrm {T} }}"/> indicates a matrix transpose, provided <img class="math" src="_images/math/1717df79cc1b1f502232e7504309c65167ec40b7.png" alt="{\displaystyle (\X^{\mathrm {T} }\X)^{-1}}"/> exists (that is, provided <img class="math" src="_images/math/995c4a7c078c9196853d08c31ce3b967c254793a.png" alt="\X"/> has full column rank).</p>
+<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-solax" title="Permalink to this equation">¶</a></span><img src="_images/math/fff22a6dfc7d379cf2d6fa3998ad832c75a6d10d.png" alt="\Bbeta  = (\X^T\X)^{-1}\X^T\y"/></p>
+</div><p>where <img class="math" src="_images/math/0e8d34b3e709c3c505f2a7f6f07e0def69f9f1f5.png" alt="{\displaystyle {\mathrm {T} }}"/> indicates a matrix transpose, provided <img class="math" src="_images/math/8f80e873c8979be5f1b64ef11abbbd597409898f.png" alt="{\displaystyle (\X^{\mathrm {T} }\X)^{-1}}"/> exists (that is, provided <img class="math" src="_images/math/a3211a24f849ec2dea6cdc340714343e66f48342.png" alt="\X"/> has full column rank).</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Actually, <a class="reference internal" href="#equation-eq-solax">(3)</a> can be derivated by the following way: multiply <img class="math" src="_images/math/19697b9218adab6bafb243b8ce2d946d5ce80363.png" alt="\X^T"/> on side of <a class="reference internal" href="#equation-eq-ax">(1)</a> and then multiply <img class="math" src="_images/math/4bdb7a836dbfe9f6af6d5942c0e8a57646c83dce.png" alt="(\X^T\X)^{-1}"/> on both side of the former result. You may also apply the <code class="docutils literal notranslate"><span class="pre">Extreme</span> <span class="pre">Value</span> <span class="pre">Theorem</span></code> to <a class="reference internal" href="#equation-eq-minax">(2)</a> and find the solution <a class="reference internal" href="#equation-eq-solax">(3)</a>.</p>
+<p class="admonition-title">Note</p>
+<p>Actually, <a class="reference internal" href="#equation-eq-solax">(3)</a> can be derivated by the following way: multiply <img class="math" src="_images/math/a8a9cd4669dec65b86b15bb5065e8889e3b078c4.png" alt="\X^T"/> on side of <a class="reference internal" href="#equation-eq-ax">(1)</a> and then multiply <img class="math" src="_images/math/1a84e384cd80746febde2b82985bddbee1fba1b0.png" alt="(\X^T\X)^{-1}"/> on both side of the former result. You may also apply the <code class="docutils literal notranslate"><span class="pre">Extreme</span> <span class="pre">Value</span> <span class="pre">Theorem</span></code> to <a class="reference internal" href="#equation-eq-minax">(2)</a> and find the solution <a class="reference internal" href="#equation-eq-solax">(3)</a>.</p>
 </div>
 </div>
 <div class="section" id="gradient-descent">
-<h3>9.1.4. Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.4. </span>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
 <p>Let’s use the following hypothesis:</p>
 <div class="math">
-<p><img src="_images/math/2cba4ad616a5f86743d31670bd95b0c9ff064d83.png" alt="h_\Bbeta = \beta_0 + \beta_j \x_{j}, \text{where}, j= 1, \cdots n."/></p>
+<p><img src="_images/math/9deb7edbe2d0bf200ec18b71c09cfda256f7f5a9.png" alt="h_\Bbeta = \beta_0 + \beta_j \x_{j}, \text{where}, j= 1, \cdots n."/></p>
 </div><p>Then, solving <a class="reference internal" href="#equation-eq-minax">(2)</a> is equivalent to minimize the following <code class="docutils literal notranslate"><span class="pre">cost</span> <span class="pre">fucntion</span></code> :</p>
 </div>
 <div class="section" id="cost-function">
-<h3>9.1.5. Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.5. </span>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h3>
 <div class="math" id="equation-eq-lreg-cost">
-<p><span class="eqno">(4)<a class="headerlink" href="#equation-eq-lreg-cost" title="Permalink to this equation">¶</a></span><img src="_images/math/f890d83a3ca0d9ccb2571d0ea9c8828b814dadc5.png" alt="J(\Bbeta) = \frac{1}{2m}\sum_{i=1}^m \left( h_\Bbeta(x^{(i)})-y^{(i)}) \right)^2"/></p>
+<p><span class="eqno">(4)<a class="headerlink" href="#equation-eq-lreg-cost" title="Permalink to this equation">¶</a></span><img src="_images/math/b1eb6c62479d57bc01eac2a703cbc6e011ed7741.png" alt="J(\Bbeta) = \frac{1}{2m}\sum_{i=1}^m \left( h_\Bbeta(x^{(i)})-y^{(i)}) \right)^2"/></p>
 </div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The reason why we prefer to solve <a class="reference internal" href="#equation-eq-lreg-cost">(4)</a> rather than <a class="reference internal" href="#equation-eq-minax">(2)</a> is because <a class="reference internal" href="#equation-eq-lreg-cost">(4)</a> is convex and it has some nice properties, such as it’s uniquely solvable and energy stable for small enough learning rate. the interested reader who has great interest in non-convex cost function (energy) case. is referred to <a class="reference internal" href="reference.html#feng2016psd" id="id2">[Feng2016PSD]</a> for more details.</p>
+<p class="admonition-title">Note</p>
+<p>The reason why we prefer to solve <a class="reference internal" href="#equation-eq-lreg-cost">(4)</a> rather than <a class="reference internal" href="#equation-eq-minax">(2)</a> is because <a class="reference internal" href="#equation-eq-lreg-cost">(4)</a> is convex and it has some nice properties, such as it’s uniquely solvable and energy stable for small enough learning rate. the interested reader who has great interest in non-convex cost function (energy) case. is referred to <a class="reference internal" href="reference.html#feng2016psd" id="id2"><span>[Feng2016PSD]</span></a> for more details.</p>
 </div>
 <div class="figure align-center" id="id21">
 <span id="fig-gd1d"></span><img alt="_images/gradient1d.png" src="_images/gradient1d.png" />
-<p class="caption"><span class="caption-text">Gradient Descent in 1D</span></p>
+<p class="caption"><span class="caption-text">Gradient Descent in 1D</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id22">
 <span id="fig-gd2d"></span><img alt="_images/gradient2d.png" src="_images/gradient2d.png" />
-<p class="caption"><span class="caption-text">Gradient Descent in 2D</span></p>
+<p class="caption"><span class="caption-text">Gradient Descent in 2D</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="batch-gradient-descent">
-<h3>9.1.6. Batch Gradient Descent<a class="headerlink" href="#batch-gradient-descent" title="Permalink to this headline">¶</a></h3>
-<p>Gradient descent is a first-order iterative optimization algorithm for finding the minimum of a function. It searchs with the direction of the steepest desscent which is defined by the <code class="docutils literal notranslate"><span class="pre">negative</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">gradient</span></code> (see Fig. <a class="reference internal" href="#fig-gd1d"><span class="std std-ref">Gradient Descent in 1D</span></a> and <a class="reference internal" href="#fig-gd2d"><span class="std std-ref">Gradient Descent in 2D</span></a> for 1D and 2D, respectively) and with learning rate (search step) <img class="math" src="_images/math/f72d94efffa2d65cf1d1af4dbfef32e01b2c1bb8.png" alt="\alpha"/>.</p>
+<h3><span class="section-number">9.1.6. </span>Batch Gradient Descent<a class="headerlink" href="#batch-gradient-descent" title="Permalink to this headline">¶</a></h3>
+<p>Gradient descent is a first-order iterative optimization algorithm for finding the minimum of a function. It searchs with the direction of the steepest desscent which is defined by the <code class="docutils literal notranslate"><span class="pre">negative</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">gradient</span></code> (see Fig. <a class="reference internal" href="#fig-gd1d"><span class="std std-ref">Gradient Descent in 1D</span></a> and <a class="reference internal" href="#fig-gd2d"><span class="std std-ref">Gradient Descent in 2D</span></a> for 1D and 2D, respectively) and with learning rate (search step) <img class="math" src="_images/math/a73bf3eb437606bd86d928ce5249b5ee8e2f1406.png" alt="\alpha"/>.</p>
 </div>
 <div class="section" id="stochastic-dradient-descent">
-<h3>9.1.7. Stochastic Dradient Descent<a class="headerlink" href="#stochastic-dradient-descent" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.7. </span>Stochastic Dradient Descent<a class="headerlink" href="#stochastic-dradient-descent" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="mini-batch-gradient-descent">
-<h3>9.1.8. Mini-batch Gradient Descent<a class="headerlink" href="#mini-batch-gradient-descent" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.8. </span>Mini-batch Gradient Descent<a class="headerlink" href="#mini-batch-gradient-descent" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="demo">
-<h3>9.1.9. Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.9. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegression.ipynb">Linear Regression</a> which was implemented without using Pipeline.</li>
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegressionWpipeline.ipynb">Linear Regression with Pipeline</a> which was implemented with using Pipeline.</li>
-<li>I will only present the code with pipeline style in the following.</li>
-<li>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.LinearRegression.html">Linear Regression API</a> .</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegression.ipynb">Linear Regression</a> which was implemented without using Pipeline.</p></li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/LinearRegressionWpipeline.ipynb">Linear Regression with Pipeline</a> which was implemented with using Pipeline.</p></li>
+<li><p>I will only present the code with pipeline style in the following.</p></li>
+<li><p>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.LinearRegression.html">Linear Regression API</a> .</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -365,16 +368,16 @@ Then the matrix format equation is written as</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                        <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                        <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>check the data set</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -416,10 +419,10 @@ Then the matrix format equation is written as</p>
 </div>
 <div class="figure align-center" id="id23">
 <span id="fig-adfreq"></span><img alt="_images/ad.png" src="_images/ad.png" />
-<p class="caption"><span class="caption-text">Sales distribution</span></p>
+<p class="caption"><span class="caption-text">Sales distribution</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</li>
+<li><p>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">Row</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="kn">import</span> <span class="n">Vectors</span>
@@ -439,7 +442,7 @@ Then the matrix format equation is written as</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <blockquote>
 <div><p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in comple dataset.</p>
 <p>Supervised learning version:</p>
@@ -450,12 +453,12 @@ Then the matrix format equation is written as</p>
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -489,12 +492,12 @@ Then the matrix format equation is written as</p>
 <span class="sd">    :email:  von198@gmail.com</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -514,8 +517,8 @@ Then the matrix format equation is written as</p>
 </div></blockquote>
 </div></blockquote>
 <p>Two in one:</p>
-<blockquote class="last">
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
@@ -563,12 +566,12 @@ Then the matrix format equation is written as</p>
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -598,7 +601,7 @@ Then the matrix format equation is written as</p>
 </div></blockquote>
 </div>
 <ol class="arabic simple" start="4">
-<li>Transform the dataset to DataFrame</li>
+<li><p>Transform the dataset to DataFrame</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transformed</span><span class="o">=</span> <span class="n">transData</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">transformed</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -617,15 +620,15 @@ Then the matrix format equation is written as</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You will find out that all of the supervised machine learning algorithms in Spark are
+<p class="admonition-title">Note</p>
+<p>You will find out that all of the supervised machine learning algorithms in Spark are
 based on the <strong>features</strong> and <strong>label</strong> (unsupervised machine learning algorithms in Spark are
 based on the <strong>features</strong>). That is to say, you can play with
 all of the machine learning algorithms in Spark when you get ready the
 <strong>features</strong> and <strong>label</strong> in pipeline architecture.</p>
 </div>
 <ol class="arabic simple" start="5">
-<li>Deal With Categorical Variables</li>
+<li><p>Deal With Categorical Variables</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -643,7 +646,7 @@ all of the machine learning algorithms in Spark when you get ready the
 </pre></div>
 </div>
 <p>Now you check your dataset with</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>you will get</p>
@@ -660,7 +663,7 @@ all of the machine learning algorithms in Spark when you get ready the
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Split the data into training and test sets (40% held out for testing)</li>
+<li><p>Split the data into training and test sets (40% held out for testing)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and test sets (40% held out for testing)</span>
 <span class="p">(</span><span class="n">trainingData</span><span class="p">,</span> <span class="n">testData</span><span class="p">)</span> <span class="o">=</span> <span class="n">transformed</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
@@ -697,7 +700,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Fit Ordinary Least Square Regression Model</li>
+<li><p>Fit Ordinary Least Square Regression Model</p></li>
 </ol>
 <p>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.LinearRegression.html">Linear Regression API</a> .</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import LinearRegression class</span>
@@ -708,7 +711,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="8">
-<li>Pipeline Architecture</li>
+<li><p>Pipeline Architecture</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chain indexer and tree in a Pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">featureIndexer</span><span class="p">,</span> <span class="n">lr</span><span class="p">])</span>
@@ -717,29 +720,29 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="9">
-<li>Summary of the Model</li>
+<li><p>Summary of the Model</p></li>
 </ol>
 <p>Spark has a poor summary function for data and model. I wrote a summary
 function which has similar format as <strong>R</strong> output for the linear regression in PySpark.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">modelsummary</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Note: the last rows are the information for Intercept&quot;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;  Estimate   |   Std.Error | t Values  |  P-value&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Note: the last rows are the information for Intercept&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;  Estimate   |   Std.Error | t Values  |  P-value&quot;</span><span class="p">)</span>
     <span class="n">coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coefficients</span><span class="p">),</span><span class="n">model</span><span class="o">.</span><span class="n">intercept</span><span class="p">)</span>
     <span class="n">Summary</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">pValues</span><span class="p">)):</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;{:10.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coef</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
-        <span class="s1">&#39;{:10.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">coefficientStandardErrors</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
-        <span class="s1">&#39;{:8.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">tValues</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
-        <span class="s1">&#39;{:10.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">pValues</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{:10.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coef</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
+        <span class="s1">&#39;</span><span class="si">{:10.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">coefficientStandardErrors</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
+        <span class="s1">&#39;</span><span class="si">{:8.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">tValues</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
+        <span class="s1">&#39;</span><span class="si">{:10.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">pValues</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;Mean squared error: </span><span class="si">% .6f</span><span class="s2">&quot;</span> \
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;Mean squared error: </span><span class="si">% .6f</span><span class="s2">&quot;</span> \
            <span class="o">%</span> <span class="n">Summary</span><span class="o">.</span><span class="n">meanSquaredError</span><span class="p">,</span> <span class="s2">&quot;, RMSE: </span><span class="si">% .6f</span><span class="s2">&quot;</span> \
            <span class="o">%</span> <span class="n">Summary</span><span class="o">.</span><span class="n">rootMeanSquaredError</span> <span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;Multiple R-squared: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">Summary</span><span class="o">.</span><span class="n">r2</span><span class="p">,</span> <span class="s2">&quot;, </span><span class="se">\</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;Multiple R-squared: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">Summary</span><span class="o">.</span><span class="n">r2</span><span class="p">,</span> <span class="s2">&quot;, </span><span class="se">\</span>
 <span class="s2">            Total iterations: </span><span class="si">%i</span><span class="s2">&quot;</span><span class="o">%</span> <span class="n">Summary</span><span class="o">.</span><span class="n">totalIterations</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -760,14 +763,14 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
-<li>Make predictions</li>
+<li><p>Make predictions</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make predictions.</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select example rows to display.</span>
-<span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">,</span><span class="s2">&quot;predictedLabel&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">,</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+----------------+-----+------------------+</span>
@@ -783,7 +786,7 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <ol class="arabic simple" start="9">
-<li>Evaluation</li>
+<li><p>Evaluation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">RegressionEvaluator</span>
 <span class="c1"># Select (prediction, true label) and compute test error</span>
@@ -792,20 +795,20 @@ function which has similar format as <strong>R</strong> output for the linear re
                                 <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">)</span>
 
 <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The final Root Mean Squared Error (RMSE) is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Root</span> <span class="n">Mean</span> <span class="n">Squared</span> <span class="n">Error</span> <span class="p">(</span><span class="n">RMSE</span><span class="p">)</span> <span class="n">on</span> <span class="n">test</span> <span class="n">data</span> <span class="o">=</span> <span class="mf">1.63114</span>
 </pre></div>
 </div>
-<p>You can also check the <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/> value for the test data:</p>
+<p>You can also check the <img class="math" src="_images/math/5e8f938bbf96efd273c3b8e38dd751db89c25bfd.png" alt="R^2"/> value for the test data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_true</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 
 <span class="kn">import</span> <span class="nn">sklearn.metrics</span>
 <span class="n">r2_score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;r2_score: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Then you will get</p>
@@ -813,29 +816,29 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">You should know most softwares are using different formula to calculate the
-<img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/> value when no intercept is included in the model. You can get more
+<p class="admonition-title">Warning</p>
+<p>You should know most softwares are using different formula to calculate the
+<img class="math" src="_images/math/5e8f938bbf96efd273c3b8e38dd751db89c25bfd.png" alt="R^2"/> value when no intercept is included in the model. You can get more
 information from the <a class="reference external" href="https://stats.stackexchange.com/questions/26176/removal-of-statistically-significant-intercept-term-increases-r2-in-linear-mo">disscussion at StackExchange</a>.</p>
 </div>
 </div>
 </div>
 <div class="section" id="generalized-linear-regression">
-<h2>9.2. Generalized linear regression<a class="headerlink" href="#generalized-linear-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.2. </span>Generalized linear regression<a class="headerlink" href="#generalized-linear-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
-<h3>9.2.1. Introduction<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.2.1. </span>Introduction<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id5">
-<h3>9.2.2. How to solve it?<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.2.2. </span>How to solve it?<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id6">
-<h3>9.2.3. Demo<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.2.3. </span>Demo<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/GLM.ipynb">Generalized Linear Regression</a>.</li>
-<li>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.GeneralizedLinearRegression.html">Generalized Linear Regression API</a> .</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/GLM.ipynb">Generalized Linear Regression</a>.</p></li>
+<li><p>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.GeneralizedLinearRegression.html">Generalized Linear Regression API</a> .</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -847,16 +850,16 @@ information from the <a class="reference external" href="https://stats.stackexch
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                        <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                        <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>check the data set</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -897,10 +900,10 @@ information from the <a class="reference external" href="https://stats.stackexch
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</li>
+<li><p>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <blockquote>
 <div><p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in comple dataset.</p>
 <p>Supervised learning version:</p>
@@ -911,12 +914,12 @@ information from the <a class="reference external" href="https://stats.stackexch
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -950,12 +953,12 @@ information from the <a class="reference external" href="https://stats.stackexch
 <span class="sd">    :email:  von198@gmail.com</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -975,8 +978,8 @@ information from the <a class="reference external" href="https://stats.stackexch
 </div></blockquote>
 </div></blockquote>
 <p>Two in one:</p>
-<blockquote class="last">
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
@@ -1024,12 +1027,12 @@ information from the <a class="reference external" href="https://stats.stackexch
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1092,14 +1095,14 @@ information from the <a class="reference external" href="https://stats.stackexch
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You will find out that all of the machine learning algorithms in Spark are
+<p class="admonition-title">Note</p>
+<p>You will find out that all of the machine learning algorithms in Spark are
 based on the <strong>features</strong> and <strong>label</strong>. That is to say, you can play with
 all of the machine learning algorithms in Spark when you get ready the
 <strong>features</strong> and <strong>label</strong>.</p>
 </div>
 <ol class="arabic simple" start="4">
-<li>Convert the data to dense vector</li>
+<li><p>Convert the data to dense vector</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert the data to dense vector</span>
 <span class="k">def</span> <span class="nf">transData</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -1114,7 +1117,7 @@ all of the machine learning algorithms in Spark when you get ready the
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Deal with the Categorical variables</li>
+<li><p>Deal with the Categorical variables</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -1146,7 +1149,7 @@ all of the machine learning algorithms in Spark when you get ready the
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Split the data into training and test sets (40% held out for testing)</li>
+<li><p>Split the data into training and test sets (40% held out for testing)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and test sets (40% held out for testing)</span>
 <span class="p">(</span><span class="n">trainingData</span><span class="p">,</span> <span class="n">testData</span><span class="p">)</span> <span class="o">=</span> <span class="n">transformed</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
@@ -1183,7 +1186,7 @@ to good to keep tracking your data during prototype phase):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Fit Generalized Linear Regression Model</li>
+<li><p>Fit Generalized Linear Regression Model</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import LinearRegression class</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">GeneralizedLinearRegression</span>
@@ -1194,7 +1197,7 @@ to good to keep tracking your data during prototype phase):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="8">
-<li>Pipeline Architecture</li>
+<li><p>Pipeline Architecture</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chain indexer and tree in a Pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">featureIndexer</span><span class="p">,</span> <span class="n">glr</span><span class="p">])</span>
@@ -1203,25 +1206,25 @@ to good to keep tracking your data during prototype phase):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="9">
-<li>Summary of the Model</li>
+<li><p>Summary of the Model</p></li>
 </ol>
 <p>Spark has a poor summary function for data and model. I wrote a summary
 function which has similar format as <strong>R</strong> output for the linear regression in PySpark.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">modelsummary</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Note: the last rows are the information for Intercept&quot;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;  Estimate   |   Std.Error | t Values  |  P-value&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Note: the last rows are the information for Intercept&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;-------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s2">&quot;  Estimate   |   Std.Error | t Values  |  P-value&quot;</span><span class="p">)</span>
     <span class="n">coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coefficients</span><span class="p">),</span><span class="n">model</span><span class="o">.</span><span class="n">intercept</span><span class="p">)</span>
     <span class="n">Summary</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">pValues</span><span class="p">)):</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;{:10.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coef</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
-        <span class="s1">&#39;{:10.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">coefficientStandardErrors</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
-        <span class="s1">&#39;{:8.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">tValues</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
-        <span class="s1">&#39;{:10.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">pValues</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">{:10.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coef</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
+        <span class="s1">&#39;</span><span class="si">{:10.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">coefficientStandardErrors</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
+        <span class="s1">&#39;</span><span class="si">{:8.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">tValues</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>\
+        <span class="s1">&#39;</span><span class="si">{:10.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Summary</span><span class="o">.</span><span class="n">pValues</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 
-    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;##&quot;</span><span class="p">,</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
 <span class="c1">#     print (&quot;##&quot;,&quot;Mean squared error: % .6f&quot; \</span>
 <span class="c1">#            % Summary.meanSquaredError, &quot;, RMSE: % .6f&quot; \</span>
 <span class="c1">#            % Summary.rootMeanSquaredError )</span>
@@ -1244,7 +1247,7 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
-<li>Make predictions</li>
+<li><p>Make predictions</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make predictions.</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
@@ -1267,7 +1270,7 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <ol class="arabic simple" start="11">
-<li>Evaluation</li>
+<li><p>Evaluation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">RegressionEvaluator</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">RegressionEvaluator</span>
@@ -1277,7 +1280,7 @@ function which has similar format as <strong>R</strong> output for the linear re
                                 <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">)</span>
 
 <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The final Root Mean Squared Error (RMSE) is as follows:</p>
@@ -1289,31 +1292,31 @@ function which has similar format as <strong>R</strong> output for the linear re
 
 <span class="kn">import</span> <span class="nn">sklearn.metrics</span>
 <span class="n">r2_score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;r2_score: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Then you will get the <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/> value:</p>
+<p>Then you will get the <img class="math" src="_images/math/5e8f938bbf96efd273c3b8e38dd751db89c25bfd.png" alt="R^2"/> value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">:</span> <span class="mf">0.87707391843</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="decision-tree-regression">
-<h2>9.3. Decision tree Regression<a class="headerlink" href="#decision-tree-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.3. </span>Decision tree Regression<a class="headerlink" href="#decision-tree-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
-<h3>9.3.1. Introduction<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.1. </span>Introduction<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id9">
-<h3>9.3.2. How to solve it?<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.2. </span>How to solve it?<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id10">
-<h3>9.3.3. Demo<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.3. </span>Demo<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/DecisionTreeR.ipynb">Decision Tree Regression</a>.</li>
-<li>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.DecisionTreeRegressor.html">Decision Tree Regressor API</a> .</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/DecisionTreeR.ipynb">Decision Tree Regression</a>.</p></li>
+<li><p>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.DecisionTreeRegressor.html">Decision Tree Regressor API</a> .</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -1325,16 +1328,16 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                        <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                        <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+            <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>check the data set</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1375,10 +1378,10 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</li>
+<li><p>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <blockquote>
 <div><p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in comple dataset.</p>
 <p>Supervised learning version:</p>
@@ -1389,12 +1392,12 @@ function which has similar format as <strong>R</strong> output for the linear re
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1425,12 +1428,12 @@ function which has similar format as <strong>R</strong> output for the linear re
 <span class="sd">    :email:  von198@gmail.com</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1447,8 +1450,8 @@ function which has similar format as <strong>R</strong> output for the linear re
 </div></blockquote>
 </div></blockquote>
 <p>Two in one:</p>
-<blockquote class="last">
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
@@ -1496,12 +1499,12 @@ function which has similar format as <strong>R</strong> output for the linear re
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1564,14 +1567,14 @@ function which has similar format as <strong>R</strong> output for the linear re
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You will find out that all of the machine learning algorithms in Spark are
+<p class="admonition-title">Note</p>
+<p>You will find out that all of the machine learning algorithms in Spark are
 based on the <strong>features</strong> and <strong>label</strong>. That is to say, you can play with
 all of the machine learning algorithms in Spark when you get ready the
 <strong>features</strong> and <strong>label</strong>.</p>
 </div>
 <ol class="arabic simple" start="4">
-<li>Convert the data to dense vector</li>
+<li><p>Convert the data to dense vector</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert the data to dense vector</span>
 <span class="k">def</span> <span class="nf">transData</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -1583,7 +1586,7 @@ all of the machine learning algorithms in Spark when you get ready the
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Deal with the Categorical variables</li>
+<li><p>Deal with the Categorical variables</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -1615,7 +1618,7 @@ all of the machine learning algorithms in Spark when you get ready the
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Split the data into training and test sets (40% held out for testing)</li>
+<li><p>Split the data into training and test sets (40% held out for testing)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and test sets (40% held out for testing)</span>
 <span class="p">(</span><span class="n">trainingData</span><span class="p">,</span> <span class="n">testData</span><span class="p">)</span> <span class="o">=</span> <span class="n">transformed</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
@@ -1652,7 +1655,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Fit Decision Tree Regression Model</li>
+<li><p>Fit Decision Tree Regression Model</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
@@ -1661,7 +1664,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="8">
-<li>Pipeline Architecture</li>
+<li><p>Pipeline Architecture</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chain indexer and tree in a Pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">featureIndexer</span><span class="p">,</span> <span class="n">dt</span><span class="p">])</span>
@@ -1670,7 +1673,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="9">
-<li>Make predictions</li>
+<li><p>Make predictions</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make predictions.</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
@@ -1693,7 +1696,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
-<li>Evaluation</li>
+<li><p>Evaluation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">RegressionEvaluator</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.evaluation</span> <span class="kn">import</span> <span class="n">RegressionEvaluator</span>
@@ -1703,7 +1706,7 @@ to good to keep tracking your data during prototype pahse):</p>
                                 <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">)</span>
 
 <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The final Root Mean Squared Error (RMSE) is as follows:</p>
@@ -1715,10 +1718,10 @@ to good to keep tracking your data during prototype pahse):</p>
 
 <span class="kn">import</span> <span class="nn">sklearn.metrics</span>
 <span class="n">r2_score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;r2_score: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Then you will get the <img class="math" src="_images/math/fb1288f8fcaad3d5adc2a8aed7f71690452eabb8.png" alt="R^2"/> value:</p>
+<p>Then you will get the <img class="math" src="_images/math/5e8f938bbf96efd273c3b8e38dd751db89c25bfd.png" alt="R^2"/> value:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">:</span> <span class="mf">0.911024318967</span>
 </pre></div>
 </div>
@@ -1733,21 +1736,21 @@ to good to keep tracking your data during prototype pahse):</p>
 </div>
 </div>
 <div class="section" id="random-forest-regression">
-<h2>9.4. Random Forest Regression<a class="headerlink" href="#random-forest-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4. </span>Random Forest Regression<a class="headerlink" href="#random-forest-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
-<h3>9.4.1. Introduction<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.4.1. </span>Introduction<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id13">
-<h3>9.4.2. How to solve it?<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.4.2. </span>How to solve it?<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id14">
-<h3>9.4.3. Demo<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.4.3. </span>Demo<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/RandomForestR.ipynb">Random Forest Regression</a>.</li>
-<li>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.RandomForestRegressor.html">Random Forest Regressor API</a> .</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/RandomForestR.ipynb">Random Forest Regression</a>.</p></li>
+<li><p>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.RandomForestRegressor.html">Random Forest Regressor API</a> .</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -1759,14 +1762,14 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                                <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                                <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-                               <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+                               <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1802,10 +1805,10 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</li>
+<li><p>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <blockquote>
 <div><p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in comple dataset.</p>
 <p>Supervised learning version:</p>
@@ -1816,12 +1819,12 @@ to good to keep tracking your data during prototype pahse):</p>
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1852,12 +1855,12 @@ to good to keep tracking your data during prototype pahse):</p>
 <span class="sd">    :email:  von198@gmail.com</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1874,8 +1877,8 @@ to good to keep tracking your data during prototype pahse):</p>
 </div></blockquote>
 </div></blockquote>
 <p>Two in one:</p>
-<blockquote class="last">
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
@@ -1923,12 +1926,12 @@ to good to keep tracking your data during prototype pahse):</p>
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -1971,7 +1974,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Convert the data to dense vector</li>
+<li><p>Convert the data to dense vector</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transformed</span><span class="o">=</span> <span class="n">transData</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">transformed</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -1990,7 +1993,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Deal with the Categorical variables</li>
+<li><p>Deal with the Categorical variables</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -2002,7 +2005,7 @@ to good to keep tracking your data during prototype pahse):</p>
                                <span class="n">maxCategories</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">featureIndexer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-----------------+-----+-----------------+</span>
@@ -2018,7 +2021,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Split the data into training and test sets (40% held out for testing)</li>
+<li><p>Split the data into training and test sets (40% held out for testing)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and test sets (40% held out for testing)</span>
 <span class="p">(</span><span class="n">trainingData</span><span class="p">,</span> <span class="n">testData</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
@@ -2051,7 +2054,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Fit RandomForest Regression Model</li>
+<li><p>Fit RandomForest Regression Model</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import LinearRegression class</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
@@ -2061,11 +2064,11 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you decide to use the <code class="docutils literal notranslate"><span class="pre">indexedFeatures</span></code> features, you need to add the parameter <code class="docutils literal notranslate"><span class="pre">featuresCol=&quot;indexedFeatures&quot;</span></code>.</p>
+<p class="admonition-title">Note</p>
+<p>If you decide to use the <code class="docutils literal notranslate"><span class="pre">indexedFeatures</span></code> features, you need to add the parameter <code class="docutils literal notranslate"><span class="pre">featuresCol=&quot;indexedFeatures&quot;</span></code>.</p>
 </div>
 <ol class="arabic simple" start="8">
-<li>Pipeline Architecture</li>
+<li><p>Pipeline Architecture</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chain indexer and tree in a Pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">featureIndexer</span><span class="p">,</span> <span class="n">rf</span><span class="p">])</span>
@@ -2073,7 +2076,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="9">
-<li>Make predictions</li>
+<li><p>Make predictions</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
 
@@ -2094,13 +2097,13 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
-<li>Evaluation</li>
+<li><p>Evaluation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select (prediction, true label) and compute test error</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">RegressionEvaluator</span><span class="p">(</span>
     <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">)</span>
 <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Root</span> <span class="n">Mean</span> <span class="n">Squared</span> <span class="n">Error</span> <span class="p">(</span><span class="n">RMSE</span><span class="p">)</span> <span class="n">on</span> <span class="n">test</span> <span class="n">data</span> <span class="o">=</span> <span class="mf">2.35912</span>
@@ -2108,14 +2111,14 @@ to good to keep tracking your data during prototype pahse):</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn.metrics</span>
 <span class="n">r2_score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {:4.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;r2_score: </span><span class="si">{:4.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">:</span> <span class="mf">0.831</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="11">
-<li>Feature importances</li>
+<li><p>Feature importances</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">featureImportances</span>
 </pre></div>
@@ -2151,21 +2154,21 @@ to good to keep tracking your data during prototype pahse):</p>
 </div>
 </div>
 <div class="section" id="gradient-boosted-tree-regression">
-<h2>9.5. Gradient-boosted tree regression<a class="headerlink" href="#gradient-boosted-tree-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5. </span>Gradient-boosted tree regression<a class="headerlink" href="#gradient-boosted-tree-regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id16">
-<h3>9.5.1. Introduction<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.1. </span>Introduction<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id17">
-<h3>9.5.2. How to solve it?<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.2. </span>How to solve it?<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id18">
-<h3>9.5.3. Demo<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.5.3. </span>Demo<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/GLM.ipynb">Gradient-boosted tree regression</a>.</li>
-<li>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.GBTRegressor.html">Gradient boosted tree API</a> .</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/GLM.ipynb">Gradient-boosted tree regression</a>.</p></li>
+<li><p>For more details about the parameters, please visit <a class="reference external" href="http://takwatanabe.me/pyspark/generated/generated/ml.regression.GBTRegressor.html">Gradient boosted tree API</a> .</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Set up spark context and SparkSession</li>
+<li><p>Set up spark context and SparkSession</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 
@@ -2177,14 +2180,14 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Load dataset</li>
+<li><p>Load dataset</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;com.databricks.spark.csv&#39;</span><span class="p">)</span><span class="o">.</span>\
                                <span class="n">options</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> \
                                <span class="n">inferschema</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="o">.</span>\
-                               <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+                               <span class="n">load</span><span class="p">(</span><span class="s2">&quot;../data/Advertising.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2220,10 +2223,10 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</li>
+<li><p>Convert the data to dense vector (<strong>features</strong> and <strong>label</strong>)</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <blockquote>
 <div><p>You are strongly encouraged to try my <code class="docutils literal notranslate"><span class="pre">get_dummy</span></code> function for dealing with the categorical data in comple dataset.</p>
 <p>Supervised learning version:</p>
@@ -2234,12 +2237,12 @@ to good to keep tracking your data during prototype pahse):</p>
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -2270,12 +2273,12 @@ to good to keep tracking your data during prototype pahse):</p>
 <span class="sd">    :email:  von198@gmail.com</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()))</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -2292,8 +2295,8 @@ to good to keep tracking your data during prototype pahse):</p>
 </div></blockquote>
 </div></blockquote>
 <p>Two in one:</p>
-<blockquote class="last">
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dummy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">indexCol</span><span class="p">,</span><span class="n">categoricalCols</span><span class="p">,</span><span class="n">continuousCols</span><span class="p">,</span><span class="n">labelCol</span><span class="p">,</span><span class="n">dropLast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get dummy variables and concat with continuous variables for ml modeling.</span>
@@ -2341,12 +2344,12 @@ to good to keep tracking your data during prototype pahse):</p>
     <span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span>
     <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
 
-    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span> <span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_indexed&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categoricalCols</span> <span class="p">]</span>
 
     <span class="c1"># default setting: dropLast=True</span>
     <span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">(),</span>
-                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;{0}_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
+                 <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_encoded&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()),</span><span class="n">dropLast</span><span class="o">=</span><span class="n">dropLast</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">indexer</span> <span class="ow">in</span> <span class="n">indexers</span> <span class="p">]</span>
 
     <span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="n">encoder</span><span class="o">.</span><span class="n">getOutputCol</span><span class="p">()</span> <span class="k">for</span> <span class="n">encoder</span> <span class="ow">in</span> <span class="n">encoders</span><span class="p">]</span>
@@ -2389,7 +2392,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Convert the data to dense vector</li>
+<li><p>Convert the data to dense vector</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transformed</span><span class="o">=</span> <span class="n">transData</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">transformed</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -2408,7 +2411,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Deal with the Categorical variables</li>
+<li><p>Deal with the Categorical variables</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">GBTRegressor</span>
@@ -2420,7 +2423,7 @@ to good to keep tracking your data during prototype pahse):</p>
                                <span class="n">maxCategories</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">featureIndexer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-----------------+-----+-----------------+</span>
@@ -2436,7 +2439,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Split the data into training and test sets (40% held out for testing)</li>
+<li><p>Split the data into training and test sets (40% held out for testing)</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and test sets (40% held out for testing)</span>
 <span class="p">(</span><span class="n">trainingData</span><span class="p">,</span> <span class="n">testData</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
@@ -2469,7 +2472,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Fit RandomForest Regression Model</li>
+<li><p>Fit RandomForest Regression Model</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import LinearRegression class</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.regression</span> <span class="kn">import</span> <span class="n">GBTRegressor</span>
@@ -2479,11 +2482,11 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you decide to use the <code class="docutils literal notranslate"><span class="pre">indexedFeatures</span></code> features, you need to add the parameter <code class="docutils literal notranslate"><span class="pre">featuresCol=&quot;indexedFeatures&quot;</span></code>.</p>
+<p class="admonition-title">Note</p>
+<p>If you decide to use the <code class="docutils literal notranslate"><span class="pre">indexedFeatures</span></code> features, you need to add the parameter <code class="docutils literal notranslate"><span class="pre">featuresCol=&quot;indexedFeatures&quot;</span></code>.</p>
 </div>
 <ol class="arabic simple" start="8">
-<li>Pipeline Architecture</li>
+<li><p>Pipeline Architecture</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chain indexer and tree in a Pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">featureIndexer</span><span class="p">,</span> <span class="n">rf</span><span class="p">])</span>
@@ -2491,7 +2494,7 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="9">
-<li>Make predictions</li>
+<li><p>Make predictions</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testData</span><span class="p">)</span>
 
@@ -2512,13 +2515,13 @@ to good to keep tracking your data during prototype pahse):</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
-<li>Evaluation</li>
+<li><p>Evaluation</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select (prediction, true label) and compute test error</span>
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">RegressionEvaluator</span><span class="p">(</span>
     <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;rmse&quot;</span><span class="p">)</span>
 <span class="n">rmse</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root Mean Squared Error (RMSE) on test data = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rmse</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Root</span> <span class="n">Mean</span> <span class="n">Squared</span> <span class="n">Error</span> <span class="p">(</span><span class="n">RMSE</span><span class="p">)</span> <span class="n">on</span> <span class="n">test</span> <span class="n">data</span> <span class="o">=</span> <span class="mf">1.36939</span>
@@ -2526,14 +2529,14 @@ to good to keep tracking your data during prototype pahse):</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn.metrics</span>
 <span class="n">r2_score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;r2_score: {:4.3f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;r2_score: </span><span class="si">{:4.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">:</span> <span class="mf">0.932</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="11">
-<li>Feature importances</li>
+<li><p>Feature importances</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">featureImportances</span>
 </pre></div>
@@ -2592,7 +2595,7 @@ to good to keep tracking your data during prototype pahse):</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

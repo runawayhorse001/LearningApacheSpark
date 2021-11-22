@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -24,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -106,8 +106,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -200,7 +202,7 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.accuracy">accuracy (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.accuracy">accuracy() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.tuning.ParamGridBuilder.addGrid">addGrid() (pyspark.ml.tuning.ParamGridBuilder method)</a>
 </li>
@@ -208,7 +210,7 @@
 </li>
       <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel">AFTSurvivalRegressionModel (class in pyspark.ml.regression)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.aic">aic (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.aic">aic() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -216,7 +218,7 @@
 </li>
       <li><a href="api.html#pyspark.ml.recommendation.ALSModel">ALSModel (class in pyspark.ml.recommendation)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.areaUnderROC">areaUnderROC (pyspark.ml.classification.BinaryLogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.areaUnderROC">areaUnderROC() (pyspark.ml.classification.BinaryLogisticRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.PowerIterationClustering.assignClusters">assignClusters() (pyspark.ml.clustering.PowerIterationClustering method)</a>
 </li>
@@ -250,7 +252,7 @@
 </li>
       <li><a href="api.html#pyspark.ml.clustering.BisectingKMeansSummary">BisectingKMeansSummary (class in pyspark.ml.clustering)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.IsotonicRegressionModel.boundaries">boundaries (pyspark.ml.regression.IsotonicRegressionModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.IsotonicRegressionModel.boundaries">boundaries() (pyspark.ml.regression.IsotonicRegressionModel property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.tuning.ParamGridBuilder.build">build() (pyspark.ml.tuning.ParamGridBuilder method)</a>
 </li>
@@ -270,24 +272,24 @@
       </ul></li>
       <li><a href="api.html#pyspark.ml.evaluation.ClusteringEvaluator">ClusteringEvaluator (class in pyspark.ml.evaluation)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.coefficientMatrix">coefficientMatrix (pyspark.ml.classification.LogisticRegressionModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.coefficientMatrix">coefficientMatrix() (pyspark.ml.classification.LogisticRegressionModel property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LinearSVCModel.coefficients">coefficients (pyspark.ml.classification.LinearSVCModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LinearSVCModel.coefficients">coefficients() (pyspark.ml.classification.LinearSVCModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.coefficients">(pyspark.ml.classification.LogisticRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.coefficients">(pyspark.ml.classification.LogisticRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.coefficients">(pyspark.ml.regression.AFTSurvivalRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.coefficients">(pyspark.ml.regression.AFTSurvivalRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.coefficients">(pyspark.ml.regression.GeneralizedLinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.coefficients">(pyspark.ml.regression.GeneralizedLinearRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.coefficients">(pyspark.ml.regression.LinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.coefficients">(pyspark.ml.regression.LinearRegressionModel property)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.coefficientStandardErrors">coefficientStandardErrors (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.coefficientStandardErrors">coefficientStandardErrors() (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.coefficientStandardErrors">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.coefficientStandardErrors">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
       <li><a href="api.html#pyspark.ml.clustering.BisectingKMeansModel.computeCost">computeCost() (pyspark.ml.clustering.BisectingKMeansModel method)</a>
@@ -342,21 +344,21 @@
 </li>
       <li><a href="api.html#pyspark.ml.regression.DecisionTreeRegressor">DecisionTreeRegressor (class in pyspark.ml.regression)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.degreesOfFreedom">degreesOfFreedom (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.degreesOfFreedom">degreesOfFreedom() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.degreesOfFreedom">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.degreesOfFreedom">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#pyspark.ml.clustering.LDAModel.describeTopics">describeTopics() (pyspark.ml.clustering.LDAModel method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.deviance">deviance (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.deviance">deviance() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.devianceResiduals">devianceResiduals (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.devianceResiduals">devianceResiduals() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.dispersion">dispersion (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.dispersion">dispersion() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.DistributedLDAModel">DistributedLDAModel (class in pyspark.ml.clustering)</a>
 </li>
@@ -388,7 +390,7 @@
       </ul></li>
       <li><a href="api.html#pyspark.ml.evaluation.Evaluator">Evaluator (class in pyspark.ml.evaluation)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.explainedVariance">explainedVariance (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.explainedVariance">explainedVariance() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -396,33 +398,33 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.falsePositiveRateByLabel">falsePositiveRateByLabel (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.falsePositiveRateByLabel">falsePositiveRateByLabel() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.DecisionTreeClassificationModel.featureImportances">featureImportances (pyspark.ml.classification.DecisionTreeClassificationModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.DecisionTreeClassificationModel.featureImportances">featureImportances() (pyspark.ml.classification.DecisionTreeClassificationModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.classification.GBTClassificationModel.featureImportances">(pyspark.ml.classification.GBTClassificationModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.classification.GBTClassificationModel.featureImportances">(pyspark.ml.classification.GBTClassificationModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.classification.RandomForestClassificationModel.featureImportances">(pyspark.ml.classification.RandomForestClassificationModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.classification.RandomForestClassificationModel.featureImportances">(pyspark.ml.classification.RandomForestClassificationModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.DecisionTreeRegressionModel.featureImportances">(pyspark.ml.regression.DecisionTreeRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.DecisionTreeRegressionModel.featureImportances">(pyspark.ml.regression.DecisionTreeRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.GBTRegressionModel.featureImportances">(pyspark.ml.regression.GBTRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GBTRegressionModel.featureImportances">(pyspark.ml.regression.GBTRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.RandomForestRegressionModel.featureImportances">(pyspark.ml.regression.RandomForestRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.RandomForestRegressionModel.featureImportances">(pyspark.ml.regression.RandomForestRegressionModel property)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.featuresCol">featuresCol (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.featuresCol">featuresCol() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.featuresCol">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.featuresCol">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
       <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.fMeasureByLabel">fMeasureByLabel() (pyspark.ml.classification.LogisticRegressionSummary method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.fMeasureByThreshold">fMeasureByThreshold (pyspark.ml.classification.BinaryLogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.fMeasureByThreshold">fMeasureByThreshold() (pyspark.ml.classification.BinaryLogisticRegressionSummary property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -436,7 +438,7 @@
 </li>
       <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary">GaussianMixtureSummary (class in pyspark.ml.clustering)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.gaussiansDF">gaussiansDF (pyspark.ml.clustering.GaussianMixtureModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.gaussiansDF">gaussiansDF() (pyspark.ml.clustering.GaussianMixtureModel property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.classification.GBTClassificationModel">GBTClassificationModel (class in pyspark.ml.classification)</a>
 </li>
@@ -616,18 +618,18 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.hasSummary">hasSummary (pyspark.ml.classification.LogisticRegressionModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.hasSummary">hasSummary() (pyspark.ml.classification.LogisticRegressionModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.clustering.BisectingKMeansModel.hasSummary">(pyspark.ml.clustering.BisectingKMeansModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.BisectingKMeansModel.hasSummary">(pyspark.ml.clustering.BisectingKMeansModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.hasSummary">(pyspark.ml.clustering.GaussianMixtureModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.hasSummary">(pyspark.ml.clustering.GaussianMixtureModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.clustering.KMeansModel.hasSummary">(pyspark.ml.clustering.KMeansModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.KMeansModel.hasSummary">(pyspark.ml.clustering.KMeansModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.hasSummary">(pyspark.ml.regression.GeneralizedLinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.hasSummary">(pyspark.ml.regression.GeneralizedLinearRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.hasSummary">(pyspark.ml.regression.LinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.hasSummary">(pyspark.ml.regression.LinearRegressionModel property)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -636,21 +638,21 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LinearSVCModel.intercept">intercept (pyspark.ml.classification.LinearSVCModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LinearSVCModel.intercept">intercept() (pyspark.ml.classification.LinearSVCModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.intercept">(pyspark.ml.classification.LogisticRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.intercept">(pyspark.ml.classification.LogisticRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.intercept">(pyspark.ml.regression.AFTSurvivalRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.intercept">(pyspark.ml.regression.AFTSurvivalRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.intercept">(pyspark.ml.regression.GeneralizedLinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.intercept">(pyspark.ml.regression.GeneralizedLinearRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.intercept">(pyspark.ml.regression.LinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.intercept">(pyspark.ml.regression.LinearRegressionModel property)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.interceptVector">interceptVector (pyspark.ml.classification.LogisticRegressionModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.interceptVector">interceptVector() (pyspark.ml.classification.LogisticRegressionModel property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.LDAModel.isDistributed">isDistributed() (pyspark.ml.clustering.LDAModel method)</a>
 </li>
@@ -660,7 +662,7 @@
 </li>
       <li><a href="api.html#pyspark.ml.regression.IsotonicRegressionModel">IsotonicRegressionModel (class in pyspark.ml.regression)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.recommendation.ALSModel.itemFactors">itemFactors (pyspark.ml.recommendation.ALSModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.recommendation.ALSModel.itemFactors">itemFactors() (pyspark.ml.recommendation.ALSModel property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -682,15 +684,15 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.labelCol">labelCol (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.labelCol">labelCol() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.labelCol">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.labelCol">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.labels">labels (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.labels">labels() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.MultilayerPerceptronClassificationModel.layers">layers (pyspark.ml.classification.MultilayerPerceptronClassificationModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.MultilayerPerceptronClassificationModel.layers">layers() (pyspark.ml.classification.MultilayerPerceptronClassificationModel property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.LDA">LDA (class in pyspark.ml.clustering)</a>
 </li>
@@ -728,10 +730,12 @@
 </li>
       <li><a href="api.html#pyspark.ml.classification.LogisticRegressionTrainingSummary">LogisticRegressionTrainingSummary (class in pyspark.ml.classification)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary.logLikelihood">logLikelihood (pyspark.ml.clustering.GaussianMixtureSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary.logLikelihood">logLikelihood() (pyspark.ml.clustering.GaussianMixtureSummary property)</a>
+
+      <ul>
+        <li><a href="api.html#pyspark.ml.clustering.LDAModel.logLikelihood">(pyspark.ml.clustering.LDAModel method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.clustering.LDAModel.logLikelihood">logLikelihood() (pyspark.ml.clustering.LDAModel method)</a>
-</li>
+      </ul></li>
       <li><a href="api.html#pyspark.ml.clustering.LDAModel.logPerplexity">logPerplexity() (pyspark.ml.clustering.LDAModel method)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.DistributedLDAModel.logPrior">logPrior() (pyspark.ml.clustering.DistributedLDAModel method)</a>
@@ -746,16 +750,37 @@
 </li>
       <li><a href="api.html#pyspark.ml.stat.Summarizer.mean">mean() (pyspark.ml.stat.Summarizer static method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.meanAbsoluteError">meanAbsoluteError (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.meanAbsoluteError">meanAbsoluteError() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.meanSquaredError">meanSquaredError (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.meanSquaredError">meanSquaredError() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#pyspark.ml.stat.Summarizer.metrics">metrics() (pyspark.ml.stat.Summarizer static method)</a>
 </li>
       <li><a href="api.html#pyspark.ml.stat.Summarizer.min">min() (pyspark.ml.stat.Summarizer static method)</a>
 </li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.classification">pyspark.ml.classification</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.clustering">pyspark.ml.clustering</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.evaluation">pyspark.ml.evaluation</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.pipeline">pyspark.ml.pipeline</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.recommendation">pyspark.ml.recommendation</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.regression">pyspark.ml.regression</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.stat">pyspark.ml.stat</a>
+</li>
+        <li><a href="api.html#module-pyspark.ml.tuning">pyspark.ml.tuning</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#pyspark.ml.evaluation.MulticlassClassificationEvaluator">MulticlassClassificationEvaluator (class in pyspark.ml.evaluation)</a>
 </li>
       <li><a href="api.html#pyspark.ml.classification.MultilayerPerceptronClassificationModel">MultilayerPerceptronClassificationModel (class in pyspark.ml.classification)</a>
@@ -778,15 +803,15 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.nullDeviance">nullDeviance (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.nullDeviance">nullDeviance() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.numInstances">numInstances (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.numInstances">numInstances() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.numInstances">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.numInstances">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.numIterations">numIterations (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.numIterations">numIterations() (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.stat.Summarizer.numNonZeros">numNonZeros() (pyspark.ml.stat.Summarizer static method)</a>
 </li>
@@ -796,10 +821,10 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionTrainingSummary.objectiveHistory">objectiveHistory (pyspark.ml.classification.LogisticRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionTrainingSummary.objectiveHistory">objectiveHistory() (pyspark.ml.classification.LogisticRegressionTrainingSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionTrainingSummary.objectiveHistory">(pyspark.ml.regression.LinearRegressionTrainingSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionTrainingSummary.objectiveHistory">(pyspark.ml.regression.LinearRegressionTrainingSummary property)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -816,7 +841,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#pyspark.ml.tuning.ParamGridBuilder">ParamGridBuilder (class in pyspark.ml.tuning)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.NaiveBayesModel.pi">pi (pyspark.ml.classification.NaiveBayesModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.NaiveBayesModel.pi">pi() (pyspark.ml.classification.NaiveBayesModel property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.pipeline.Pipeline">Pipeline (class in pyspark.ml.pipeline)</a>
 </li>
@@ -834,75 +859,115 @@
 </li>
       <li><a href="api.html#pyspark.ml.clustering.PowerIterationClustering">PowerIterationClustering (class in pyspark.ml.clustering)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.pr">pr (pyspark.ml.classification.BinaryLogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.pr">pr() (pyspark.ml.classification.BinaryLogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.precisionByLabel">precisionByLabel (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.precisionByLabel">precisionByLabel() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.precisionByThreshold">precisionByThreshold (pyspark.ml.classification.BinaryLogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.precisionByThreshold">precisionByThreshold() (pyspark.ml.classification.BinaryLogisticRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.predict">predict() (pyspark.ml.regression.AFTSurvivalRegressionModel method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.predictionCol">predictionCol (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.predictionCol">predictionCol() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictionCol">(pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictionCol">(pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.predictionCol">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.predictionCol">(pyspark.ml.regression.LinearRegressionSummary property)</a>
+</li>
+      </ul></li>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.predictions">predictions() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
+
+      <ul>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictions">(pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
+</li>
+        <li><a href="api.html#pyspark.ml.regression.IsotonicRegressionModel.predictions">(pyspark.ml.regression.IsotonicRegressionModel property)</a>
+</li>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.predictions">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.predictions">predictions (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
-
-      <ul>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.predictions">(pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
-</li>
-        <li><a href="api.html#pyspark.ml.regression.IsotonicRegressionModel.predictions">(pyspark.ml.regression.IsotonicRegressionModel attribute)</a>
-</li>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.predictions">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
-</li>
-      </ul></li>
       <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.predictQuantiles">predictQuantiles() (pyspark.ml.regression.AFTSurvivalRegressionModel method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary.probability">probability (pyspark.ml.clustering.GaussianMixtureSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary.probability">probability() (pyspark.ml.clustering.GaussianMixtureSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.probabilityCol">probabilityCol (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.probabilityCol">probabilityCol() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary.probabilityCol">(pyspark.ml.clustering.GaussianMixtureSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureSummary.probabilityCol">(pyspark.ml.clustering.GaussianMixtureSummary property)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.pValues">pValues (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.pValues">pValues() (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.pValues">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.pValues">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#module-pyspark.ml.classification">pyspark.ml.classification (module)</a>
+      <li>
+    pyspark.ml.classification
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.classification">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.clustering">pyspark.ml.clustering (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.clustering
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.clustering">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.evaluation">pyspark.ml.evaluation (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.evaluation
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.evaluation">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.pipeline">pyspark.ml.pipeline (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.pipeline
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.pipeline">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.recommendation">pyspark.ml.recommendation (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.recommendation
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.recommendation">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.regression">pyspark.ml.regression (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.regression
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.regression">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.stat">pyspark.ml.stat (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.stat
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.stat">module</a>
 </li>
-      <li><a href="api.html#module-pyspark.ml.tuning">pyspark.ml.tuning (module)</a>
+      </ul></li>
+      <li>
+    pyspark.ml.tuning
+
+      <ul>
+        <li><a href="api.html#module-pyspark.ml.tuning">module</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.r2">r2 (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.r2">r2() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.r2adj">r2adj (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.r2adj">r2adj() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.classification.RandomForestClassificationModel">RandomForestClassificationModel (class in pyspark.ml.classification)</a>
 </li>
@@ -912,10 +977,10 @@
 </li>
       <li><a href="api.html#pyspark.ml.regression.RandomForestRegressor">RandomForestRegressor (class in pyspark.ml.regression)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.recommendation.ALSModel.rank">rank (pyspark.ml.recommendation.ALSModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.recommendation.ALSModel.rank">rank() (pyspark.ml.recommendation.ALSModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.rank">(pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.rank">(pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
       </ul></li>
       <li><a href="api.html#pyspark.ml.pipeline.Pipeline.read">read() (pyspark.ml.pipeline.Pipeline class method)</a>
@@ -934,9 +999,9 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.recallByLabel">recallByLabel (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.recallByLabel">recallByLabel() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.recallByThreshold">recallByThreshold (pyspark.ml.classification.BinaryLogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.recallByThreshold">recallByThreshold() (pyspark.ml.classification.BinaryLogisticRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.recommendation.ALSModel.recommendForAllItems">recommendForAllItems() (pyspark.ml.recommendation.ALSModel method)</a>
 </li>
@@ -948,17 +1013,19 @@
 </li>
       <li><a href="api.html#pyspark.ml.evaluation.RegressionEvaluator">RegressionEvaluator (class in pyspark.ml.evaluation)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.residualDegreeOfFreedom">residualDegreeOfFreedom (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.residualDegreeOfFreedom">residualDegreeOfFreedom() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.residualDegreeOfFreedomNull">residualDegreeOfFreedomNull (pyspark.ml.regression.GeneralizedLinearRegressionSummary attribute)</a>
-</li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.residuals">residuals (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.residualDegreeOfFreedomNull">residualDegreeOfFreedomNull() (pyspark.ml.regression.GeneralizedLinearRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionSummary.residuals">residuals() (pyspark.ml.regression.GeneralizedLinearRegressionSummary method)</a>
+
+      <ul>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.residuals">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.roc">roc (pyspark.ml.classification.BinaryLogisticRegressionSummary attribute)</a>
+      </ul></li>
+      <li><a href="api.html#pyspark.ml.classification.BinaryLogisticRegressionSummary.roc">roc() (pyspark.ml.classification.BinaryLogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.rootMeanSquaredError">rootMeanSquaredError (pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.rootMeanSquaredError">rootMeanSquaredError() (pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       <li><a href="setup.html#index-0">Run on Databricks Community Cloud</a>
 </li>
@@ -976,10 +1043,10 @@
         <li><a href="api.html#pyspark.ml.pipeline.PipelineWriter.saveImpl">(pyspark.ml.pipeline.PipelineWriter method)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.scale">scale (pyspark.ml.regression.AFTSurvivalRegressionModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.AFTSurvivalRegressionModel.scale">scale() (pyspark.ml.regression.AFTSurvivalRegressionModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.scale">(pyspark.ml.regression.LinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.scale">(pyspark.ml.regression.LinearRegressionModel property)</a>
 </li>
       </ul></li>
       <li><a href="setup.html#index-2">Set up Spark on Cloud</a>
@@ -1206,7 +1273,7 @@
 </li>
       <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegression.setVariancePower">setVariancePower() (pyspark.ml.regression.GeneralizedLinearRegression method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.solver">solver (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.solver">solver() (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.tuning.CrossValidatorModel.subModels">subModels (pyspark.ml.tuning.CrossValidatorModel attribute)</a>
 
@@ -1216,22 +1283,22 @@
       </ul></li>
       <li><a href="api.html#pyspark.ml.stat.Summarizer">Summarizer (class in pyspark.ml.stat)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.summary">summary (pyspark.ml.classification.LogisticRegressionModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionModel.summary">summary() (pyspark.ml.classification.LogisticRegressionModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.clustering.BisectingKMeansModel.summary">(pyspark.ml.clustering.BisectingKMeansModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.BisectingKMeansModel.summary">(pyspark.ml.clustering.BisectingKMeansModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.summary">(pyspark.ml.clustering.GaussianMixtureModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.summary">(pyspark.ml.clustering.GaussianMixtureModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.clustering.KMeansModel.summary">(pyspark.ml.clustering.KMeansModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.KMeansModel.summary">(pyspark.ml.clustering.KMeansModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.summary">(pyspark.ml.regression.GeneralizedLinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionModel.summary">(pyspark.ml.regression.GeneralizedLinearRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.summary">(pyspark.ml.regression.LinearRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionModel.summary">(pyspark.ml.regression.LinearRegressionModel property)</a>
+</li>
+        <li><a href="api.html#pyspark.ml.stat.SummaryBuilder.summary">(pyspark.ml.stat.SummaryBuilder method)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.stat.SummaryBuilder.summary">summary() (pyspark.ml.stat.SummaryBuilder method)</a>
-</li>
       <li><a href="api.html#pyspark.ml.stat.SummaryBuilder">SummaryBuilder (class in pyspark.ml.stat)</a>
 </li>
   </ul></td>
@@ -1246,16 +1313,16 @@
         <li><a href="api.html#pyspark.ml.stat.KolmogorovSmirnovTest.test">(pyspark.ml.stat.KolmogorovSmirnovTest static method)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.classification.NaiveBayesModel.theta">theta (pyspark.ml.classification.NaiveBayesModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.NaiveBayesModel.theta">theta() (pyspark.ml.classification.NaiveBayesModel property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.DistributedLDAModel.toLocal">toLocal() (pyspark.ml.clustering.DistributedLDAModel method)</a>
 </li>
       <li><a href="api.html#pyspark.ml.clustering.LDAModel.topicsMatrix">topicsMatrix() (pyspark.ml.clustering.LDAModel method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionTrainingSummary.totalIterations">totalIterations (pyspark.ml.classification.LogisticRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionTrainingSummary.totalIterations">totalIterations() (pyspark.ml.classification.LogisticRegressionTrainingSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionTrainingSummary.totalIterations">(pyspark.ml.regression.LinearRegressionTrainingSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionTrainingSummary.totalIterations">(pyspark.ml.regression.LinearRegressionTrainingSummary property)</a>
 </li>
       </ul></li>
       <li><a href="api.html#pyspark.ml.clustering.DistributedLDAModel.trainingLogLikelihood">trainingLogLikelihood() (pyspark.ml.clustering.DistributedLDAModel method)</a>
@@ -1266,22 +1333,22 @@
 </li>
       <li><a href="api.html#pyspark.ml.tuning.TrainValidationSplitModel">TrainValidationSplitModel (class in pyspark.ml.tuning)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.GBTClassificationModel.trees">trees (pyspark.ml.classification.GBTClassificationModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.GBTClassificationModel.trees">trees() (pyspark.ml.classification.GBTClassificationModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.classification.RandomForestClassificationModel.trees">(pyspark.ml.classification.RandomForestClassificationModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.classification.RandomForestClassificationModel.trees">(pyspark.ml.classification.RandomForestClassificationModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.GBTRegressionModel.trees">(pyspark.ml.regression.GBTRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.GBTRegressionModel.trees">(pyspark.ml.regression.GBTRegressionModel property)</a>
 </li>
-        <li><a href="api.html#pyspark.ml.regression.RandomForestRegressionModel.trees">(pyspark.ml.regression.RandomForestRegressionModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.RandomForestRegressionModel.trees">(pyspark.ml.regression.RandomForestRegressionModel property)</a>
 </li>
       </ul></li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.truePositiveRateByLabel">truePositiveRateByLabel (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.truePositiveRateByLabel">truePositiveRateByLabel() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.tValues">tValues (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary.tValues">tValues() (pyspark.ml.regression.GeneralizedLinearRegressionTrainingSummary property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.tValues">(pyspark.ml.regression.LinearRegressionSummary attribute)</a>
+        <li><a href="api.html#pyspark.ml.regression.LinearRegressionSummary.tValues">(pyspark.ml.regression.LinearRegressionSummary property)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1290,7 +1357,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.recommendation.ALSModel.userFactors">userFactors (pyspark.ml.recommendation.ALSModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.recommendation.ALSModel.userFactors">userFactors() (pyspark.ml.recommendation.ALSModel property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1314,20 +1381,20 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedFalsePositiveRate">weightedFalsePositiveRate (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedFalsePositiveRate">weightedFalsePositiveRate() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
       <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedFMeasure">weightedFMeasure() (pyspark.ml.classification.LogisticRegressionSummary method)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedPrecision">weightedPrecision (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedPrecision">weightedPrecision() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedRecall">weightedRecall (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedRecall">weightedRecall() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedTruePositiveRate">weightedTruePositiveRate (pyspark.ml.classification.LogisticRegressionSummary attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.LogisticRegressionSummary.weightedTruePositiveRate">weightedTruePositiveRate() (pyspark.ml.classification.LogisticRegressionSummary property)</a>
 </li>
-      <li><a href="api.html#pyspark.ml.classification.MultilayerPerceptronClassificationModel.weights">weights (pyspark.ml.classification.MultilayerPerceptronClassificationModel attribute)</a>
+      <li><a href="api.html#pyspark.ml.classification.MultilayerPerceptronClassificationModel.weights">weights() (pyspark.ml.classification.MultilayerPerceptronClassificationModel property)</a>
 
       <ul>
-        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.weights">(pyspark.ml.clustering.GaussianMixtureModel attribute)</a>
+        <li><a href="api.html#pyspark.ml.clustering.GaussianMixtureModel.weights">(pyspark.ml.clustering.GaussianMixtureModel property)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1363,7 +1430,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -113,8 +114,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -160,7 +163,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>10. Regularization</li>
+      <li><span class="section-number">10. </span>Regularization</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,55 +181,64 @@
            <div itemprop="articleBody">
             
   <div class="section" id="regularization">
-<span id="id1"></span><h1>10. Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
-<p>In mathematics, statistics, and computer science, particularly in the fields of machine learning and inverse problems, regularization is a process of introducing additional information in order to solve an ill-posed problem or to prevent overfitting (<a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">Wikipedia Regularization</a>).</p>
-<p>Due to the sparsity within our data, our training sets will often be ill-posed (singular).  Applying regularization to the regression has many advantages, including:</p>
+<span id="id1"></span><h1><span class="section-number">10. </span>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
+<p>In mathematics, statistics, and computer science, particularly in the fields of machine learning and inverse problems,
+regularization is a process of introducing additional information in order to solve an ill-posed problem or to prevent
+overfitting (<a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">Wikipedia Regularization</a>).</p>
+<p>Due to the sparsity within our data, our training sets will often be ill-posed (singular).  Applying regularization
+to the regression has many advantages, including:</p>
 <ol class="arabic simple">
-<li>Converting ill-posed problems to well-posed by adding additional information via the penalty parameter <img class="math" src="_images/math/929cf377a8485f5b43e20744c4e2339e9b6a112d.png" alt="\lambda"/></li>
-<li>Preventing overfitting</li>
-<li>Variable selection and the removal of correlated variables (<a class="reference external" href="https://web.stanford.edu/~hastie/Papers/Glmnet_Vignette.pdf">Glmnet Vignette</a>).  The Ridge method shrinks the coefficients of correlated variables while the LASSO method picks one variable and discards the others.  The elastic net penalty is a mixture of these two; if variables are correlated in groups then <img class="math" src="_images/math/487c271c3f4e816a00140a32b75636a430b43d75.png" alt="\alpha=0.5"/> tends to select the groups as in or out. If α is close to 1, the elastic net performs much like the LASSO method and removes any degeneracies and wild behavior caused by extreme correlations.</li>
+<li><p>Converting ill-posed problems to well-posed by adding additional information via the
+penalty parameter <img class="math" src="_images/math/a76d8af3e2966754e8b8c9030dc114f35e090951.png" alt="\lambda"/></p></li>
+<li><p>Preventing overfitting</p></li>
+<li><p>Variable selection and the removal of correlated variables (<a class="reference external" href="https://web.stanford.edu/~hastie/Papers/Glmnet_Vignette.pdf">Glmnet Vignette</a>).  The Ridge method
+shrinks the coefficients of correlated variables while the LASSO method picks one variable and discards
+the others.  The elastic net penalty is a mixture of these two; if variables are correlated in groups then
+<img class="math" src="_images/math/963bb945eddb7c2dcfe004f123693ab495c55406.png" alt="\alpha=0.5"/> tends to select the groups as in or out. If <img class="math" src="_images/math/a73bf3eb437606bd86d928ce5249b5ee8e2f1406.png" alt="\alpha"/> is close to 1, the elastic
+net performs much like the LASSO method and removes any degeneracies and wild behavior caused by extreme
+correlations.</p></li>
 </ol>
 <div class="section" id="ordinary-least-squares-regression">
-<h2>10.1. Ordinary least squares regression<a class="headerlink" href="#ordinary-least-squares-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.1. </span>Ordinary least squares regression<a class="headerlink" href="#ordinary-least-squares-regression" title="Permalink to this headline">¶</a></h2>
 <div class="math">
-<p><img src="_images/math/16115a4e9471093b7af52fabc388337a506d4a92.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta -{\y}\|^{2}"/></p>
-</div><p>When <img class="math" src="_images/math/75c4d193ebd92dbdf5d19ca59d2f949ab6c654f3.png" alt="\lambda=0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/a9260a9413abc112c8d6a6a6432204c4567100e6.png" alt="=0"/>), then there is no penalty.</p>
+<p><img src="_images/math/534e6c9ac3fbb00859676d44bdf92227f472a508.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta -{\y}\|^{2}"/></p>
+</div><p>When <img class="math" src="_images/math/68bddab73431ba6bf7410a75d2a1ed6beb7ad34a.png" alt="\lambda=0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/89953dafbcdddcec2a4b8262804d3b84d9f8c8ab.png" alt="=0"/>), then there is no penalty.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">regParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-<span class="n">weightCol</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">regParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="n">weightCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ridge-regression">
-<h2>10.2. Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2. </span>Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
 <div class="math">
-<p><img src="_images/math/61e8f8613632a93a09d263df8079357a3771d5d0.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda \|\Bbeta\|_{2}^{2}"/></p>
-</div><p>When <img class="math" src="_images/math/c68950621ef1d7bde0a0d8fc6bbf0b9715c989b1.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/5af2a05f08d01a65fe242757b6fff5ed63116b56.png" alt="&gt;0"/>) and <img class="math" src="_images/math/cb59afbbbddffd9a7eff6d0ff1802ba514d23e1a.png" alt="\alpha=0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/a9260a9413abc112c8d6a6a6432204c4567100e6.png" alt="=0"/>)  , then the penalty is an L2 penalty.</p>
+<p><img src="_images/math/7c47dd67a1194681fd8ce6dc163024215ff980d9.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda \|\Bbeta\|_{2}^{2}"/></p>
+</div><p>When <img class="math" src="_images/math/290fa626e04584e3517ec19ab88030baa5d6ecec.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/2dd522837fe237ea969ab6a404cf2a51cf298285.png" alt="&gt;0"/>) and <img class="math" src="_images/math/7268602c74b6259312d14a9c2f110f8ec74b1895.png" alt="\alpha=0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/89953dafbcdddcec2a4b8262804d3b84d9f8c8ab.png" alt="=0"/>)  , then the penalty is an L2 penalty.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">regParam</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-<span class="n">weightCol</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">regParam</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="n">weightCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="least-absolute-shrinkage-and-selection-operator-lasso">
-<h2>10.3. Least Absolute Shrinkage and Selection Operator (LASSO)<a class="headerlink" href="#least-absolute-shrinkage-and-selection-operator-lasso" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3. </span>Least Absolute Shrinkage and Selection Operator (LASSO)<a class="headerlink" href="#least-absolute-shrinkage-and-selection-operator-lasso" title="Permalink to this headline">¶</a></h2>
 <div class="math">
-<p><img src="_images/math/18d3a927e0f0c83639cb55e755cfe9c29c532d89.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda\|\Bbeta\|_{1}"/></p>
-</div><p>When <img class="math" src="_images/math/c68950621ef1d7bde0a0d8fc6bbf0b9715c989b1.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/5af2a05f08d01a65fe242757b6fff5ed63116b56.png" alt="&gt;0"/>) and <img class="math" src="_images/math/80c5ad2ed65e28a4dee747d665916caac68d8440.png" alt="\alpha=1"/> (i.e. <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/a3bd02c9bd422fb3280cde4384c00524b7a688fd.png" alt="=1"/>), then the penalty is an L1 penalty.</p>
+<p><img src="_images/math/f0695e94a4df1899d5549c29614b72feee08a474.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda\|\Bbeta\|_{1}"/></p>
+</div><p>When <img class="math" src="_images/math/290fa626e04584e3517ec19ab88030baa5d6ecec.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/2dd522837fe237ea969ab6a404cf2a51cf298285.png" alt="&gt;0"/>) and <img class="math" src="_images/math/96a23e4159288d88343f598b9752958752e68fbf.png" alt="\alpha=1"/> (i.e. <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/30ad190bf84eb88566ebd91117f72d6173fbafc9.png" alt="=1"/>), then the penalty is an L1 penalty.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">regParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-<span class="n">weightCol</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">regParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="n">weightCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="elastic-net">
-<h2>10.4. Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.4. </span>Elastic net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h2>
 <div class="math">
-<p><img src="_images/math/396506754ece89f15f5da58b2766fed484d2f7ee.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda (\alpha \|\Bbeta\|_{1}+(1-\alpha )\|\Bbeta\|_{2}^{2}),\alpha \in (0,1)"/></p>
-</div><p>When <img class="math" src="_images/math/c68950621ef1d7bde0a0d8fc6bbf0b9715c989b1.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/5af2a05f08d01a65fe242757b6fff5ed63116b56.png" alt="&gt;0"/>) and <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/330248af239a0e5b99607bd0614730ad42d9da2c.png" alt="\in (0,1)"/> (i.e. <img class="math" src="_images/math/2a393edb9475fa8f68ef800cc1804a5c94e89cf1.png" alt="\alpha\in (0,1)"/>) , then the penalty is an L1 + L2 penalty.</p>
+<p><img src="_images/math/5a4be39bec15247dbc92f84b56696a2a975e811a.png" alt="\min _{\Bbeta\in \mathbb {R} ^{n}}{\frac {1}{n}}\|{\X}\Bbeta-{\y}\|^{2}+\lambda (\alpha \|\Bbeta\|_{1}+(1-\alpha )\|\Bbeta\|_{2}^{2}),\alpha \in (0,1)"/></p>
+</div><p>When <img class="math" src="_images/math/290fa626e04584e3517ec19ab88030baa5d6ecec.png" alt="\lambda&gt;0"/> (i.e. <code class="docutils literal notranslate"><span class="pre">regParam</span></code> <img class="math" src="_images/math/2dd522837fe237ea969ab6a404cf2a51cf298285.png" alt="&gt;0"/>) and <code class="docutils literal notranslate"><span class="pre">elasticNetParam</span></code> <img class="math" src="_images/math/0110d0326627dc75b29db102a95d982528f0b826.png" alt="\in (0,1)"/> (i.e. <img class="math" src="_images/math/f36e96f98b47f91e2e1fc51283a41e032eeaab0c.png" alt="\alpha\in (0,1)"/>) , then the penalty is an L1 + L2 penalty.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="n">maxIter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">regParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-<span class="n">weightCol</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">regParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elasticNetParam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">fitIntercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">standardization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="n">weightCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregationDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -254,7 +266,7 @@
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>

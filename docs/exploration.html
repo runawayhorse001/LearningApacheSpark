@@ -23,9 +23,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -144,8 +145,10 @@
 <li class="toctree-l1"><a class="reference internal" href="audit.html">22. PySpark Data Audit Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ze2nb.html">23. Zeppelin to jupyter notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheat.html">24. My Cheat Sheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">25. PySpark API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">26. Main Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jdbc.html">25. JDBC Connection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">27. PySpark API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">28. Main Reference</a></li>
 </ul>
 
             
@@ -191,7 +194,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>7. Data Exploration</li>
+      <li><span class="section-number">7. </span>Data Exploration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -209,26 +212,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="data-exploration">
-<span id="exploration"></span><h1>7. Data Exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h1>
+<span id="exploration"></span><h1><span class="section-number">7. </span>Data Exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-chinese-proverb admonition">
-<p class="first admonition-title">Chinese proverb</p>
-<p class="last"><strong>A journey of a thousand miles begins with a single step</strong>
+<p class="admonition-title">Chinese proverb</p>
+<p><strong>A journey of a thousand miles begins with a single step</strong>
 – idiom, from Laozi.</p>
 </div>
 <p>I wouldn’t say that understanding your dataset is the most difficult thing in data science, but it is really important and time-consuming. Data Exploration is about describing the data by means of statistical and visualization techniques. We explore data in order to understand the features and bring important features to our models.</p>
 <div class="section" id="univariate-analysis">
-<h2>7.1. Univariate Analysis<a class="headerlink" href="#univariate-analysis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Univariate Analysis<a class="headerlink" href="#univariate-analysis" title="Permalink to this headline">¶</a></h2>
 <p>In mathematics, univariate refers to an expression, equation, function or polynomial of only one variable.  “Uni” means “one”, so in other words your data has only one variable. So you do not need to deal with the causes or relationships in this step. Univariate analysis takes data, summarizes that variables (attributes) one by one and finds patterns in the data.</p>
 <p>There are many ways that can describe patterns found in univariate data include central tendency (mean, mode and median) and dispersion: range, variance, maximum, minimum, quartiles (including the interquartile range), coefficient of variation and standard deviation. You also have several options for visualizing and describing data with univariate data. Such as <code class="docutils literal notranslate"><span class="pre">frequency</span> <span class="pre">Distribution</span> <span class="pre">Tables</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span> <span class="pre">Charts</span></code>, <code class="docutils literal notranslate"><span class="pre">histograms</span></code>, <code class="docutils literal notranslate"><span class="pre">frequency</span> <span class="pre">Polygons</span></code>, <code class="docutils literal notranslate"><span class="pre">pie</span> <span class="pre">Charts</span></code>.</p>
 <p>The variable could be either categorical or numerical, I will demostrate the different statistical and visulization techniques to investigate each type of the variable.</p>
 <ul class="simple">
-<li>The Jupyter notebook can be download from <a class="reference external" href="_static/Data_exploration.ipynb">Data Exploration</a>.</li>
-<li>The data can be download from <a class="reference external" href="_static/german_credit.csv">German Credit</a>.</li>
+<li><p>The Jupyter notebook can be download from <a class="reference external" href="_static/Data_exploration.ipynb">Data Exploration</a>.</p></li>
+<li><p>The data can be download from <a class="reference external" href="_static/german_credit.csv">German Credit</a>.</p></li>
 </ul>
 <div class="section" id="numerical-variables">
-<h3>7.1.1. Numerical Variables<a class="headerlink" href="#numerical-variables" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.1. </span>Numerical Variables<a class="headerlink" href="#numerical-variables" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="describe">
-<h4>7.1.1.1. Describe<a class="headerlink" href="#describe" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.1.1. </span>Describe<a class="headerlink" href="#describe" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">describe</span></code> function in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">spark</span></code> will give us most of the statistical results, such as <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">quartiles</span></code> and <code class="docutils literal notranslate"><span class="pre">standard</span> <span class="pre">deviation</span></code>. With the help of the user defined function, you can get even more statistical results.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># selected varables for the demonstration</span>
 <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Account Balance&#39;</span><span class="p">,</span><span class="s1">&#39;No of dependents&#39;</span><span class="p">]</span>
@@ -248,7 +251,7 @@
 </div>
 <p>You may find out that the default function in PySpark does not include the quartiles. The following function will help you to get the same
 results in Pandas</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_pd</span><span class="p">(</span><span class="n">df_in</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">deciles</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_pd</span><span class="p">(</span><span class="n">df_in</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">deciles</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function to union the basic stats results and deciles</span>
 <span class="sd">    :param df_in: the input dataframe</span>
@@ -271,7 +274,7 @@ results in Pandas</p>
     <span class="n">percs</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">percentiles</span><span class="p">]</span>
 
     <span class="n">spark_describe</span> <span class="o">=</span> <span class="n">df_in</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
-    <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">spark_describe</span><span class="p">,</span> <span class="n">percs</span><span class="p">],</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">spark_describe</span><span class="p">,</span> <span class="n">percs</span><span class="p">],</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">new_df</span> <span class="o">=</span> <span class="n">new_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">new_df</span><span class="p">[[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">columns</span><span class="p">]</span>
 </pre></div>
@@ -294,7 +297,7 @@ results in Pandas</p>
 </pre></div>
 </div>
 <p>Sometimes, because of the confidential data issues, you can not deliver the real data and your clients may ask more statistical results, such as <code class="docutils literal notranslate"><span class="pre">deciles</span></code>. You can apply the follwing function to achieve it.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_pd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">num_cols</span><span class="p">,</span><span class="n">deciles</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">describe_pd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">num_cols</span><span class="p">,</span><span class="n">deciles</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+-------+------------------+-----------------+</span>
@@ -321,13 +324,13 @@ results in Pandas</p>
 </div>
 </div>
 <div class="section" id="skewness-and-kurtosis">
-<h4>7.1.1.2. Skewness and Kurtosis<a class="headerlink" href="#skewness-and-kurtosis" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.1.2. </span>Skewness and Kurtosis<a class="headerlink" href="#skewness-and-kurtosis" title="Permalink to this headline">¶</a></h4>
 <p>This subsection comes from Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">Skewness</a>.</p>
 <p>In probability theory and statistics, skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean. The skewness value can be positive or negative, or undefined.For a unimodal distribution, negative skew commonly indicates that the tail is on the left side of the distribution, and positive skew indicates that the tail is on the right.</p>
 <p>Consider the two distributions in the figure just below. Within each graph, the values on the right side of the distribution taper differently from the values on the left side. These tapering sides are called tails, and they provide a visual means to determine which of the two kinds of skewness a distribution has:</p>
 <ol class="arabic simple">
-<li>negative skew: The left tail is longer; the mass of the distribution is concentrated on the right of the figure. The distribution is said to be left-skewed, left-tailed, or skewed to the left, despite the fact that the curve itself appears to be skewed or leaning to the right; left instead refers to the left tail being drawn out and, often, the mean being skewed to the left of a typical center of the data. A left-skewed distribution usually appears as a right-leaning curve.</li>
-<li>positive skew: The right tail is longer; the mass of the distribution is concentrated on the left of the figure. The distribution is said to be right-skewed, right-tailed, or skewed to the right, despite the fact that the curve itself appears to be skewed or leaning to the left; right instead refers to the right tail being drawn out and, often, the mean being skewed to the right of a typical center of the data. A right-skewed distribution usually appears as a left-leaning curve.</li>
+<li><p>negative skew: The left tail is longer; the mass of the distribution is concentrated on the right of the figure. The distribution is said to be left-skewed, left-tailed, or skewed to the left, despite the fact that the curve itself appears to be skewed or leaning to the right; left instead refers to the left tail being drawn out and, often, the mean being skewed to the left of a typical center of the data. A left-skewed distribution usually appears as a right-leaning curve.</p></li>
+<li><p>positive skew: The right tail is longer; the mass of the distribution is concentrated on the left of the figure. The distribution is said to be right-skewed, right-tailed, or skewed to the right, despite the fact that the curve itself appears to be skewed or leaning to the left; right instead refers to the right tail being drawn out and, often, the mean being skewed to the right of a typical center of the data. A right-skewed distribution usually appears as a left-leaning curve.</p></li>
 </ol>
 <p>This subsection comes from Wikipedia <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">Kurtosis</a>.</p>
 <p>In probability theory and statistics, kurtosis (kyrtos or kurtos, meaning “curved, arching”) is a measure of the “tailedness” of the probability distribution of a real-valued random variable. In a similar way to the concept of skewness, kurtosis is a descriptor of the shape of a probability distribution and, just as for skewness, there are different ways of quantifying it for a theoretical distribution and corresponding ways of estimating it from a sample from a population.</p>
@@ -346,21 +349,21 @@ results in Pandas</p>
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><strong>Sometimes the statistics can be misleading!</strong></p>
+<p class="admonition-title">Warning</p>
+<p><strong>Sometimes the statistics can be misleading!</strong></p>
 </div>
 <p>F. J. Anscombe once said that make both calculations and graphs. Both sorts of output should be studied; each will contribute to understanding.
 These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"><span class="std std-ref">Same Stats, Different Graphs</span></a> (the Datasaurus, plus 12 others) each have the same summary statistics (x/y mean, x/y standard deviation, and Pearson’s correlation) to two decimal places, while being drastically different in appearance. This work describes the technique we developed to create this dataset, and others like it. More details and interesting results can be found in <a class="reference external" href="https://www.autodeskresearch.com/publications/samestats">Same Stats Different Graphs</a>.</p>
 <div class="figure align-center" id="id2">
 <span id="fig-misleading"></span><img alt="_images/misleading.png" src="_images/misleading.png" />
-<p class="caption"><span class="caption-text">Same Stats, Different Graphs</span></p>
+<p class="caption"><span class="caption-text">Same Stats, Different Graphs</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="histogram">
-<h4>7.1.1.3. Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.1.3. </span>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h4>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><strong>Histograms are often confused with Bar graphs!</strong></p>
+<p class="admonition-title">Warning</p>
+<p><strong>Histograms are often confused with Bar graphs!</strong></p>
 </div>
 <p>The fundamental difference between histogram and bar graph will help you to identify the two easily is that there are gaps between bars in a bar graph but in the histogram, the bars are adjacent to each other. The interested reader is referred to <a class="reference external" href="https://keydifferences.com/difference-between-histogram-and-bar-graph.html">Difference Between Histogram and Bar Graph</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;Age (years)&#39;</span>
@@ -401,7 +404,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="c1"># # Set the ticks to the middle of the bars</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="o">+</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)])</span>
 <span class="c1"># Set the xticklabels to a string that tells us what the bin edges were</span>
-<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)]</span>
 <span class="n">labels</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
@@ -419,12 +422,12 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="o">+</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)])</span>
 
 <span class="c1"># Set the xticklabels to a string that tells us what the bin edges were</span>
-<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)]</span>
 <span class="n">labels</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Histogram of {}: Left with percentage output;Right with count output&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Histogram of </span><span class="si">{}</span><span class="s1">: Left with percentage output;Right with count output&#39;</span>
              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -453,7 +456,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 
 <span class="c1"># Set the xticklabels to a string that tells us what the bin edges were</span>
 <span class="c1">#labels =[&#39;{}k&#39;.format(int(bins[i+1]/1000)) for i,j in enumerate(hist)]</span>
-<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hist</span><span class="p">)]</span>
 <span class="n">labels</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="c1">#plt.text(-0.6, -1.4,&#39;0&#39;)</span>
@@ -467,7 +470,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="box-plot-and-violin-plot">
-<h4>7.1.1.4. Box plot and violin plot<a class="headerlink" href="#box-plot-and-violin-plot" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.1.4. </span>Box plot and violin plot<a class="headerlink" href="#box-plot-and-violin-plot" title="Permalink to this headline">¶</a></h4>
 <p>Note that although violin plots are closely related to Tukey’s (1977) box plots, the violin plot can show more information than box plot. When we perform an exploratory analysis, nothing about the samples could be known. So the distribution of the samples can not be assumed to a normal distribution and usually when you get a big data, the normal distribution will show some out liars in box plot.</p>
 <p>However, the violin plots are potentially misleading for smaller sample sizes, where the density plots can appear to show interesting features (and group-differences therein) even when produced for standard normal data. Some poster suggested the sample size should larger that 250. The sample sizes (e.g. n&gt;250 or ideally even larger), where the kernel density plots provide a reasonably accurate representation of the distributions, potentially showing nuances such as bimodality or other forms of non-normality that would be invisible or less clear in box plots. More details can be found in <a class="reference external" href="https://figshare.com/articles/A_simple_comparison_of_box_plots_and_violin_plots/1544525">A simple comparison of box plots and violin plots</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
@@ -486,10 +489,10 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="categorical-variables">
-<h3>7.1.2. Categorical Variables<a class="headerlink" href="#categorical-variables" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.2. </span>Categorical Variables<a class="headerlink" href="#categorical-variables" title="Permalink to this headline">¶</a></h3>
 <p>Compared with the numerical variables, the categorical variables are much more easier to do the exploration.</p>
 <div class="section" id="frequency-table">
-<h4>7.1.2.1. Frequency table<a class="headerlink" href="#frequency-table" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.2.1. </span>Frequency table<a class="headerlink" href="#frequency-table" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">rank</span><span class="p">,</span><span class="nb">sum</span><span class="p">,</span><span class="n">col</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">Window</span>
@@ -521,7 +524,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="pie-plot">
-<h4>7.1.2.2. Pie plot<a class="headerlink" href="#pie-plot" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.2.2. </span>Pie plot<a class="headerlink" href="#pie-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data to plot</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">age_class</span>
 <span class="n">sizes</span> <span class="o">=</span>  <span class="n">plot_data</span><span class="o">.</span><span class="n">Percent</span>
@@ -531,7 +534,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="c1"># Plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
-        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -542,7 +545,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="bar-plot">
-<h4>7.1.2.3. Bar plot<a class="headerlink" href="#bar-plot" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.1.2.3. </span>Bar plot<a class="headerlink" href="#bar-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">age_class</span>
 <span class="n">missing</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">Percent</span>
 <span class="n">ind</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">)]</span>
@@ -585,14 +588,14 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="multivariate-analysis">
-<h2>7.2. Multivariate Analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Multivariate Analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this headline">¶</a></h2>
 <p>In this section, I will only demostrate the bivariate analysis. Since the multivariate analysis is the generation of the bivariate.</p>
 <div class="section" id="numerical-v-s-numerical">
-<h3>7.2.1. Numerical V.S. Numerical<a class="headerlink" href="#numerical-v-s-numerical" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.1. </span>Numerical V.S. Numerical<a class="headerlink" href="#numerical-v-s-numerical" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="correlation-matrix">
-<h4>7.2.1.1. Correlation matrix<a class="headerlink" href="#correlation-matrix" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.2.1.1. </span>Correlation matrix<a class="headerlink" href="#correlation-matrix" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.mllib.stat</span> <span class="kn">import</span> <span class="n">Statistics</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">corr_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)</span>
 
@@ -602,7 +605,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="n">corr_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">corr_mat</span><span class="p">)</span>
 <span class="n">corr_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">corr_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">col_names</span><span class="p">,</span> <span class="n">col_names</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">corr_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+--------------------+</span>
@@ -615,8 +618,8 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="scatter-plot">
-<h4>7.2.1.2. Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<h4><span class="section-number">7.2.1.2. </span>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
@@ -630,12 +633,12 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="categorical-v-s-categorical">
-<h3>7.2.2. Categorical V.S. Categorical<a class="headerlink" href="#categorical-v-s-categorical" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.2. </span>Categorical V.S. Categorical<a class="headerlink" href="#categorical-v-s-categorical" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="pearsons-chi-squared-test">
-<h4>7.2.2.1. Pearson’s Chi-squared test<a class="headerlink" href="#pearsons-chi-squared-test" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.2.2.1. </span>Pearson’s Chi-squared test<a class="headerlink" href="#pearsons-chi-squared-test" title="Permalink to this headline">¶</a></h4>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">pyspark.ml.stat</span></code> is only available in Spark 2.4.0.</p>
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyspark.ml.stat</span></code> is only available in Spark 2.4.0.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.linalg</span> <span class="kn">import</span> <span class="n">Vectors</span>
 <span class="kn">from</span> <span class="nn">pyspark.ml.stat</span> <span class="kn">import</span> <span class="n">ChiSquareTest</span>
@@ -649,9 +652,9 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;features&quot;</span><span class="p">])</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">ChiSquareTest</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;pValues: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">pValues</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;degreesOfFreedom: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">degreesOfFreedom</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;statistics: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">statistics</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pValues: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">pValues</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;degreesOfFreedom: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">degreesOfFreedom</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;statistics: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">statistics</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pValues</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.687289278791</span><span class="p">,</span><span class="mf">0.682270330336</span><span class="p">]</span>
@@ -661,7 +664,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="cross-table">
-<h4>7.2.2.2. Cross table<a class="headerlink" href="#cross-table" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.2.2.2. </span>Cross table<a class="headerlink" href="#cross-table" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">stat</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="s2">&quot;age_class&quot;</span><span class="p">,</span> <span class="s2">&quot;Occupation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -679,7 +682,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="stacked-plot">
-<h4>7.2.2.3. Stacked plot<a class="headerlink" href="#stacked-plot" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">7.2.2.3. </span>Stacked plot<a class="headerlink" href="#stacked-plot" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;missing&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;25&#39;</span><span class="p">,</span> <span class="s1">&#39;25-34&#39;</span><span class="p">,</span> <span class="s1">&#39;35-44&#39;</span><span class="p">,</span> <span class="s1">&#39;45-54&#39;</span><span class="p">,</span><span class="s1">&#39;55-64&#39;</span><span class="p">,</span><span class="s1">&#39;65+&#39;</span><span class="p">]</span>
 <span class="n">missing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.000095</span><span class="p">,</span> <span class="mf">0.024830</span><span class="p">,</span> <span class="mf">0.028665</span><span class="p">,</span> <span class="mf">0.029477</span><span class="p">,</span> <span class="mf">0.031918</span><span class="p">,</span><span class="mf">0.037073</span><span class="p">,</span><span class="mf">0.026699</span><span class="p">])</span>
 <span class="n">man</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.000147</span><span class="p">,</span> <span class="mf">0.036311</span><span class="p">,</span> <span class="mf">0.038684</span><span class="p">,</span> <span class="mf">0.044761</span><span class="p">,</span> <span class="mf">0.051269</span><span class="p">,</span> <span class="mf">0.059542</span><span class="p">,</span> <span class="mf">0.054259</span><span class="p">])</span>
@@ -705,13 +708,13 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="numerical-v-s-categorical">
-<h3>7.2.3. Numerical V.S. Categorical<a class="headerlink" href="#numerical-v-s-categorical" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.3. </span>Numerical V.S. Categorical<a class="headerlink" href="#numerical-v-s-categorical" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="line-chart-with-error-bars">
-<h4>7.2.3.1. Line Chart with Error Bars<a class="headerlink" href="#line-chart-with-error-bars" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<h4><span class="section-number">7.2.3.1. </span>Line Chart with Error Bars<a class="headerlink" href="#line-chart-with-error-bars" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
@@ -728,11 +731,11 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 </div>
 </div>
 <div class="section" id="combination-chart">
-<h4>7.2.3.2. Combination Chart<a class="headerlink" href="#combination-chart" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<h4><span class="section-number">7.2.3.2. </span>Combination Chart<a class="headerlink" href="#combination-chart" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
@@ -747,7 +750,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 <span class="c1">#create list for made up average temperatures</span>
 <span class="n">Avg_Temp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
 <span class="c1">#create list for made up average percipitation %</span>
-<span class="n">Avg_Percipitation_Perc</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">90</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">55</span><span class="p">,</span> <span class="o">.</span><span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">35</span><span class="p">,</span> <span class="o">.</span><span class="mo">05</span><span class="p">,</span> <span class="o">.</span><span class="mo">05</span><span class="p">,</span> <span class="o">.</span><span class="mi">08</span><span class="p">,</span> <span class="o">.</span><span class="mi">20</span><span class="p">,</span> <span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="o">.</span><span class="mi">65</span><span class="p">,</span> <span class="o">.</span><span class="mi">80</span><span class="p">]</span>
+<span class="n">Avg_Percipitation_Perc</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">90</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">55</span><span class="p">,</span> <span class="o">.</span><span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">35</span><span class="p">,</span> <span class="o">.</span><span class="mi">05</span><span class="p">,</span> <span class="o">.</span><span class="mi">05</span><span class="p">,</span> <span class="o">.</span><span class="mi">08</span><span class="p">,</span> <span class="o">.</span><span class="mi">20</span><span class="p">,</span> <span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="o">.</span><span class="mi">65</span><span class="p">,</span> <span class="o">.</span><span class="mi">80</span><span class="p">]</span>
 <span class="c1">#assign lists to a value</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Month&#39;</span><span class="p">:</span> <span class="n">Month</span><span class="p">,</span> <span class="s1">&#39;Avg_Temp&#39;</span><span class="p">:</span> <span class="n">Avg_Temp</span><span class="p">,</span> <span class="s1">&#39;Avg_Percipitation_Perc&#39;</span><span class="p">:</span> <span class="n">Avg_Percipitation_Perc</span><span class="p">}</span>
 <span class="c1">#convert dictionary to a dataframe</span>
@@ -760,7 +763,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Avg_Temp&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gold&#39;</span><span class="p">)</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Avg_Percipitation_Perc&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Avg_Percipitation_Perc&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Avg Temp&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
@@ -800,7 +803,7 @@ These 13 datasets in Figure <a class="reference internal" href="#fig-misleading"
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Feb 05, 2020.
+        Last updated on Nov 21, 2021.
       </span>
 
     </p>
