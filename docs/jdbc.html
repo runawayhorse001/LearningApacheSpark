@@ -114,9 +114,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#put-jar-in-the-jars-folder">25.1.2. Put <code class="docutils literal notranslate"><span class="pre">.jar</span></code> in the jars folder</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#jdbc-read">25.2. JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jdbc-write">25.3. JDBC <code class="docutils literal notranslate"><span class="pre">write</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jdbc-temp-view">25.4. JDBC <code class="docutils literal notranslate"><span class="pre">temp_view</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-credentials">25.2. Get Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-read">25.3. JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-write">25.4. JDBC <code class="docutils literal notranslate"><span class="pre">write</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jdbc-temp-view">25.5. JDBC <code class="docutils literal notranslate"><span class="pre">temp_view</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bricks.html">26. Databricks Tips</a></li>
@@ -186,21 +187,27 @@
             
   <div class="section" id="jdbc-connection">
 <span id="jdbc"></span><h1><span class="section-number">25. </span>JDBC Connection<a class="headerlink" href="#jdbc-connection" title="Permalink to this headline">¶</a></h1>
-<p>In this chapter, you will learn how to use JDBC source to write and read data in PySpark. The idea database for spark
-is HDFS. But not many companies are not willing to move all the data (PII data) into Databricks’ HDFS. Then you have
-to use JDBC to connect to external database. While JDBC read and write are always tricky and confusion for beginner.</p>
+<p>In this chapter, you will learn how to use JDBC source to write and read data
+in PySpark. The idea database for spark is HDFS. But not many companies are
+not willing to move all the data (PII data) into Databricks’ HDFS. Then you
+have to use JDBC to connect to external database. While JDBC read and write
+are always tricky and confusion for beginner.</p>
 <div class="section" id="jdbc-driver">
 <h2><span class="section-number">25.1. </span>JDBC Driver<a class="headerlink" href="#jdbc-driver" title="Permalink to this headline">¶</a></h2>
-<p>For successfully connection, you need the corresponding JDBC driver for the specify Database. Here I will use Greenplum
-database as an example to demonstrate how to get the correct <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file and where to put the <code class="docutils literal notranslate"><span class="pre">.jar</span></code>.</p>
+<p>For successfully connection, you need the corresponding JDBC driver for the
+specify Database. Here I will use Greenplum database as an example to
+demonstrate how to get the correct <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file and where to put the <code class="docutils literal notranslate"><span class="pre">.jar</span></code>.</p>
 <div class="section" id="get-the-jar-file">
 <h3><span class="section-number">25.1.1. </span>Get the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file<a class="headerlink" href="#get-the-jar-file" title="Permalink to this headline">¶</a></h3>
-<p>Since Greenplum is using PostgreSQL, you can search with ‘PostgreSQL JDBC Driver’. There is a high chance that
-you will reach to this page: <a class="reference external" href="https://jdbc.postgresql.org/download.html">https://jdbc.postgresql.org/download.html</a>. Then download the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file.</p>
+<p>Since Greenplum is using PostgreSQL, you can search with
+‘PostgreSQL JDBC Driver’. There is a high chance that
+you will reach to this page: <a class="reference external" href="https://jdbc.postgresql.org/download.html">https://jdbc.postgresql.org/download.html</a>.
+Then download the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file.</p>
 </div>
 <div class="section" id="put-jar-in-the-jars-folder">
 <h3><span class="section-number">25.1.2. </span>Put <code class="docutils literal notranslate"><span class="pre">.jar</span></code> in the jars folder<a class="headerlink" href="#put-jar-in-the-jars-folder" title="Permalink to this headline">¶</a></h3>
-<p>Now what you need to do is putting the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file in the jar folder under your spark installation folder. Here is my
+<p>Now what you need to do is putting the <code class="docutils literal notranslate"><span class="pre">.jar</span></code> file in the jar folder under
+your spark installation folder. Here is my
 jar folder: <code class="docutils literal notranslate"><span class="pre">/opt/spark/jars</span></code></p>
 <blockquote>
 <div><div class="figure align-center" id="id1">
@@ -210,26 +217,77 @@ jar folder: <code class="docutils literal notranslate"><span class="pre">/opt/sp
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="get-credentials">
+<h2><span class="section-number">25.2. </span>Get Credentials<a class="headerlink" href="#get-credentials" title="Permalink to this headline">¶</a></h2>
+<p>The following is the demo how to get the credentials in Azure Databricks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">azdb_credentials</span><span class="p">(</span><span class="n">databaseName</span><span class="o">=</span><span class="s2">&quot;DEFAULT_DB&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create credentials by usung dbutils.secrets</span>
+
+<span class="sd">    :param databaseName: Database need to build the connection,</span>
+<span class="sd">    :return: credentials</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># get dbutils module</span>
+    <span class="n">dbutils</span> <span class="o">=</span> <span class="n">IPython</span><span class="o">.</span><span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">user_ns</span><span class="p">[</span><span class="s2">&quot;dbutils&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Read Secret Keys from Key-Vault</span>
+    <span class="n">service_principal_id</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">secrets</span>\
+                                  <span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;secret-scope-key-vault&quot;</span><span class="p">,</span>
+                                       <span class="n">key</span><span class="o">=</span><span class="s2">&quot;DB-SPN-ID&quot;</span><span class="p">)</span>
+
+    <span class="n">service_principal_secret</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">secrets</span>\
+                                      <span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;secret-scope-key-vault&quot;</span><span class="p">,</span>
+                                           <span class="n">key</span><span class="o">=</span><span class="s2">&quot;DB-SPN-SECRET&quot;</span><span class="p">)</span>
+
+    <span class="n">tenent_id</span> <span class="o">=</span> <span class="n">dbutils</span><span class="o">.</span><span class="n">secrets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;ecret-scope-key-vault&quot;</span><span class="p">,</span>
+                                    <span class="n">key</span><span class="o">=</span><span class="s2">&quot;TENENT-ID&quot;</span><span class="p">)</span>
+
+    <span class="c1"># define the authority URL and your tenant ID</span>
+    <span class="c1">##In Azure</span>
+    <span class="c1">###authorityHostUrl = &quot;https://login.microsoftonline.com&quot;</span>
+    <span class="n">authority_url</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https://login.microsoftonline.com&#39;</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">tenent_id</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">adal</span><span class="o">.</span><span class="n">AuthenticationContext</span><span class="p">(</span><span class="n">authority_url</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">acquire_token_with_client_credentials</span><span class="p">(</span>
+                    <span class="s2">&quot;https://database.windows.net/&quot;</span><span class="p">,</span>
+                    <span class="n">service_principal_id</span><span class="p">,</span>
+                    <span class="n">service_principal_secret</span><span class="p">)</span>
+
+    <span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;access_token&#39;</span><span class="p">:</span> <span class="n">token</span><span class="p">[</span><span class="s2">&quot;accessToken&quot;</span><span class="p">],</span>
+                   <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s2">&quot;jdbc:sqlserver://a3pcdsapsq01.database.windows.net&quot;</span>
+                          <span class="o">+</span> <span class="s2">&quot;;&quot;</span> <span class="o">+</span> <span class="s2">&quot;databaseName=&quot;</span> <span class="o">+</span> <span class="n">databaseName</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span><span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">credentials</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="jdbc-read">
-<h2><span class="section-number">25.2. </span>JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code><a class="headerlink" href="#jdbc-read" title="Permalink to this headline">¶</a></h2>
-<p>See code <a class="reference external" href="https://github.com/apache/spark/blob/17edfec59de8d8680f7450b4d07c147c086c105a/sql/core/src/main/scala/org/apache/spark/sql/execution/datasources/jdbc/JDBCRelation.scala#L85-L97">JDBC lower-upper Bound</a></p>
+<h2><span class="section-number">25.3. </span>JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code><a class="headerlink" href="#jdbc-read" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>The most tricky part for JDBC <code class="docutils literal notranslate"><span class="pre">read</span></code> is ensuring:</dt><dd><ol class="arabic simple">
+<li><p>parallel reading</p></li>
+<li><p>almost evenly distributed partition size for each partition</p></li>
+</ol>
+</dd>
+</dl>
+<p>First Let’s look at the source code <a class="reference external" href="https://github.com/apache/spark/blob/17edfec59de8d8680f7450b4d07c147c086c105a/sql/core/src/main/scala/org/apache/spark/sql/execution/datasources/jdbc/JDBCRelation.scala#L85-L97">JDBC lower-upper Bound</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stride</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_bound</span><span class="o">/</span><span class="n">partitions_number</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">lower_bound</span><span class="o">/</span><span class="n">partitions_number</span><span class="p">)</span>
 <span class="n">partition_nr</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="n">partitions_number</span><span class="p">)</span>
-  <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span><span class="p">:</span>
-    <span class="n">partition_column</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="n">stride</span>
-    <span class="k">if</span><span class="p">:</span>
-      <span class="n">partition_nr</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="n">partitions_number</span>
-  <span class="ow">or</span> <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span><span class="p">:</span>
-    <span class="n">partition_column</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="n">stride</span> <span class="n">AND</span> <span class="n">partition_column</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span>  <span class="n">next_stride</span>
-    <span class="k">if</span><span class="p">:</span>
-      <span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">partitions_number</span>
-  <span class="ow">or</span> <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span>
-    <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="n">stride</span>
-    <span class="k">if</span><span class="p">:</span>
-      <span class="n">partition_nr</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">==</span> <span class="n">partitions_number</span>
-  <span class="n">where</span> <span class="n">next_stride</span> <span class="ow">is</span> <span class="n">calculated</span> <span class="n">after</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">left</span> <span class="n">sideo</span>
-  <span class="n">of</span> <span class="n">the</span> <span class="n">WHERE</span> <span class="n">clause</span> <span class="n">by</span> <span class="n">next_stride</span> <span class="o">+=</span> <span class="n">stride</span>
+<span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span><span class="p">:</span>
+  <span class="n">partition_column</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">OR</span> <span class="n">partition_column</span> <span class="o">&lt;</span> <span class="n">stride</span>
+  <span class="k">if</span><span class="p">:</span>
+    <span class="n">partition_nr</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="n">partitions_number</span>
+<span class="ow">or</span> <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span><span class="p">:</span>
+  <span class="n">partition_column</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="n">stride</span> <span class="n">AND</span> <span class="n">partition_column</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span>  <span class="n">next_stride</span>
+  <span class="k">if</span><span class="p">:</span>
+    <span class="n">partition_nr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">partitions_number</span>
+<span class="ow">or</span> <span class="n">generate</span> <span class="n">WHERE</span> <span class="n">clause</span>
+  <span class="n">partition_column</span> <span class="o">&gt;=</span> <span class="n">stride</span>
+  <span class="k">if</span><span class="p">:</span>
+    <span class="n">partition_nr</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="n">AND</span> <span class="n">partition_nr</span> <span class="o">==</span> <span class="n">partitions_number</span>
+<span class="n">where</span> <span class="n">next_stride</span> <span class="ow">is</span> <span class="n">calculated</span> <span class="n">after</span> <span class="n">computing</span> <span class="n">the</span> <span class="n">left</span> <span class="n">sideo</span>
+<span class="n">of</span> <span class="n">the</span> <span class="n">WHERE</span> <span class="n">clause</span> <span class="n">by</span> <span class="n">next_stride</span> <span class="o">+=</span> <span class="n">stride</span>
 
 
 
@@ -243,14 +301,154 @@ jar folder: <code class="docutils literal notranslate"><span class="pre">/opt/sp
 </div>
 <p>As you see, the above queries generate 5 partitions of data, each containing the values
 from: (0-3), (4-7), (8-11), (12-15) and (16 and more).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The above results is only true when your partition column has incremental
+like column. If you are using <code class="docutils literal notranslate"><span class="pre">DB2</span></code>, <code class="docutils literal notranslate"><span class="pre">Netezza</span></code> or <code class="docutils literal notranslate"><span class="pre">Oracle</span></code>, they have
+implicit <code class="docutils literal notranslate"><span class="pre">rowid</span></code> you can use it as <code class="docutils literal notranslate"><span class="pre">partitionColumn</span></code>. Otherwise, you’d
+better to work with your engineer team to add the <code class="docutils literal notranslate"><span class="pre">rowid</span></code> to each table
+(this is the most convenient way to fix the problem in this part).</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">azdb_read</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">partition_column</span><span class="o">=</span><span class="s1">&#39;rowid&#39;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">upper_bound</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">num_partitions</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">fetchsize</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+              <span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;DEFAULT_DB&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read table from DEFAULT_DB.</span>
+
+<span class="sd">    :param table_name: table to be read, ONLY need table name at here</span>
+<span class="sd">    :param partition_column: column name used to do partition, must be a</span>
+<span class="sd">                             numeric, date, or timestamp</span>
+<span class="sd">    :param lower_bound: lower bound of values to be fetched</span>
+<span class="sd">    :param upper_bound: upper bound of values to be fetched</span>
+<span class="sd">    :param num_partitions: The maximum number of partitions that can be used</span>
+<span class="sd">                           for parallelism in table reading</span>
+<span class="sd">    :param fetchsize: The JDBC fetch size, which determines how many rows to</span>
+<span class="sd">                      fetch per round trip. This can help performance on JDBC</span>
+<span class="sd">                      drivers which default to low fetch size (e.g. Oracle</span>
+<span class="sd">                      with 10 rows).This option applies only to reading.</span>
+<span class="sd">    :param database_name: The source database where the table will be in.</span>
+<span class="sd">    :return:  DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">azdb_credentials</span><span class="p">(</span><span class="n">database_name</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span> \
+        <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;com.microsoft.sqlserver.jdbc.spark&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">])</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;accessToken&quot;</span><span class="p">,</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">])</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;partitionColumn&#39;</span><span class="p">,</span> <span class="n">partition_column</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;numPartitions&#39;</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;lowerBound&quot;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;upperBound&quot;</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;fetchsize&quot;</span><span class="p">,</span> <span class="n">fetchsize</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;encrypt&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;hostNameInCertificate&quot;</span><span class="p">,</span> <span class="s2">&quot;*.database.windows.net&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="jdbc-write">
-<h2><span class="section-number">25.3. </span>JDBC <code class="docutils literal notranslate"><span class="pre">write</span></code><a class="headerlink" href="#jdbc-write" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.4. </span>JDBC <code class="docutils literal notranslate"><span class="pre">write</span></code><a class="headerlink" href="#jdbc-write" title="Permalink to this headline">¶</a></h2>
 <p>TODO…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">azdb_write</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">table_name</span><span class="p">,</span> <span class="n">num_partitions</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">write_mode</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span>
+               <span class="n">batchsize</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;DEFAULT_DB&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write spark DataFrame back to DEFAULT_DB</span>
+
+<span class="sd">    :param df: the spark DataFrame need to be written</span>
+<span class="sd">    :param table_name: the name of the table in DEFAULT_DB, ONLY need table</span>
+<span class="sd">                       name at here</span>
+<span class="sd">    :param num_partitions: The maximum number of partitions that can be used</span>
+<span class="sd">                           for parallelism in table writing</span>
+<span class="sd">    :param write_mode: &#39;error&#39;(default), &#39;append&#39;, &#39;overwrite&#39;, &#39;ignore&#39;</span>
+<span class="sd">    :param batchsize: The JDBC batch size, which determines how many rows to</span>
+<span class="sd">                      insert per round trip. This can help performance on JDBC</span>
+<span class="sd">                      drivers. This option applies only to writing.</span>
+<span class="sd">                      It defaults to 1000.</span>
+<span class="sd">    :param database_name: The designated database where the table will be in.</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">credentials</span> <span class="o">=</span> <span class="n">azdb_credentials</span><span class="p">(</span><span class="n">database_name</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">write</span> \
+      <span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">write_mode</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;com.microsoft.sqlserver.jdbc.spark&quot;</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">])</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;dbtable&quot;</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;accessToken&quot;</span><span class="p">,</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">])</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;numPartitions&#39;</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;batchsize&quot;</span><span class="p">,</span> <span class="n">batchsize</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;encrypt&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;hostNameInCertificate&quot;</span><span class="p">,</span> <span class="s2">&quot;*.database.windows.net&quot;</span><span class="p">)</span> \
+      <span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are working with some database which is not supporting <code class="docutils literal notranslate"><span class="pre">string</span></code>
+datatype, such as <code class="docutils literal notranslate"><span class="pre">DB2</span></code>, <code class="docutils literal notranslate"><span class="pre">Netezza</span></code>, you need pass the custom schema as
+an option like</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;createTableColumnTypes&quot;</span><span class="p">,</span> <span class="n">custom_schema</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Actually, you can use the following code to automatically generate the
+custom schema:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">auto_schema</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">cols_string</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span><span class="o">==</span><span class="s1">&#39;string&#39;</span> <span class="p">]</span>
+    <span class="n">features_len</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span>
+                               <span class="n">cols_string</span><span class="p">))</span><span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+
+    <span class="n">max_lenth</span> <span class="o">=</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols_string</span><span class="p">:</span>
+        <span class="n">max_lenth</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">features_len</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">)))</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">schema_dict</span> <span class="o">=</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;VARCHAR(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">max_lenth</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+    <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">schema_dict</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="jdbc-temp-view">
-<h2><span class="section-number">25.4. </span>JDBC <code class="docutils literal notranslate"><span class="pre">temp_view</span></code><a class="headerlink" href="#jdbc-temp-view" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.5. </span>JDBC <code class="docutils literal notranslate"><span class="pre">temp_view</span></code><a class="headerlink" href="#jdbc-temp-view" title="Permalink to this headline">¶</a></h2>
 <p>TODO…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">azdb_temp_view</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">partition_column</span><span class="o">=</span><span class="s1">&#39;rowid&#39;</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                   <span class="n">upper_bound</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">num_partitions</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                   <span class="n">fetchsize</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">database_name</span><span class="o">=</span><span class="s2">&quot;DEFAULT_DB&quot;</span><span class="p">,</span>
+                   <span class="n">temp_table_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read a table in DEFAULT_DB with pyspark and create global temporary view</span>
+
+<span class="sd">    :param table_name: database table to be read</span>
+<span class="sd">    :param temp_table_name: temporary table name</span>
+<span class="sd">    :param partition_column: column name used to do partition, must be a</span>
+<span class="sd">                             numeric, date, or timestamp</span>
+<span class="sd">    :param lower_bound: lower bound of values to be fetched</span>
+<span class="sd">    :param upper_bound: upper bound of values to be fetched</span>
+<span class="sd">    :param num_partitions: The maximum number of partitions that can be</span>
+<span class="sd">                           used for parallelism in table reading</span>
+<span class="sd">    :param database_name: default DEFAULT_DB</span>
+<span class="sd">    :return: pyspark dataframe for the read table</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">azdb_read</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">partition_column</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span>
+                       <span class="n">upper_bound</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">,</span> <span class="n">fetchsize</span><span class="p">,</span> <span class="n">database_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">temp_table_name</span><span class="p">:</span>
+        <span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">dropGlobalTempView</span><span class="p">(</span><span class="n">temp_table_name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">createGlobalTempView</span><span class="p">(</span><span class="n">temp_table_name</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">dropGlobalTempView</span><span class="p">(</span><span class="n">table_name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">createGlobalTempView</span><span class="p">(</span><span class="n">table_name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -276,7 +474,7 @@ from: (0-3), (4-7), (8-11), (12-15) and (16 and more).</p>
     <p>
         &copy; Copyright 2017, Wenqiang Feng
       <span class="lastupdated">
-        Last updated on Dec 05, 2021.
+        Last updated on Dec 27, 2021.
       </span>
 
     </p>

@@ -145,8 +145,5 @@ if __name__ == '__main__':
     # To go back to the original current directory.
     os.chdir(currentdir)
 
-    # Reset THEANO_FLAGS
-    #os.environ['THEANO_FLAGS'] = env_th_flags
-
 
 
